@@ -25,6 +25,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Resources/Info.plist,
+				Resources/swiftlint.yml,
 			);
 			target = 4B3445592E16AEEC00A3186E /* Resplash */;
 		};
@@ -85,6 +86,7 @@
 				4B3445562E16AEEC00A3186E /* Sources */,
 				4B3445572E16AEEC00A3186E /* Frameworks */,
 				4B3445582E16AEEC00A3186E /* Resources */,
+				4B3445BB2E16B56A00A3186E /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -157,6 +159,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B3445BB2E16B56A00A3186E /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -d \"$HOME/.local/share/mise/shims\" ]; then\n    export PATH=\"$HOME/.local/share/mise/shims:$PATH\"\nfi\n\nSWIFTLINT_PATH=$(which swiftlint)\nSWIFTLINT_CONFIG_PATH=\"${PROJECT_DIR%}/swiftlint.yml\"\necho \"${SWIFTLINT_CONFIG_PATH}\"\n\nif [ -n \"$(which swiftlint)\" ]; then\n  swiftlint --config \"$SWIFTLINT_CONFIG_PATH\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4B3445562E16AEEC00A3186E /* Sources */ = {
@@ -269,7 +293,6 @@
 				DEVELOPMENT_TEAM = F36388UFRX;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -290,6 +313,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -333,7 +357,6 @@
 				DEVELOPMENT_TEAM = F36388UFRX;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -347,6 +370,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
