@@ -178,7 +178,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -d \"$HOME/.local/share/mise/shims\" ]; then\n    export PATH=\"$HOME/.local/share/mise/shims:$PATH\"\nfi\n\nSWIFTLINT_PATH=$(which swiftlint)\nSWIFTLINT_CONFIG_PATH=\"${PROJECT_DIR%}/swiftlint.yml\"\necho \"${SWIFTLINT_CONFIG_PATH}\"\n\nif [ -n \"$(which swiftlint)\" ]; then\n  swiftlint --config \"$SWIFTLINT_CONFIG_PATH\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if [ -d \"$HOME/.local/share/mise/shims\" ]; then\n    export PATH=\"$HOME/.local/share/mise/shims:$PATH\"\nfi\n\nSWIFTLINT_PATH=$(which swiftlint)\nSWIFTLINT_CONFIG_PATH=\"${PROJECT_DIR%}/Resplash/Resources/swiftlint.yml\"\n\nif [ -n \"$(which swiftlint)\" ]; then\n  swiftlint --config \"$SWIFTLINT_CONFIG_PATH\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
