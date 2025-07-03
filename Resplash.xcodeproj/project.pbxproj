@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4B3445962E16B33100A3186E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445952E16B33100A3186E /* SnapKit */; };
+		4B3445992E16B37500A3186E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445982E16B37500A3186E /* Moya */; };
+		4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B34459B2E16B38E00A3186E /* Kingfisher */; };
+		4B34459F2E16B3DF00A3186E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4B34459E2E16B3DF00A3186E /* RxCocoa */; };
+		4B3445A12E16B3DF00A3186E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A02E16B3DF00A3186E /* RxRelay */; };
+		4B3445A32E16B3DF00A3186E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A22E16B3DF00A3186E /* RxSwift */; };
+		4B3445A62E16B3ED00A3186E /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A52E16B3ED00A3186E /* ReactorKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		4B34455A2E16AEEC00A3186E /* Resplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +46,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3445A32E16B3DF00A3186E /* RxSwift in Frameworks */,
+				4B3445A12E16B3DF00A3186E /* RxRelay in Frameworks */,
+				4B3445A62E16B3ED00A3186E /* ReactorKit in Frameworks */,
+				4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */,
+				4B3445992E16B37500A3186E /* Moya in Frameworks */,
+				4B34459F2E16B3DF00A3186E /* RxCocoa in Frameworks */,
+				4B3445962E16B33100A3186E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +95,13 @@
 			);
 			name = Resplash;
 			packageProductDependencies = (
+				4B3445952E16B33100A3186E /* SnapKit */,
+				4B3445982E16B37500A3186E /* Moya */,
+				4B34459B2E16B38E00A3186E /* Kingfisher */,
+				4B34459E2E16B3DF00A3186E /* RxCocoa */,
+				4B3445A02E16B3DF00A3186E /* RxRelay */,
+				4B3445A22E16B3DF00A3186E /* RxSwift */,
+				4B3445A52E16B3ED00A3186E /* ReactorKit */,
 			);
 			productName = Resplash;
 			productReference = 4B34455A2E16AEEC00A3186E /* Resplash.app */;
@@ -107,6 +131,13 @@
 			);
 			mainGroup = 4B3445512E16AEEC00A3186E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4B3445942E16B33100A3186E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4B3445972E16B37500A3186E /* XCRemoteSwiftPackageReference "Moya" */,
+				4B34459A2E16B38E00A3186E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				4B3445A42E16B3ED00A3186E /* XCRemoteSwiftPackageReference "ReactorKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B34455B2E16AEEC00A3186E /* Products */;
 			projectDirPath = "";
@@ -343,6 +374,87 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4B3445942E16B33100A3186E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		4B3445972E16B37500A3186E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		4B34459A2E16B38E00A3186E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.3;
+			};
+		};
+		4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		4B3445A42E16B3ED00A3186E /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4B3445952E16B33100A3186E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B3445942E16B33100A3186E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		4B3445982E16B37500A3186E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B3445972E16B37500A3186E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		4B34459B2E16B38E00A3186E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B34459A2E16B38E00A3186E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		4B34459E2E16B3DF00A3186E /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		4B3445A02E16B3DF00A3186E /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		4B3445A22E16B3DF00A3186E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4B3445A52E16B3ED00A3186E /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B3445A42E16B3ED00A3186E /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4B3445522E16AEEC00A3186E /* Project object */;
 }
