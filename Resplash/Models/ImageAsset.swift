@@ -11,7 +11,7 @@ struct ImageAsset {
   let id: String
   let createdAt: Date
   let updatedAt: Date
-  let type: AssetType
+  let type: MediaType
   let isPremium: Bool
 
   let description: String?
@@ -24,15 +24,6 @@ struct ImageAsset {
 
   let user: User
   let shareLink: URL
-}
-
-// MARK: - ImageAsset.AssetType
-
-extension ImageAsset {
-  enum AssetType: String, Decodable {
-    case photo
-    case illustration
-  }
 }
 
 // MARK: - ImageAsset.ImageURL
@@ -82,7 +73,7 @@ extension ImageAsset: Decodable {
     self.id = try container.decode(String.self, forKey: "id")
     self.createdAt = try container.decode(Date.self, forKey: "created_at")
     self.updatedAt = try container.decode(Date.self, forKey: "updated_at")
-    self.type = try container.decode(AssetType.self, forKey: "asset_type")
+    self.type = try container.decode(MediaType.self, forKey: "asset_type")
     self.isPremium = try container.decode(Bool.self, forKey: "premium")
 
     let description = try container.decodeIfPresent(String.self, forKey: "description")
