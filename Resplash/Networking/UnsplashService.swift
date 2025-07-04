@@ -12,8 +12,23 @@ import RxSwift
 struct UnsplashService {
   private let provider: MoyaProvider<UnsplashAPI>
 
-  init() {
+  init(strategy: Strategy = .live) {
+    #if DEBUG
+    if ProcessInfo.processInfo.isPreview {
+      self.provider = MoyaProvider(stubClosure: { _ in .immediate })
+    } else {
+      switch strategy {
+      case .live:
+        self.provider = MoyaProvider()
+      case .stub(let delay):
+        self.provider = MoyaProvider(stubClosure: { _ in
+          delay.map { .delayed(seconds: $0) } ?? .immediate
+        })
+      }
+    }
+    #else
     self.provider = MoyaProvider()
+    #endif
   }
 
   @inlinable func topics() -> Single<[Topic]> {
@@ -38,6 +53,15 @@ struct UnsplashService {
 
   @inlinable func autocomplete(_ query: String) -> Single<[Autocomplete]> {
     request(.autocomplete(query), at: "autocomplete")
+  }
+}
+
+// MARK: - UnsplashService.Strategy
+
+extension UnsplashService {
+  enum Strategy {
+    case live
+    case stub(delay: TimeInterval?)
   }
 }
 
