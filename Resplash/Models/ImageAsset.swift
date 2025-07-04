@@ -20,32 +20,10 @@ struct ImageAsset {
   let width: Int
   let height: Int
   let color: String
-  let imageURL: ImageURL
+  let imageURL: ImageAssetURL
 
   let user: User
   let shareLink: URL
-}
-
-// MARK: - ImageAsset.ImageURL
-
-extension ImageAsset {
-  struct ImageURL: Decodable {
-    let raw: URL
-    let full: URL
-    let regular: URL
-    let small: URL
-    let thumb: URL
-    let smallS3: URL
-
-    enum CodingKeys: String, CodingKey {
-      case raw
-      case full
-      case regular
-      case small
-      case thumb
-      case smallS3 = "small_s3"
-    }
-  }
 }
 
 // MARK: - ImageAsset (Identifiable)
@@ -84,7 +62,7 @@ extension ImageAsset: Decodable {
     self.width = try container.decode(Int.self, forKey: "width")
     self.height = try container.decode(Int.self, forKey: "height")
     self.color = try container.decode(String.self, forKey: "color")
-    self.imageURL = try container.decode(ImageURL.self, forKey: "urls")
+    self.imageURL = try container.decode(ImageAssetURL.self, forKey: "urls")
 
     self.user = try container.decode(User.self, forKey: "user")
     let linkContainer = try container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "links")
