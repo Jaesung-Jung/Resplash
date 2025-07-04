@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User {
+struct User: Identifiable {
   let id: String
   let userId: String
   let updatedAt: Date
@@ -44,11 +44,6 @@ extension User {
     case instagram(String)
     case portfolio(URL)
   }
-}
-
-// MARK: - User (Identifiable)
-
-extension User: Identifiable {
 }
 
 // MARK: - User (Hashable)

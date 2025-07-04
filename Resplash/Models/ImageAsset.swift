@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageAsset {
+struct ImageAsset: Identifiable {
   let id: String
   let createdAt: Date
   let updatedAt: Date
@@ -24,11 +24,6 @@ struct ImageAsset {
 
   let user: User
   let shareLink: URL
-}
-
-// MARK: - ImageAsset (Identifiable)
-
-extension ImageAsset: Identifiable {
 }
 
 // MARK: - ImageAsset (Hashable)
