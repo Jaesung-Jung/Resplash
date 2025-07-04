@@ -16,12 +16,24 @@ struct UnsplashService {
     self.provider = MoyaProvider()
   }
 
-  @inlinable func photos(page: Int) -> Single<[ImageAsset]> {
-    request(.photos(page))
+  @inlinable func topics() -> Single<[Topic]> {
+    request(.topics)
   }
 
-  @inlinable func illustrations(page: Int) -> Single<[ImageAsset]> {
-    request(.illustrations(page))
+  @inlinable func featured() -> Single<[Featured]> {
+    request(.featured)
+  }
+
+  @inlinable func photos(page: Int) -> Single<Page<[ImageAsset]>> {
+    request(.photos(page)).map { Page(number: page, items: $0) }
+  }
+
+  @inlinable func illustrations(page: Int) -> Single<Page<[ImageAsset]>> {
+    request(.illustrations(page)).map { Page(number: page, items: $0) }
+  }
+
+  @inlinable func collections(for mediaType: MediaType, page: Int) -> Single<Page<[ImageAssetCollection]>> {
+    request(.collections(mediaType, page)).map { Page(number: page, items: $0) }
   }
 
   @inlinable func autocomplete(_ query: String) -> Single<[Autocomplete]> {
