@@ -14,6 +14,7 @@
 		4B3445A12E16B3DF00A3186E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A02E16B3DF00A3186E /* RxRelay */; };
 		4B3445A32E16B3DF00A3186E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A22E16B3DF00A3186E /* RxSwift */; };
 		4B3445A62E16B3ED00A3186E /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A52E16B3ED00A3186E /* ReactorKit */; };
+		4BC782242E17BBB8009C421A /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC782232E17BBB8009C421A /* RxBlocking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC782242E17BBB8009C421A /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,7 @@
 			);
 			name = ResplashTests;
 			packageProductDependencies = (
+				4BC782232E17BBB8009C421A /* RxBlocking */,
 			);
 			productName = ResplashTests;
 			productReference = 4B3446372E16C98E00A3186E /* ResplashTests.xctest */;
@@ -603,6 +606,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B3445A42E16B3ED00A3186E /* XCRemoteSwiftPackageReference "ReactorKit" */;
 			productName = ReactorKit;
+		};
+		4BC782232E17BBB8009C421A /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
