@@ -40,11 +40,20 @@ struct UnsplashService {
   }
 
   @inlinable func photos(page: Int) -> Single<Page<[ImageAsset]>> {
-    request(.photos(page)).map { Page(number: page, items: $0) }
+    images(for: .photo, page: page)
   }
 
   @inlinable func illustrations(page: Int) -> Single<Page<[ImageAsset]>> {
-    request(.illustrations(page)).map { Page(number: page, items: $0) }
+    images(for: .illustration, page: page)
+  }
+
+  @inlinable func images(for mediaType: MediaType, page: Int) -> Single<Page<[ImageAsset]>> {
+    switch mediaType {
+    case .photo:
+      request(.photos(page)).map { Page(number: page, items: $0) }
+    case .illustration:
+      request(.illustrations(page)).map { Page(number: page, items: $0) }
+    }
   }
 
   @inlinable func collections(for mediaType: MediaType, page: Int) -> Single<Page<[ImageAssetCollection]>> {
