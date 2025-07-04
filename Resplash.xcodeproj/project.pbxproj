@@ -10,11 +10,10 @@
 		4B3445962E16B33100A3186E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445952E16B33100A3186E /* SnapKit */; };
 		4B3445992E16B37500A3186E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445982E16B37500A3186E /* Moya */; };
 		4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B34459B2E16B38E00A3186E /* Kingfisher */; };
-		4B34459F2E16B3DF00A3186E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4B34459E2E16B3DF00A3186E /* RxCocoa */; };
-		4B3445A12E16B3DF00A3186E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A02E16B3DF00A3186E /* RxRelay */; };
-		4B3445A32E16B3DF00A3186E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A22E16B3DF00A3186E /* RxSwift */; };
-		4B3445A62E16B3ED00A3186E /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445A52E16B3ED00A3186E /* ReactorKit */; };
-		4BC782242E17BBB8009C421A /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC782232E17BBB8009C421A /* RxBlocking */; };
+		4BC782E52E17DDDD009C421A /* SwiftNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC782E42E17DDDD009C421A /* SwiftNavigation */; };
+		4BC782E82E17DDF7009C421A /* IdentifiedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC782E72E17DDF7009C421A /* IdentifiedCollections */; };
+		4BC782EA2E17DEA6009C421A /* UIKitNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC782E92E17DEA6009C421A /* UIKitNavigation */; };
+		4BC783A12E181C34009C421A /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC783A02E181C34009C421A /* Dependencies */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +63,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B3445A32E16B3DF00A3186E /* RxSwift in Frameworks */,
-				4B3445A12E16B3DF00A3186E /* RxRelay in Frameworks */,
-				4B3445A62E16B3ED00A3186E /* ReactorKit in Frameworks */,
+				4BC782E82E17DDF7009C421A /* IdentifiedCollections in Frameworks */,
 				4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */,
+				4BC782E52E17DDDD009C421A /* SwiftNavigation in Frameworks */,
 				4B3445992E16B37500A3186E /* Moya in Frameworks */,
-				4B34459F2E16B3DF00A3186E /* RxCocoa in Frameworks */,
+				4BC783A12E181C34009C421A /* Dependencies in Frameworks */,
 				4B3445962E16B33100A3186E /* SnapKit in Frameworks */,
+				4BC782EA2E17DEA6009C421A /* UIKitNavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BC782242E17BBB8009C421A /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,10 +125,10 @@
 				4B3445952E16B33100A3186E /* SnapKit */,
 				4B3445982E16B37500A3186E /* Moya */,
 				4B34459B2E16B38E00A3186E /* Kingfisher */,
-				4B34459E2E16B3DF00A3186E /* RxCocoa */,
-				4B3445A02E16B3DF00A3186E /* RxRelay */,
-				4B3445A22E16B3DF00A3186E /* RxSwift */,
-				4B3445A52E16B3ED00A3186E /* ReactorKit */,
+				4BC782E42E17DDDD009C421A /* SwiftNavigation */,
+				4BC782E72E17DDF7009C421A /* IdentifiedCollections */,
+				4BC782E92E17DEA6009C421A /* UIKitNavigation */,
+				4BC783A02E181C34009C421A /* Dependencies */,
 			);
 			productName = Resplash;
 			productReference = 4B34455A2E16AEEC00A3186E /* Resplash.app */;
@@ -154,7 +152,6 @@
 			);
 			name = ResplashTests;
 			packageProductDependencies = (
-				4BC782232E17BBB8009C421A /* RxBlocking */,
 			);
 			productName = ResplashTests;
 			productReference = 4B3446372E16C98E00A3186E /* ResplashTests.xctest */;
@@ -192,8 +189,9 @@
 				4B3445942E16B33100A3186E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4B3445972E16B37500A3186E /* XCRemoteSwiftPackageReference "Moya" */,
 				4B34459A2E16B38E00A3186E /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */,
-				4B3445A42E16B3ED00A3186E /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				4BC782E32E17DDDD009C421A /* XCRemoteSwiftPackageReference "swift-navigation" */,
+				4BC782E62E17DDF7009C421A /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
+				4BC7839F2E181C34009C421A /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B34455B2E16AEEC00A3186E /* Products */;
@@ -553,20 +551,28 @@
 				minimumVersion = 8.3.3;
 			};
 		};
-		4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		4BC782E32E17DDDD009C421A /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.9.0;
+				minimumVersion = 2.3.1;
 			};
 		};
-		4B3445A42E16B3ED00A3186E /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+		4BC782E62E17DDF7009C421A /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			repositoryURL = "https://github.com/pointfreeco/swift-identified-collections.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.0;
+				minimumVersion = 1.1.1;
+			};
+		};
+		4BC7839F2E181C34009C421A /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -587,30 +593,25 @@
 			package = 4B34459A2E16B38E00A3186E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		4B34459E2E16B3DF00A3186E /* RxCocoa */ = {
+		4BC782E42E17DDDD009C421A /* SwiftNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
+			package = 4BC782E32E17DDDD009C421A /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftNavigation;
 		};
-		4B3445A02E16B3DF00A3186E /* RxRelay */ = {
+		4BC782E72E17DDF7009C421A /* IdentifiedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
+			package = 4BC782E62E17DDF7009C421A /* XCRemoteSwiftPackageReference "swift-identified-collections" */;
+			productName = IdentifiedCollections;
 		};
-		4B3445A22E16B3DF00A3186E /* RxSwift */ = {
+		4BC782E92E17DEA6009C421A /* UIKitNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
+			package = 4BC782E32E17DDDD009C421A /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = UIKitNavigation;
 		};
-		4B3445A52E16B3ED00A3186E /* ReactorKit */ = {
+		4BC783A02E181C34009C421A /* Dependencies */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B3445A42E16B3ED00A3186E /* XCRemoteSwiftPackageReference "ReactorKit" */;
-			productName = ReactorKit;
-		};
-		4BC782232E17BBB8009C421A /* RxBlocking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B34459D2E16B3DF00A3186E /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxBlocking;
+			package = 4BC7839F2E181C34009C421A /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
