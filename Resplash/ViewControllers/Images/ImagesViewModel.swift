@@ -22,11 +22,29 @@ final class ImagesViewModel: ViewModel {
     switch action {
     case .fetchImages:
       updateState { $0.isLoading = true }
-      unsplash.images(for: .photo, page: 1) { [weak self] in
-        self?.updateState(with: $0) {
-          $0.images = $1
-          $0.currentImagePage = 1
-          $0.isLoading = false
+      unsplash.collections(for: .photo, page: 1) { [weak self] result1 in
+        guard let self else {
+          return
+        }
+        switch result1 {
+        case .success(let collections):
+          unsplash.images(for: .photo, page: 1) { [weak self] result2 in
+            guard let self else {
+              return
+            }
+            switch result2 {
+            case .success(let images):
+              updateState {
+                $0.collections = collections
+                $0.images = images
+                $0.isLoading = false
+              }
+            case .failure(let failure):
+              error = failure
+            }
+          }
+        case .failure(let failure):
+          error = failure
         }
       }
 

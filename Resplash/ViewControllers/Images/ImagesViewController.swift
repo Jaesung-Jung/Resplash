@@ -11,6 +11,7 @@ import SnapKit
 
 final class ImagesViewController: BaseViewController {
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
+
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
 
   private let viewModel = ImagesViewModel()
@@ -52,51 +53,89 @@ extension ImagesViewController {
   }
 
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
-    UICollectionViewCompositionalLayout { _, environemtn in
-      let contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20)
+    UICollectionViewCompositionalLayout { [weak self] sectionIndex, environemtn in
+      guard let section = self?.dataSource.sectionIdentifier(for: sectionIndex) else {
+        return NSCollectionLayoutSection(
+          group: .horizontal(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(0), heightDimension: .absolute(0)),
+            repeatingSubitem: NSCollectionLayoutItem(
+              layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(0), heightDimension: .absolute(0))
+            ),
+            count: 1
+          )
+        )
+      }
+      let contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 40, trailing: 20)
       let containerSize = CGSize(
         width: environemtn.container.effectiveContentSize.width - contentInsets.leading - contentInsets.trailing,
         height: environemtn.container.effectiveContentSize.height - contentInsets.top - contentInsets.bottom
       )
       let spacing: CGFloat = 10
-
-      let itemWidth = (containerSize.width - spacing) * 0.5
-      let itemHeight = itemWidth
-      let item = NSCollectionLayoutItem(
+      let headerSupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(
         layoutSize: NSCollectionLayoutSize(
           widthDimension: .fractionalWidth(1),
-          heightDimension: .estimated(itemHeight)
-        )
+          heightDimension: .estimated(50)
+        ),
+        elementKind: UICollectionView.elementKindSectionHeader,
+        alignment: .top
       )
-      let group = NSCollectionLayoutGroup
-        .horizontal(
+
+      switch section {
+      case .collections:
+        let estimatedWidth = (containerSize.width - spacing) * 0.5
+        let itemWidth = estimatedWidth + estimatedWidth * 0.5 + spacing
+        let item = NSCollectionLayoutItem(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1)
+          )
+        )
+        let group = NSCollectionLayoutGroup
+          .horizontal(
+            layoutSize: NSCollectionLayoutSize(
+              widthDimension: .absolute(itemWidth),
+              heightDimension: .absolute(itemWidth)
+            ),
+            repeatingSubitem: item,
+            count: 1
+          )
+        return NSCollectionLayoutSection(group: group).then {
+          $0.interGroupSpacing = spacing
+          $0.contentInsets = contentInsets
+          $0.boundarySupplementaryItems = [headerSupplementaryItem]
+          $0.orthogonalScrollingBehavior = .continuous
+        }
+
+      case .images:
+        let itemWidth = (containerSize.width - spacing) * 0.5
+        let itemHeight = itemWidth
+        let item = NSCollectionLayoutItem(
           layoutSize: NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(itemHeight)
-          ),
-          repeatingSubitem: item,
-          count: 1
+          )
         )
-      return NSCollectionLayoutSection(group: group).then {
-        $0.interGroupSpacing = spacing
-        $0.contentInsets = contentInsets
-        $0.boundarySupplementaryItems = [
-          NSCollectionLayoutBoundarySupplementaryItem(
+        let group = NSCollectionLayoutGroup
+          .horizontal(
             layoutSize: NSCollectionLayoutSize(
               widthDimension: .fractionalWidth(1),
-              heightDimension: .estimated(50)
+              heightDimension: .estimated(itemHeight)
             ),
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
+            repeatingSubitem: item,
+            count: 1
           )
-        ]
+        return NSCollectionLayoutSection(group: group).then {
+          $0.interGroupSpacing = spacing
+          $0.contentInsets = contentInsets
+          $0.boundarySupplementaryItems = [headerSupplementaryItem]
+        }
       }
     }
   }
 
   private func makeCollectionViewDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Section, Item> {
-    let collectionCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, ImageAssetCollection> { cell, _, collection in
-      cell.backgroundColor = UIColor(hue: .random(in: 0...1), saturation: 1, brightness: 1, alpha: 1)
+    let collectionCellRegistration = UICollectionView.CellRegistration<ImageAssetCollectionCell, ImageAssetCollection> { cell, _, collection in
+      cell.configure(collection)
     }
     let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, asset in
       cell.configure(asset)
@@ -110,8 +149,9 @@ extension ImagesViewController {
       }
     }
 
-    let supplementaryRegistration = UICollectionView.SupplementaryRegistration<CollectionTitleView>(elementKind: UICollectionView.elementKindSectionHeader) { cell, _, _ in
-      cell.title = "Title"
+    typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<CollectionTitleView>
+    let supplementaryRegistration = SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] cell, _, indexPath in
+      cell.title = self?.dataSource.sectionIdentifier(for: indexPath.section)?.title
     }
     dataSource.supplementaryViewProvider = { collectionView, _, indexPath in
       collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
@@ -126,6 +166,15 @@ extension ImagesViewController {
   nonisolated enum Section {
     case collections
     case images
+
+    var title: String {
+      switch self {
+      case .collections:
+        return "Collections"
+      case .images:
+        return "Featured"
+      }
+    }
   }
 }
 

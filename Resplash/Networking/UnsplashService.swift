@@ -56,8 +56,8 @@ struct UnsplashService {
     }
   }
 
-  @inlinable func collections(for mediaType: MediaType, page: Int, completion: @escaping (Result<Page<[ImageAssetCollection]>, Error>) -> Void) {
-    request(.collections(mediaType, page)) { completion($0.map { Page(number: page, items: $0) }) }
+  @inlinable func collections(for mediaType: MediaType, page: Int, completion: @escaping (Result<[ImageAssetCollection], Error>) -> Void) {
+    request(.collections(mediaType, page), completion: completion)
   }
 
   @inlinable func autocomplete(_ query: String, completion: @escaping (Result<[Autocomplete], Error>) -> Void) {
