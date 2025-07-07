@@ -95,3 +95,35 @@ extension User: Decodable {
     self.shareLink = try linkContainer.decode(URL.self, forKey: "html")
   }
 }
+
+// MARK: - User (Preview)
+
+#if DEBUG
+
+extension User {
+  static let preview = User(
+    id: "hHagXXIc3vU",
+    userId: "sumup",
+    updatedAt: .now,
+    name: "SumUp",
+    bio: "Developing tools & technology to help business owners around the world thrive.",
+    location: "LA",
+    imageURL: ImageURL(
+      small: URL(string: "https://images.unsplash.com/profile-1725878289869-4e679a729355image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=32&h=32")!,
+      medium: URL(string: "https://images.unsplash.com/profile-1725878289869-4e679a729355image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=64&h=64")!,
+      large: URL(string: "https://images.unsplash.com/profile-1725878289869-4e679a729355image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128")!
+    ),
+    totalLikes: 27_920,
+    totalCollections: 2582,
+    totalPhotos: 194_501,
+    totalIllustrations: 4958,
+    socials: [
+      .instagram("sumup"),
+      .twitter("piensaenpixel"),
+      .portfolio(URL(string: "https://api.unsplash.com/users/piensaenpixel/portfolio")!)
+    ],
+    shareLink: URL(string: "https://unsplash.com/@sumup")!
+  )
+}
+
+#endif
