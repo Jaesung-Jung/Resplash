@@ -11,6 +11,7 @@ struct User: Identifiable {
   let id: String
   let userId: String
   let updatedAt: Date
+  let forHire: Bool
 
   let name: String
   let bio: String?
@@ -66,6 +67,7 @@ extension User: Decodable {
     self.id = try container.decode(String.self, forKey: "id")
     self.userId = try container.decode(String.self, forKey: "username")
     self.updatedAt = try container.decode(Date.self, forKey: "updated_at")
+    self.forHire = try container.decode(Bool.self, forKey: "for_hire")
 
     self.name = try container.decode(String.self, forKey: "name")
     self.bio = try container.decodeIfPresent(String.self, forKey: "bio")
@@ -105,13 +107,14 @@ extension User {
     id: "hHagXXIc3vU",
     userId: "sumup",
     updatedAt: .now,
+    forHire: true,
     name: "SumUp",
     bio: "Developing tools & technology to help business owners around the world thrive.",
     location: "LA",
     imageURL: ImageURL(
-      small: URL(string: "https://images.unsplash.com/profile-1725878289869-4e679a729355image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=32&h=32")!,
-      medium: URL(string: "https://images.unsplash.com/profile-1725878289869-4e679a729355image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=64&h=64")!,
-      large: URL(string: "https://images.unsplash.com/profile-1725878289869-4e679a729355image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128")!
+      small: URL(string: "https://images.unsplash.com/profile-1668694018296-888e51022d71image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=32&h=32")!,
+      medium: URL(string: "https://images.unsplash.com/profile-1668694018296-888e51022d71image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=64&h=64")!,
+      large: URL(string: "https://images.unsplash.com/profile-1668694018296-888e51022d71image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128")!
     ),
     totalLikes: 27_920,
     totalCollections: 2582,
