@@ -10,6 +10,8 @@ import Combine
 import SnapKit
 
 final class ImagesViewController: BaseViewController {
+  private let mediaTypeBarButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"))
+
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
 
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
@@ -21,6 +23,13 @@ final class ImagesViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Images"
+    navigationItem.trailingItemGroups = [
+      UIBarButtonItemGroup(
+        barButtonItems: [mediaTypeBarButton],
+        representativeItem: nil
+      )
+    ]
+
     view.addSubview(collectionView)
     collectionView.snp.makeConstraints {
       $0.directionalEdges.equalToSuperview()
@@ -32,6 +41,12 @@ final class ImagesViewController: BaseViewController {
       }
       .store(in: &cancellables)
 
+    viewModel.$error
+      .sink {
+        print($0)
+      }
+      .store(in: &cancellables)
+
     viewModel.perform(.fetchImages)
   }
 }
@@ -39,7 +54,31 @@ final class ImagesViewController: BaseViewController {
 // MARK: - ImagesViewController (Private)
 
 extension ImagesViewController {
+  private func bindAction() {
+  }
+
   private func update(_ state: ImagesViewModel.State) {
+    switch state.mediaType {
+    case .photo:
+      title = "Photos"
+    case .illustration:
+      title = "Illustrations"
+    }
+
+    mediaTypeBarButton.menu = UIMenu(
+      title: "Media Type",
+      children: [
+        UIAction(title: "Photos", state: state.mediaType == .photo ? .on : .off) { [weak self] _ in
+          self?.viewModel.perform(.selectMediaType(.photo))
+          self?.viewModel.perform(.fetchImages)
+        },
+        UIAction(title: "Illustrations", state: state.mediaType == .illustration ? .on : .off) { [weak self] _ in
+          self?.viewModel.perform(.selectMediaType(.illustration))
+          self?.viewModel.perform(.fetchImages)
+        }
+      ]
+    )
+
     var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
     if !state.collections.isEmpty {
       snapshot.appendSections([.collections])

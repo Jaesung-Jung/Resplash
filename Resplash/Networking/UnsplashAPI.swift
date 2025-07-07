@@ -50,8 +50,14 @@ extension UnsplashAPI: TargetType {
         encoding: URLEncoding.default
       )
     case .collections(let mediaType, let page):
+      let assetType: String = switch mediaType {
+      case .photo:
+        "photos"
+      case .illustration:
+        "illustrations"
+      }
       return .requestParameters(
-        parameters: ["asset_type": mediaType.rawValue, "page": page, "per_page": 30],
+        parameters: ["asset_type": assetType, "page": page, "per_page": 30],
         encoding: URLEncoding.default
       )
     case .topics, .featured, .autocomplete:

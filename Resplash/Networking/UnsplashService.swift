@@ -19,7 +19,7 @@ struct UnsplashService {
     } else {
       switch strategy {
       case .live:
-        self.provider = MoyaProvider()
+        self.provider = MoyaProvider(plugins: [NetworkLoggerPlugin()])
       case .stub(let delay):
         self.provider = MoyaProvider(stubClosure: { _ in
           delay.map { .delayed(seconds: $0) } ?? .immediate

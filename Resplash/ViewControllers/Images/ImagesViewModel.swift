@@ -20,15 +20,22 @@ final class ImagesViewModel: ViewModel {
 
   func perform(_ action: Action) {
     switch action {
+    case .selectMediaType(let mediaType):
+      updateState {
+        $0.mediaType = mediaType
+      }
+
     case .fetchImages:
+      let mediaType = state.mediaType
+
       updateState { $0.isLoading = true }
-      unsplash.collections(for: .photo, page: 1) { [weak self] result1 in
+      unsplash.collections(for: mediaType, page: 1) { [weak self] result1 in
         guard let self else {
           return
         }
         switch result1 {
         case .success(let collections):
-          unsplash.images(for: .photo, page: 1) { [weak self] result2 in
+          unsplash.images(for: mediaType, page: 1) { [weak self] result2 in
             guard let self else {
               return
             }
@@ -50,7 +57,7 @@ final class ImagesViewModel: ViewModel {
 
     case .fetchNextImages:
       let page = state.currentImagePage + 1
-      unsplash.images(for: .photo, page: page) { [weak self] in
+      unsplash.images(for: state.mediaType, page: page) { [weak self] in
         self?.updateState(with: $0) {
           $0.images.append(contentsOf: $1)
           $0.currentImagePage = page
@@ -72,6 +79,8 @@ final class ImagesViewModel: ViewModel {
 
 extension ImagesViewModel {
   struct State {
+    var mediaType: MediaType = .photo
+
     var currentImagePage: Int = 1
     var images: [ImageAsset] = []
     var collections: [ImageAssetCollection] = []
@@ -84,6 +93,7 @@ extension ImagesViewModel {
 
 extension ImagesViewModel {
   enum Action {
+    case selectMediaType(MediaType)
     case fetchImages
     case fetchNextImages
   }

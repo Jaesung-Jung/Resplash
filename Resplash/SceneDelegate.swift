@@ -16,9 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
     // Dependencies
-    prepareDependencies {
-      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
-    }
+//    prepareDependencies {
+//      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
+//    }
 
     // Root View
     let tabBarController = UITabBarController().then {
