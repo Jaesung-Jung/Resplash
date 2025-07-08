@@ -19,7 +19,7 @@ struct UnsplashService {
     } else {
       switch strategy {
       case .live:
-        self.provider = MoyaProvider()
+        self.provider = MoyaProvider(plugins: [NetworkLoggerPlugin()])
       case .stub(let delay):
         self.provider = MoyaProvider(stubClosure: { _ in
           delay.map { .delayed(seconds: $0) } ?? .immediate
@@ -31,37 +31,37 @@ struct UnsplashService {
     #endif
   }
 
-  @inlinable func topics() -> Single<[Topic]> {
-    request(.topics)
+  @inlinable func topics(completion: @escaping (Result<[Topic], Error>) -> Void) {
+    request(.topics, completion: completion)
   }
 
-  @inlinable func featured() -> Single<[Featured]> {
-    request(.featured)
+  @inlinable func featured(completion: @escaping (Result<[Featured], Error>) -> Void) {
+    request(.featured, completion: completion)
   }
 
-  @inlinable func photos(page: Int) -> Single<Page<[ImageAsset]>> {
-    images(for: .photo, page: page)
+  @inlinable func photos(page: Int, completion: @escaping (Result<[ImageAsset], Error>) -> Void) {
+    images(for: .photo, page: page, completion: completion)
   }
 
-  @inlinable func illustrations(page: Int) -> Single<Page<[ImageAsset]>> {
-    images(for: .illustration, page: page)
+  @inlinable func illustrations(page: Int, completion: @escaping (Result<[ImageAsset], Error>) -> Void) {
+    images(for: .illustration, page: page, completion: completion)
   }
 
-  @inlinable func images(for mediaType: MediaType, page: Int) -> Single<Page<[ImageAsset]>> {
+  @inlinable func images(for mediaType: MediaType, page: Int, completion: @escaping (Result<[ImageAsset], Error>) -> Void) {
     switch mediaType {
     case .photo:
-      request(.photos(page)).map { Page(number: page, items: $0) }
+      request(.photos(page), completion: completion)
     case .illustration:
-      request(.illustrations(page)).map { Page(number: page, items: $0) }
+      request(.illustrations(page), completion: completion)
     }
   }
 
-  @inlinable func collections(for mediaType: MediaType, page: Int) -> Single<Page<[ImageAssetCollection]>> {
-    request(.collections(mediaType, page)).map { Page(number: page, items: $0) }
+  @inlinable func collections(for mediaType: MediaType, page: Int, completion: @escaping (Result<[ImageAssetCollection], Error>) -> Void) {
+    request(.collections(mediaType, page), completion: completion)
   }
 
-  @inlinable func autocomplete(_ query: String) -> Single<[Autocomplete]> {
-    request(.autocomplete(query), at: "autocomplete")
+  @inlinable func autocomplete(_ query: String, completion: @escaping (Result<[Autocomplete], Error>) -> Void) {
+    request(.autocomplete(query), at: "autocomplete", completion: completion)
   }
 }
 
@@ -77,20 +77,37 @@ extension UnsplashService {
 // MARK: - UnsplashService (Private)
 
 extension UnsplashService {
-  private func request<T: Decodable>(_ target: UnsplashAPI, at keyPath: String? = nil) -> Single<T> {
-    Single.create { [provider] observer in
-      provider.request(target) { result in
-        do {
-          let response = try result.get()
-          let decodedData = try response.map(T.self, atKeyPath: keyPath, using: JSONDecoder().then {
-            $0.dateDecodingStrategy = .iso8601
-          })
-          observer(.success(decodedData))
-        } catch {
-          observer(.failure(error))
-        }
+  private func request<T: Decodable>(_ target: UnsplashAPI, at keyPath: String? = nil, completion: @escaping (Result<T, Error>) -> Void) {
+    provider.request(target) { result in
+      do {
+        let response = try result.get()
+        let decodedData = try response.map(T.self, atKeyPath: keyPath, using: JSONDecoder().then {
+          $0.dateDecodingStrategy = .iso8601
+        })
+        completion(.success(decodedData))
+      } catch {
+        completion(.failure(error))
       }
-      return Disposables.create()
     }
   }
 }
+
+// MARK: - Dependencies (UnsplashService)
+
+#if canImport(Dependencies)
+
+import Dependencies
+
+extension UnsplashService: DependencyKey {
+  static var liveValue: UnsplashService { UnsplashService() }
+  static var previewValue: UnsplashService { UnsplashService(strategy: .stub(delay: nil)) }
+}
+
+extension DependencyValues {
+  var unsplashService: UnsplashService {
+    get { self[UnsplashService.self] }
+    set { self[UnsplashService.self] = newValue }
+  }
+}
+
+#endif

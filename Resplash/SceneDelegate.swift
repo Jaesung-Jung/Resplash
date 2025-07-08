@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Dependencies
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
@@ -14,19 +15,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = scene as? UIWindowScene else {
       return
     }
+    // Dependencies
+//    prepareDependencies {
+//      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
+//    }
+
+    // Root View
     let tabBarController = UITabBarController().then {
       $0.tabs = [
         UITab(title: "Image", image: UIImage(systemName: "photo.on.rectangle.angled"), identifier: "images") { _ in
-          NavigationController(rootViewController: ImagesViewController())
+          UINavigationController(rootViewController: ImagesViewController())
         },
         UITab(title: "Collection", image: UIImage(systemName: "inset.filled.leadinghalf.toptrailing.bottomtrailing.rectangle"), identifier: "collection") { _ in
-          NavigationController(rootViewController: ImageCollectionsViewController())
+          UINavigationController(rootViewController: ImageCollectionsViewController())
         },
         UITab(title: "My", image: UIImage(systemName: "rectangle.stack.badge.person.crop"), identifier: "my") { _ in
-          NavigationController(rootViewController: MyAssetsViewController())
+          UINavigationController(rootViewController: MyAssetsViewController())
         },
         UISearchTab { _ in
-          NavigationController(rootViewController: ExploreViewController())
+          UINavigationController(rootViewController: ExploreViewController())
         }
       ]
     }

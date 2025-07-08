@@ -64,3 +64,27 @@ extension ImageAsset: Decodable {
     self.shareLink = try linkContainer.decode(URL.self, forKey: "html")
   }
 }
+
+// MARK: - ImageAsset (Preview)
+
+#if DEBUG
+
+extension ImageAsset {
+  static let preview = ImageAsset(
+    id: "DIdhesLS07I",
+    createdAt: .now,
+    updatedAt: .now,
+    type: .photo,
+    isPremium: false,
+    description: "Close-up of the SumUp Solo card reader, held by a store owner in a boutique setting. Designed for small businesses that want to accept contactless card and mobile payments with style and ease.",
+    likes: 4920,
+    width: 5196,
+    height: 3464,
+    color: "#a6a6a6",
+    imageURL: .preview,
+    user: .preview,
+    shareLink: URL(string: "https://unsplash.com/photos/DIdhesLS07I")!
+  )
+}
+
+#endif
