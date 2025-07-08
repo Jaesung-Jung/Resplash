@@ -19,6 +19,9 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
   }
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
 
+  private let addToCollectionActionRelay = PublishRelay<ImageAsset>()
+  private let shareActionReplay = PublishRelay<ImageAsset>()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.trailingItemGroups = [
@@ -86,6 +89,14 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
     mediaTypeSelected
       .map { .selectMediaType($0) }
       .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    shareActionReplay
+      .map(\.shareLink)
+      .bind { [weak self] link in
+        let activityViewController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
+        self?.present(activityViewController, animated: true)
+      }
       .disposed(by: disposeBag)
 
     collectionView.rx
@@ -182,9 +193,23 @@ extension ImagesViewController {
     let collectionCellRegistration = UICollectionView.CellRegistration<ImageAssetCollectionCell, ImageAssetCollection> { cell, _, collection in
       cell.configure(collection)
     }
+
+    let addToCollection = addToCollectionActionRelay
+    let share = shareActionReplay
     let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, asset in
       cell.configure(asset)
+      cell.menu = UIMenu(
+        children: [
+          UIAction(title: "Add to Collection", image: UIImage(systemName: "rectangle.stack.badge.plus")) { _ in
+            addToCollection.accept(asset)
+          },
+          UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+            share.accept(asset)
+          }
+        ]
+      )
     }
+
     let dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { collectionView, indexPath, item in
       switch item {
       case .collection(let collection):

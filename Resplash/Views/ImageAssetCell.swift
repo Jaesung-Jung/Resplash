@@ -12,7 +12,13 @@ import Kingfisher
 class ImageAssetCell: UICollectionViewCell {
   private var estimatedImageSize: CGSize?
 
-  private let gradientView = GradientView(
+  private let topGradientView = GradientView(
+    colors: [.black.withAlphaComponent(0.65), .black.withAlphaComponent(0)],
+    startPoint: .zero,
+    endPoint: CGPoint(x: 0, y: 1)
+  )
+
+  private let bottomGradientView = GradientView(
     colors: [.black.withAlphaComponent(0), .black.withAlphaComponent(0.65)],
     startPoint: .zero,
     endPoint: CGPoint(x: 0, y: 1)
@@ -23,8 +29,30 @@ class ImageAssetCell: UICollectionViewCell {
     $0.clipsToBounds = true
   }
 
+  private let likeView = LikeView().then {
+    $0.overrideUserInterfaceStyle = .dark
+  }
+
   private let profileView = MiniProfileView().then {
     $0.overrideUserInterfaceStyle = .dark
+  }
+
+  private lazy var menuButton = UIButton(configuration: menuButtonConfiguration()).then {
+    $0.configuration?.image = UIImage(
+      systemName: "ellipsis",
+      withConfiguration: UIImage.SymbolConfiguration(textStyle: .subheadline)
+    )
+    $0.configuration?.cornerStyle = .capsule
+    $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+    $0.showsMenuAsPrimaryAction = true
+    $0.tintColor = .white
+    $0.setContentHuggingPriority(.required, for: .horizontal)
+    $0.setContentCompressionResistancePriority(.required, for: .horizontal)
+  }
+
+  var menu: UIMenu? {
+    get { menuButton.menu }
+    set { menuButton.menu = newValue }
   }
 
   override init(frame: CGRect) {
@@ -34,15 +62,32 @@ class ImageAssetCell: UICollectionViewCell {
       $0.directionalEdges.equalToSuperview()
     }
 
-    contentView.addSubview(gradientView)
-    gradientView.snp.makeConstraints {
+    contentView.addSubview(topGradientView)
+    topGradientView.snp.makeConstraints {
+      $0.top.leading.trailing.equalToSuperview()
+    }
+
+    contentView.addSubview(likeView)
+    likeView.snp.makeConstraints {
+      $0.top.trailing.equalToSuperview().inset(16)
+      $0.bottom.equalTo(topGradientView).inset(16)
+    }
+
+    contentView.addSubview(bottomGradientView)
+    bottomGradientView.snp.makeConstraints {
       $0.leading.trailing.bottom.equalToSuperview()
     }
 
     contentView.addSubview(profileView)
     profileView.snp.makeConstraints {
-      $0.top.equalTo(gradientView).inset(16)
-      $0.leading.trailing.bottom.equalToSuperview().inset(16)
+      $0.top.equalTo(bottomGradientView).inset(16)
+      $0.leading.bottom.equalToSuperview().inset(16)
+    }
+
+    contentView.addSubview(menuButton)
+    menuButton.snp.makeConstraints {
+      $0.leading.greaterThanOrEqualTo(profileView.snp.trailing).offset(4)
+      $0.trailing.bottom.equalToSuperview().inset(16)
     }
 
     contentView.clipsToBounds = true
@@ -62,6 +107,7 @@ class ImageAssetCell: UICollectionViewCell {
   func configure(_ asset: ImageAsset) {
     estimatedImageSize = CGSize(width: asset.width, height: asset.height)
 
+    likeView.count = asset.likes
     let newURL = URL(string: asset.imageURL.regular.absoluteString.replacingOccurrences(of: "w=1080", with: "w=800"))
     imageView.kf.setImage(with: newURL)
     profileView.configure(asset.user)
@@ -73,6 +119,14 @@ class ImageAssetCell: UICollectionViewCell {
     }
     let ratio = targetSize.width / CGFloat(size.width)
     return CGSize(width: CGFloat(size.width) * ratio, height: CGFloat(size.height) * ratio)
+  }
+
+  private func menuButtonConfiguration() -> UIButton.Configuration {
+    if #available(iOS 26.0, *) {
+      .prominentGlass()
+    } else {
+      .filled()
+    }
   }
 }
 

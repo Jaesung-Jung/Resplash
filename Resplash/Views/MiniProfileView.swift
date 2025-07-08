@@ -115,7 +115,7 @@ final class MiniProfileView: UIView {
     profileImageView.kf.setImage(with: user.imageURL.medium)
     nameLabel.text = user.name
     hireLabel.isHidden = !user.forHire || size == .small
-    setNeedsLayout()
+    invalidateIntrinsicContentSize()
   }
 }
 
