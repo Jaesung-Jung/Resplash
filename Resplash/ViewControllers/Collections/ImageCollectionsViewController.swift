@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ImageCollectionsViewController: BaseViewController {
+final class ImageCollectionsViewController: BaseViewController<NoReactor> {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Collections"

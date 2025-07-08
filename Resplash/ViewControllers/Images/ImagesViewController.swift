@@ -6,23 +6,19 @@
 //
 
 import UIKit
-import Combine
 import SnapKit
+import RxSwift
+import RxCocoa
+import ReactorKit
 
-final class ImagesViewController: BaseViewController {
+final class ImagesViewController: BaseViewController<ImagesViewReactor> {
   private let mediaTypeBarButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"))
 
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
-
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
-
-  private let viewModel = ImagesViewModel()
-
-  private var cancellables: Set<AnyCancellable> = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Images"
     navigationItem.trailingItemGroups = [
       UIBarButtonItemGroup(
         barButtonItems: [mediaTypeBarButton],
@@ -34,63 +30,79 @@ final class ImagesViewController: BaseViewController {
     collectionView.snp.makeConstraints {
       $0.directionalEdges.equalToSuperview()
     }
+  }
 
-    viewModel.$state
-      .sink { [weak self] state in
-        self?.update(state)
+  override func bind(reactor: ImagesViewReactor) {
+    let mediaTypeSelected = PublishRelay<MediaType>()
+
+    let mediaType = reactor.state
+      .map(\.mediaType)
+      .distinctUntilChanged()
+      .share(replay: 1)
+
+    mediaType
+      .map(\.description)
+      .bind(to: rx.title)
+      .disposed(by: disposeBag)
+
+    mediaType
+      .map { [mediaTypeSelected] in
+        UIMenu(
+          title: .localized("Media Type"),
+          children: [
+            UIAction(title: .localized("Photos"), state: $0 == .photo ? .on : .off) { _ in
+              mediaTypeSelected.accept(.photo)
+            },
+            UIAction(title: .localized("Illustrations"), state: $0 == .illustration ? .on : .off) { _ in
+              mediaTypeSelected.accept(.illustration)
+            }
+          ]
+        )
       }
-      .store(in: &cancellables)
+      .bind(to: mediaTypeBarButton.rx.menu)
+      .disposed(by: disposeBag)
 
-    viewModel.$error
-      .sink {
-        print($0)
+    Observable
+      .combineLatest(reactor.pulse(\.$collections), reactor.pulse(\.$images))
+      .bind { [weak self] collections, images in
+        guard let self else {
+          return
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        if !collections.isEmpty {
+          snapshot.appendSections([.collections])
+          snapshot.appendItems(collections.map(Item.collection))
+        }
+        if !images.isEmpty {
+          snapshot.appendSections([.images])
+          snapshot.appendItems(images.map(Item.image))
+        }
+        dataSource.apply(snapshot)
       }
-      .store(in: &cancellables)
+      .disposed(by: disposeBag)
 
-    viewModel.perform(.fetchImages)
+    mediaTypeSelected
+      .map { .selectMediaType($0) }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    collectionView.rx
+      .reachedBottom()
+      .skip(1)
+      .map { .fetchNextImages }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    Observable
+      .just(.fetchImages)
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
   }
 }
 
 // MARK: - ImagesViewController (Private)
 
 extension ImagesViewController {
-  private func bindAction() {
-  }
-
-  private func update(_ state: ImagesViewModel.State) {
-    switch state.mediaType {
-    case .photo:
-      title = "Photos"
-    case .illustration:
-      title = "Illustrations"
-    }
-
-    mediaTypeBarButton.menu = UIMenu(
-      title: "Media Type",
-      children: [
-        UIAction(title: "Photos", state: state.mediaType == .photo ? .on : .off) { [weak self] _ in
-          self?.viewModel.perform(.selectMediaType(.photo))
-          self?.viewModel.perform(.fetchImages)
-        },
-        UIAction(title: "Illustrations", state: state.mediaType == .illustration ? .on : .off) { [weak self] _ in
-          self?.viewModel.perform(.selectMediaType(.illustration))
-          self?.viewModel.perform(.fetchImages)
-        }
-      ]
-    )
-
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-    if !state.collections.isEmpty {
-      snapshot.appendSections([.collections])
-      snapshot.appendItems(state.collections.map(Item.collection))
-    }
-    if !state.images.isEmpty {
-      snapshot.appendSections([.images])
-      snapshot.appendItems(state.images.map(Item.image))
-    }
-    dataSource.apply(snapshot)
-  }
-
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
     UICollectionViewCompositionalLayout { [weak self] sectionIndex, environemtn in
       guard let section = self?.dataSource.sectionIdentifier(for: sectionIndex) else {

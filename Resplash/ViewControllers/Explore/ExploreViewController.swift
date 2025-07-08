@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ExploreViewController: BaseViewController {
+final class ExploreViewController: BaseViewController<NoReactor> {
   let searchController = UISearchController()
 
   override func viewDidLoad() {

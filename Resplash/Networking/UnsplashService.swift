@@ -19,7 +19,7 @@ struct UnsplashService {
     } else {
       switch strategy {
       case .live:
-        self.provider = MoyaProvider(plugins: [NetworkLoggerPlugin()])
+        self.provider = MoyaProvider()
       case .stub(let delay):
         self.provider = MoyaProvider(stubClosure: { _ in
           delay.map { .delayed(seconds: $0) } ?? .immediate
@@ -31,37 +31,37 @@ struct UnsplashService {
     #endif
   }
 
-  @inlinable func topics(completion: @escaping (Result<[Topic], Error>) -> Void) {
-    request(.topics, completion: completion)
+  @inlinable func topics() -> Single<[Topic]> {
+    request(.topics)
   }
 
-  @inlinable func featured(completion: @escaping (Result<[Featured], Error>) -> Void) {
-    request(.featured, completion: completion)
+  @inlinable func featured() -> Single<[Featured]> {
+    request(.featured)
   }
 
-  @inlinable func photos(page: Int, completion: @escaping (Result<[ImageAsset], Error>) -> Void) {
-    images(for: .photo, page: page, completion: completion)
+  @inlinable func photos(page: Int) -> Single<[ImageAsset]> {
+    images(for: .photo, page: page)
   }
 
-  @inlinable func illustrations(page: Int, completion: @escaping (Result<[ImageAsset], Error>) -> Void) {
-    images(for: .illustration, page: page, completion: completion)
+  @inlinable func illustrations(page: Int) -> Single<[ImageAsset]> {
+    images(for: .illustration, page: page)
   }
 
-  @inlinable func images(for mediaType: MediaType, page: Int, completion: @escaping (Result<[ImageAsset], Error>) -> Void) {
+  @inlinable func images(for mediaType: MediaType, page: Int) -> Single<[ImageAsset]> {
     switch mediaType {
     case .photo:
-      request(.photos(page), completion: completion)
+      request(.photos(page))
     case .illustration:
-      request(.illustrations(page), completion: completion)
+      request(.illustrations(page))
     }
   }
 
-  @inlinable func collections(for mediaType: MediaType, page: Int, completion: @escaping (Result<[ImageAssetCollection], Error>) -> Void) {
-    request(.collections(mediaType, page), completion: completion)
+  @inlinable func collections(for mediaType: MediaType, page: Int) -> Single<[ImageAssetCollection]> {
+    request(.collections(mediaType, page))
   }
 
-  @inlinable func autocomplete(_ query: String, completion: @escaping (Result<[Autocomplete], Error>) -> Void) {
-    request(.autocomplete(query), at: "autocomplete", completion: completion)
+  @inlinable func autocomplete(_ query: String, completion: @escaping (Result<[Autocomplete], Error>) -> Void) -> Single<[Autocomplete]> {
+    request(.autocomplete(query), keyPath: "autocomplete")
   }
 }
 
@@ -77,17 +77,19 @@ extension UnsplashService {
 // MARK: - UnsplashService (Private)
 
 extension UnsplashService {
-  private func request<T: Decodable>(_ target: UnsplashAPI, at keyPath: String? = nil, completion: @escaping (Result<T, Error>) -> Void) {
-    provider.request(target) { result in
-      do {
-        let response = try result.get()
-        let decodedData = try response.map(T.self, atKeyPath: keyPath, using: JSONDecoder().then {
-          $0.dateDecodingStrategy = .iso8601
-        })
-        completion(.success(decodedData))
-      } catch {
-        completion(.failure(error))
+  private func request<T: Decodable>(_ target: UnsplashAPI, to type: T.Type = T.self, keyPath: String? = nil) -> Single<T> {
+    Single.create { [provider] observer in
+      provider.request(target) { result in
+        do {
+          let decoder = JSONDecoder().then {
+            $0.dateDecodingStrategy = .iso8601
+          }
+          observer(.success(try result.get().map(T.self, using: decoder)))
+        } catch {
+          observer(.failure(error))
+        }
       }
+      return Disposables.create()
     }
   }
 }
