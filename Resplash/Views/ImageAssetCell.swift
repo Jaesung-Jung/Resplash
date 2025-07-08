@@ -45,7 +45,11 @@ class ImageAssetCell: UICollectionViewCell {
     $0.configuration?.cornerStyle = .capsule
     $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     $0.showsMenuAsPrimaryAction = true
-    $0.tintColor = .white
+    if #available(iOS 26.0, *) {
+      $0.tintColor = UIColor(light: .white, dark: .clear)
+    } else {
+      $0.tintColor = .white
+    }
     $0.setContentHuggingPriority(.required, for: .horizontal)
     $0.setContentCompressionResistancePriority(.required, for: .horizontal)
   }
