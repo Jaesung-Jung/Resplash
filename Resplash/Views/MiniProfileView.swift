@@ -19,7 +19,6 @@ final class MiniProfileView: UIView {
   }
 
   private let nameLabel = UILabel().then {
-    $0.font = .preferredFont(forTextStyle: .body).withWeight(.bold)
     $0.textColor = .label
   }
 
@@ -33,22 +32,39 @@ final class MiniProfileView: UIView {
 
   private let textSpacing: CGFloat = 2
 
+  let size: Size
+
   override var intrinsicContentSize: CGSize {
-    let nameSize = nameLabel.intrinsicContentSize
-    let hireSize = hireLabel.intrinsicContentSize
-    let height = nameSize.height + textSpacing + hireSize.height
-    let width = height + imageSpacing + max(nameSize.width, hireSize.width)
-    return CGSize(width: width, height: height)
+    switch size {
+    case .regular:
+      let nameSize = nameLabel.intrinsicContentSize
+      let hireSize = hireLabel.intrinsicContentSize
+      let height = nameSize.height + textSpacing + hireSize.height
+      let width = height + imageSpacing + max(nameSize.width, hireSize.width)
+      return CGSize(width: width, height: height)
+    case .small:
+      let nameSize = nameLabel.intrinsicContentSize
+      let height = max(30, nameSize.height)
+      return CGSize(width: height + imageSpacing + nameSize.width, height: height)
+    }
   }
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(_ size: Size = .regular) {
+    self.size = size
+    super.init(frame: .zero)
     addSubview(profileImageBackgroundView)
     addSubview(profileImageView)
     addSubview(nameLabel)
     addSubview(hireLabel)
     registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (self: Self, _) in
       self.invalidateIntrinsicContentSize()
+    }
+
+    switch size {
+    case .regular:
+      nameLabel.font = .preferredFont(forTextStyle: .body).withWeight(.bold)
+    case .small:
+      nameLabel.font = .preferredFont(forTextStyle: .subheadline).withWeight(.medium)
     }
   }
 
@@ -98,15 +114,29 @@ final class MiniProfileView: UIView {
   func configure(_ user: User) {
     profileImageView.kf.setImage(with: user.imageURL.medium)
     nameLabel.text = user.name
-    hireLabel.isHidden = !user.forHire
+    hireLabel.isHidden = !user.forHire || size == .small
     setNeedsLayout()
+  }
+}
+
+// MARK: - MiniProfileView.Size
+
+extension MiniProfileView {
+  enum Size {
+    case regular
+    case small
   }
 }
 
 // MARK: - MiniProfileView Preview
 
 #Preview {
-  MiniProfileView().then {
-    $0.configure(.preview)
+  UIStackView(axis: .vertical, spacing: 20) {
+    MiniProfileView().then {
+      $0.configure(.preview)
+    }
+    MiniProfileView(.small).then {
+      $0.configure(.preview)
+    }
   }
 }
