@@ -11,3 +11,16 @@ enum MediaType: String, Decodable {
   case photo
   case illustration
 }
+
+// MARK: - MediaType (CustomStringConvertible)
+
+extension MediaType: CustomStringConvertible {
+  var description: String {
+    switch self {
+    case .photo:
+      return .localized("Photos")
+    case .illustration:
+      return .localized("Illustrations")
+    }
+  }
+}

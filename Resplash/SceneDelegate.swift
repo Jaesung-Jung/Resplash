@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let tabBarController = UITabBarController().then {
       $0.tabs = [
         UITab(title: "Image", image: UIImage(systemName: "photo.on.rectangle.angled"), identifier: "images") { _ in
-          UINavigationController(rootViewController: ImagesViewController())
+          UINavigationController(rootViewController: ImagesViewController(reactor: ImagesViewReactor()))
         },
         UITab(title: "Collection", image: UIImage(systemName: "inset.filled.leadinghalf.toptrailing.bottomtrailing.rectangle"), identifier: "collection") { _ in
           UINavigationController(rootViewController: ImageCollectionsViewController())
