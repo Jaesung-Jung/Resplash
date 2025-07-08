@@ -7,6 +7,40 @@
 
 import UIKit
 
+// MARK: - UIView (Corner)
+
+extension UIView {
+  @objc dynamic var cornerRadius: CGFloat {
+    get { layer.cornerRadius }
+    set { layer.cornerRadius = newValue }
+  }
+
+  @objc dynamic var maskedCorners: CACornerMask {
+    get { layer.maskedCorners }
+    set { layer.maskedCorners = newValue }
+  }
+
+  @objc dynamic var cornerCurve: CALayerCornerCurve {
+    get { layer.cornerCurve }
+    set { layer.cornerCurve = newValue }
+  }
+}
+
+// MARK: - UIColor (Dynamic Color)
+
+extension UIColor {
+  convenience init(light: UIColor, dark: UIColor) {
+    self.init { traitCollection in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return dark
+      default:
+        return light
+      }
+    }
+  }
+}
+
 // MARK: - UIFont
 
 extension UIFont {

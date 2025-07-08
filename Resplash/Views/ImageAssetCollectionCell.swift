@@ -10,6 +10,8 @@ import SnapKit
 import Kingfisher
 
 final class ImageAssetCollectionCell: UICollectionViewCell {
+  private let profileView = MiniProfileView(.small)
+
   private let imageViews = repeatElement((), count: 3).map {
     UIImageView().then {
       $0.contentMode = .scaleAspectFill
@@ -34,6 +36,13 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
+    let shadowView = ShadowView().then {
+      $0.shadowColor = .app.shadow
+      $0.shadowOpacity = 1
+      $0.shadowOffset = CGSize(width: 0, height: 2)
+      $0.shadowRadius = 4
+      $0.cornerRadius = 12
+    }
     let imageStackView = UIStackView(axis: .horizontal, distribution: .fillEqually, spacing: 2) {
       imageViews[0]
       UIStackView(axis: .vertical, distribution: .fillEqually, spacing: 2) {
@@ -44,9 +53,23 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 12
     }
+
+    contentView.addSubview(shadowView)
+    contentView.addSubview(profileView)
     contentView.addSubview(imageStackView)
-    imageStackView.snp.makeConstraints {
+
+    shadowView.snp.makeConstraints {
+      $0.directionalEdges.equalTo(imageStackView)
+    }
+
+    profileView.snp.makeConstraints {
       $0.top.leading.trailing.equalToSuperview()
+    }
+
+    imageStackView.snp.makeConstraints {
+      $0.top.equalTo(profileView.snp.bottom).offset(8)
+      $0.leading.trailing.equalToSuperview()
+      $0.height.equalTo(imageStackView.snp.width).multipliedBy(0.75)
     }
 
     contentView.addSubview(titleLabel)
@@ -74,6 +97,7 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
     for (imageView, image) in zip(imageViews, collection.previewImages) {
       imageView.kf.setImage(with: image.imageURL.small)
     }
+    profileView.configure(collection.user)
     titleLabel.text = collection.title
     infoLabel.text = "\(collection.totalImages.formatted(.number)) image"
   }
@@ -85,8 +109,7 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
   ImageAssetCollectionCell().then {
     $0.configure(.preview)
     $0.snp.makeConstraints {
-      $0.width.equalTo(390)
-      $0.height.equalTo(200).priority(240)
+      $0.size.equalTo(390)
     }
   }
 }

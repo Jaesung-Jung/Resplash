@@ -26,7 +26,7 @@ class BaseViewController<R: Reactor>: UIViewController, ReactorKit.View {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemBackground
+    view.backgroundColor = .app.background
   }
 
   func bind(reactor: R) {}

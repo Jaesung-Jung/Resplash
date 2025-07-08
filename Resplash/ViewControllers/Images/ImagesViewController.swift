@@ -14,7 +14,9 @@ import ReactorKit
 final class ImagesViewController: BaseViewController<ImagesViewReactor> {
   private let mediaTypeBarButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"))
 
-  private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
+  private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout()).then {
+    $0.backgroundColor = .clear
+  }
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
 
   override func viewDidLoad() {
@@ -106,15 +108,7 @@ extension ImagesViewController {
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
     UICollectionViewCompositionalLayout { [weak self] sectionIndex, environemtn in
       guard let section = self?.dataSource.sectionIdentifier(for: sectionIndex) else {
-        return NSCollectionLayoutSection(
-          group: .horizontal(
-            layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(0), heightDimension: .absolute(0)),
-            repeatingSubitem: NSCollectionLayoutItem(
-              layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(0), heightDimension: .absolute(0))
-            ),
-            count: 1
-          )
-        )
+        return nil
       }
       let contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 40, trailing: 20)
       let containerSize = CGSize(
@@ -134,18 +128,18 @@ extension ImagesViewController {
       switch section {
       case .collections:
         let estimatedWidth = (containerSize.width - spacing) * 0.5
-        let itemWidth = estimatedWidth + estimatedWidth * 0.5 + spacing
+        let itemWidth = estimatedWidth + estimatedWidth * 0.5 - contentInsets.trailing + 2
         let item = NSCollectionLayoutItem(
           layoutSize: NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1)
+            heightDimension: .estimated(itemWidth)
           )
         )
         let group = NSCollectionLayoutGroup
           .horizontal(
             layoutSize: NSCollectionLayoutSize(
               widthDimension: .absolute(itemWidth),
-              heightDimension: .absolute(itemWidth)
+              heightDimension: .estimated(itemWidth)
             ),
             repeatingSubitem: item,
             count: 1
@@ -154,7 +148,7 @@ extension ImagesViewController {
           $0.interGroupSpacing = spacing
           $0.contentInsets = contentInsets
           $0.boundarySupplementaryItems = [headerSupplementaryItem]
-          $0.orthogonalScrollingBehavior = .continuous
+          $0.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         }
 
       case .images:
@@ -241,5 +235,7 @@ extension ImagesViewController {
 // MARK: - ImagesViewController
 
 #Preview {
-  UINavigationController(rootViewController: ImagesViewController())
+  UINavigationController(
+    rootViewController: ImagesViewController(reactor: ImagesViewReactor())
+  )
 }
