@@ -8,11 +8,8 @@
 import UIKit
 
 final class ExploreViewController: BaseViewController<NoReactor> {
-  let searchController = UISearchController()
-
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Explore"
-    navigationItem.searchController = searchController
+    title = .localized("Explore")
   }
 }

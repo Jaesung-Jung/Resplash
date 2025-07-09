@@ -8,9 +8,12 @@
 import UIKit
 
 final class SearchViewController: BaseViewController<NoReactor> {
+  let searchController = UISearchController()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     title = .localized("Search")
+    navigationItem.searchController = searchController
   }
 }
 
