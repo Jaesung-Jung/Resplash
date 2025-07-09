@@ -219,9 +219,20 @@ extension ImagesViewController {
       }
     }
 
-    typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<CollectionTitleView>
-    let supplementaryRegistration = SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] cell, _, indexPath in
-      cell.title = self?.dataSource.sectionIdentifier(for: indexPath.section)?.title
+    typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<CollectionSupplementaryView>
+    let supplementaryRegistration = SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] view, _, indexPath in
+      guard let section = self?.dataSource.sectionIdentifier(for: indexPath.section) else {
+        return
+      }
+      switch section {
+      case .collections:
+        view.title = section.title
+        view.action = UIAction(title: .localized("More"), image: UIImage(systemName: "chevron.right")) { _ in
+        }
+      case .images:
+        view.title = section.title
+        view.action = nil
+      }
     }
     dataSource.supplementaryViewProvider = { collectionView, _, indexPath in
       collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
@@ -240,9 +251,9 @@ extension ImagesViewController {
     var title: String {
       switch self {
       case .collections:
-        return "Collections"
+        return .localized("Collections")
       case .images:
-        return "Featured"
+        return .localized("Featured")
       }
     }
   }
