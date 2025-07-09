@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-  @inlinable static func localized(_ keyAndValue: String.LocalizationValue, comment: StaticString? = nil) -> String {
+  @inlinable nonisolated static func localized(_ keyAndValue: String.LocalizationValue, comment: StaticString? = nil) -> String {
     String(localized: keyAndValue, comment: comment)
   }
 }

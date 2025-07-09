@@ -99,7 +99,11 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
     }
     profileView.configure(collection.user)
     titleLabel.text = collection.title
-    infoLabel.text = "\(collection.totalImages.formatted(.number)) image"
+    infoLabel.text = .localized("\(collection.totalImages) image")
+      .replacingOccurrences(
+        of: "\(collection.totalImages)",
+        with: collection.totalImages.formatted(.number)
+      )
   }
 }
 
