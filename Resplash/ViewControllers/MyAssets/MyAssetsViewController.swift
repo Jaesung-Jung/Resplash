@@ -10,6 +10,6 @@ import UIKit
 final class MyAssetsViewController: BaseViewController<NoReactor> {
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "My"
+    title = .localized("My")
   }
 }

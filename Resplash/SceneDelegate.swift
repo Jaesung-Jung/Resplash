@@ -16,24 +16,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
     // Dependencies
-    prepareDependencies {
-      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
-    }
+//    prepareDependencies {
+//      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
+//    }
 
     // Root View
     let tabBarController = UITabBarController().then {
       $0.tabs = [
-        UITab(title: "Image", image: UIImage(systemName: "photo.on.rectangle.angled"), identifier: "images") { _ in
+        UITab(title: .localized("Image"), image: UIImage(systemName: "photo.on.rectangle.angled"), identifier: "images") { _ in
           UINavigationController(rootViewController: ImagesViewController(reactor: ImagesViewReactor()))
         },
-        UITab(title: "Collection", image: UIImage(systemName: "inset.filled.leadinghalf.toptrailing.bottomtrailing.rectangle"), identifier: "collection") { _ in
-          UINavigationController(rootViewController: ImageCollectionsViewController())
+        UITab(title: .localized("Explore"), image: UIImage(systemName: "safari"), identifier: "explore") { _ in
+          UINavigationController(rootViewController: ExploreViewController())
         },
-        UITab(title: "My", image: UIImage(systemName: "rectangle.stack.badge.person.crop"), identifier: "my") { _ in
+        UITab(title: .localized("My"), image: UIImage(systemName: "rectangle.stack.badge.person.crop"), identifier: "my") { _ in
           UINavigationController(rootViewController: MyAssetsViewController())
         },
         UISearchTab { _ in
-          UINavigationController(rootViewController: ExploreViewController())
+          UINavigationController(rootViewController: SearchViewController())
         }
       ]
     }

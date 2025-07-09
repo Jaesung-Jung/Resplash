@@ -45,6 +45,16 @@
         }
       }
     },
+    "Explore" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "탐색"
+          }
+        }
+      }
+    },
     "Featured" : {
       "localizations" : {
         "ko" : {
@@ -61,6 +71,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "일러스트"
+          }
+        }
+      }
+    },
+    "Image" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지"
           }
         }
       }
@@ -85,12 +105,32 @@
         }
       }
     },
+    "My" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마이"
+          }
+        }
+      }
+    },
     "Photos" : {
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "사진"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색"
           }
         }
       }
