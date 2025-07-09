@@ -37,7 +37,7 @@ class ImageAssetCell: UICollectionViewCell {
     $0.overrideUserInterfaceStyle = .dark
   }
 
-  private lazy var menuButton = UIButton(configuration: menuButtonConfiguration()).then {
+  private lazy var menuButton = UIButton(configuration: .prominentGlass(.filled())).then {
     $0.configuration?.image = UIImage(
       systemName: "ellipsis",
       withConfiguration: UIImage.SymbolConfiguration(textStyle: .subheadline)
@@ -123,14 +123,6 @@ class ImageAssetCell: UICollectionViewCell {
     }
     let ratio = targetSize.width / CGFloat(size.width)
     return CGSize(width: CGFloat(size.width) * ratio, height: CGFloat(size.height) * ratio)
-  }
-
-  private func menuButtonConfiguration() -> UIButton.Configuration {
-    if #available(iOS 26.0, *) {
-      .prominentGlass()
-    } else {
-      .filled()
-    }
   }
 }
 

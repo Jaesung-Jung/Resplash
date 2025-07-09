@@ -116,3 +116,23 @@ extension UIStackView {
     }
   }
 }
+
+// MARK: - UIButton.Configuration (Under iOS 26 Compatible)
+
+extension UIButton.Configuration {
+  @inlinable static func glass(_ either: @autoclosure () -> UIButton.Configuration) -> UIButton.Configuration {
+    if #available(iOS 26.0, *) {
+      return .glass()
+    } else {
+      return either()
+    }
+  }
+
+  @inlinable static func prominentGlass(_ either: @autoclosure () -> UIButton.Configuration) -> UIButton.Configuration {
+    if #available(iOS 26.0, *) {
+      return .prominentGlass()
+    } else {
+      return either()
+    }
+  }
+}
