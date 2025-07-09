@@ -41,10 +41,6 @@ final class ImagesViewReactor: Reactor {
         ),
         .just(.setLoading(false))
       )
-      .catch { error in
-        print(error)
-        return .error(error)
-      }
       .catchAndReturn(.setLoading(false))
 
     case .fetchNextImages:
