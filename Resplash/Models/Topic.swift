@@ -12,7 +12,7 @@ struct Topic: Identifiable {
 
   let title: String
   let description: String
-  let mediaTypes: [MediaType]
+  let mediaTypes: Set<MediaType>
   let coverImage: ImageAsset
 
   let imageCount: Int
@@ -44,8 +44,25 @@ extension Topic: Decodable {
     case visibility
     case title
     case description
-    case mediaTypes = "media_type"
+    case mediaTypes = "media_types"
     case coverImage = "cover_photo"
     case imageCount = "total_photos"
   }
 }
+
+#if DEBUG
+
+extension Topic {
+  static let preview = Topic(
+    id: "bo8jQKT",
+    slug: "wallpapers",
+    visibility: .featured,
+    title: "Wallpapers",
+    description: "From epic drone shots to inspiring moments in nature — enjoy the best background for your desktop or mobile.",
+    mediaTypes: [.photo],
+    coverImage: .preview,
+    imageCount: 16519
+  )
+}
+
+#endif

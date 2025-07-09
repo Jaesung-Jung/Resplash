@@ -23,10 +23,13 @@ final class ImagesViewReactor: Reactor {
     case .selectMediaType(let mediaType):
       return .just(.setMediaType(mediaType))
 
-    case .fetchImages:
+    case .fetch:
       guard !currentState.isLoading else {
         return .empty()
       }
+      let topics = unsplash
+        .topics(for: currentState.mediaType)
+        .asObservable()
       let collections = unsplash
         .collections(for: currentState.mediaType, page: 1)
         .asObservable()
@@ -36,8 +39,9 @@ final class ImagesViewReactor: Reactor {
       return .concat(
         .just(.setLoading(true)),
         .merge(
-          collections.map { .setCollections($0) },
-          images.map { .setImages($0, 1) }
+          topics.map { .setTopics(IdentifiedArray(uniqueElements: $0)) },
+          collections.map { .setCollections(IdentifiedArray(uniqueElements: $0)) },
+          images.map { .setImages(IdentifiedArray(uniqueElements: $0), 1) }
         ),
         .just(.setLoading(false))
       )
@@ -53,7 +57,7 @@ final class ImagesViewReactor: Reactor {
         .asObservable()
       return .concat(
         .just(.setLoading(true)),
-        nextImages.map { .appendImages($0, page) },
+        nextImages.map { .appendImages(IdentifiedArray(uniqueElements: $0), page) },
         .just(.setLoading(false))
       )
     }
@@ -65,13 +69,17 @@ final class ImagesViewReactor: Reactor {
       return state.with {
         $0.mediaType = mediaType
       }
+    case .setTopics(let topics):
+      return state.with {
+        $0.topics = topics
+      }
     case .setCollections(let collections):
       return state.with {
-        $0.collections = IdentifiedArray(uniqueElements: collections)
+        $0.collections = collections
       }
     case .setImages(let images, let page):
       return state.with {
-        $0.images = IdentifiedArray(uniqueElements: images)
+        $0.images = images
         $0.page = page
         $0.hasNext = images.count >= 30
       }
@@ -91,7 +99,7 @@ final class ImagesViewReactor: Reactor {
   func transform(action: Observable<Action>) -> Observable<Action> {
     action.flatMap { action -> Observable<Action> in
       if case .selectMediaType = action {
-        return .concat(.just(action), .just(.fetchImages))
+        return .concat(.just(action), .just(.fetch))
       }
       return .just(action)
     }
@@ -102,6 +110,7 @@ final class ImagesViewReactor: Reactor {
 
 extension ImagesViewReactor {
   struct State: Then {
+    @Pulse var topics: IdentifiedArrayOf<Topic> = []
     @Pulse var collections: IdentifiedArrayOf<ImageAssetCollection> = []
     @Pulse var images: IdentifiedArrayOf<ImageAsset> = []
 
@@ -118,7 +127,7 @@ extension ImagesViewReactor {
 extension ImagesViewReactor {
   enum Action {
     case selectMediaType(MediaType)
-    case fetchImages
+    case fetch
     case fetchNextImages
   }
 }
@@ -128,9 +137,10 @@ extension ImagesViewReactor {
 extension ImagesViewReactor {
   enum Mutation {
     case setMediaType(MediaType)
-    case setCollections([ImageAssetCollection])
-    case setImages([ImageAsset], Int)
-    case appendImages([ImageAsset], Int)
+    case setTopics(IdentifiedArrayOf<Topic>)
+    case setCollections(IdentifiedArrayOf<ImageAssetCollection>)
+    case setImages(IdentifiedArrayOf<ImageAsset>, Int)
+    case appendImages(IdentifiedArrayOf<ImageAsset>, Int)
     case setLoading(Bool)
   }
 }

@@ -31,8 +31,10 @@ struct UnsplashService {
     #endif
   }
 
-  @inlinable func topics() -> Single<[Topic]> {
-    request(.topics)
+  @inlinable func topics(for mediaType: MediaType) -> Single<[Topic]> {
+    request(.topics, to: [Topic].self).map {
+      $0.filter { $0.mediaTypes.contains(mediaType) }
+    }
   }
 
   @inlinable func featured() -> Single<[Featured]> {

@@ -68,12 +68,16 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
       .disposed(by: disposeBag)
 
     Observable
-      .combineLatest(reactor.pulse(\.$collections), reactor.pulse(\.$images))
-      .bind { [weak self] collections, images in
+      .combineLatest(reactor.pulse(\.$topics), reactor.pulse(\.$collections), reactor.pulse(\.$images))
+      .bind { [weak self] topics, collections, images in
         guard let self else {
           return
         }
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        if !topics.isEmpty {
+          snapshot.appendSections([.topics])
+          snapshot.appendItems(topics.map(Item.topic), toSection: .topics)
+        }
         if !collections.isEmpty {
           snapshot.appendSections([.collections])
           snapshot.appendItems(collections.map(Item.collection))
@@ -106,8 +110,14 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
+    collectionView.rx.itemSelected
+      .bind {
+        print("itemSelected: \($0)")
+      }
+      .disposed(by: disposeBag)
+
     Observable
-      .just(.fetchImages)
+      .just(.fetch)
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
   }
@@ -137,6 +147,19 @@ extension ImagesViewController {
       )
 
       switch section {
+      case .topics:
+        let size = NSCollectionLayoutSize(
+          widthDimension: .estimated(100),
+          heightDimension: .estimated(30)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, repeatingSubitem: item, count: 1)
+        return NSCollectionLayoutSection(group: group).then {
+          $0.interGroupSpacing = spacing
+          $0.contentInsets = contentInsets
+          $0.orthogonalScrollingBehavior = .continuous
+        }
+
       case .collections:
         let estimatedWidth = (containerSize.width - spacing) * 0.5
         let itemWidth = estimatedWidth + estimatedWidth * 0.5 - contentInsets.trailing + 2
@@ -190,8 +213,11 @@ extension ImagesViewController {
   }
 
   private func makeCollectionViewDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Section, Item> {
-    let collectionCellRegistration = UICollectionView.CellRegistration<ImageAssetCollectionCell, ImageAssetCollection> { cell, _, collection in
-      cell.configure(collection)
+    let topicCellRegistration = UICollectionView.CellRegistration<TopicCell, Topic> {
+      $0.configure($2)
+    }
+    let collectionCellRegistration = UICollectionView.CellRegistration<ImageAssetCollectionCell, ImageAssetCollection> {
+      $0.configure($2)
     }
 
     let addToCollection = addToCollectionActionRelay
@@ -212,6 +238,8 @@ extension ImagesViewController {
 
     let dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { collectionView, indexPath, item in
       switch item {
+      case .topic(let topic):
+        collectionView.dequeueConfiguredReusableCell(using: topicCellRegistration, for: indexPath, item: topic)
       case .collection(let collection):
         collectionView.dequeueConfiguredReusableCell(using: collectionCellRegistration, for: indexPath, item: collection)
       case .image(let asset):
@@ -225,6 +253,8 @@ extension ImagesViewController {
         return
       }
       switch section {
+      case .topics:
+        break
       case .collections:
         view.title = section.title
         view.action = UIAction(title: .localized("More"), image: UIImage(systemName: "chevron.right")) { _ in
@@ -245,11 +275,14 @@ extension ImagesViewController {
 
 extension ImagesViewController {
   nonisolated enum Section {
+    case topics
     case collections
     case images
 
     var title: String {
       switch self {
+      case .topics:
+        return .localized("Topics")
       case .collections:
         return .localized("Collections")
       case .images:
@@ -263,6 +296,7 @@ extension ImagesViewController {
 
 extension ImagesViewController {
   nonisolated enum Item: Hashable {
+    case topic(Topic)
     case collection(ImageAssetCollection)
     case image(ImageAsset)
   }
