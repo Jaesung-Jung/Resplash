@@ -16,9 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
     // Dependencies
-    prepareDependencies {
-      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
-    }
+//    prepareDependencies {
+//      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
+//    }
 
     // Root View
     let tabBarController = UITabBarController().then {
@@ -36,6 +36,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           UINavigationController(rootViewController: SearchViewController())
         }
       ]
+      if #available(iOS 26.0, *) {
+        $0.tabBarMinimizeBehavior = .onScrollDown
+      }
     }
     window = UIWindow(windowScene: windowScene).then {
       $0.rootViewController = tabBarController

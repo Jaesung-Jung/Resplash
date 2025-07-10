@@ -37,21 +37,46 @@ final class ImageAssetCell: UICollectionViewCell {
     $0.overrideUserInterfaceStyle = .dark
   }
 
-  private lazy var menuButton = UIButton(configuration: .prominentGlass(.filled())).then {
+  private lazy var menuButton = UIButton(configuration: .prominentGlass(.plain())).then {
     $0.configuration?.image = UIImage(
       systemName: "ellipsis",
       withConfiguration: UIImage.SymbolConfiguration(textStyle: .subheadline)
     )
+    if #unavailable(iOS 26.0) {
+      $0.configuration?.background.visualEffect = UIBlurEffect(style: .prominent)
+    }
     $0.configuration?.cornerStyle = .capsule
     $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     $0.showsMenuAsPrimaryAction = true
     if #available(iOS 26.0, *) {
       $0.tintColor = UIColor(light: .white, dark: .clear)
     } else {
-      $0.tintColor = .white
+      $0.tintColor = .label
     }
     $0.setContentHuggingPriority(.required, for: .horizontal)
     $0.setContentCompressionResistancePriority(.required, for: .horizontal)
+  }
+
+  var menuButtonSize: MenuButtonSize = .regular {
+    didSet {
+      guard oldValue != menuButtonSize else {
+        return
+      }
+      switch menuButtonSize {
+      case .small:
+        menuButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        menuButton.maximumContentSizeCategory = .extraExtraExtraLarge
+        menuButton.snp.updateConstraints {
+          $0.trailing.bottom.equalToSuperview().inset(10)
+        }
+      case .regular:
+        menuButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        menuButton.maximumContentSizeCategory = .accessibilityExtraExtraExtraLarge
+        menuButton.snp.updateConstraints {
+          $0.trailing.bottom.equalToSuperview().inset(16)
+        }
+      }
+    }
   }
 
   override var cornerRadius: CGFloat {
@@ -148,6 +173,15 @@ final class ImageAssetCell: UICollectionViewCell {
     }
     let ratio = targetSize.width / CGFloat(size.width)
     return CGSize(width: CGFloat(size.width) * ratio, height: CGFloat(size.height) * ratio)
+  }
+}
+
+// MARK: - ImageAssetCell.MenuButtonSize
+
+extension ImageAssetCell {
+  enum MenuButtonSize {
+    case small
+    case regular
   }
 }
 
