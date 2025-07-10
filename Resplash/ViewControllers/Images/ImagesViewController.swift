@@ -21,6 +21,7 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
 
   private let addToCollectionActionRelay = PublishRelay<ImageAsset>()
   private let shareActionReplay = PublishRelay<ImageAsset>()
+  private let moreCollectionActionRelay = PublishRelay<Void>()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -98,8 +99,22 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
     shareActionReplay
       .map(\.shareLink)
       .bind { [weak self] link in
+        guard let self else {
+          return
+        }
         let activityViewController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
-        self?.present(activityViewController, animated: true)
+        present(activityViewController, animated: true)
+      }
+      .disposed(by: disposeBag)
+
+    moreCollectionActionRelay
+      .withLatestFrom(reactor.state.map(\.mediaType))
+      .bind { [weak self] mediaType in
+        guard let self else {
+          return
+        }
+        let collectionsViewController = ImageCollectionsViewController(reactor: ImageCollectionsViewReactor(mediaType: mediaType))
+        navigationController?.pushViewController(collectionsViewController, animated: true)
       }
       .disposed(by: disposeBag)
 
@@ -260,6 +275,7 @@ extension ImagesViewController {
     }
 
     typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<SupplementaryTitleView>
+    let moreCollection = moreCollectionActionRelay
     let supplementaryRegistration = SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] view, _, indexPath in
       guard let section = self?.dataSource.sectionIdentifier(for: indexPath.section) else {
         return
@@ -270,6 +286,7 @@ extension ImagesViewController {
       case .collections:
         view.title = section.title
         view.action = UIAction(title: .localized("More"), image: UIImage(systemName: "chevron.right")) { _ in
+          moreCollection.accept(())
         }
       case .images:
         view.title = section.title
