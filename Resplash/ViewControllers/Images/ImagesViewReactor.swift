@@ -11,8 +11,6 @@ import ReactorKit
 import Dependencies
 import IdentifiedCollections
 
-// MARK: - ImagesViewReactor
-
 final class ImagesViewReactor: Reactor {
   @Dependency(\.unsplashService) var unsplash
 
