@@ -63,12 +63,12 @@ final class TopicImagesViewController: BaseViewController<TopicImagesViewReactor
 extension TopicImagesViewController {
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
     UICollectionViewCompositionalLayout { [weak self] section, environment in
+      let column = environment.traitCollection.horizontalSizeClass == .compact ? 2 : 4
       let items = self?.dataSource.snapshot(for: section).items ?? []
-      let contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 40, trailing: 20)
       return MansonryCollectionLayoutSection(
-        columns: 2,
-        contentInsets: contentInsets,
-        spacing: 10,
+        columns: column,
+        contentInsets: .zero,
+        spacing: 2,
         environment: environment,
         sizes: items.map { CGSize(width: $0.width, height: $0.height) }
       )
@@ -80,6 +80,10 @@ extension TopicImagesViewController {
     let share = shareActionReplay
     let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, asset in
       cell.configure(asset)
+      cell.isBorderHidden = true
+      cell.isProfileHidden = true
+      cell.isBottomGradientHidden = true
+      cell.cornerRadius = 0
       cell.menu = UIMenu(
         children: [
           UIAction(title: "Add to Collection", image: UIImage(systemName: "rectangle.stack.badge.plus")) { _ in

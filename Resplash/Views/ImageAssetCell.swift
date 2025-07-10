@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class ImageAssetCell: UICollectionViewCell {
+final class ImageAssetCell: UICollectionViewCell {
   private var estimatedImageSize: CGSize?
 
   private let topGradientView = GradientView(
@@ -54,6 +54,31 @@ class ImageAssetCell: UICollectionViewCell {
     $0.setContentCompressionResistancePriority(.required, for: .horizontal)
   }
 
+  override var cornerRadius: CGFloat {
+    get { contentView.cornerRadius }
+    set { contentView.cornerRadius = newValue }
+  }
+
+  @inlinable var isBorderHidden: Bool {
+    get { contentView.layer.borderWidth == .zero }
+    set { contentView.layer.borderWidth = newValue ? .zero : 1 }
+  }
+
+  @inlinable var isTopGradientHidden: Bool {
+    get { topGradientView.isHidden }
+    set { topGradientView.isHidden = newValue }
+  }
+
+  @inlinable var isBottomGradientHidden: Bool {
+    get { bottomGradientView.isHidden }
+    set { bottomGradientView.isHidden = newValue }
+  }
+
+  @inlinable var isProfileHidden: Bool {
+    get { profileView.isHidden }
+    set { profileView.isHidden = newValue }
+  }
+
   var menu: UIMenu? {
     get { menuButton.menu }
     set { menuButton.menu = newValue }
@@ -73,7 +98,7 @@ class ImageAssetCell: UICollectionViewCell {
 
     contentView.addSubview(likeView)
     likeView.snp.makeConstraints {
-      $0.top.trailing.equalToSuperview().inset(16)
+      $0.top.leading.equalToSuperview().inset(16)
       $0.bottom.equalTo(topGradientView).inset(16)
     }
 
