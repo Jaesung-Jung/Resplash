@@ -1,5 +1,5 @@
 //
-//  CollectionSupplementaryView.swift
+//  SupplementaryTitleView.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/7/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CollectionSupplementaryView: UICollectionReusableView {
+final class SupplementaryTitleView: UICollectionReusableView {
   private let titleLabel = UILabel().then {
     $0.font = .preferredFont(forTextStyle: .title2).withWeight(.heavy)
   }
@@ -101,11 +101,11 @@ final class CollectionSupplementaryView: UICollectionReusableView {
   }
 }
 
-// MARK: - CollectionSupplementaryView Preview
+// MARK: - SupplementaryTitleView Preview
 
 #Preview {
-  CollectionSupplementaryView().then {
-    $0.title = "CollectionSupplementaryView"
+  SupplementaryTitleView().then {
+    $0.title = "SupplementaryTitleView"
     $0.action = UIAction(title: "More", image: UIImage(systemName: "chevron.right")) { _ in }
   }
 }

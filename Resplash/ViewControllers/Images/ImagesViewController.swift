@@ -247,7 +247,7 @@ extension ImagesViewController {
       }
     }
 
-    typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<CollectionSupplementaryView>
+    typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<SupplementaryTitleView>
     let supplementaryRegistration = SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] view, _, indexPath in
       guard let section = self?.dataSource.sectionIdentifier(for: indexPath.section) else {
         return
