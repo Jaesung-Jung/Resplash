@@ -15,6 +15,7 @@ enum UnsplashAPI {
   case photos(Int)
   case illustrations(Int)
   case collections(MediaType, Int)
+  case topicImages(Topic, Int)
   case autocomplete(String)
 }
 
@@ -37,6 +38,8 @@ extension UnsplashAPI: TargetType {
       return "napi/illustrations"
     case .collections:
       return "napi/collections"
+    case .topicImages(let topic, _):
+      return "napi/topics/\(topic.slug)/photos"
     case .autocomplete(let query):
       return "nautocomplete/\(query)"
     }
@@ -44,7 +47,7 @@ extension UnsplashAPI: TargetType {
 
   var task: Task {
     switch self {
-    case .photos(let page), .illustrations(let page):
+    case .photos(let page), .illustrations(let page), .topicImages(_, let page):
       return .requestParameters(
         parameters: ["page": page, "per_page": 30],
         encoding: URLEncoding.default
@@ -87,6 +90,8 @@ extension UnsplashAPI {
       return file("illustrations_\(page)") ?? object([])
     case .collections(let mediaType, let page):
       return file("\(mediaType.rawValue)_collections_\(page)") ?? object([])
+    case .topicImages(_, let page):
+      return file("topic_images_\(page)") ?? object([])
     case .autocomplete:
       return file("autocomplete") ?? object([])
     }

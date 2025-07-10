@@ -58,6 +58,10 @@ struct UnsplashService {
     }
   }
 
+  @inlinable func images(for topic: Topic, page: Int) -> Single<[ImageAsset]> {
+    request(.topicImages(topic, page))
+  }
+
   @inlinable func collections(for mediaType: MediaType, page: Int) -> Single<[ImageAssetCollection]> {
     request(.collections(mediaType, page))
   }
