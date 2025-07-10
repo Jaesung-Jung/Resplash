@@ -111,8 +111,21 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
       .disposed(by: disposeBag)
 
     collectionView.rx.itemSelected
-      .bind {
-        print("itemSelected: \($0)")
+      .withUnretained(dataSource)
+      .compactMap { $0.itemIdentifier(for: $1) }
+      .bind { @MainActor [weak self] item in
+        guard let self else {
+          return
+        }
+        switch item {
+        case .topic(let topic):
+          let topicImagesViewController = TopicImagesViewController(reactor: TopicImagesViewReactor(topic: topic))
+          navigationController?.pushViewController(topicImagesViewController, animated: true)
+        case .collection:
+          break
+        case .image:
+          break
+        }
       }
       .disposed(by: disposeBag)
 
