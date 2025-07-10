@@ -52,6 +52,11 @@ extension UnsplashAPI: TargetType {
         parameters: ["page": page, "per_page": 30],
         encoding: URLEncoding.default
       )
+    case .topics:
+      return .requestParameters(
+        parameters: ["per_page": 50],
+        encoding: URLEncoding.default
+      )
     case .collections(let mediaType, let page):
       let assetType: String = switch mediaType {
       case .photo:
@@ -63,7 +68,7 @@ extension UnsplashAPI: TargetType {
         parameters: ["asset_type": assetType, "page": page, "per_page": 30],
         encoding: URLEncoding.default
       )
-    case .topics, .featured, .autocomplete:
+    case .featured, .autocomplete:
       return .requestPlain
     }
   }
