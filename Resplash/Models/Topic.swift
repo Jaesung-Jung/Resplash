@@ -61,7 +61,7 @@ extension Topic {
     description: "From epic drone shots to inspiring moments in nature — enjoy the best background for your desktop or mobile.",
     mediaTypes: [.photo],
     coverImage: .preview,
-    imageCount: 16519
+    imageCount: 16_519
   )
 }
 
