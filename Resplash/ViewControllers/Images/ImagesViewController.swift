@@ -105,7 +105,6 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
 
     collectionView.rx
       .reachedBottom()
-      .skip(1)
       .map { .fetchNextImages }
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
@@ -140,14 +139,14 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
 
 extension ImagesViewController {
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
-    UICollectionViewCompositionalLayout { [weak self] sectionIndex, environemtn in
+    UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment in
       guard let section = self?.dataSource.sectionIdentifier(for: sectionIndex) else {
         return nil
       }
       let contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 40, trailing: 20)
       let containerSize = CGSize(
-        width: environemtn.container.effectiveContentSize.width - contentInsets.leading - contentInsets.trailing,
-        height: environemtn.container.effectiveContentSize.height - contentInsets.top - contentInsets.bottom
+        width: environment.container.effectiveContentSize.width - contentInsets.leading - contentInsets.trailing,
+        height: environment.container.effectiveContentSize.height - contentInsets.top - contentInsets.bottom
       )
       let spacing: CGFloat = 10
       let headerSupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(

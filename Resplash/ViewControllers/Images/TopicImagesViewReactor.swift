@@ -79,9 +79,8 @@ extension TopicImagesViewReactor {
     let topic: Topic
     @Pulse var images: IdentifiedArrayOf<ImageAsset> = []
 
-    var page: Int = 1
-    var hasNext: Bool = true
-
+    var page = 1
+    var hasNext = false
     var isLoading = false
   }
 }

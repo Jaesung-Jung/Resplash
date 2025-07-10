@@ -113,10 +113,9 @@ extension ImagesViewReactor {
     @Pulse var images: IdentifiedArrayOf<ImageAsset> = []
 
     var mediaType: MediaType = .photo
-    var page: Int = 1
-    var hasNext: Bool = true
-
-    var isLoading: Bool = false
+    var page = 1
+    var hasNext = false
+    var isLoading = false
   }
 }
 

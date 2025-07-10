@@ -72,7 +72,6 @@ final class TopicImagesViewController: BaseViewController<TopicImagesViewReactor
 
     collectionView.rx
       .reachedBottom()
-      .skip(1)
       .map { .fetchNextImages }
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
