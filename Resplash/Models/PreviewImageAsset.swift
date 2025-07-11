@@ -9,7 +9,7 @@ import Foundation
 
 struct PreviewImageAsset: Identifiable {
   let id: String
-  let imageURL: ImageAssetURL
+  let imageResource: ImageResource
 }
 
 // MARK: - PreviewImageAsset (Hashable)
@@ -29,6 +29,6 @@ extension PreviewImageAsset: Hashable {
 extension PreviewImageAsset: Decodable {
   enum CodingKeys: String, CodingKey {
     case id
-    case imageURL = "urls"
+    case imageResource = "urls"
   }
 }

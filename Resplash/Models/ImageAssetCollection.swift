@@ -61,7 +61,7 @@ extension ImageAssetCollection {
     previewImages: [
       PreviewImageAsset(
         id: "VrP25Libv",
-        imageURL: ImageAssetURL(
+        imageResource: ImageResource(
           raw: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0")!,
           full: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
           s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1680608155016-3faa9cbdc236")!
@@ -69,7 +69,7 @@ extension ImageAssetCollection {
       ),
       PreviewImageAsset(
         id: "IfK3Mpo3I",
-        imageURL: ImageAssetURL(
+        imageResource: ImageResource(
           raw: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0")!,
           full: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
           s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1700253458597-6729fbc52c67")!
@@ -77,7 +77,7 @@ extension ImageAssetCollection {
       ),
       PreviewImageAsset(
         id: "hSmcIn4Fb",
-        imageURL: ImageAssetURL(
+        imageResource: ImageResource(
           raw: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0")!,
           full: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
           s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1721830698195-ff1f7daa5ce5")!

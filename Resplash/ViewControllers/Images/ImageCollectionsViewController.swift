@@ -29,7 +29,8 @@ final class ImageCollectionsViewController: BaseViewController<ImageCollectionsV
   }
 
   override func bind(reactor: ImageCollectionsViewReactor) {
-    reactor.pulse(\.$collections)
+    reactor
+      .pulse(\.$collections)
       .bind { [dataSource] collections in
         var snapshot = NSDiffableDataSourceSnapshot<Int, ImageAssetCollection>()
         snapshot.appendSections([0])
@@ -44,7 +45,8 @@ final class ImageCollectionsViewController: BaseViewController<ImageCollectionsV
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
-    Observable.just(.fetchCollections)
+    Observable
+      .just(.fetchCollections)
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
   }

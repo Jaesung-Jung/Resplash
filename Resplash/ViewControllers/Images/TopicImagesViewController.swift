@@ -49,19 +49,22 @@ final class TopicImagesViewController: BaseViewController<TopicImagesViewReactor
   }
 
   override func bind(reactor: TopicImagesViewReactor) {
-    reactor.state.map(\.topic.title)
+    reactor.state
+      .map(\.topic.title)
       .take(1)
       .bind(to: rx.title)
       .disposed(by: disposeBag)
 
-    reactor.state.map(\.topic.coverImage.imageURL.low)
+    reactor.state
+      .map(\.topic.coverImage.imageResource.low)
       .take(1)
       .bind { [backgroundImageView] url in
         backgroundImageView.kf.setImage(with: url)
       }
       .disposed(by: disposeBag)
 
-    reactor.pulse(\.$images)
+    reactor
+      .pulse(\.$images)
       .bind { [dataSource] images in
         var snapshot = NSDiffableDataSourceSnapshot<Int, ImageAsset>()
         snapshot.appendSections([0])

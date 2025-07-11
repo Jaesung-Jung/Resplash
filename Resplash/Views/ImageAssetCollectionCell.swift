@@ -95,7 +95,7 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
       imageView.image = nil
     }
     for (imageView, image) in zip(imageViews, collection.previewImages) {
-      imageView.kf.setImage(with: image.imageURL.low)
+      imageView.kf.setImage(with: image.imageResource.low)
     }
     profileView.configure(collection.user)
     titleLabel.text = collection.title

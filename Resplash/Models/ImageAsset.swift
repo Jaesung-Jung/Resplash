@@ -20,7 +20,7 @@ struct ImageAsset: Identifiable {
   let width: Int
   let height: Int
   let color: String
-  let imageURL: ImageAssetURL
+  let imageResource: ImageResource
 
   let user: User
   let shareLink: URL
@@ -57,7 +57,7 @@ extension ImageAsset: Decodable {
     self.width = try container.decode(Int.self, forKey: "width")
     self.height = try container.decode(Int.self, forKey: "height")
     self.color = try container.decode(String.self, forKey: "color")
-    self.imageURL = try container.decode(ImageAssetURL.self, forKey: "urls")
+    self.imageResource = try container.decode(ImageResource.self, forKey: "urls")
 
     self.user = try container.decode(User.self, forKey: "user")
     let linkContainer = try container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "links")
@@ -81,7 +81,7 @@ extension ImageAsset {
     width: 5196,
     height: 3464,
     color: "#a6a6a6",
-    imageURL: .preview,
+    imageResource: .preview,
     user: .preview,
     shareLink: URL(string: "https://unsplash.com/photos/DIdhesLS07I")!
   )
