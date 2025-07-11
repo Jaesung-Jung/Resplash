@@ -162,8 +162,7 @@ final class ImageAssetCell: UICollectionViewCell {
     estimatedImageSize = CGSize(width: asset.width, height: asset.height)
 
     likeView.count = asset.likes
-    let newURL = URL(string: asset.imageURL.regular.absoluteString.replacingOccurrences(of: "w=1080", with: "w=800"))
-    imageView.kf.setImage(with: newURL)
+    imageView.kf.setImage(with: asset.imageURL.hd)
     profileView.configure(asset.user)
   }
 

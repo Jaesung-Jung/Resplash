@@ -64,10 +64,7 @@ extension ImageAssetCollection {
         imageURL: ImageAssetURL(
           raw: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0")!,
           full: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
-          regular: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max")!,
-          small: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max")!,
-          thumb: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max")!,
-          smallS3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1680608155016-3faa9cbdc236")!
+          s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1680608155016-3faa9cbdc236")!
         )
       ),
       PreviewImageAsset(
@@ -75,10 +72,7 @@ extension ImageAssetCollection {
         imageURL: ImageAssetURL(
           raw: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0")!,
           full: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
-          regular: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max")!,
-          small: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max")!,
-          thumb: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max")!,
-          smallS3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1700253458597-6729fbc52c67")!
+          s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1700253458597-6729fbc52c67")!
         )
       ),
       PreviewImageAsset(
@@ -86,10 +80,7 @@ extension ImageAssetCollection {
         imageURL: ImageAssetURL(
           raw: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0")!,
           full: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
-          regular: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max")!,
-          small: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max")!,
-          thumb: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max")!,
-          smallS3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1721830698195-ff1f7daa5ce5")!
+          s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1721830698195-ff1f7daa5ce5")!
         )
       )
     ],

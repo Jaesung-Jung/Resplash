@@ -54,7 +54,7 @@ final class TopicImagesViewController: BaseViewController<TopicImagesViewReactor
       .bind(to: rx.title)
       .disposed(by: disposeBag)
 
-    reactor.state.map(\.topic.coverImage.imageURL.thumb)
+    reactor.state.map(\.topic.coverImage.imageURL.low)
       .take(1)
       .bind { [backgroundImageView] url in
         backgroundImageView.kf.setImage(with: url)

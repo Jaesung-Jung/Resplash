@@ -10,10 +10,55 @@ import Foundation
 struct ImageAssetURL {
   let raw: URL
   let full: URL
-  let regular: URL
-  let small: URL
-  let thumb: URL
-  let smallS3: URL
+  let s3: URL
+
+  @inlinable var fhd: URL? { url(.fhd) }
+  @inlinable var hd: URL? { url(.hd) }
+  @inlinable var sd: URL? { url(.sd) }
+  @inlinable var low: URL? { url(.low) }
+
+  @inlinable func url(_ size: Size) -> URL? {
+    url(size.rawValue, quality: size.quality)
+  }
+
+  @inlinable func url(size: CGFloat, quality: Int = 80) -> URL? {
+    url(Int(size))
+  }
+
+  func url(_ size: Int, quality: Int = 80) -> URL? {
+    guard var component = URLComponents(string: raw.absoluteString) else {
+      return nil
+    }
+    var queryItems = component.queryItems ?? []
+    queryItems.append(URLQueryItem(name: "crop", value: "entropy"))
+    queryItems.append(URLQueryItem(name: "q", value: "\(quality)"))
+    queryItems.append(URLQueryItem(name: "w", value: "\(size)"))
+    queryItems.append(URLQueryItem(name: "fm", value: "jpg"))
+    component.queryItems = queryItems
+    return component.url
+  }
+}
+
+// MARK: - ImageAssetURL.Size
+
+extension ImageAssetURL {
+  enum Size: Int {
+    case fhd = 1080
+    case hd = 720
+    case sd = 480
+    case low = 360
+
+    var quality: Int {
+      switch self {
+      case .fhd, .hd:
+        return 85
+      case .sd:
+        return 80
+      case .low:
+        return 75
+      }
+    }
+  }
 }
 
 // MARK: - ImageAssetURL (Decodable)
@@ -22,10 +67,7 @@ extension ImageAssetURL: Decodable {
   enum CodingKeys: String, CodingKey {
     case raw
     case full
-    case regular
-    case small
-    case thumb
-    case smallS3 = "small_s3"
+    case s3 = "small_s3"
   }
 }
 
@@ -37,10 +79,7 @@ extension ImageAssetURL {
   static let preview = ImageAssetURL(
     raw: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0")!,
     full: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0&q=85")!,
-    regular: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0&q=80&w=1080")!,
-    small: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0&q=80&w=400")!,
-    thumb: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0&q=80&w=200")!,
-    smallS3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1749738155703-b4650f21387b")!
+    s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1749738155703-b4650f21387b")!
   )
 }
 
