@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let tabBarController = UITabBarController().then {
       $0.tabs = [
         UITab(title: .localized("Image"), image: UIImage(systemName: "photo.on.rectangle.angled"), identifier: "images") { _ in
-          UINavigationController(rootViewController: ImagesViewController(reactor: ImagesViewReactor()))
+          UINavigationController(rootViewController: MainViewController(reactor: MainViewReactor()))
         },
         UITab(title: .localized("Explore"), image: UIImage(systemName: "safari"), identifier: "explore") { _ in
           UINavigationController(rootViewController: ExploreViewController())

@@ -1,5 +1,5 @@
 //
-//  ImagesViewController.swift
+//  MainViewController.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/4/25.
@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-final class ImagesViewController: BaseViewController<ImagesViewReactor> {
+final class MainViewController: BaseViewController<MainViewReactor> {
   private let mediaTypeBarButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"))
 
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout()).then {
@@ -38,7 +38,7 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
     }
   }
 
-  override func bind(reactor: ImagesViewReactor) {
+  override func bind(reactor: MainViewReactor) {
     let mediaTypeSelected = PublishRelay<MediaType>()
 
     let mediaType = reactor.state
@@ -150,9 +150,9 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
   }
 }
 
-// MARK: - ImagesViewController (Private)
+// MARK: - MainViewController (Private)
 
-extension ImagesViewController {
+extension MainViewController {
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
     UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment in
       guard let section = self?.dataSource.sectionIdentifier(for: sectionIndex) else {
@@ -300,9 +300,9 @@ extension ImagesViewController {
   }
 }
 
-// MARK: - ImagesViewController.Section
+// MARK: - MainViewController.Section
 
-extension ImagesViewController {
+extension MainViewController {
   nonisolated enum Section {
     case topics
     case collections
@@ -321,9 +321,9 @@ extension ImagesViewController {
   }
 }
 
-// MARK: - ImagesViewController.Item
+// MARK: - MainViewController.Item
 
-extension ImagesViewController {
+extension MainViewController {
   nonisolated enum Item: Hashable {
     case topic(Topic)
     case collection(ImageAssetCollection)
@@ -331,10 +331,10 @@ extension ImagesViewController {
   }
 }
 
-// MARK: - ImagesViewController
+// MARK: - MainViewController
 
 #Preview {
   UINavigationController(
-    rootViewController: ImagesViewController(reactor: ImagesViewReactor())
+    rootViewController: MainViewController(reactor: MainViewReactor())
   )
 }

@@ -1,5 +1,5 @@
 //
-//  ImagesViewReactor.swift
+//  MainViewReactor.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/8/25.
@@ -11,7 +11,7 @@ import ReactorKit
 import Dependencies
 import IdentifiedCollections
 
-final class ImagesViewReactor: Reactor {
+final class MainViewReactor: Reactor {
   @Dependency(\.unsplashService) var unsplash
 
   let initialState = State()
@@ -104,9 +104,9 @@ final class ImagesViewReactor: Reactor {
   }
 }
 
-// MARK: - ImagesViewReactor.State
+// MARK: - MainViewReactor.State
 
-extension ImagesViewReactor {
+extension MainViewReactor {
   struct State: Then {
     @Pulse var topics: IdentifiedArrayOf<Topic> = []
     @Pulse var collections: IdentifiedArrayOf<ImageAssetCollection> = []
@@ -119,9 +119,9 @@ extension ImagesViewReactor {
   }
 }
 
-// MARK: - ImagesViewReactor.Action
+// MARK: - MainViewReactor.Action
 
-extension ImagesViewReactor {
+extension MainViewReactor {
   enum Action {
     case selectMediaType(MediaType)
     case fetch
@@ -129,9 +129,9 @@ extension ImagesViewReactor {
   }
 }
 
-// MARK: - ImagesViewReactor.Mutation
+// MARK: - MainViewReactor.Mutation
 
-extension ImagesViewReactor {
+extension MainViewReactor {
   enum Mutation {
     case setMediaType(MediaType)
     case setTopics(IdentifiedArrayOf<Topic>)
