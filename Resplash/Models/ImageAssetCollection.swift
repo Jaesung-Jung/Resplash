@@ -9,6 +9,7 @@ import Foundation
 
 struct ImageAssetCollection: Identifiable {
   let id: String
+  let shareKey: String
   let updatedAt: Date
 
   let title: String
@@ -37,6 +38,7 @@ extension ImageAssetCollection: Decodable {
   init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: StringCodingKey.self)
     self.id = try container.decode(String.self, forKey: "id")
+    self.shareKey = try container.decode(String.self, forKey: "share_key")
     self.updatedAt = try container.decode(Date.self, forKey: "updated_at")
 
     self.title = try container.decode(String.self, forKey: "title")
@@ -56,6 +58,7 @@ extension ImageAssetCollection: Decodable {
 extension ImageAssetCollection {
   static let preview = ImageAssetCollection(
     id: "vpXhLgGnoj0",
+    shareKey: "f3993589b33f306668e33943911a8fd1",
     updatedAt: .now,
     title: "Summer Backgrounds",
     previewImages: [

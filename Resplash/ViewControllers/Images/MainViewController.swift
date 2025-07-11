@@ -135,8 +135,9 @@ final class MainViewController: BaseViewController<MainViewReactor> {
         case .topic(let topic):
           let topicImagesViewController = TopicImagesViewController(reactor: TopicImagesViewReactor(topic: topic))
           navigationController?.pushViewController(topicImagesViewController, animated: true)
-        case .collection:
-          break
+        case .collection(let collection):
+          let collectionImagesViewController = CollectionImagesViewController(reactor: CollectionImagesViewReactor(collection: collection))
+          navigationController?.pushViewController(collectionImagesViewController, animated: true)
         case .image:
           break
         }

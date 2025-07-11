@@ -10,6 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import ReactorKit
+import IdentifiedCollections
 
 final class ImageCollectionsViewController: BaseViewController<ImageCollectionsViewReactor> {
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout()).then {
@@ -43,6 +44,17 @@ final class ImageCollectionsViewController: BaseViewController<ImageCollectionsV
       .reachedBottom()
       .map { .fetchNextCollections }
       .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    collectionView.rx.itemSelected
+      .withLatestFrom(reactor.pulse(\.$collections)) { $1[$0.item] }
+      .bind { [weak self] collection in
+        guard let self else {
+          return
+        }
+        let collectionImagesViewController = CollectionImagesViewController(reactor: CollectionImagesViewReactor(collection: collection))
+        navigationController?.pushViewController(collectionImagesViewController, animated: true)
+      }
       .disposed(by: disposeBag)
 
     Observable
