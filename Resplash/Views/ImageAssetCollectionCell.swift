@@ -97,7 +97,7 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
     for (imageView, image) in zip(imageViews, collection.previewImages) {
       imageView.kf.setImage(with: image.imageResource.low)
     }
-    profileView.configure(collection.user)
+    profileView.user = collection.user
     titleLabel.text = collection.title
     infoLabel.text = .localized("\(collection.totalImages) image")
       .replacingOccurrences(

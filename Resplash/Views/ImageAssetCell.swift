@@ -163,7 +163,7 @@ final class ImageAssetCell: UICollectionViewCell {
 
     likeView.count = asset.likes
     imageView.kf.setImage(with: asset.imageResource.hd)
-    profileView.configure(asset.user)
+    profileView.user = asset.user
   }
 
   override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {

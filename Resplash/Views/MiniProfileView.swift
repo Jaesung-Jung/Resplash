@@ -34,6 +34,15 @@ final class MiniProfileView: UIView {
 
   let size: Size
 
+  var user: User? {
+    didSet {
+      profileImageView.kf.setImage(with: user?.imageURL.medium)
+      nameLabel.text = user?.name
+      hireLabel.isHidden = user.map { !$0.forHire || size == .small } ?? true
+      invalidateIntrinsicContentSize()
+    }
+  }
+
   override var intrinsicContentSize: CGSize {
     switch size {
     case .regular:
@@ -110,13 +119,6 @@ final class MiniProfileView: UIView {
       )
     }
   }
-
-  func configure(_ user: User) {
-    profileImageView.kf.setImage(with: user.imageURL.medium)
-    nameLabel.text = user.name
-    hireLabel.isHidden = !user.forHire || size == .small
-    invalidateIntrinsicContentSize()
-  }
 }
 
 // MARK: - MiniProfileView.Size
@@ -133,10 +135,10 @@ extension MiniProfileView {
 #Preview {
   UIStackView(axis: .vertical, spacing: 20) {
     MiniProfileView().then {
-      $0.configure(.preview)
+      $0.user = .preview
     }
     MiniProfileView(.small).then {
-      $0.configure(.preview)
+      $0.user = .preview
     }
   }
 }
