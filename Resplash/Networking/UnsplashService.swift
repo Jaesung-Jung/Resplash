@@ -70,6 +70,10 @@ struct UnsplashService {
     request(.collections(mediaType, page))
   }
 
+  @inlinable func imageDetail(for imageAsset: ImageAsset) -> Single<ImageAssetDetail> {
+    request(.imageDetail(imageAsset))
+  }
+
   @inlinable func autocomplete(_ query: String, completion: @escaping (Result<[Autocomplete], Error>) -> Void) -> Single<[Autocomplete]> {
     request(.autocomplete(query), keyPath: "autocomplete")
   }
