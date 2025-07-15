@@ -9,6 +9,7 @@ import Foundation
 
 struct ImageAsset: Identifiable {
   let id: String
+  let slug: String
   let createdAt: Date
   let updatedAt: Date
   let type: MediaType
@@ -44,6 +45,7 @@ extension ImageAsset: Decodable {
   init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: StringCodingKey.self)
     self.id = try container.decode(String.self, forKey: "id")
+    self.slug = try container.decode(String.self, forKey: "slug")
     self.createdAt = try container.decode(Date.self, forKey: "created_at")
     self.updatedAt = try container.decode(Date.self, forKey: "updated_at")
     self.type = try container.decode(MediaType.self, forKey: "asset_type")
@@ -72,6 +74,7 @@ extension ImageAsset: Decodable {
 extension ImageAsset {
   static let preview = ImageAsset(
     id: "DIdhesLS07I",
+    slug: "DIdhesLS07I",
     createdAt: .now,
     updatedAt: .now,
     type: .photo,
