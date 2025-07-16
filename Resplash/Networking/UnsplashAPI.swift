@@ -45,7 +45,7 @@ extension UnsplashAPI: TargetType {
     case .collectionImages(let collection, _):
       return "napi/collections/\(collection.id)/photos"
     case .imageDetail(let asset):
-      return "napi/photos/\(asset)"
+      return "napi/photos/\(asset.slug)"
     case .autocomplete(let query):
       return "nautocomplete/\(query)"
     }
