@@ -36,3 +36,19 @@ extension Reactive where Base: UITextField {
     controlEvent(.editingDidEndOnExit)
   }
 }
+
+#if canImport(Kingfisher)
+
+import Kingfisher
+
+extension Reactive where Base: UIImageView {
+  var imageURL: Binder<URL?> {
+    Binder(base) { imageView, url in
+      MainActor.assumeIsolated {
+        imageView.kf.setImage(with: url)
+      }
+    }
+  }
+}
+
+#endif
