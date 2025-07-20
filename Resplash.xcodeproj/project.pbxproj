@@ -15,6 +15,7 @@
 		4B3445962E16B33100A3186E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445952E16B33100A3186E /* SnapKit */; };
 		4B3445992E16B37500A3186E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445982E16B37500A3186E /* Moya */; };
 		4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B34459B2E16B38E00A3186E /* Kingfisher */; };
+		4B6630852E2D120700829DC5 /* HostingView in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6630842E2D120700829DC5 /* HostingView */; };
 		4BC783A12E181C34009C421A /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC783A02E181C34009C421A /* Dependencies */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B6630852E2D120700829DC5 /* HostingView in Frameworks */,
 				4B316D242E1D468500AFF7CA /* IdentifiedCollections in Frameworks */,
 				4B1AB7E42E1D258F004E1F87 /* RxRelay in Frameworks */,
 				4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */,
@@ -135,6 +137,7 @@
 				4B1AB7E52E1D258F004E1F87 /* RxSwift */,
 				4B1AB7E82E1D25A1004E1F87 /* ReactorKit */,
 				4B316D232E1D468500AFF7CA /* IdentifiedCollections */,
+				4B6630842E2D120700829DC5 /* HostingView */,
 			);
 			productName = Resplash;
 			productReference = 4B34455A2E16AEEC00A3186E /* Resplash.app */;
@@ -200,6 +203,7 @@
 				4B1AB7E02E1D258F004E1F87 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4B1AB7E72E1D25A1004E1F87 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				4B316D222E1D468500AFF7CA /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
+				4B6630832E2D120700829DC5 /* XCRemoteSwiftPackageReference "HostingView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B34455B2E16AEEC00A3186E /* Products */;
@@ -583,6 +587,14 @@
 				minimumVersion = 8.3.3;
 			};
 		};
+		4B6630832E2D120700829DC5 /* XCRemoteSwiftPackageReference "HostingView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jaesung-Jung/HostingView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		4BC7839F2E181C34009C421A /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
@@ -633,6 +645,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B34459A2E16B38E00A3186E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		4B6630842E2D120700829DC5 /* HostingView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B6630832E2D120700829DC5 /* XCRemoteSwiftPackageReference "HostingView" */;
+			productName = HostingView;
 		};
 		4BC783A02E181C34009C421A /* Dependencies */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -1,5 +1,5 @@
 {
-  "originHash" : "5e8ddc4b998f08034df65c2603fa758c5db34273f48ca54d9ddd9a01e958546d",
+  "originHash" : "f1903f2ab6050f8a3e0de599564d2141f13fb1df2a33d193b00a56bf4dfc41bc",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "5928286acce13def418ec36d05a001a9641086f2",
         "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "hostingview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Jaesung-Jung/HostingView",
+      "state" : {
+        "revision" : "b9be9c8d134a3a35dfcddb8ea5278e429adf6514",
+        "version" : "1.2.0"
       }
     },
     {

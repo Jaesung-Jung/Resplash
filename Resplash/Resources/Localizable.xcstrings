@@ -45,6 +45,9 @@
         }
       }
     },
+    "Downloads" : {
+
+    },
     "Explore" : {
       "localizations" : {
         "ko" : {
@@ -64,6 +67,9 @@
           }
         }
       }
+    },
+    "Featured in" : {
+
     },
     "Illustrations" : {
       "localizations" : {
@@ -136,6 +142,9 @@
       }
     },
     "Topics" : {
+
+    },
+    "Views" : {
 
     }
   },

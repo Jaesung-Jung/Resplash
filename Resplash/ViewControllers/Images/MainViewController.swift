@@ -138,8 +138,9 @@ final class MainViewController: BaseViewController<MainViewReactor> {
         case .collection(let collection):
           let collectionImagesViewController = CollectionImagesViewController(reactor: CollectionImagesViewReactor(collection: collection))
           navigationController?.pushViewController(collectionImagesViewController, animated: true)
-        case .image:
-          break
+        case .image(let asset):
+          let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(imageAsset: asset))
+          navigationController?.pushViewController(imageDetailViewController, animated: true)
         }
       }
       .disposed(by: disposeBag)

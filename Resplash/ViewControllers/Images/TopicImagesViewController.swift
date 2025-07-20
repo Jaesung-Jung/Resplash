@@ -79,6 +79,18 @@ final class TopicImagesViewController: BaseViewController<TopicImagesViewReactor
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
+    collectionView.rx.itemSelected
+      .withUnretained(dataSource)
+      .compactMap { $0.itemIdentifier(for: $1) }
+      .bind { @MainActor [weak self] asset in
+        guard let self else {
+          return
+        }
+        let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(imageAsset: asset))
+        navigationController?.pushViewController(imageDetailViewController, animated: true)
+      }
+      .disposed(by: disposeBag)
+
     Observable.just(.fetchImages)
       .bind(to: reactor.action)
       .disposed(by: disposeBag)

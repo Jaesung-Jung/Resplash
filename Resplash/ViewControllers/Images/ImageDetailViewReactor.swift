@@ -7,8 +7,11 @@
 
 import RxSwift
 import ReactorKit
+import Dependencies
 
 final class ImageDetailViewReactor: Reactor {
+  @Dependency(\.unsplashService) var unsplash
+
   let initialState: State
 
   init(imageAsset: ImageAsset) {
@@ -16,9 +19,31 @@ final class ImageDetailViewReactor: Reactor {
   }
 
   func mutate(action: Action) -> Observable<Mutation> {
+    switch action {
+    case .fetchImageDetail:
+      let fetch = unsplash
+        .imageDetail(for: currentState.imageAsset)
+        .asObservable()
+      return .concat(
+        .just(.setLoading(true)),
+        fetch.map { .setImageDetail($0) },
+        .just(.setLoading(false))
+      )
+      .catchAndReturn(.setLoading(false))
+    }
   }
 
   func reduce(state: State, mutation: Mutation) -> State {
+    switch mutation {
+    case .setImageDetail(let imageAssetDetail):
+      return state.with {
+        $0.imageDetail = imageAssetDetail
+      }
+    case .setLoading(let isLoading):
+      return state.with {
+        $0.isLoading = isLoading
+      }
+    }
   }
 }
 
@@ -27,6 +52,8 @@ final class ImageDetailViewReactor: Reactor {
 extension ImageDetailViewReactor {
   struct State: Then {
     let imageAsset: ImageAsset
+    var imageDetail: ImageAssetDetail?
+    var isLoading = false
   }
 }
 
@@ -34,6 +61,7 @@ extension ImageDetailViewReactor {
 
 extension ImageDetailViewReactor {
   enum Action {
+    case fetchImageDetail
   }
 }
 
@@ -41,5 +69,7 @@ extension ImageDetailViewReactor {
 
 extension ImageDetailViewReactor {
   enum Mutation {
+    case setImageDetail(ImageAssetDetail)
+    case setLoading(Bool)
   }
 }
