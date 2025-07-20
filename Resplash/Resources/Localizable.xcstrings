@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ likes" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 좋아요"
+          }
+        }
+      }
+    },
     "%lld image" : {
       "localizations" : {
         "en" : {
@@ -46,7 +56,14 @@
       }
     },
     "Downloads" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다운로드"
+          }
+        }
+      }
     },
     "Explore" : {
       "localizations" : {
@@ -69,7 +86,14 @@
       }
     },
     "Featured in" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소개 매체"
+          }
+        }
+      }
     },
     "Illustrations" : {
       "localizations" : {
@@ -142,10 +166,24 @@
       }
     },
     "Topics" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토픽"
+          }
+        }
+      }
     },
     "Views" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "조회수"
+          }
+        }
+      }
     }
   },
   "version" : "1.1"
