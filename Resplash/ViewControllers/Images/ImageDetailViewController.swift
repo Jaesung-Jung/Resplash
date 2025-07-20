@@ -164,7 +164,7 @@ extension ImageDetailViewController {
             }
           }
         }
-        .font(.subheadline)
+        .font(.footnote)
         .fontWeight(.medium)
         .foregroundStyle(.secondary)
       }
