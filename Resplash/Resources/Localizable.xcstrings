@@ -155,6 +155,16 @@
         }
       }
     },
+    "Published on %@" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@에 게시"
+          }
+        }
+      }
+    },
     "Search" : {
       "localizations" : {
         "ko" : {

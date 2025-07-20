@@ -145,7 +145,7 @@ extension ImageDetailViewController {
         VStack(alignment: .leading, spacing: 8) {
           HStack(spacing: 4) {
             Image(systemName: "calendar")
-            Text(detail.createdAt.formatted(date: .abbreviated, time: .omitted))
+            Text("Published on \(detail.createdAt.formatted(date: .abbreviated, time: .omitted))")
           }
           HStack(spacing: 4) {
             Image(systemName: "heart.fill")
