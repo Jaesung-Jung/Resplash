@@ -74,6 +74,14 @@ struct UnsplashService {
     request(.imageDetail(imageAsset))
   }
 
+  @inlinable func seriesImages(for imageAsset: ImageAsset) -> Single<[ImageAsset]> {
+    request(.seriesImages(imageAsset))
+  }
+
+  @inlinable func relatedImage(for imageAsset: ImageAsset, page: Int) -> Single<[ImageAsset]> {
+    request(.relatedImages(imageAsset, page), keyPath: "results")
+  }
+
   @inlinable func autocomplete(_ query: String, completion: @escaping (Result<[Autocomplete], Error>) -> Void) -> Single<[Autocomplete]> {
     request(.autocomplete(query), keyPath: "autocomplete")
   }
@@ -98,7 +106,7 @@ extension UnsplashService {
           let decoder = JSONDecoder().then {
             $0.dateDecodingStrategy = .iso8601
           }
-          observer(.success(try result.get().map(T.self, using: decoder)))
+          observer(.success(try result.get().map(T.self, atKeyPath: keyPath, using: decoder)))
         } catch {
           observer(.failure(error))
         }

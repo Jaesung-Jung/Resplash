@@ -18,6 +18,8 @@ enum UnsplashAPI {
   case topicImages(Topic, Int)
   case collectionImages(ImageAssetCollection, Int)
   case imageDetail(ImageAsset)
+  case seriesImages(ImageAsset)
+  case relatedImages(ImageAsset, Int)
   case autocomplete(String)
 }
 
@@ -46,6 +48,10 @@ extension UnsplashAPI: TargetType {
       return "napi/collections/\(collection.id)/photos"
     case .imageDetail(let asset):
       return "napi/photos/\(asset.slug)"
+    case .seriesImages(let asset):
+      return "napi/photos/\(asset.slug)/series"
+    case .relatedImages(let asset, _):
+      return "napi/photos/\(asset.slug)/related"
     case .autocomplete(let query):
       return "nautocomplete/\(query)"
     }
@@ -77,6 +83,16 @@ extension UnsplashAPI: TargetType {
     case .collectionImages(let collection, let page):
       return .requestParameters(
         parameters: ["page": page, "per_page": 30, "share_key": collection.shareKey],
+        encoding: URLEncoding.default
+      )
+    case .seriesImages:
+      return .requestParameters(
+        parameters: ["limit": 10],
+        encoding: URLEncoding.default
+      )
+    case .relatedImages(_, let page):
+      return .requestParameters(
+        parameters: ["page": page, "per_page": 20],
         encoding: URLEncoding.default
       )
     case .featured, .imageDetail, .autocomplete:
@@ -112,6 +128,10 @@ extension UnsplashAPI {
       return file("collection_images_\(page)") ?? object([])
     case .imageDetail:
       return file("photo_detail_\(Int.random(in: 1...2))") ?? object([:])
+    case .seriesImages:
+      return file("photo_series") ?? object([])
+    case .relatedImages(_, let page):
+      return file("photo_related_\(page)") ?? object([:])
     case .autocomplete:
       return file("autocomplete") ?? object([])
     }
