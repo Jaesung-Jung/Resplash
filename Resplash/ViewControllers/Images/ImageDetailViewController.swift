@@ -240,7 +240,7 @@ extension ImageDetailViewController {
 
     var body: some View {
       Text(tag.title)
-        .font(.callout)
+        .font(.subheadline)
         .fontWeight(.medium)
         .foregroundStyle(.app.secondary)
         .padding(.horizontal, 8)
