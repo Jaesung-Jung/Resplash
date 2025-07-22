@@ -49,7 +49,7 @@ extension ImageAsset: Decodable {
     self.createdAt = try container.decode(Date.self, forKey: "created_at")
     self.updatedAt = try container.decode(Date.self, forKey: "updated_at")
     self.type = try container.decode(MediaType.self, forKey: "asset_type")
-    self.isPremium = try container.decode(Bool.self, forKey: "premium")
+    self.isPremium = try container.decodeIfPresent(Bool.self, forKey: "premium") ?? false
 
     let description = try container.decodeIfPresent(String.self, forKey: "description")
     let altDescription = try container.decodeIfPresent(String.self, forKey: "alt_description")
