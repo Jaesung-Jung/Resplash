@@ -16,88 +16,49 @@ import HostingView
 final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor> {
   typealias View = SwiftUI.View
 
-  private let profileView = MiniProfileView()
-
-  private let imageView = UIImageView().then {
-    $0.backgroundColor = .app.imagePlaceholder
-    $0.clipsToBounds = true
-    $0.layer.cornerRadius = 4
-  }
-
-  private let detailView: StatefulHostingView<ImageAssetDetail?>
-
-  private let imageRatio: CGFloat
-
-  override init(reactor: ImageDetailViewReactor? = nil) {
-    self.imageRatio = reactor.map(\.initialState.imageAsset).map { CGFloat($0.height) / CGFloat($0.width) } ?? 0
-    self.detailView = StatefulHostingView(state: nil) { detail in
-      if let detail {
-        DetailView(detail: detail)
-      }
-    }
-    super.init(reactor: reactor)
-  }
+  private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
+  private lazy var dataSource = makeCollectionViewDataSource(collectionView)
 
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.largeTitleDisplayMode = .never
 
-    let scrollView = UIScrollView()
-    view.addSubview(scrollView)
-    scrollView.snp.makeConstraints {
+    view.addSubview(collectionView)
+    collectionView.snp.makeConstraints {
       $0.directionalEdges.equalToSuperview()
-    }
-
-    let contentView = UIView()
-    scrollView.addSubview(contentView)
-    contentView.snp.makeConstraints {
-      $0.top.bottom.equalTo(scrollView.contentLayoutGuide).inset(20)
-      $0.leading.trailing.equalTo(scrollView.frameLayoutGuide).inset(20)
-      $0.width.equalTo(scrollView.contentLayoutGuide)
-    }
-
-    contentView.addSubview(profileView)
-    profileView.snp.makeConstraints {
-      $0.top.leading.trailing.equalToSuperview()
-    }
-
-    contentView.addSubview(imageView)
-    imageView.snp.makeConstraints {
-      $0.top.equalTo(profileView.snp.bottom).offset(8)
-      $0.leading.trailing.equalToSuperview()
-      $0.height.equalTo(imageView.snp.width).multipliedBy(imageRatio)
-    }
-
-    contentView.addSubview(detailView)
-    detailView.snp.makeConstraints {
-      $0.top.equalTo(imageView.snp.bottom).offset(16)
-      $0.leading.trailing.bottom.equalToSuperview()
     }
   }
 
   override func bind(reactor: ImageDetailViewReactor) {
-    reactor.state
-      .map(\.imageAsset.description)
-      .take(1)
-      .bind(to: rx.title)
-      .disposed(by: disposeBag)
+    Observable
+      .combineLatest(
+        reactor.state.map(\.imageAsset),
+        reactor.state.map(\.imageDetail)
+      )
+      .bind { [weak dataSource] asset, detail in
+        guard let dataSource else {
+          return
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections([.detail])
+        snapshot.appendItems(to: .detail) {
+          Item.profile(asset.user)
+          Item.image(asset)
+          if let detail {
+            Item.info(detail)
+          }
+        }
 
-    reactor.state
-      .map(\.imageAsset.user)
-      .take(1)
-      .bind(to: profileView.rx.user)
-      .disposed(by: disposeBag)
-
-    reactor.state
-      .map(\.imageAsset.imageResource.hd)
-      .take(1)
-      .bind(to: imageView.rx.imageURL)
-      .disposed(by: disposeBag)
-
-    reactor.state
-      .compactMap(\.imageDetail)
-      .take(1)
-      .bind(to: detailView.rx.state)
+        if let detail {
+          snapshot.appendSections([.tags])
+          snapshot.appendItems(to: .tags) {
+            for tag in detail.tags {
+              Item.tag(tag)
+            }
+          }
+        }
+        dataSource.apply(snapshot)
+      }
       .disposed(by: disposeBag)
 
     Observable
@@ -107,10 +68,193 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
   }
 }
 
-// MARK: - ImageDetailViewController.DetailView
+// MARK: - ImageDetailViewController (Private)
 
 extension ImageDetailViewController {
-  struct DetailView: View {
+  private func makeCollectionViewLayout() -> UICollectionViewLayout {
+    UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
+      guard let section = self?.dataSource.sectionIdentifier(for: sectionIndex) else {
+        return nil
+      }
+      switch section {
+      case .detail:
+        let item = NSCollectionLayoutItem(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(200)
+          )
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(200)
+          ),
+          subitems: [item]
+        )
+        return NSCollectionLayoutSection(group: group).then {
+          $0.interGroupSpacing = 8
+          $0.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        }
+      case .tags:
+        let item = NSCollectionLayoutItem(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .estimated(50),
+            heightDimension: .estimated(20)
+          )
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(20)
+          ),
+          subitems: [item]
+        ).then {
+          $0.interItemSpacing = .fixed(8)
+        }
+        return NSCollectionLayoutSection(group: group).then {
+          $0.interGroupSpacing = 8
+          $0.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20)
+        }
+      }
+    }
+  }
+
+  private func makeCollectionViewDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Section, Item> {
+    typealias CellRegistration = UICollectionView.CellRegistration
+    let userCellRegistration = CellRegistration<ProfileCell, User> { cell, _, user in
+      cell.profileView.user = user
+    }
+    let imageCellRegistration = CellRegistration<ImageCell, ImageAsset> { cell, _, asset in
+      cell.configure(asset: asset)
+    }
+    let infoCellRegistration = CellRegistration<UICollectionViewCell, ImageAssetDetail> { cell, _, detail in
+      cell.contentConfiguration = UIHostingConfiguration {
+        InfoView(detail: detail)
+      }
+      .margins(.all, .zero)
+    }
+    let tagCellRegistration = CellRegistration<UICollectionViewCell, ImageAssetDetail.Tag> { cell, _, tag in
+      cell.contentConfiguration = UIHostingConfiguration {
+        TagView(tag: tag)
+      }
+      .margins(.all, .zero)
+    }
+    return UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
+      switch item {
+      case .profile(let user):
+        collectionView.dequeueConfiguredReusableCell(using: userCellRegistration, for: indexPath, item: user)
+      case .image(let asset):
+        collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: asset)
+      case .info(let detail):
+        collectionView.dequeueConfiguredReusableCell(using: infoCellRegistration, for: indexPath, item: detail)
+      case .tag(let tag):
+        collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tag)
+      }
+    }
+  }
+}
+
+// MARK: - ImageDetailViewController.Section
+
+extension ImageDetailViewController {
+  enum Section {
+    case detail
+    case tags
+  }
+}
+
+// MARK: - ImageDetailViewController.Item
+
+extension ImageDetailViewController {
+  enum Item: Hashable {
+    case profile(User)
+    case image(ImageAsset)
+    case info(ImageAssetDetail)
+    case tag(ImageAssetDetail.Tag)
+  }
+}
+
+// MARK: - ImageDetailViewController.ProfileCell
+
+extension ImageDetailViewController {
+  private class ProfileCell: UICollectionViewCell {
+    let profileView = MiniProfileView()
+
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+      contentView.addSubview(profileView)
+      profileView.snp.makeConstraints {
+        $0.directionalEdges.equalToSuperview()
+      }
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
+  }
+}
+
+// MARK: - ImageDetailViewController.ImageCell
+
+extension ImageDetailViewController {
+  private class ImageCell: UICollectionViewCell {
+    private let imageView = UIImageView().then {
+      $0.backgroundColor = .app.imagePlaceholder
+      $0.clipsToBounds = true
+      $0.layer.cornerRadius = 4
+    }
+
+    private var imageSize: CGSize = .zero
+
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+      contentView.addSubview(imageView)
+      imageView.snp.makeConstraints {
+        $0.directionalEdges.equalToSuperview()
+      }
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(asset: ImageAsset) {
+      imageSize = CGSize(width: asset.width, height: asset.height)
+      imageView.kf.setImage(with: asset.imageResource.hd)
+    }
+
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+      let ratio = targetSize.width / imageSize.width
+      return CGSize(width: targetSize.width, height: imageSize.height * ratio)
+    }
+  }
+}
+
+// MARK: - ImageDetailViewController.TagView
+
+extension ImageDetailViewController {
+  struct TagView: View {
+    let tag: ImageAssetDetail.Tag
+
+    var body: some View {
+      Text(tag.title)
+        .font(.callout)
+        .fontWeight(.medium)
+        .foregroundStyle(.app.secondary)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 6)
+        .background(.app.gray5)
+        .cornerRadius(4)
+    }
+  }
+}
+
+// MARK: - ImageDetailViewController.InfoView
+
+extension ImageDetailViewController {
+  struct InfoView: View {
     let detail: ImageAssetDetail
 
     var body: some View {

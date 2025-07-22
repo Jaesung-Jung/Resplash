@@ -5,6 +5,8 @@
 //  Created by 정재성 on 7/14/25.
 //
 
+import Algorithms
+
 @dynamicMemberLookup
 struct ImageAssetDetail {
   let asset: ImageAsset
@@ -13,6 +15,7 @@ struct ImageAssetDetail {
   let exif: Exif?
   let location: Location?
   let topics: [Topic]
+  let tags: [Tag]
 
   @inlinable subscript<T>(dynamicMember keyPath: KeyPath<ImageAsset, T>) -> T {
     asset[keyPath: keyPath]
@@ -42,6 +45,7 @@ extension ImageAssetDetail: Decodable {
     self.exif = try? container.decode(Exif.self, forKey: "exif")
     self.location = try? container.decode(Location.self, forKey: "location")
     self.topics = (try? container.decode([Topic].self, forKey: "topics")) ?? []
+    self.tags = Array(try container.decode([Tag].self, forKey: "tags").uniqued())
   }
 }
 
@@ -88,6 +92,15 @@ extension ImageAssetDetail {
     let title: String
     let slub: String
     let visibility: String
+  }
+}
+
+// MARK: - ImageAssetDetail.Tag
+
+extension ImageAssetDetail {
+  struct Tag: Decodable, Hashable {
+    let type: String
+    let title: String
   }
 }
 
