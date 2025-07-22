@@ -17,7 +17,7 @@ final class LikeView: UIView {
       )
     )
     $0.contentMode = .scaleAspectFit
-    $0.tintColor = .systemRed
+    $0.tintColor = .app.red
   }
 
   private let textLabel = UILabel().then {

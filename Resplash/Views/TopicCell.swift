@@ -27,7 +27,7 @@ final class TopicCell: UICollectionViewCell {
 
   private let titleLabel = UILabel().then {
     // Glass Effect Bug Fix
-    $0.textColor = UIColor(light: .label, dark: .white)
+    $0.textColor = UIColor(light: .black, dark: .white)
     $0.font = .preferredFont(forTextStyle: .subheadline).withWeight(.semibold)
   }
 
@@ -71,9 +71,9 @@ final class TopicCell: UICollectionViewCell {
     }
 
     let borderColor = if #available(iOS 26.0, *) {
-      UIColor(light: .systemGray4, dark: .clear)
+      UIColor(light: .app.gray5, dark: .clear)
     } else {
-      UIColor.systemGray5
+      UIColor.app.gray5
     }
     effectBorderView.layer.borderColor = borderColor.cgColor
     registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (self: Self, _ ) in

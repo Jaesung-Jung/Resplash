@@ -51,7 +51,7 @@ final class ImageAssetCell: UICollectionViewCell {
     if #available(iOS 26.0, *) {
       $0.tintColor = UIColor(light: .white, dark: .clear)
     } else {
-      $0.tintColor = .label
+      $0.tintColor = .app.primary
     }
     $0.setContentHuggingPriority(.required, for: .horizontal)
     $0.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -147,9 +147,9 @@ final class ImageAssetCell: UICollectionViewCell {
     contentView.clipsToBounds = true
     contentView.layer.cornerRadius = 12
     contentView.layer.borderWidth = 1
-    contentView.layer.borderColor = UIColor.separator.cgColor
+    contentView.layer.borderColor = .app.gray5
     registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (self: Self, _) in
-      self.contentView.layer.borderColor = UIColor.separator.cgColor
+      self.contentView.layer.borderColor = .app.gray5
     }
   }
 

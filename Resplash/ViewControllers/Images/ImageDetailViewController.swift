@@ -19,7 +19,7 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
   private let profileView = MiniProfileView()
 
   private let imageView = UIImageView().then {
-    $0.backgroundColor = .systemGray5
+    $0.backgroundColor = .app.imagePlaceholder
     $0.clipsToBounds = true
     $0.layer.cornerRadius = 4
   }
@@ -127,7 +127,7 @@ extension ImageDetailViewController {
           }
           .font(.footnote)
           .fontWeight(.medium)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(.app.secondary)
 
           GridRow {
             Text(detail.views.formatted(.number))
@@ -166,7 +166,7 @@ extension ImageDetailViewController {
         }
         .font(.footnote)
         .fontWeight(.medium)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(.app.secondary)
       }
     }
   }

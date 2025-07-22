@@ -10,7 +10,7 @@ import Kingfisher
 
 final class MiniProfileView: UIView {
   private let profileImageBackgroundView = UIView().then {
-    $0.backgroundColor = .label
+    $0.backgroundColor = UIColor(light: .app.gray5, dark: .white)
   }
 
   private let profileImageView = UIImageView().then {
@@ -19,13 +19,13 @@ final class MiniProfileView: UIView {
   }
 
   private let nameLabel = UILabel().then {
-    $0.textColor = .label
+    $0.textColor = .app.primary
   }
 
   private let hireLabel = UILabel().then {
     $0.font = .preferredFont(forTextStyle: .caption1)
     $0.text = "Available for hire"
-    $0.textColor = .secondaryLabel
+    $0.textColor = .app.secondary
   }
 
   private let imageSpacing: CGFloat = 8

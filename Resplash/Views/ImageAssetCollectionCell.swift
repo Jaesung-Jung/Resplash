@@ -16,7 +16,7 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
     UIImageView().then {
       $0.contentMode = .scaleAspectFill
       $0.clipsToBounds = true
-      $0.backgroundColor = .systemGray5
+      $0.backgroundColor = .app.imagePlaceholder
     }
   }
 
@@ -28,7 +28,7 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
 
   private let infoLabel = UILabel().then {
     $0.font = .preferredFont(forTextStyle: .footnote).withWeight(.semibold)
-    $0.textColor = .secondaryLabel
+    $0.textColor = .app.secondary
     $0.setContentHuggingPriority(.required, for: .vertical)
     $0.setContentCompressionResistancePriority(.required, for: .vertical)
   }
