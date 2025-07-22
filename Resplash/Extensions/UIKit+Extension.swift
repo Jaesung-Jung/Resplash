@@ -65,7 +65,7 @@ extension UIStackView {
     distribution: UIStackView.Distribution = .fill,
     alignment: UIStackView.Alignment = .fill,
     spacing: CGFloat = 0,
-    @ArrangedSubviewBuilder<UIView> arrangedSubviews: () -> [UIView]
+    @ArrayBuilder<UIView> arrangedSubviews: () -> [UIView]
   ) {
     self.init(arrangedSubviews: arrangedSubviews())
     self.axis = axis
@@ -75,45 +75,11 @@ extension UIStackView {
   }
 }
 
-// MARK: - UIStackView.ArrangedSubviewBuilder
+// MARK: - NSDiffableDataSourceSnapshot
 
-extension UIStackView {
-  @resultBuilder struct ArrangedSubviewBuilder<Item: UIView> {
-    static func buildBlock(_ items: Item...) -> [Item] {
-      items
-    }
-
-    static func buildBlock(_ items: [Item]...) -> [Item] {
-      items.flatMap { $0 }
-    }
-
-    static func buildOptional(_ items: [Item]?) -> [Item] {
-      items ?? []
-    }
-
-    static func buildEither(first items: [Item]) -> [Item] {
-      items
-    }
-
-    static func buildEither(second items: [Item]) -> [Item] {
-      items
-    }
-
-    static func buildExpression(_ expression: Item) -> [Item] {
-      [expression]
-    }
-
-    static func buildExpression<C: Collection>(_ expression: C) -> [Item] where C.Element == Item {
-      Array(expression)
-    }
-
-    static func buildArray(_ components: [[Item]]) -> [Item] {
-      components.flatMap { $0 }
-    }
-
-    static func buildLimitedAvailability(_ component: [Item]) -> [Item] {
-      component
-    }
+extension NSDiffableDataSourceSnapshot {
+  mutating func appendItems(to section: SectionIdentifierType, @ArrayBuilder<ItemIdentifierType> items: () -> [ItemIdentifierType]) {
+    appendItems(items(), toSection: section)
   }
 }
 
