@@ -162,7 +162,7 @@ final class ImageAssetCell: UICollectionViewCell {
     estimatedImageSize = CGSize(width: asset.width, height: asset.height)
 
     likeView.count = asset.likes
-    imageView.kf.setImage(with: asset.imageResource.hd)
+    imageView.kf.setImage(with: asset.imageResource.sd)
     profileView.user = asset.user
   }
 
