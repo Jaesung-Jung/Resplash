@@ -16,6 +16,7 @@
 		4B3445992E16B37500A3186E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445982E16B37500A3186E /* Moya */; };
 		4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B34459B2E16B38E00A3186E /* Kingfisher */; };
 		4B6630852E2D120700829DC5 /* HostingView in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6630842E2D120700829DC5 /* HostingView */; };
+		4BB334D32E2FD12600EF199A /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 4BB334D22E2FD12600EF199A /* Algorithms */; };
 		4BC783A12E181C34009C421A /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC783A02E181C34009C421A /* Dependencies */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 				4B1AB7E92E1D25A1004E1F87 /* ReactorKit in Frameworks */,
 				4B3445992E16B37500A3186E /* Moya in Frameworks */,
 				4B1AB7E22E1D258F004E1F87 /* RxCocoa in Frameworks */,
+				4BB334D32E2FD12600EF199A /* Algorithms in Frameworks */,
 				4BC783A12E181C34009C421A /* Dependencies in Frameworks */,
 				4B3445962E16B33100A3186E /* SnapKit in Frameworks */,
 				4B1AB7E62E1D258F004E1F87 /* RxSwift in Frameworks */,
@@ -138,6 +140,7 @@
 				4B1AB7E82E1D25A1004E1F87 /* ReactorKit */,
 				4B316D232E1D468500AFF7CA /* IdentifiedCollections */,
 				4B6630842E2D120700829DC5 /* HostingView */,
+				4BB334D22E2FD12600EF199A /* Algorithms */,
 			);
 			productName = Resplash;
 			productReference = 4B34455A2E16AEEC00A3186E /* Resplash.app */;
@@ -204,6 +207,7 @@
 				4B1AB7E72E1D25A1004E1F87 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				4B316D222E1D468500AFF7CA /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				4B6630832E2D120700829DC5 /* XCRemoteSwiftPackageReference "HostingView" */,
+				4BB334D12E2FD12600EF199A /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B34455B2E16AEEC00A3186E /* Products */;
@@ -286,9 +290,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F36388UFRX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = F36388UFRX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resplash/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -303,6 +309,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.js.resplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Wildcard App Development";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
@@ -316,9 +324,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F36388UFRX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = F36388UFRX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resplash/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -333,6 +343,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.js.resplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Wildcard App Development";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
@@ -595,6 +607,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		4BB334D12E2FD12600EF199A /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
 		4BC7839F2E181C34009C421A /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
@@ -650,6 +670,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B6630832E2D120700829DC5 /* XCRemoteSwiftPackageReference "HostingView" */;
 			productName = HostingView;
+		};
+		4BB334D22E2FD12600EF199A /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BB334D12E2FD12600EF199A /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 		4BC783A02E181C34009C421A /* Dependencies */ = {
 			isa = XCSwiftPackageProductDependency;
