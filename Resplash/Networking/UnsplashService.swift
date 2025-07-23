@@ -82,8 +82,12 @@ struct UnsplashService {
     request(.relatedImages(imageAsset, page), keyPath: "results")
   }
 
-  @inlinable func autocomplete(_ query: String, completion: @escaping (Result<[Autocomplete], Error>) -> Void) -> Single<[Autocomplete]> {
+  @inlinable func autocomplete(_ query: String) -> Single<[Autocomplete]> {
     request(.autocomplete(query), keyPath: "autocomplete")
+  }
+
+  @inlinable func search(_ query: String, page: Int) -> Single<[ImageAsset]> {
+    request(.search(query, page), keyPath: "results")
   }
 }
 

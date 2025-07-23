@@ -21,6 +21,7 @@ enum UnsplashAPI {
   case seriesImages(ImageAsset)
   case relatedImages(ImageAsset, Int)
   case autocomplete(String)
+  case search(String, Int)
 }
 
 // MARK: - UnsplashAPI (TargetType)
@@ -54,6 +55,8 @@ extension UnsplashAPI: TargetType {
       return "napi/photos/\(asset.slug)/related"
     case .autocomplete(let query):
       return "nautocomplete/\(query)"
+    case .search(let query, _):
+      return "napi/search/photos"
     }
   }
 
@@ -95,6 +98,11 @@ extension UnsplashAPI: TargetType {
         parameters: ["page": page, "per_page": 20],
         encoding: URLEncoding.default
       )
+    case .search(let query, let page):
+      return .requestParameters(
+        parameters: ["query": query, "page": page, "per_page": 30],
+        encoding: URLEncoding.default
+      )
     case .featured, .imageDetail, .autocomplete:
       return .requestPlain
     }
@@ -134,6 +142,8 @@ extension UnsplashAPI {
       return file("photo_related_\(page)") ?? object([:])
     case .autocomplete:
       return file("autocomplete") ?? object([])
+    case .search(_, let page):
+      return file("") ?? object([])
     }
   }
 
