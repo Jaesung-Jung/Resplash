@@ -56,7 +56,7 @@ final class CollectionImagesViewController: BaseViewController<CollectionImagesV
     collectionView.rx.itemSelected
       .withUnretained(dataSource)
       .compactMap { $0.itemIdentifier(for: $1) }
-      .bind { @MainActor [weak self] asset in
+      .bind { [weak self] asset in
         guard let self else {
           return
         }
