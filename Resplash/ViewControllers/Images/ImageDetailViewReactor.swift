@@ -8,6 +8,7 @@
 import RxSwift
 import ReactorKit
 import Dependencies
+import Algorithms
 
 final class ImageDetailViewReactor: Reactor {
   @Dependency(\.unsplashService) var unsplash
@@ -21,15 +22,23 @@ final class ImageDetailViewReactor: Reactor {
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .fetchImageDetail:
-      let fetch = unsplash
+      let detail = unsplash
         .imageDetail(for: currentState.imageAsset)
+        .asObservable()
+      let relatedImages = unsplash
+        .relatedImage(for: currentState.imageAsset, page: 1)
         .asObservable()
       return .concat(
         .just(.setLoading(true)),
-        fetch.map { .setImageDetail($0) },
+        .merge(
+          detail.map { .setImageDetail($0) },
+          relatedImages.map { .setRelatedImages($0) }
+        ),
         .just(.setLoading(false))
       )
       .catchAndReturn(.setLoading(false))
+    case .fetchNextRelatedImages:
+      return .empty()
     }
   }
 
@@ -38,6 +47,18 @@ final class ImageDetailViewReactor: Reactor {
     case .setImageDetail(let imageAssetDetail):
       return state.with {
         $0.imageDetail = imageAssetDetail
+      }
+    case .setRelatedImages(let relatedImages):
+      return state.with {
+        $0.relatedImages = Array(relatedImages.uniqued())
+        $0.page = relatedImages.page
+        $0.hasNextPage = !relatedImages.isAtEnd
+      }
+    case .appendRelatedImages(let relatedImages):
+      return state.with {
+        $0.relatedImages.append(contentsOf: relatedImages.uniqued())
+        $0.page = relatedImages.page
+        $0.hasNextPage = !relatedImages.isAtEnd
       }
     case .setLoading(let isLoading):
       return state.with {
@@ -53,7 +74,11 @@ extension ImageDetailViewReactor {
   struct State: Then {
     let imageAsset: ImageAsset
     var imageDetail: ImageAssetDetail?
-    var isLoading = false
+
+    @Pulse var relatedImages: [ImageAsset] = []
+    var page: Int = 1
+    var hasNextPage: Bool = false
+    var isLoading: Bool = false
   }
 }
 
@@ -62,6 +87,7 @@ extension ImageDetailViewReactor {
 extension ImageDetailViewReactor {
   enum Action {
     case fetchImageDetail
+    case fetchNextRelatedImages
   }
 }
 
@@ -70,6 +96,8 @@ extension ImageDetailViewReactor {
 extension ImageDetailViewReactor {
   enum Mutation {
     case setImageDetail(ImageAssetDetail)
+    case setRelatedImages(Page<[ImageAsset]>)
+    case appendRelatedImages(Page<[ImageAsset]>)
     case setLoading(Bool)
   }
 }

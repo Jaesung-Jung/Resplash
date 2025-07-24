@@ -33,9 +33,10 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
     Observable
       .combineLatest(
         reactor.state.map(\.imageAsset),
-        reactor.state.map(\.imageDetail)
+        reactor.state.map(\.imageDetail),
+        reactor.pulse(\.$relatedImages)
       )
-      .bind { [weak dataSource] asset, detail in
+      .bind { [weak dataSource] asset, detail, relatedImage in
         guard let dataSource else {
           return
         }
@@ -51,11 +52,12 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
 
         if let detail {
           snapshot.appendSections([.tags])
-          snapshot.appendItems(to: .tags) {
-            for tag in detail.tags {
-              Item.tag(tag)
-            }
-          }
+          snapshot.appendItems(detail.tags.map(Item.tag), toSection: .tags)
+        }
+
+        if !relatedImage.isEmpty {
+          snapshot.appendSections([.related])
+          snapshot.appendItems(relatedImage.map(Item.relatedImage), toSection: .related)
         }
         dataSource.apply(snapshot)
       }
@@ -72,8 +74,8 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
 
 extension ImageDetailViewController {
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
-    UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
-      guard let section = self?.dataSource.sectionIdentifier(for: sectionIndex) else {
+    UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment in
+      guard let self, let section = dataSource.sectionIdentifier(for: sectionIndex) else {
         return nil
       }
       switch section {
@@ -115,6 +117,22 @@ extension ImageDetailViewController {
           $0.interGroupSpacing = 8
           $0.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20)
         }
+      case .related:
+        let column = environment.traitCollection.horizontalSizeClass == .compact ? 2 : 4
+        return MansonryCollectionLayoutSection(
+          columns: column,
+          contentInsets: NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20),
+          spacing: 1,
+          environment: environment,
+          sizes: dataSource.snapshot(for: section).items
+            .compactMap {
+              if case .relatedImage(let asset) = $0 {
+                CGSize(width: asset.width, height: asset.height)
+              } else {
+                nil
+              }
+            }
+        )
       }
     }
   }
@@ -139,6 +157,14 @@ extension ImageDetailViewController {
       }
       .margins(.all, .zero)
     }
+    let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, asset in
+      cell.configure(asset)
+      cell.menuButtonSize = .small
+      cell.isBorderHidden = true
+      cell.isProfileHidden = true
+      cell.isBottomGradientHidden = true
+      cell.cornerRadius = 0
+    }
     return UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
       switch item {
       case .profile(let user):
@@ -149,6 +175,8 @@ extension ImageDetailViewController {
         collectionView.dequeueConfiguredReusableCell(using: infoCellRegistration, for: indexPath, item: detail)
       case .tag(let tag):
         collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tag)
+      case .relatedImage(let asset):
+        collectionView.dequeueConfiguredReusableCell(using: relatedImageCellRegistration, for: indexPath, item: asset)
       }
     }
   }
@@ -160,6 +188,7 @@ extension ImageDetailViewController {
   enum Section {
     case detail
     case tags
+    case related
   }
 }
 
@@ -171,6 +200,7 @@ extension ImageDetailViewController {
     case image(ImageAsset)
     case info(ImageAssetDetail)
     case tag(ImageAssetDetail.Tag)
+    case relatedImage(ImageAsset)
   }
 }
 
