@@ -54,29 +54,29 @@ struct UnsplashService {
     switch mediaType {
     case .photo:
       return request(.photos(page: page, perPage: perPage))
-        .map { Page(page: page, isAtEnd: $0.count >= perPage, items: $0) }
+        .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
     case .illustration:
       return request(.illustrations(page: page, perPage: perPage))
-        .map { Page(page: page, isAtEnd: $0.count >= perPage, items: $0) }
+        .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
     }
   }
 
   @inlinable func images(for topic: Topic, page: Int) -> Single<Page<[ImageAsset]>> {
     let perPage = 30
     return request(.topicImages(topic: topic, page: page, perPage: perPage))
-      .map { Page(page: page, isAtEnd: $0.count >= perPage, items: $0) }
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
   @inlinable func images(for collection: ImageAssetCollection, page: Int) -> Single<Page<[ImageAsset]>> {
     let perPage = 30
     return request(.collectionImages(collection: collection, page: page, perPage: perPage))
-      .map { Page(page: page, isAtEnd: $0.count >= perPage, items: $0) }
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
   @inlinable func collections(for mediaType: MediaType, page: Int) -> Single<Page<[ImageAssetCollection]>> {
     let perPage = 30
     return request(.collections(mediaType: mediaType, page: page, perPage: perPage))
-      .map { Page(page: page, isAtEnd: $0.count >= perPage, items: $0) }
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
   @inlinable func imageDetail(for imageAsset: ImageAsset) -> Single<ImageAssetDetail> {
@@ -90,7 +90,7 @@ struct UnsplashService {
   @inlinable func relatedImage(for imageAsset: ImageAsset, page: Int) -> Single<Page<[ImageAsset]>> {
     let perPage = 20
     return request(.relatedImages(asset: imageAsset, page: page, perPage: perPage), keyPath: "results")
-      .map { Page(page: page, isAtEnd: $0.count >= perPage, items: $0) }
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
   @inlinable func autocomplete(_ query: String) -> Single<[Autocomplete]> {
@@ -100,7 +100,7 @@ struct UnsplashService {
   @inlinable func search(_ query: String, page: Int) -> Single<Page<[ImageAsset]>> {
     let perPage = 30
     return request(.search(query: query, page: page, perPage: perPage), keyPath: "results")
-      .map { Page(page: page, isAtEnd: $0.count >= perPage, items: $0) }
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 }
 
