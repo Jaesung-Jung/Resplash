@@ -8,7 +8,7 @@
 import RxSwift
 import ReactorKit
 import Dependencies
-import IdentifiedCollections
+import Algorithms
 
 final class ImageCollectionsViewReactor: Reactor {
   @Dependency(\.unsplashService) var unsplash
@@ -29,7 +29,7 @@ final class ImageCollectionsViewReactor: Reactor {
         .asObservable()
       return .concat(
         .just(.setLoading(true)),
-        images.map { .setCollections(IdentifiedArray(uniqueElements: $0), 1) },
+        images.map { .setCollections($0) },
         .just(.setLoading(false))
       )
       .catchAndReturn(.setLoading(false))
@@ -44,7 +44,7 @@ final class ImageCollectionsViewReactor: Reactor {
         .asObservable()
       return .concat(
         .just(.setLoading(true)),
-        nextImages.map { .appendCollections(IdentifiedArray(uniqueElements: $0), page) },
+        nextImages.map { .appendCollections($0) },
         .just(.setLoading(false))
       )
     }
@@ -52,17 +52,17 @@ final class ImageCollectionsViewReactor: Reactor {
 
   func reduce(state: State, mutation: Mutation) -> State {
     switch mutation {
-    case .setCollections(let collections, let page):
+    case .setCollections(let collections):
       return state.with {
-        $0.collections = collections
-        $0.page = page
-        $0.hasNext = collections.count >= 30
+        $0.collections = Array(collections.uniqued())
+        $0.page = collections.page
+        $0.hasNext = !collections.isAtEnd
       }
-    case .appendCollections(let collections, let page):
+    case .appendCollections(let collections):
       return state.with {
-        $0.collections.append(contentsOf: collections)
-        $0.page = page
-        $0.hasNext = collections.count >= 30
+        $0.collections.append(contentsOf: collections.uniqued())
+        $0.page = collections.page
+        $0.hasNext = !collections.isAtEnd
       }
     case .setLoading(let isLoading):
       return state.with {
@@ -77,7 +77,7 @@ final class ImageCollectionsViewReactor: Reactor {
 extension ImageCollectionsViewReactor {
   struct State: Then {
     let mediaType: MediaType
-    @Pulse var collections: IdentifiedArrayOf<ImageAssetCollection> = []
+    @Pulse var collections: [ImageAssetCollection] = []
 
     var page = 1
     var hasNext = false
@@ -98,8 +98,8 @@ extension ImageCollectionsViewReactor {
 
 extension ImageCollectionsViewReactor {
   enum Mutation {
-    case setCollections(IdentifiedArrayOf<ImageAssetCollection>, Int)
-    case appendCollections(IdentifiedArrayOf<ImageAssetCollection>, Int)
+    case setCollections(Page<[ImageAssetCollection]>)
+    case appendCollections(Page<[ImageAssetCollection]>)
     case setLoading(Bool)
   }
 }

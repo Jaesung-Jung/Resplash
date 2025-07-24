@@ -42,7 +42,7 @@ final class CollectionImagesViewController: BaseViewController<CollectionImagesV
       .bind { [dataSource] images in
         var snapshot = NSDiffableDataSourceSnapshot<Int, ImageAsset>()
         snapshot.appendSections([0])
-        snapshot.appendItems(Array(images), toSection: 0)
+        snapshot.appendItems(images, toSection: 0)
         dataSource.apply(snapshot)
       }
       .disposed(by: disposeBag)

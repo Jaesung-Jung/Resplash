@@ -10,7 +10,6 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import ReactorKit
-import IdentifiedCollections
 
 final class ImageCollectionsViewController: BaseViewController<ImageCollectionsViewReactor> {
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout()).then {

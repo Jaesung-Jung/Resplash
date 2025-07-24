@@ -12,16 +12,16 @@ import Moya
 enum UnsplashAPI {
   case topics
   case featured
-  case photos(Int)
-  case illustrations(Int)
-  case collections(MediaType, Int)
-  case topicImages(Topic, Int)
-  case collectionImages(ImageAssetCollection, Int)
+  case photos(page: Int, perPage: Int)
+  case illustrations(page: Int, perPage: Int)
+  case collections(mediaType: MediaType, page: Int, perPage: Int)
+  case topicImages(topic: Topic, page: Int, perPage: Int)
+  case collectionImages(collection: ImageAssetCollection, page: Int, perPage: Int)
   case imageDetail(ImageAsset)
   case seriesImages(ImageAsset)
-  case relatedImages(ImageAsset, Int)
+  case relatedImages(asset: ImageAsset, page: Int, perPage: Int)
   case autocomplete(String)
-  case search(String, Int)
+  case search(query: String, page: Int, perPage: Int)
 }
 
 // MARK: - UnsplashAPI (TargetType)
@@ -43,28 +43,28 @@ extension UnsplashAPI: TargetType {
       return "napi/illustrations"
     case .collections:
       return "napi/collections"
-    case .topicImages(let topic, _):
+    case .topicImages(let topic, _, _):
       return "napi/topics/\(topic.slug)/photos"
-    case .collectionImages(let collection, _):
+    case .collectionImages(let collection, _, _):
       return "napi/collections/\(collection.id)/photos"
     case .imageDetail(let asset):
       return "napi/photos/\(asset.slug)"
     case .seriesImages(let asset):
       return "napi/photos/\(asset.slug)/series"
-    case .relatedImages(let asset, _):
+    case .relatedImages(let asset, _, _):
       return "napi/photos/\(asset.slug)/related"
     case .autocomplete(let query):
       return "nautocomplete/\(query)"
-    case .search(let query, _):
+    case .search:
       return "napi/search/photos"
     }
   }
 
   var task: Task {
     switch self {
-    case .photos(let page), .illustrations(let page), .topicImages(_, let page):
+    case .photos(let page, let perPage), .illustrations(let page, let perPage), .topicImages(_, let page, let perPage):
       return .requestParameters(
-        parameters: ["page": page, "per_page": 30],
+        parameters: ["page": page, "per_page": perPage],
         encoding: URLEncoding.default
       )
     case .topics:
@@ -72,7 +72,7 @@ extension UnsplashAPI: TargetType {
         parameters: ["per_page": 50],
         encoding: URLEncoding.default
       )
-    case .collections(let mediaType, let page):
+    case .collections(let mediaType, let page, let perPage):
       let assetType: String = switch mediaType {
       case .photo:
         "photos"
@@ -80,12 +80,12 @@ extension UnsplashAPI: TargetType {
         "illustrations"
       }
       return .requestParameters(
-        parameters: ["asset_type": assetType, "page": page, "per_page": 30],
+        parameters: ["asset_type": assetType, "page": page, "per_page": perPage],
         encoding: URLEncoding.default
       )
-    case .collectionImages(let collection, let page):
+    case .collectionImages(let collection, let page, let perPage):
       return .requestParameters(
-        parameters: ["page": page, "per_page": 30, "share_key": collection.shareKey],
+        parameters: ["page": page, "per_page": perPage, "share_key": collection.shareKey],
         encoding: URLEncoding.default
       )
     case .seriesImages:
@@ -93,14 +93,14 @@ extension UnsplashAPI: TargetType {
         parameters: ["limit": 10],
         encoding: URLEncoding.default
       )
-    case .relatedImages(_, let page):
+    case .relatedImages(_, let page, let perPage):
       return .requestParameters(
-        parameters: ["page": page, "per_page": 20],
+        parameters: ["page": page, "per_page": perPage],
         encoding: URLEncoding.default
       )
-    case .search(let query, let page):
+    case .search(let query, let page, let perPage):
       return .requestParameters(
-        parameters: ["query": query, "page": page, "per_page": 30],
+        parameters: ["query": query, "page": page, "per_page": perPage],
         encoding: URLEncoding.default
       )
     case .featured, .imageDetail, .autocomplete:
@@ -124,25 +124,25 @@ extension UnsplashAPI {
       return file("topics") ?? object([])
     case .featured:
       return file("featured") ?? object([])
-    case .photos(let page):
+    case .photos(let page, _):
       return file("photos_\(page)") ?? object([])
-    case .illustrations(let page):
+    case .illustrations(let page, _):
       return file("illustrations_\(page)") ?? object([])
-    case .collections(let mediaType, let page):
+    case .collections(let mediaType, let page, _):
       return file("\(mediaType.rawValue)_collections_\(page)") ?? object([])
-    case .topicImages(_, let page):
+    case .topicImages(_, let page, _):
       return file("topic_images_\(page)") ?? object([])
-    case .collectionImages(_, let page):
+    case .collectionImages(_, let page, _):
       return file("collection_images_\(page)") ?? object([])
     case .imageDetail:
       return file("photo_detail_\(Int.random(in: 1...2))") ?? object([:])
     case .seriesImages:
       return file("photo_series") ?? object([])
-    case .relatedImages(_, let page):
+    case .relatedImages(_, let page, _):
       return file("photo_related_\(page)") ?? object([:])
     case .autocomplete:
       return file("autocomplete") ?? object([])
-    case .search(_, let page):
+    case .search(_, let page, _):
       return file("") ?? object([])
     }
   }

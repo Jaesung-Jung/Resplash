@@ -10,7 +10,8 @@ struct Page<Base: Collection> {
   typealias Index = Base.Index
   typealias Iterator = Base.Iterator
 
-  let number: Int
+  let page: Int
+  let isAtEnd: Bool
   let items: Base
 }
 
