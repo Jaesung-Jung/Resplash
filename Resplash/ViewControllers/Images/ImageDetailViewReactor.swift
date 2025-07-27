@@ -6,11 +6,13 @@
 //
 
 import RxSwift
+import RxRelay
+import RxFlow
 import ReactorKit
 import Dependencies
 import Algorithms
 
-final class ImageDetailViewReactor: Reactor {
+final class ImageDetailViewReactor: BaseReactor {
   @Dependency(\.unsplashService) var unsplash
 
   let initialState: State

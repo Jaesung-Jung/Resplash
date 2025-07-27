@@ -47,13 +47,8 @@ final class ImageCollectionsViewController: BaseViewController<ImageCollectionsV
 
     collectionView.rx.itemSelected
       .withLatestFrom(reactor.pulse(\.$collections)) { $1[$0.item] }
-      .bind { [weak self] collection in
-        guard let self else {
-          return
-        }
-        let collectionImagesViewController = CollectionImagesViewController(reactor: CollectionImagesViewReactor(collection: collection))
-        navigationController?.pushViewController(collectionImagesViewController, animated: true)
-      }
+      .map { .navigateToCollectionImages($0) }
+      .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
     Observable
