@@ -56,11 +56,11 @@ final class CollectionImagesViewController: BaseViewController<CollectionImagesV
     collectionView.rx.itemSelected
       .withUnretained(dataSource)
       .compactMap { $0.itemIdentifier(for: $1) }
-      .bind { [weak self] asset in
+      .bind { [weak self] image in
         guard let self else {
           return
         }
-        let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(imageAsset: asset))
+        let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(image: image))
         navigationController?.pushViewController(imageDetailViewController, animated: true)
       }
       .disposed(by: disposeBag)
@@ -91,8 +91,8 @@ extension CollectionImagesViewController {
   private func makeCollectionViewDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Int, ImageAsset> {
     let addToCollection = addToCollectionActionRelay
     let share = shareActionReplay
-    let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, asset in
-      cell.configure(asset)
+    let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, image in
+      cell.configure(image)
       cell.menuButtonSize = .small
       cell.isBorderHidden = true
       cell.isProfileHidden = true
@@ -101,10 +101,10 @@ extension CollectionImagesViewController {
       cell.menu = UIMenu(
         children: [
           UIAction(title: "Add to Collection", image: UIImage(systemName: "rectangle.stack.badge.plus")) { _ in
-            addToCollection.accept(asset)
+            addToCollection.accept(image)
           },
           UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { _ in
-            share.accept(asset)
+            share.accept(image)
           }
         ]
       )

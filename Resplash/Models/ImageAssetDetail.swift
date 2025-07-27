@@ -1,5 +1,5 @@
 //
-//  Image.swift
+//  ImageAssetDetail.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/14/25.
@@ -9,7 +9,7 @@ import Algorithms
 
 @dynamicMemberLookup
 struct ImageAssetDetail {
-  let asset: ImageAsset
+  let image: ImageAsset
   let views: Int
   let downloads: Int
   let exif: Exif?
@@ -18,7 +18,7 @@ struct ImageAssetDetail {
   let tags: [Tag]
 
   @inlinable subscript<T>(dynamicMember keyPath: KeyPath<ImageAsset, T>) -> T {
-    asset[keyPath: keyPath]
+    image[keyPath: keyPath]
   }
 }
 
@@ -26,11 +26,11 @@ struct ImageAssetDetail {
 
 extension ImageAssetDetail: Hashable {
   func hash(into hasher: inout Hasher) {
-    hasher.combine(asset)
+    hasher.combine(image)
   }
 
   static func == (lhs: Self, rhs: Self) -> Bool {
-    lhs.asset == rhs.asset
+    lhs.image == rhs.image
   }
 }
 
@@ -38,7 +38,7 @@ extension ImageAssetDetail: Hashable {
 
 extension ImageAssetDetail: Decodable {
   init(from decoder: any Decoder) throws {
-    self.asset = try ImageAsset(from: decoder)
+    self.image = try ImageAsset(from: decoder)
     let container = try decoder.container(keyedBy: StringCodingKey.self)
     self.views = try container.decode(Int.self, forKey: "views")
     self.downloads = try container.decode(Int.self, forKey: "downloads")

@@ -79,22 +79,22 @@ struct UnsplashService {
       .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
-  @inlinable func imageDetail(for imageAsset: ImageAsset) -> Single<ImageAssetDetail> {
-    request(.imageDetail(imageAsset))
+  @inlinable func imageDetail(for image: ImageAsset) -> Single<ImageAssetDetail> {
+    request(.imageDetail(image: image))
   }
 
-  @inlinable func seriesImages(for imageAsset: ImageAsset) -> Single<[ImageAsset]> {
-    request(.seriesImages(imageAsset))
+  @inlinable func seriesImages(for image: ImageAsset) -> Single<[ImageAsset]> {
+    request(.seriesImages(image: image))
   }
 
-  @inlinable func relatedImage(for imageAsset: ImageAsset, page: Int) -> Single<Page<[ImageAsset]>> {
+  @inlinable func relatedImage(for image: ImageAsset, page: Int) -> Single<Page<[ImageAsset]>> {
     let perPage = 20
-    return request(.relatedImages(asset: imageAsset, page: page, perPage: perPage), keyPath: "results")
+    return request(.relatedImages(image: image, page: page, perPage: perPage), keyPath: "results")
       .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
   @inlinable func autocomplete(_ query: String) -> Single<[Autocomplete]> {
-    request(.autocomplete(query), keyPath: "autocomplete")
+    request(.autocomplete(query: query), keyPath: "autocomplete")
   }
 
   @inlinable func search(_ query: String, page: Int) -> Single<Page<[ImageAsset]>> {

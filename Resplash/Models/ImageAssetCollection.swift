@@ -13,7 +13,7 @@ struct ImageAssetCollection: Identifiable {
   let updatedAt: Date
 
   let title: String
-  let previewImages: [PreviewImageAsset]
+  let imageURLs: [ImageURL]
   let totalImages: Int
 
   let user: User
@@ -42,12 +42,26 @@ extension ImageAssetCollection: Decodable {
     self.updatedAt = try container.decode(Date.self, forKey: "updated_at")
 
     self.title = try container.decode(String.self, forKey: "title")
-    self.previewImages = try container.decode([PreviewImageAsset].self, forKey: "preview_photos")
     self.totalImages = try container.decode(Int.self, forKey: "total_photos")
 
     self.user = try container.decode(User.self, forKey: "user")
     let linkContainer = try container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "links")
     self.shareLink = try linkContainer.decode(URL.self, forKey: "html")
+
+    do {
+      var previewContrainer = try container.nestedUnkeyedContainer(forKey: "preview_photos")
+      var previewImages: [ImageURL] = []
+      if let count = previewContrainer.count {
+        previewImages.reserveCapacity(count)
+      }
+      while !previewContrainer.isAtEnd {
+        let nestedContainer = try previewContrainer.nestedContainer(keyedBy: StringCodingKey.self)
+        previewImages.append(try nestedContainer.decode(ImageURL.self, forKey: "urls"))
+      }
+      self.imageURLs = previewImages
+    } catch {
+      self.imageURLs = []
+    }
   }
 }
 
@@ -61,30 +75,21 @@ extension ImageAssetCollection {
     shareKey: "f3993589b33f306668e33943911a8fd1",
     updatedAt: .now,
     title: "Summer Backgrounds",
-    previewImages: [
-      PreviewImageAsset(
-        id: "VrP25Libv",
-        imageResource: ImageResource(
-          raw: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0")!,
-          full: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
-          s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1680608155016-3faa9cbdc236")!
-        )
+    imageURLs: [
+      ImageURL(
+        raw: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://plus.unsplash.com/premium_photo-1680608155016-3faa9cbdc236?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1680608155016-3faa9cbdc236")!
       ),
-      PreviewImageAsset(
-        id: "IfK3Mpo3I",
-        imageResource: ImageResource(
-          raw: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0")!,
-          full: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
-          s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1700253458597-6729fbc52c67")!
-        )
+      ImageURL(
+        raw: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://plus.unsplash.com/premium_photo-1700253458597-6729fbc52c67?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1700253458597-6729fbc52c67")!
       ),
-      PreviewImageAsset(
-        id: "hSmcIn4Fb",
-        imageResource: ImageResource(
-          raw: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0")!,
-          full: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
-          s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1721830698195-ff1f7daa5ce5")!
-        )
+      ImageURL(
+        raw: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://plus.unsplash.com/premium_photo-1721830698195-ff1f7daa5ce5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1721830698195-ff1f7daa5ce5")!
       )
     ],
     totalImages: 70,

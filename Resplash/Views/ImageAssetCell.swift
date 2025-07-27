@@ -158,12 +158,12 @@ final class ImageAssetCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(_ asset: ImageAsset) {
-    estimatedImageSize = CGSize(width: asset.width, height: asset.height)
+  func configure(_ image: ImageAsset) {
+    estimatedImageSize = CGSize(width: image.width, height: image.height)
 
-    likeView.count = asset.likes
-    imageView.kf.setImage(with: asset.imageResource.sd)
-    profileView.user = asset.user
+    likeView.count = image.likes
+    imageView.kf.setImage(with: image.url.sd)
+    profileView.user = image.user
   }
 
   override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {

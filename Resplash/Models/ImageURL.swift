@@ -1,5 +1,5 @@
 //
-//  ImageResource.swift
+//  ImageURL.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/4/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageResource {
+struct ImageURL {
   let raw: URL
   let full: URL
   let s3: URL
@@ -39,9 +39,9 @@ struct ImageResource {
   }
 }
 
-// MARK: - ImageResource.Size
+// MARK: - ImageURL.Size
 
-extension ImageResource {
+extension ImageURL {
   enum Size: Int {
     case fhd = 1080
     case hd = 720
@@ -61,9 +61,9 @@ extension ImageResource {
   }
 }
 
-// MARK: - ImageResource (Decodable)
+// MARK: - ImageURL (Decodable)
 
-extension ImageResource: Decodable {
+extension ImageURL: Decodable {
   enum CodingKeys: String, CodingKey {
     case raw
     case full
@@ -71,12 +71,12 @@ extension ImageResource: Decodable {
   }
 }
 
-// MARK: - ImageResource (Preview)
+// MARK: - ImageURL (Preview)
 
 #if DEBUG
 
-extension ImageResource {
-  static let preview = ImageResource(
+extension ImageURL {
+  static let preview = ImageURL(
     raw: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0")!,
     full: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0&q=85")!,
     s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1749738155703-b4650f21387b")!

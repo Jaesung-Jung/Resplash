@@ -87,7 +87,7 @@ final class TopicCell: UICollectionViewCell {
   }
 
   func configure(_ topic: Topic) {
-    coverImageView.kf.setImage(with: topic.coverImage.imageResource.low)
+    coverImageView.kf.setImage(with: topic.coverImage.url.low)
     titleLabel.text = topic.title
   }
 
