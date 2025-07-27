@@ -12,3 +12,17 @@ extension Collection {
     indices.contains(position) ? self[position] : nil
   }
 }
+
+extension Array {
+  @inlinable func appending(_ newElement: Element) -> [Element] {
+    var mutable = self
+    mutable.append(newElement)
+    return mutable
+  }
+
+  @inlinable func appending<S: Sequence>(contentsOf newElements: S) -> [Element] where S.Element == Element {
+    var mutable = self
+    mutable.append(contentsOf: newElements)
+    return mutable
+  }
+}
