@@ -11,6 +11,7 @@
 		4B1AB7E42E1D258F004E1F87 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4B1AB7E32E1D258F004E1F87 /* RxRelay */; };
 		4B1AB7E62E1D258F004E1F87 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B1AB7E52E1D258F004E1F87 /* RxSwift */; };
 		4B1AB7E92E1D25A1004E1F87 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B1AB7E82E1D25A1004E1F87 /* ReactorKit */; };
+		4B2862932E36246800C92125 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 4B2862922E36246800C92125 /* RxFlow */; };
 		4B3445962E16B33100A3186E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445952E16B33100A3186E /* SnapKit */; };
 		4B3445992E16B37500A3186E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3445982E16B37500A3186E /* Moya */; };
 		4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B34459B2E16B38E00A3186E /* Kingfisher */; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B2862932E36246800C92125 /* RxFlow in Frameworks */,
 				4B6630852E2D120700829DC5 /* HostingView in Frameworks */,
 				4B1AB7E42E1D258F004E1F87 /* RxRelay in Frameworks */,
 				4B34459C2E16B38E00A3186E /* Kingfisher in Frameworks */,
@@ -138,6 +140,7 @@
 				4B1AB7E82E1D25A1004E1F87 /* ReactorKit */,
 				4B6630842E2D120700829DC5 /* HostingView */,
 				4BB334D22E2FD12600EF199A /* Algorithms */,
+				4B2862922E36246800C92125 /* RxFlow */,
 			);
 			productName = Resplash;
 			productReference = 4B34455A2E16AEEC00A3186E /* Resplash.app */;
@@ -204,6 +207,7 @@
 				4B1AB7E72E1D25A1004E1F87 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				4B6630832E2D120700829DC5 /* XCRemoteSwiftPackageReference "HostingView" */,
 				4BB334D12E2FD12600EF199A /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				4B2862912E36246800C92125 /* XCRemoteSwiftPackageReference "RxFlow" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B34455B2E16AEEC00A3186E /* Products */;
@@ -561,6 +565,14 @@
 				minimumVersion = 3.2.0;
 			};
 		};
+		4B2862912E36246800C92125 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.13.2;
+			};
+		};
 		4B3445942E16B33100A3186E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -631,6 +643,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B1AB7E72E1D25A1004E1F87 /* XCRemoteSwiftPackageReference "ReactorKit" */;
 			productName = ReactorKit;
+		};
+		4B2862922E36246800C92125 /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B2862912E36246800C92125 /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
 		};
 		4B3445952E16B33100A3186E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
