@@ -5,6 +5,7 @@
 //  Created by 정재성 on 7/27/25.
 //
 
+import Foundation
 import RxSwift
 import RxRelay
 import RxFlow
@@ -49,6 +50,10 @@ final class ImagesViewReactor: BaseReactor {
 
     case .navigateToImageDetail(let image):
       steps.accept(AppStep.imageDetail(image))
+      return .empty()
+
+    case .share(let url):
+      steps.accept(AppStep.share(url))
       return .empty()
     }
   }
@@ -96,6 +101,7 @@ extension ImagesViewReactor {
     case fetchNextImages
 
     case navigateToImageDetail(ImageAsset)
+    case share(URL)
   }
 }
 

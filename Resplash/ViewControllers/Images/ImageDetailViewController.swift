@@ -156,11 +156,7 @@ extension ImageDetailViewController {
       .margins(.all, .zero)
     }
     let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
-      cell.configure(image)
-      cell.menuButtonSize = .small
-      cell.isBorderHidden = true
-      cell.isProfileHidden = true
-      cell.cornerRadius = 0
+      cell.configure(image, size: .compact)
     }
     return UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
       switch item {

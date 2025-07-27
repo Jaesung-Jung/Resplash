@@ -47,6 +47,11 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
       }
       .disposed(by: disposeBag)
 
+    shareActionReplay
+      .map { .share($0.shareLink) }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
     collectionView.rx
       .reachedBottom()
       .map { .fetchNextImages }
@@ -87,11 +92,7 @@ extension ImagesViewController {
     let addToCollection = addToCollectionActionRelay
     let share = shareActionReplay
     let imageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
-      cell.configure(image)
-      cell.menuButtonSize = .small
-      cell.isBorderHidden = true
-      cell.isProfileHidden = true
-      cell.cornerRadius = 0
+      cell.configure(image, size: .compact)
       cell.menu = UIMenu(
         children: [
           UIAction(title: "Add to Collection", image: UIImage(systemName: "rectangle.stack.badge.plus")) { _ in

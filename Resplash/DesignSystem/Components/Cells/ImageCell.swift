@@ -63,7 +63,7 @@ final class ImageCell: UICollectionViewCell {
         return
       }
       switch menuButtonSize {
-      case .small:
+      case .compact:
         menuButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         menuButton.maximumContentSizeCategory = .extraExtraExtraLarge
         menuButton.snp.updateConstraints {
@@ -76,32 +76,6 @@ final class ImageCell: UICollectionViewCell {
           $0.trailing.bottom.equalToSuperview().inset(16)
         }
       }
-    }
-  }
-
-  override var cornerRadius: CGFloat {
-    get { contentView.cornerRadius }
-    set { contentView.cornerRadius = newValue }
-  }
-
-  @inlinable var isBorderHidden: Bool {
-    get { contentView.layer.borderWidth == .zero }
-    set { contentView.layer.borderWidth = newValue ? .zero : 1 }
-  }
-
-  @inlinable var isLikeHidden: Bool {
-    get { likeView.isHidden }
-    set {
-      likeView.isHidden = newValue
-      topGradientView.isHidden = newValue
-    }
-  }
-
-  @inlinable var isProfileHidden: Bool {
-    get { profileView.isHidden }
-    set {
-      profileView.isHidden = newValue
-      bottomGradientView.isHidden = newValue
     }
   }
 
@@ -149,8 +123,6 @@ final class ImageCell: UICollectionViewCell {
     }
 
     contentView.clipsToBounds = true
-    contentView.layer.cornerRadius = 12
-    contentView.layer.borderWidth = 1
     contentView.layer.borderColor = .app.gray5
     registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (self: Self, _) in
       self.contentView.layer.borderColor = .app.gray5
@@ -162,12 +134,32 @@ final class ImageCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(_ image: ImageAsset) {
+  func configure(_ image: ImageAsset, size: Size) {
     estimatedImageSize = CGSize(width: image.width, height: image.height)
-
-    likeView.count = image.likes
     imageView.setImageURL(image.url.sd)
-    profileView.user = image.user
+
+    switch size {
+    case .compact:
+      contentView.layer.cornerRadius = 0
+      menuButtonSize = .compact
+      contentView.layer.borderWidth = .zero
+      likeView.isHidden = true
+      profileView.isHidden = true
+      topGradientView.isHidden = true
+      bottomGradientView.isHidden = true
+
+    case .regular:
+      contentView.layer.cornerRadius = 12
+      menuButtonSize = .regular
+      contentView.layer.borderWidth = 1
+      likeView.isHidden = false
+      profileView.isHidden = false
+      topGradientView.isHidden = false
+      bottomGradientView.isHidden = false
+
+      likeView.count = image.likes
+      profileView.user = image.user
+    }
   }
 
   override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
@@ -179,11 +171,20 @@ final class ImageCell: UICollectionViewCell {
   }
 }
 
+// MARK: - ImageCell.Size
+
+extension ImageCell {
+  enum Size {
+    case compact
+    case regular
+  }
+}
+
 // MARK: - ImageCell.MenuButtonSize
 
 extension ImageCell {
   enum MenuButtonSize {
-    case small
+    case compact
     case regular
   }
 }
@@ -194,7 +195,7 @@ extension ImageCell {
 
 #Preview {
   ImageCell().then {
-    $0.configure(.preview)
+    $0.configure(.preview, size: .regular)
     $0.snp.makeConstraints {
       $0.width.equalTo(400)
       $0.height.equalTo(266)

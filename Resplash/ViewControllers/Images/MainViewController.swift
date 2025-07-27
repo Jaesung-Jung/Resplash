@@ -237,7 +237,7 @@ extension MainViewController {
     let addToCollection = addToCollectionActionRelay
     let share = shareActionReplay
     let imageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
-      cell.configure(image)
+      cell.configure(image, size: .regular)
       cell.menu = UIMenu(
         children: [
           UIAction(title: "Add to Collection", image: UIImage(systemName: "rectangle.stack.badge.plus")) { _ in
