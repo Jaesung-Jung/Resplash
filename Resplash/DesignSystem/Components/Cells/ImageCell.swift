@@ -1,5 +1,5 @@
 //
-//  ImageAssetCell.swift
+//  ImageCell.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/7/25.
@@ -7,9 +7,8 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
 
-final class ImageAssetCell: UICollectionViewCell {
+final class ImageCell: UICollectionViewCell {
   private var estimatedImageSize: CGSize?
 
   private let topGradientView = GradientView(
@@ -33,7 +32,7 @@ final class ImageAssetCell: UICollectionViewCell {
     $0.overrideUserInterfaceStyle = .dark
   }
 
-  private let profileView = MiniProfileView().then {
+  private let profileView = ProfileView().then {
     $0.overrideUserInterfaceStyle = .dark
   }
 
@@ -53,6 +52,7 @@ final class ImageAssetCell: UICollectionViewCell {
     } else {
       $0.tintColor = .app.primary
     }
+    $0.isHidden = true
     $0.setContentHuggingPriority(.required, for: .horizontal)
     $0.setContentCompressionResistancePriority(.required, for: .horizontal)
   }
@@ -89,24 +89,28 @@ final class ImageAssetCell: UICollectionViewCell {
     set { contentView.layer.borderWidth = newValue ? .zero : 1 }
   }
 
-  @inlinable var isTopGradientHidden: Bool {
-    get { topGradientView.isHidden }
-    set { topGradientView.isHidden = newValue }
-  }
-
-  @inlinable var isBottomGradientHidden: Bool {
-    get { bottomGradientView.isHidden }
-    set { bottomGradientView.isHidden = newValue }
+  @inlinable var isLikeHidden: Bool {
+    get { likeView.isHidden }
+    set {
+      likeView.isHidden = newValue
+      topGradientView.isHidden = newValue
+    }
   }
 
   @inlinable var isProfileHidden: Bool {
     get { profileView.isHidden }
-    set { profileView.isHidden = newValue }
+    set {
+      profileView.isHidden = newValue
+      bottomGradientView.isHidden = newValue
+    }
   }
 
   var menu: UIMenu? {
     get { menuButton.menu }
-    set { menuButton.menu = newValue }
+    set {
+      menuButton.menu = newValue
+      menuButton.isHidden = newValue == nil
+    }
   }
 
   override init(frame: CGRect) {
@@ -158,12 +162,12 @@ final class ImageAssetCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(_ asset: ImageAsset) {
-    estimatedImageSize = CGSize(width: asset.width, height: asset.height)
+  func configure(_ image: ImageAsset) {
+    estimatedImageSize = CGSize(width: image.width, height: image.height)
 
-    likeView.count = asset.likes
-    imageView.kf.setImage(with: asset.imageResource.sd)
-    profileView.user = asset.user
+    likeView.count = image.likes
+    imageView.setImageURL(image.url.sd)
+    profileView.user = image.user
   }
 
   override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
@@ -175,21 +179,21 @@ final class ImageAssetCell: UICollectionViewCell {
   }
 }
 
-// MARK: - ImageAssetCell.MenuButtonSize
+// MARK: - ImageCell.MenuButtonSize
 
-extension ImageAssetCell {
+extension ImageCell {
   enum MenuButtonSize {
     case small
     case regular
   }
 }
 
-// MARK: - ImageAssetCell Preview
+// MARK: - ImageCell Preview
 
 #if DEBUG
 
 #Preview {
-  ImageAssetCell().then {
+  ImageCell().then {
     $0.configure(.preview)
     $0.snp.makeConstraints {
       $0.width.equalTo(400)

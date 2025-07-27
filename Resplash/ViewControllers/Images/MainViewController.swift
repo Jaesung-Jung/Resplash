@@ -138,8 +138,8 @@ final class MainViewController: BaseViewController<MainViewReactor> {
         case .collection(let collection):
           let collectionImagesViewController = CollectionImagesViewController(reactor: CollectionImagesViewReactor(collection: collection))
           navigationController?.pushViewController(collectionImagesViewController, animated: true)
-        case .image(let asset):
-          let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(imageAsset: asset))
+        case .image(let image):
+          let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(image: image))
           navigationController?.pushViewController(imageDetailViewController, animated: true)
         }
       }
@@ -245,21 +245,21 @@ extension MainViewController {
     let topicCellRegistration = UICollectionView.CellRegistration<TopicCell, Topic> {
       $0.configure($2)
     }
-    let collectionCellRegistration = UICollectionView.CellRegistration<ImageAssetCollectionCell, ImageAssetCollection> {
+    let collectionCellRegistration = UICollectionView.CellRegistration<ImageCollectionCell, ImageAssetCollection> {
       $0.configure($2)
     }
 
     let addToCollection = addToCollectionActionRelay
     let share = shareActionReplay
-    let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, asset in
-      cell.configure(asset)
+    let imageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
+      cell.configure(image)
       cell.menu = UIMenu(
         children: [
           UIAction(title: "Add to Collection", image: UIImage(systemName: "rectangle.stack.badge.plus")) { _ in
-            addToCollection.accept(asset)
+            addToCollection.accept(image)
           },
           UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { _ in
-            share.accept(asset)
+            share.accept(image)
           }
         ]
       )
@@ -271,8 +271,8 @@ extension MainViewController {
         collectionView.dequeueConfiguredReusableCell(using: topicCellRegistration, for: indexPath, item: topic)
       case .collection(let collection):
         collectionView.dequeueConfiguredReusableCell(using: collectionCellRegistration, for: indexPath, item: collection)
-      case .image(let asset):
-        collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: asset)
+      case .image(let image):
+        collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: image)
       }
     }
 

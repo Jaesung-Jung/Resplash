@@ -15,18 +15,18 @@ final class ImageDetailViewReactor: Reactor {
 
   let initialState: State
 
-  init(imageAsset: ImageAsset) {
-    self.initialState = State(imageAsset: imageAsset)
+  init(image: ImageAsset) {
+    self.initialState = State(image: image)
   }
 
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .fetchImageDetail:
       let detail = unsplash
-        .imageDetail(for: currentState.imageAsset)
+        .imageDetail(for: currentState.image)
         .asObservable()
       let relatedImages = unsplash
-        .relatedImage(for: currentState.imageAsset, page: 1)
+        .relatedImage(for: currentState.image, page: 1)
         .asObservable()
       return .concat(
         .just(.setLoading(true)),
@@ -44,9 +44,9 @@ final class ImageDetailViewReactor: Reactor {
 
   func reduce(state: State, mutation: Mutation) -> State {
     switch mutation {
-    case .setImageDetail(let imageAssetDetail):
+    case .setImageDetail(let detail):
       return state.with {
-        $0.imageDetail = imageAssetDetail
+        $0.detail = detail
       }
     case .setRelatedImages(let relatedImages):
       return state.with {
@@ -72,8 +72,8 @@ final class ImageDetailViewReactor: Reactor {
 
 extension ImageDetailViewReactor {
   struct State: Then {
-    let imageAsset: ImageAsset
-    var imageDetail: ImageAssetDetail?
+    let image: ImageAsset
+    var detail: ImageAssetDetail?
 
     @Pulse var relatedImages: [ImageAsset] = []
     var page: Int = 1

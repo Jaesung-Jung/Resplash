@@ -101,7 +101,7 @@ extension ImageCollectionsViewController {
   }
 
   private func makeCollectionViewDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Int, ImageAssetCollection> {
-    let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCollectionCell, ImageAssetCollection> {
+    let imageCellRegistration = UICollectionView.CellRegistration<ImageCollectionCell, ImageAssetCollection> {
       $0.configure($2)
     }
     return UICollectionViewDiffableDataSource(collectionView: collectionView) {

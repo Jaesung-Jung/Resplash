@@ -102,3 +102,18 @@ extension UIButton.Configuration {
     }
   }
 }
+
+// MARK: - UIImageView (URL)
+#if canImport(Kingfisher)
+import Kingfisher
+#endif
+
+extension UIImageView {
+  func setImageURL(_ url: URL?) {
+    if let url {
+      kf.setImage(with: url, options: [.transition(.fade(0.25))])
+    } else {
+      image = nil
+    }
+  }
+}

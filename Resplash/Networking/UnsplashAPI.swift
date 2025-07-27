@@ -17,10 +17,10 @@ enum UnsplashAPI {
   case collections(mediaType: MediaType, page: Int, perPage: Int)
   case topicImages(topic: Topic, page: Int, perPage: Int)
   case collectionImages(collection: ImageAssetCollection, page: Int, perPage: Int)
-  case imageDetail(ImageAsset)
-  case seriesImages(ImageAsset)
-  case relatedImages(asset: ImageAsset, page: Int, perPage: Int)
-  case autocomplete(String)
+  case imageDetail(image: ImageAsset)
+  case seriesImages(image: ImageAsset)
+  case relatedImages(image: ImageAsset, page: Int, perPage: Int)
+  case autocomplete(query: String)
   case search(query: String, page: Int, perPage: Int)
 }
 
@@ -47,12 +47,12 @@ extension UnsplashAPI: TargetType {
       return "napi/topics/\(topic.slug)/photos"
     case .collectionImages(let collection, _, _):
       return "napi/collections/\(collection.id)/photos"
-    case .imageDetail(let asset):
-      return "napi/photos/\(asset.slug)"
-    case .seriesImages(let asset):
-      return "napi/photos/\(asset.slug)/series"
-    case .relatedImages(let asset, _, _):
-      return "napi/photos/\(asset.slug)/related"
+    case .imageDetail(let image):
+      return "napi/photos/\(image.slug)"
+    case .seriesImages(let image):
+      return "napi/photos/\(image.slug)/series"
+    case .relatedImages(let image, _, _):
+      return "napi/photos/\(image.slug)/related"
     case .autocomplete(let query):
       return "nautocomplete/\(query)"
     case .search:

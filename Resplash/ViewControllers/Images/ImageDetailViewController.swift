@@ -10,8 +10,6 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import ReactorKit
-import Kingfisher
-import HostingView
 
 final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor> {
   typealias View = SwiftUI.View
@@ -32,19 +30,19 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
   override func bind(reactor: ImageDetailViewReactor) {
     Observable
       .combineLatest(
-        reactor.state.map(\.imageAsset),
-        reactor.state.map(\.imageDetail),
+        reactor.state.map(\.image),
+        reactor.state.map(\.detail),
         reactor.pulse(\.$relatedImages)
       )
-      .bind { [weak dataSource] asset, detail, relatedImage in
+      .bind { [weak dataSource] image, detail, relatedImage in
         guard let dataSource else {
           return
         }
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.detail])
         snapshot.appendItems(to: .detail) {
-          Item.profile(asset.user)
-          Item.image(asset)
+          Item.profile(image.user)
+          Item.image(image)
           if let detail {
             Item.info(detail)
           }
@@ -126,8 +124,8 @@ extension ImageDetailViewController {
           environment: environment,
           sizes: dataSource.snapshot(for: section).items
             .compactMap {
-              if case .relatedImage(let asset) = $0 {
-                CGSize(width: asset.width, height: asset.height)
+              if case .relatedImage(let image) = $0 {
+                CGSize(width: image.width, height: image.height)
               } else {
                 nil
               }
@@ -142,8 +140,8 @@ extension ImageDetailViewController {
     let userCellRegistration = CellRegistration<ProfileCell, User> { cell, _, user in
       cell.profileView.user = user
     }
-    let imageCellRegistration = CellRegistration<ImageCell, ImageAsset> { cell, _, asset in
-      cell.configure(asset: asset)
+    let imageCellRegistration = CellRegistration<DetailImageCell, ImageAsset> { cell, _, image in
+      cell.configure(image: image)
     }
     let infoCellRegistration = CellRegistration<UICollectionViewCell, ImageAssetDetail> { cell, _, detail in
       cell.contentConfiguration = UIHostingConfiguration {
@@ -157,26 +155,25 @@ extension ImageDetailViewController {
       }
       .margins(.all, .zero)
     }
-    let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, asset in
-      cell.configure(asset)
+    let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
+      cell.configure(image)
       cell.menuButtonSize = .small
       cell.isBorderHidden = true
       cell.isProfileHidden = true
-      cell.isBottomGradientHidden = true
       cell.cornerRadius = 0
     }
     return UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
       switch item {
       case .profile(let user):
         collectionView.dequeueConfiguredReusableCell(using: userCellRegistration, for: indexPath, item: user)
-      case .image(let asset):
-        collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: asset)
+      case .image(let image):
+        collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: image)
       case .info(let detail):
         collectionView.dequeueConfiguredReusableCell(using: infoCellRegistration, for: indexPath, item: detail)
       case .tag(let tag):
         collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tag)
-      case .relatedImage(let asset):
-        collectionView.dequeueConfiguredReusableCell(using: relatedImageCellRegistration, for: indexPath, item: asset)
+      case .relatedImage(let image):
+        collectionView.dequeueConfiguredReusableCell(using: relatedImageCellRegistration, for: indexPath, item: image)
       }
     }
   }
@@ -208,7 +205,7 @@ extension ImageDetailViewController {
 
 extension ImageDetailViewController {
   private class ProfileCell: UICollectionViewCell {
-    let profileView = MiniProfileView()
+    let profileView = ProfileView()
 
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -225,10 +222,10 @@ extension ImageDetailViewController {
   }
 }
 
-// MARK: - ImageDetailViewController.ImageCell
+// MARK: - ImageDetailViewController.DetailImageCell
 
 extension ImageDetailViewController {
-  private class ImageCell: UICollectionViewCell {
+  private class DetailImageCell: UICollectionViewCell {
     private let imageView = UIImageView().then {
       $0.backgroundColor = .app.imagePlaceholder
       $0.clipsToBounds = true
@@ -250,9 +247,9 @@ extension ImageDetailViewController {
       fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(asset: ImageAsset) {
-      imageSize = CGSize(width: asset.width, height: asset.height)
-      imageView.kf.setImage(with: asset.imageResource.hd)
+    func configure(image: ImageAsset) {
+      imageSize = CGSize(width: image.width, height: image.height)
+      imageView.setImageURL(image.url.hd)
     }
 
     override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
@@ -352,7 +349,7 @@ extension ImageDetailViewController {
 
 #Preview {
   UINavigationController(
-    rootViewController: ImageDetailViewController(reactor: ImageDetailViewReactor(imageAsset: .preview))
+    rootViewController: ImageDetailViewController(reactor: ImageDetailViewReactor(image: .preview))
   )
 }
 

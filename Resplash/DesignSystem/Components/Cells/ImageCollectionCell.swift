@@ -1,5 +1,5 @@
 //
-//  ImageAssetCollectionCell.swift
+//  ImageCollectionCell.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/7/25.
@@ -7,10 +7,9 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
 
-final class ImageAssetCollectionCell: UICollectionViewCell {
-  private let profileView = MiniProfileView(.small)
+final class ImageCollectionCell: UICollectionViewCell {
+  private let profileView = ProfileView(.small)
 
   private let imageViews = repeatElement((), count: 3).map {
     UIImageView().then {
@@ -52,6 +51,7 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
     }.then {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 12
+      $0.backgroundColor = .app.background
     }
 
     contentView.addSubview(shadowView)
@@ -94,8 +94,8 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
     for imageView in imageViews {
       imageView.image = nil
     }
-    for (imageView, image) in zip(imageViews, collection.previewImages) {
-      imageView.kf.setImage(with: image.imageResource.low)
+    for (imageView, url) in zip(imageViews, collection.imageURLs) {
+      imageView.setImageURL(url.low)
     }
     profileView.user = collection.user
     titleLabel.text = collection.title
@@ -107,10 +107,10 @@ final class ImageAssetCollectionCell: UICollectionViewCell {
   }
 }
 
-// MARK: - ImageAssetCollectionCell Preview
+// MARK: - ImageCollectionCell Preview
 
 #Preview {
-  ImageAssetCollectionCell().then {
+  ImageCollectionCell().then {
     $0.configure(.preview)
     $0.snp.makeConstraints {
       $0.size.equalTo(390)
