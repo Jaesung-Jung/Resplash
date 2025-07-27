@@ -21,34 +21,38 @@ final class MainViewReactor: BaseReactor {
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .selectMediaType(let mediaType):
-      return .just(.setMediaType(mediaType))
+      return .concat(
+        .just(.setMediaType(mediaType)),
+        .just(.setLoading(true)),
+        fetch(mediaType: mediaType),
+        .just(.setLoading(false))
+      )
+      .catchAndReturn(.setLoading(false))
+
+    case .refresh:
+      guard !currentState.isLoading else {
+        return .empty()
+      }
+      return .concat(
+        .just(.setRefreshing(true)),
+        fetch(mediaType: currentState.mediaType),
+        .just(.setRefreshing(false)).delay(.milliseconds(500), scheduler: MainScheduler.instance)
+      )
+      .catchAndReturn(.setRefreshing(false))
 
     case .fetch:
       guard !currentState.isLoading else {
         return .empty()
       }
-      let topics = unsplash
-        .topics(for: currentState.mediaType)
-        .asObservable()
-      let collections = unsplash
-        .collections(for: currentState.mediaType, page: 1)
-        .asObservable()
-      let images = unsplash
-        .images(for: currentState.mediaType, page: 1)
-        .asObservable()
       return .concat(
         .just(.setLoading(true)),
-        .merge(
-          topics.map { .setTopics($0) },
-          collections.map { .setCollections($0) },
-          images.map { .setImages($0) }
-        ),
+        fetch(mediaType: currentState.mediaType),
         .just(.setLoading(false))
       )
       .catchAndReturn(.setLoading(false))
 
     case .fetchNextImages:
-      guard !currentState.isLoading, currentState.hasNextPage else {
+      guard !currentState.isLoading, !currentState.isRefreshing, currentState.hasNextPage else {
         return .empty()
       }
       let page = currentState.page + 1
@@ -118,16 +122,33 @@ final class MainViewReactor: BaseReactor {
       return state.with {
         $0.isLoading = isLoading
       }
+
+    case .setRefreshing(let isRefreshing):
+      return state.with {
+        $0.isRefreshing = isRefreshing
+      }
     }
   }
+}
 
-  func transform(action: Observable<Action>) -> Observable<Action> {
-    action.flatMap { action -> Observable<Action> in
-      if case .selectMediaType = action {
-        return .concat(.just(action), .just(.fetch))
-      }
-      return .just(action)
-    }
+// MARK: - MainViewReactor (Private)
+
+extension MainViewReactor {
+  private func fetch(mediaType: MediaType) -> Observable<Mutation> {
+    let topics = unsplash
+      .topics(for: currentState.mediaType)
+      .asObservable()
+    let collections = unsplash
+      .collections(for: currentState.mediaType, page: 1)
+      .asObservable()
+    let images = unsplash
+      .images(for: currentState.mediaType, page: 1)
+      .asObservable()
+    return .merge(
+      topics.map { .setTopics($0) },
+      collections.map { .setCollections($0) },
+      images.map { .setImages($0) }
+    )
   }
 }
 
@@ -140,9 +161,10 @@ extension MainViewReactor {
     @Pulse var images: [ImageAsset] = []
 
     var mediaType: MediaType = .photo
-    var page = 1
-    var hasNextPage = false
-    var isLoading = false
+    var page: Int = 1
+    var hasNextPage: Bool = false
+    var isLoading: Bool = false
+    var isRefreshing: Bool = false
   }
 }
 
@@ -151,6 +173,7 @@ extension MainViewReactor {
 extension MainViewReactor {
   enum Action {
     case selectMediaType(MediaType)
+    case refresh
     case fetch
     case fetchNextImages
 
@@ -172,5 +195,6 @@ extension MainViewReactor {
     case setImages(Page<[ImageAsset]>)
     case appendImages(Page<[ImageAsset]>)
     case setLoading(Bool)
+    case setRefreshing(Bool)
   }
 }

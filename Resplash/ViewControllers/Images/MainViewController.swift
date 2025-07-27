@@ -16,8 +16,11 @@ final class MainViewController: BaseViewController<MainViewReactor> {
 
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout()).then {
     $0.backgroundColor = .clear
+    $0.refreshControl = refreshControl
   }
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
+
+  private let refreshControl = UIRefreshControl()
 
   private let addToCollectionActionRelay = PublishRelay<ImageAsset>()
   private let shareActionReplay = PublishRelay<ImageAsset>()
@@ -66,6 +69,18 @@ final class MainViewController: BaseViewController<MainViewReactor> {
         )
       }
       .bind(to: mediaTypeBarButton.rx.menu)
+      .disposed(by: disposeBag)
+
+    reactor.state
+      .map { !$0.isLoading }
+      .distinctUntilChanged()
+      .bind(to: refreshControl.rx.isEnabled)
+      .disposed(by: disposeBag)
+
+    reactor.state
+      .map(\.isRefreshing)
+      .distinctUntilChanged()
+      .bind(to: refreshControl.rx.isRefreshing)
       .disposed(by: disposeBag)
 
     Observable
@@ -127,6 +142,13 @@ final class MainViewController: BaseViewController<MainViewReactor> {
           return .navigateToImageDetail(image)
         }
       }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    refreshControl.rx
+      .controlEvent(.valueChanged)
+      .startWith(())
+      .map { .refresh }
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
