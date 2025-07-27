@@ -10,8 +10,6 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import ReactorKit
-import Kingfisher
-import HostingView
 
 final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor> {
   typealias View = SwiftUI.View
@@ -142,7 +140,7 @@ extension ImageDetailViewController {
     let userCellRegistration = CellRegistration<ProfileCell, User> { cell, _, user in
       cell.profileView.user = user
     }
-    let imageCellRegistration = CellRegistration<ImageCell, ImageAsset> { cell, _, image in
+    let imageCellRegistration = CellRegistration<DetailImageCell, ImageAsset> { cell, _, image in
       cell.configure(image: image)
     }
     let infoCellRegistration = CellRegistration<UICollectionViewCell, ImageAssetDetail> { cell, _, detail in
@@ -157,12 +155,11 @@ extension ImageDetailViewController {
       }
       .margins(.all, .zero)
     }
-    let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, image in
+    let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
       cell.configure(image)
       cell.menuButtonSize = .small
       cell.isBorderHidden = true
       cell.isProfileHidden = true
-      cell.isBottomGradientHidden = true
       cell.cornerRadius = 0
     }
     return UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
@@ -208,7 +205,7 @@ extension ImageDetailViewController {
 
 extension ImageDetailViewController {
   private class ProfileCell: UICollectionViewCell {
-    let profileView = MiniProfileView()
+    let profileView = ProfileView()
 
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -225,10 +222,10 @@ extension ImageDetailViewController {
   }
 }
 
-// MARK: - ImageDetailViewController.ImageCell
+// MARK: - ImageDetailViewController.DetailImageCell
 
 extension ImageDetailViewController {
-  private class ImageCell: UICollectionViewCell {
+  private class DetailImageCell: UICollectionViewCell {
     private let imageView = UIImageView().then {
       $0.backgroundColor = .app.imagePlaceholder
       $0.clipsToBounds = true
@@ -252,7 +249,7 @@ extension ImageDetailViewController {
 
     func configure(image: ImageAsset) {
       imageSize = CGSize(width: image.width, height: image.height)
-      imageView.kf.setImage(with: image.url.hd)
+      imageView.setImageURL(image.url.hd)
     }
 
     override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {

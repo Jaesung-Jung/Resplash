@@ -10,7 +10,6 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import ReactorKit
-import Kingfisher
 
 final class TopicImagesViewController: BaseViewController<TopicImagesViewReactor> {
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout()).then {
@@ -58,9 +57,7 @@ final class TopicImagesViewController: BaseViewController<TopicImagesViewReactor
     reactor.state
       .map(\.topic.coverImage.url.low)
       .take(1)
-      .bind { [backgroundImageView] url in
-        backgroundImageView.kf.setImage(with: url)
-      }
+      .bind(to: backgroundImageView.rx.imageURL)
       .disposed(by: disposeBag)
 
     reactor
@@ -117,12 +114,11 @@ extension TopicImagesViewController {
   private func makeCollectionViewDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Int, ImageAsset> {
     let addToCollection = addToCollectionActionRelay
     let share = shareActionReplay
-    let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, image in
+    let imageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
       cell.configure(image)
       cell.menuButtonSize = .small
       cell.isBorderHidden = true
       cell.isProfileHidden = true
-      cell.isBottomGradientHidden = true
       cell.cornerRadius = 0
       cell.menu = UIMenu(
         children: [

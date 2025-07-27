@@ -1,14 +1,13 @@
 //
-//  MiniProfileView.swift
+//  ProfileView.swift
 //  Resplash
 //
 //  Created by 정재성 on 7/7/25.
 //
 
 import UIKit
-import Kingfisher
 
-final class MiniProfileView: UIView {
+final class ProfileView: UIView {
   private let profileImageBackgroundView = UIView().then {
     $0.backgroundColor = UIColor(light: .app.gray5, dark: .white)
   }
@@ -36,7 +35,7 @@ final class MiniProfileView: UIView {
 
   var user: User? {
     didSet {
-      profileImageView.kf.setImage(with: user?.imageURL.medium)
+      profileImageView.setImageURL(user?.imageURL.medium)
       nameLabel.text = user?.name
       hireLabel.isHidden = user.map { !$0.forHire || size == .small } ?? true
       invalidateIntrinsicContentSize()
@@ -121,23 +120,23 @@ final class MiniProfileView: UIView {
   }
 }
 
-// MARK: - MiniProfileView.Size
+// MARK: - ProfileView.Size
 
-extension MiniProfileView {
+extension ProfileView {
   enum Size {
     case regular
     case small
   }
 }
 
-// MARK: - MiniProfileView Preview
+// MARK: - ProfileView Preview
 
 #Preview {
   UIStackView(axis: .vertical, spacing: 20) {
-    MiniProfileView().then {
+    ProfileView().then {
       $0.user = .preview
     }
-    MiniProfileView(.small).then {
+    ProfileView(.small).then {
       $0.user = .preview
     }
   }

@@ -1,8 +1,8 @@
 //
-//  DesignSystem.swift
+//  Colors.swift
 //  Resplash
 //
-//  Created by 정재성 on 7/8/25.
+//  Created by 정재성 on 7/27/25.
 //
 
 import SwiftUI

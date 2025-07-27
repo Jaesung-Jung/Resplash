@@ -245,13 +245,13 @@ extension MainViewController {
     let topicCellRegistration = UICollectionView.CellRegistration<TopicCell, Topic> {
       $0.configure($2)
     }
-    let collectionCellRegistration = UICollectionView.CellRegistration<ImageAssetCollectionCell, ImageAssetCollection> {
+    let collectionCellRegistration = UICollectionView.CellRegistration<ImageCollectionCell, ImageAssetCollection> {
       $0.configure($2)
     }
 
     let addToCollection = addToCollectionActionRelay
     let share = shareActionReplay
-    let imageCellRegistration = UICollectionView.CellRegistration<ImageAssetCell, ImageAsset> { cell, _, image in
+    let imageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
       cell.configure(image)
       cell.menu = UIMenu(
         children: [
