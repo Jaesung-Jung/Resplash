@@ -8,8 +8,11 @@
 import UIKit
 import RxFlow
 import RxSwift
+import Dependencies
 
 final class AppFlow: Flow {
+  @Dependency(\.unsplashService) var unsplash
+
   let window: UIWindow
   let tabBarController = UITabBarController()
 
@@ -57,12 +60,20 @@ final class AppFlow: Flow {
       return .one(flowContributor: .contribute(with: imageCollectionsViewController))
 
     case .topicImages(let topic):
-      let imagesViewController = TopicImagesViewController(reactor: TopicImagesViewReactor(topic: topic))
+      let imagesViewController = ImagesViewController(
+        reactor: ImagesViewReactor(title: topic.title) { [unsplash] page in
+          unsplash.images(for: topic, page: page)
+        }
+      )
       navigate(to: imagesViewController, animated: true)
       return .one(flowContributor: .contribute(with: imagesViewController))
 
     case .collectionImages(let collection):
-      let imagesViewController = CollectionImagesViewController(reactor: CollectionImagesViewReactor(collection: collection))
+      let imagesViewController = ImagesViewController(
+        reactor: ImagesViewReactor(title: collection.title) { [unsplash] page in
+          unsplash.images(for: collection, page: page)
+        }
+      )
       navigate(to: imagesViewController, animated: true)
       return .one(flowContributor: .contribute(with: imagesViewController))
 

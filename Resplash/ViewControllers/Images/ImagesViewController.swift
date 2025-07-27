@@ -1,8 +1,8 @@
 //
-//  CollectionImagesViewController.swift
+//  ImagesViewController.swift
 //  Resplash
 //
-//  Created by 정재성 on 7/12/25.
+//  Created by 정재성 on 7/27/25.
 //
 
 import UIKit
@@ -11,10 +11,11 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-final class CollectionImagesViewController: BaseViewController<CollectionImagesViewReactor> {
-  private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout()).then {
-    $0.backgroundColor = .clear
-  }
+final class ImagesViewController: BaseViewController<ImagesViewReactor> {
+  private lazy var collectionView = UICollectionView(
+    frame: .zero,
+    collectionViewLayout: makeCollectionViewLayout()
+  )
 
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
 
@@ -29,9 +30,9 @@ final class CollectionImagesViewController: BaseViewController<CollectionImagesV
     }
   }
 
-  override func bind(reactor: CollectionImagesViewReactor) {
+  override func bind(reactor: ImagesViewReactor) {
     reactor.state
-      .map(\.collection.title)
+      .map(\.title)
       .take(1)
       .bind(to: rx.title)
       .disposed(by: disposeBag)
@@ -65,9 +66,9 @@ final class CollectionImagesViewController: BaseViewController<CollectionImagesV
   }
 }
 
-// MARK: - CollectionImagesViewController (Private)
+// MARK: - ImagesViewController (Private)
 
-extension CollectionImagesViewController {
+extension ImagesViewController {
   private func makeCollectionViewLayout() -> UICollectionViewLayout {
     UICollectionViewCompositionalLayout { [weak self] section, environment in
       let column = environment.traitCollection.horizontalSizeClass == .compact ? 2 : 4
@@ -108,12 +109,14 @@ extension CollectionImagesViewController {
   }
 }
 
-// MARK: - CollectionImagesViewController Preview
+// MARK: - ImagesViewController Preview
 
 #Preview {
   UINavigationController(
-    rootViewController: CollectionImagesViewController(
-      reactor: CollectionImagesViewReactor(collection: .preview)
+    rootViewController: ImagesViewController(
+      reactor: ImagesViewReactor(title: "Images") {
+        UnsplashService.previewValue.photos(page: $0)
+      }
     )
   )
 }

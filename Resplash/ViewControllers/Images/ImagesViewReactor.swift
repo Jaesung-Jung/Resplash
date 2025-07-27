@@ -1,24 +1,24 @@
 //
-//  CollectionImagesViewReactor.swift
+//  ImagesViewReactor.swift
 //  Resplash
 //
-//  Created by 정재성 on 7/12/25.
+//  Created by 정재성 on 7/27/25.
 //
 
 import RxSwift
 import RxRelay
 import RxFlow
 import ReactorKit
-import Dependencies
 import Algorithms
 
-final class CollectionImagesViewReactor: BaseReactor {
-  @Dependency(\.unsplashService) var unsplash
+final class ImagesViewReactor: BaseReactor {
+  private let fetchImages: (Int) -> Single<Page<[ImageAsset]>>
 
   let initialState: State
 
-  init(collection: ImageAssetCollection) {
-    self.initialState = State(collection: collection)
+  init(title: String, images: @escaping (Int) -> Single<Page<[ImageAsset]>>) {
+    self.fetchImages = images
+    self.initialState = State(title: title)
   }
 
   func mutate(action: Action) -> Observable<Mutation> {
@@ -27,8 +27,7 @@ final class CollectionImagesViewReactor: BaseReactor {
       guard !currentState.isLoading else {
         return .empty()
       }
-      let images = unsplash.images(for: currentState.collection, page: 1)
-        .asObservable()
+      let images = fetchImages(1).asObservable()
       return .concat(
         .just(.setLoading(true)),
         images.map { .setImages($0) },
@@ -41,9 +40,7 @@ final class CollectionImagesViewReactor: BaseReactor {
         return .empty()
       }
       let page = currentState.page + 1
-      let nextImages = unsplash
-        .images(for: currentState.collection, page: page)
-        .asObservable()
+      let nextImages = fetchImages(page).asObservable()
       return .concat(
         .just(.setLoading(true)),
         nextImages.map { .appendImages($0) },
@@ -78,22 +75,22 @@ final class CollectionImagesViewReactor: BaseReactor {
   }
 }
 
-// MARK: - CollectionImagesViewReactor.State
+// MARK: - ImagesViewReactor.State
 
-extension CollectionImagesViewReactor {
+extension ImagesViewReactor {
   struct State: Then {
-    let collection: ImageAssetCollection
+    let title: String
     @Pulse var images: [ImageAsset] = []
 
-    var page = 1
-    var hasNextPage = false
-    var isLoading = false
+    var page: Int = 1
+    var hasNextPage: Bool = false
+    var isLoading: Bool = false
   }
 }
 
-// MARK: - CollectionImagesViewReactor.Action
+// MARK: - ImagesViewReactor.Action
 
-extension CollectionImagesViewReactor {
+extension ImagesViewReactor {
   enum Action {
     case fetchImages
     case fetchNextImages
@@ -102,9 +99,9 @@ extension CollectionImagesViewReactor {
   }
 }
 
-// MARK: - CollectionImagesViewReactor.Mutation
+// MARK: - ImagesViewReactor.Mutation
 
-extension CollectionImagesViewReactor {
+extension ImagesViewReactor {
   enum Mutation {
     case setImages(Page<[ImageAsset]>)
     case appendImages(Page<[ImageAsset]>)
