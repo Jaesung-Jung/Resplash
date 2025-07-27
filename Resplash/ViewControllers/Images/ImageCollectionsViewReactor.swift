@@ -66,7 +66,7 @@ final class ImageCollectionsViewReactor: BaseReactor {
       }
     case .appendCollections(let collections):
       return state.with {
-        $0.collections.append(contentsOf: collections.uniqued())
+        $0.collections = Array($0.collections.appending(contentsOf: collections).uniqued())
         $0.page = collections.page
         $0.hasNext = !collections.isAtEnd
       }

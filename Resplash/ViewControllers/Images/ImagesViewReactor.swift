@@ -68,7 +68,7 @@ final class ImagesViewReactor: BaseReactor {
       }
     case .appendImages(let images):
       return state.with {
-        $0.images.append(contentsOf: images.uniqued())
+        $0.images = Array($0.images.appending(contentsOf: images).uniqued())
         $0.page = images.page
         $0.hasNextPage = !images.isAtEnd
       }
