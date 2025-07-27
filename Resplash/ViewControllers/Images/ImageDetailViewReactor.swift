@@ -39,8 +39,20 @@ final class ImageDetailViewReactor: BaseReactor {
         .just(.setLoading(false))
       )
       .catchAndReturn(.setLoading(false))
+
     case .fetchNextRelatedImages:
-      return .empty()
+      guard !currentState.isLoading && currentState.hasNextPage else {
+        return .empty()
+      }
+      let page = currentState.page + 1
+      let nextImages = unsplash
+        .relatedImage(for: currentState.image, page: page)
+        .asObservable()
+      return .concat(
+        .just(.setLoading(true)),
+        nextImages.map { .appendRelatedImages($0) },
+        .just(.setLoading(false))
+      )
     }
   }
 
@@ -58,7 +70,7 @@ final class ImageDetailViewReactor: BaseReactor {
       }
     case .appendRelatedImages(let relatedImages):
       return state.with {
-        $0.relatedImages.append(contentsOf: relatedImages.uniqued())
+        $0.relatedImages = Array($0.relatedImages.appending(contentsOf: relatedImages).uniqued())
         $0.page = relatedImages.page
         $0.hasNextPage = !relatedImages.isAtEnd
       }

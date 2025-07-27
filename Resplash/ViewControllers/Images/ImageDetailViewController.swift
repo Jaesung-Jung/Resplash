@@ -61,6 +61,12 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
       }
       .disposed(by: disposeBag)
 
+    collectionView.rx
+      .reachedBottom()
+      .map { .fetchNextRelatedImages }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
     Observable
       .just(.fetchImageDetail)
       .bind(to: reactor.action)
@@ -113,13 +119,21 @@ extension ImageDetailViewController {
         }
         return NSCollectionLayoutSection(group: group).then {
           $0.interGroupSpacing = 8
-          $0.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20)
+          $0.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 40, trailing: 20)
         }
       case .related:
+        let headerSupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(50)
+          ),
+          elementKind: UICollectionView.elementKindSectionHeader,
+          alignment: .top
+        )
         let column = environment.traitCollection.horizontalSizeClass == .compact ? 2 : 4
         return MansonryCollectionLayoutSection(
           columns: column,
-          contentInsets: NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20),
+          contentInsets: NSDirectionalEdgeInsets(top: 16, leading: 20, bottom: 0, trailing: 20),
           spacing: 1,
           environment: environment,
           sizes: dataSource.snapshot(for: section).items
@@ -131,6 +145,7 @@ extension ImageDetailViewController {
               }
             }
         )
+        .then { $0.boundarySupplementaryItems = [headerSupplementaryItem] }
       }
     }
   }
@@ -158,7 +173,7 @@ extension ImageDetailViewController {
     let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
       cell.configure(image, size: .compact)
     }
-    return UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
+    let dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { collectionView, indexPath, item in
       switch item {
       case .profile(let user):
         collectionView.dequeueConfiguredReusableCell(using: userCellRegistration, for: indexPath, item: user)
@@ -172,6 +187,18 @@ extension ImageDetailViewController {
         collectionView.dequeueConfiguredReusableCell(using: relatedImageCellRegistration, for: indexPath, item: image)
       }
     }
+
+    typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<SupplementaryTitleView>
+    let supplementaryRegistration = SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] view, _, indexPath in
+      guard let section = self?.dataSource.sectionIdentifier(for: indexPath.section), section == .related else {
+        return
+      }
+      view.title = .localized("Related Images")
+    }
+    dataSource.supplementaryViewProvider = { collectionView, _, indexPath in
+      collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
+    }
+    return dataSource
   }
 }
 
