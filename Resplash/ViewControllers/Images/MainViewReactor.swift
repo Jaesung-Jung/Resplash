@@ -89,26 +89,31 @@ final class MainViewReactor: BaseReactor {
       return state.with {
         $0.mediaType = mediaType
       }
+
     case .setTopics(let topics):
       return state.with {
         $0.topics = topics
       }
+
     case .setCollections(let collections):
       return state.with {
         $0.collections = Array(collections.uniqued())
       }
+
     case .setImages(let images):
       return state.with {
         $0.images = Array(images.uniqued())
         $0.page = images.page
         $0.hasNextPage = !images.isAtEnd
       }
+
     case .appendImages(let images):
       return state.with {
         $0.images = Array($0.images.appending(contentsOf: images).uniqued())
         $0.page = images.page
         $0.hasNextPage = !images.isAtEnd
       }
+
     case .setLoading(let isLoading):
       return state.with {
         $0.isLoading = isLoading

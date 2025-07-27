@@ -62,18 +62,21 @@ final class ImageDetailViewReactor: BaseReactor {
       return state.with {
         $0.detail = detail
       }
+
     case .setRelatedImages(let relatedImages):
       return state.with {
         $0.relatedImages = Array(relatedImages.uniqued())
         $0.page = relatedImages.page
         $0.hasNextPage = !relatedImages.isAtEnd
       }
+
     case .appendRelatedImages(let relatedImages):
       return state.with {
         $0.relatedImages = Array($0.relatedImages.appending(contentsOf: relatedImages).uniqued())
         $0.page = relatedImages.page
         $0.hasNextPage = !relatedImages.isAtEnd
       }
+
     case .setLoading(let isLoading):
       return state.with {
         $0.isLoading = isLoading
