@@ -109,11 +109,14 @@ import Kingfisher
 #endif
 
 extension UIImageView {
-  func setImageURL(_ url: URL?) {
+  func setImageURL(_ url: URL?, completion: (() -> Void)? = nil) {
     if let url {
-      kf.setImage(with: url, options: [.transition(.fade(0.25))])
+      kf.setImage(with: url, options: [.transition(.fade(0.25))]) { _ in
+        completion?()
+      }
     } else {
       image = nil
+      completion?()
     }
   }
 }

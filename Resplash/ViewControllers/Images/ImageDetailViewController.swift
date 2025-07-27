@@ -80,6 +80,25 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
+    collectionView.rx.itemSelected
+      .withUnretained(dataSource)
+      .filter { dataSource, indexPath in
+        if case .image = dataSource.itemIdentifier(for: indexPath) {
+          return true
+        }
+        return false
+      }
+      .bind { [weak self] _, indexPath in
+        guard let self, let cell = collectionView.cellForItem(at: indexPath) as? DetailImageCell else {
+          return
+        }
+        guard let image = cell.imageView.image else {
+          return
+        }
+        present(ZoomableImageViewController(image: image), animated: true)
+      }
+      .disposed(by: disposeBag)
+
     collectionView.rx
       .reachedBottom()
       .map { .fetchNextRelatedImages }
@@ -268,7 +287,7 @@ extension ImageDetailViewController {
 
 extension ImageDetailViewController {
   private class DetailImageCell: UICollectionViewCell {
-    private let imageView = UIImageView().then {
+    let imageView = UIImageView().then {
       $0.backgroundColor = .app.imagePlaceholder
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 4
