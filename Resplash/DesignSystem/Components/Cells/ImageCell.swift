@@ -26,6 +26,7 @@ final class ImageCell: UICollectionViewCell {
   private let imageView = UIImageView().then {
     $0.contentMode = .scaleAspectFill
     $0.clipsToBounds = true
+    $0.backgroundColor = .app.gray5
   }
 
   private let likeView = LikeView().then {
