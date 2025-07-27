@@ -20,6 +20,7 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.largeTitleDisplayMode = .never
+    navigationItem.titleView = UIView()
 
     view.addSubview(collectionView)
     collectionView.snp.makeConstraints {
@@ -28,6 +29,11 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
   }
 
   override func bind(reactor: ImageDetailViewReactor) {
+    reactor.state
+      .map { $0.image.description ?? $0.image.user.name }
+      .bind(to: rx.title)
+      .disposed(by: disposeBag)
+
     Observable
       .combineLatest(
         reactor.state.map(\.image),
@@ -59,6 +65,19 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
         }
         dataSource.apply(snapshot)
       }
+      .disposed(by: disposeBag)
+
+    collectionView.rx.itemSelected
+      .withUnretained(dataSource) { $0.itemIdentifier(for: $1) }
+      .compactMap {
+        switch $0 {
+        case .relatedImage(let image):
+          return .navigateToImageDetail(image)
+        default:
+          return nil
+        }
+      }
+      .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
     collectionView.rx
