@@ -98,24 +98,14 @@ final class MainViewController: BaseViewController<MainViewReactor> {
 
     shareActionReplay
       .map(\.shareLink)
-      .bind { [weak self] link in
-        guard let self else {
-          return
-        }
-        let activityViewController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
-        present(activityViewController, animated: true)
-      }
+      .map { .share($0) }
+      .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
     moreCollectionActionRelay
       .withLatestFrom(reactor.state.map(\.mediaType))
-      .bind { [weak self] mediaType in
-        guard let self else {
-          return
-        }
-        let collectionsViewController = ImageCollectionsViewController(reactor: ImageCollectionsViewReactor(mediaType: mediaType))
-        navigationController?.pushViewController(collectionsViewController, animated: true)
-      }
+      .map { .navigateToCollection($0) }
+      .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
     collectionView.rx
@@ -127,22 +117,17 @@ final class MainViewController: BaseViewController<MainViewReactor> {
     collectionView.rx.itemSelected
       .withUnretained(dataSource)
       .compactMap { $0.itemIdentifier(for: $1) }
-      .bind { @MainActor [weak self] item in
-        guard let self else {
-          return
-        }
-        switch item {
+      .map {
+        switch $0 {
         case .topic(let topic):
-          let topicImagesViewController = TopicImagesViewController(reactor: TopicImagesViewReactor(topic: topic))
-          navigationController?.pushViewController(topicImagesViewController, animated: true)
+          return .navigateToTopicImages(topic)
         case .collection(let collection):
-          let collectionImagesViewController = CollectionImagesViewController(reactor: CollectionImagesViewReactor(collection: collection))
-          navigationController?.pushViewController(collectionImagesViewController, animated: true)
+          return .navigateToCollectionImages(collection)
         case .image(let image):
-          let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(image: image))
-          navigationController?.pushViewController(imageDetailViewController, animated: true)
+          return .navigateToImageDetail(image)
         }
       }
+      .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
     Observable

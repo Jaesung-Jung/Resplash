@@ -55,13 +55,8 @@ final class CollectionImagesViewController: BaseViewController<CollectionImagesV
     collectionView.rx.itemSelected
       .withUnretained(dataSource)
       .compactMap { $0.itemIdentifier(for: $1) }
-      .bind { [weak self] image in
-        guard let self else {
-          return
-        }
-        let imageDetailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(image: image))
-        navigationController?.pushViewController(imageDetailViewController, animated: true)
-      }
+      .map { .navigateToImageDetail($0) }
+      .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
     Observable.just(.fetchImages)

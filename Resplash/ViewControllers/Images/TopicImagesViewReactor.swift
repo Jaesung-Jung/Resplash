@@ -6,11 +6,13 @@
 //
 
 import RxSwift
+import RxRelay
+import RxFlow
 import ReactorKit
 import Dependencies
 import Algorithms
 
-final class TopicImagesViewReactor: Reactor {
+final class TopicImagesViewReactor: BaseReactor {
   @Dependency(\.unsplashService) var unsplash
 
   let initialState: State
@@ -47,6 +49,10 @@ final class TopicImagesViewReactor: Reactor {
         nextImages.map { .appendImages($0) },
         .just(.setLoading(false))
       )
+
+    case .navigateToImageDetail(let image):
+      steps.accept(AppStep.imageDetail(image))
+      return .empty()
     }
   }
 
@@ -91,6 +97,8 @@ extension TopicImagesViewReactor {
   enum Action {
     case fetchImages
     case fetchNextImages
+
+    case navigateToImageDetail(ImageAsset)
   }
 }
 

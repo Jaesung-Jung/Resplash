@@ -6,43 +6,30 @@
 //
 
 import UIKit
+import RxFlow
+import RxSwift
 import Dependencies
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+  let coordinator = FlowCoordinator()
+  let disposeBag = DisposeBag()
+
   var window: UIWindow?
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = scene as? UIWindowScene else {
       return
     }
-    // Dependencies
-//    prepareDependencies {
-//      $0.unsplashService = UnsplashService(strategy: .stub(delay: nil))
-//    }
+    let appFlow = AppFlow(windowScene: windowScene)
+    window = appFlow.window
 
-    // Root View
-    let tabBarController = UITabBarController().then {
-      $0.tabs = [
-        UITab(title: .localized("Image"), image: UIImage(systemName: "photo.on.rectangle.angled"), identifier: "images") { _ in
-          UINavigationController(rootViewController: MainViewController(reactor: MainViewReactor()))
-        },
-        UITab(title: .localized("Explore"), image: UIImage(systemName: "safari"), identifier: "explore") { _ in
-          UINavigationController(rootViewController: ExploreViewController())
-        },
-        UITab(title: .localized("My"), image: UIImage(systemName: "rectangle.stack.badge.person.crop"), identifier: "my") { _ in
-          UINavigationController(rootViewController: MyAssetsViewController())
-        },
-        UISearchTab { _ in
-          UINavigationController(rootViewController: SearchViewController())
-        }
-      ]
-      if #available(iOS 26.0, *) {
-        $0.tabBarMinimizeBehavior = .onScrollDown
-      }
-    }
-    window = UIWindow(windowScene: windowScene).then {
-      $0.rootViewController = tabBarController
-      $0.makeKeyAndVisible()
-    }
+    coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: AppStep.root))
+    #if DEBUG
+      coordinator.rx.willNavigate
+        .subscribe(onNext: {
+          print("👉 will navigate to flow=\($0) and step=\($1)")
+        })
+        .disposed(by: disposeBag)
+    #endif
   }
 }
