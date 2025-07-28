@@ -167,8 +167,16 @@ final class ImageCell: UICollectionViewCell {
     guard let size = estimatedImageSize else {
       return super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
     }
-    let ratio = targetSize.width / CGFloat(size.width)
-    return CGSize(width: CGFloat(size.width) * ratio, height: CGFloat(size.height) * ratio)
+    switch (horizontalFittingPriority, verticalFittingPriority) {
+    case (.fittingSizeLevel, .required):
+      let ratio = targetSize.height / CGFloat(size.height)
+      return CGSize(width: CGFloat(size.width) * ratio, height: CGFloat(size.height) * ratio)
+    case (.required, .fittingSizeLevel):
+      let ratio = targetSize.width / CGFloat(size.width)
+      return CGSize(width: CGFloat(size.width) * ratio, height: CGFloat(size.height) * ratio)
+    default:
+      return super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+    }
   }
 }
 

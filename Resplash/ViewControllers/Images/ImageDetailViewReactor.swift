@@ -27,6 +27,9 @@ final class ImageDetailViewReactor: BaseReactor {
       let detail = unsplash
         .imageDetail(for: currentState.image)
         .asObservable()
+      let seriesImages = unsplash
+        .seriesImages(for: currentState.image)
+        .asObservable()
       let relatedImages = unsplash
         .relatedImage(for: currentState.image, page: 1)
         .asObservable()
@@ -34,6 +37,7 @@ final class ImageDetailViewReactor: BaseReactor {
         .just(.setLoading(true)),
         .merge(
           detail.map { .setImageDetail($0) },
+          seriesImages.map { .setSeriesImages($0) },
           relatedImages.map { .setRelatedImages($0) }
         ),
         .just(.setLoading(false))
@@ -67,6 +71,11 @@ final class ImageDetailViewReactor: BaseReactor {
         $0.detail = detail
       }
 
+    case .setSeriesImages(let seriesImages):
+      return state.with {
+        $0.seriesImages = Array(seriesImages.uniqued())
+      }
+
     case .setRelatedImages(let relatedImages):
       return state.with {
         $0.relatedImages = Array(relatedImages.uniqued())
@@ -95,6 +104,7 @@ extension ImageDetailViewReactor {
   struct State: Then {
     let image: ImageAsset
     var detail: ImageAssetDetail?
+    var seriesImages: [ImageAsset] = []
 
     @Pulse var relatedImages: [ImageAsset] = []
     var page: Int = 1
@@ -119,6 +129,7 @@ extension ImageDetailViewReactor {
 extension ImageDetailViewReactor {
   enum Mutation {
     case setImageDetail(ImageAssetDetail)
+    case setSeriesImages([ImageAsset])
     case setRelatedImages(Page<[ImageAsset]>)
     case appendRelatedImages(Page<[ImageAsset]>)
     case setLoading(Bool)

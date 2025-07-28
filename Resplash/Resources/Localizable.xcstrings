@@ -95,6 +95,16 @@
         }
       }
     },
+    "From this series" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 시리즈의 다른 이미지"
+          }
+        }
+      }
+    },
     "Illustrations" : {
       "localizations" : {
         "ko" : {

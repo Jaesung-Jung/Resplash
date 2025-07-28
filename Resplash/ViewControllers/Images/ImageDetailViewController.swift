@@ -36,11 +36,12 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
 
     Observable
       .combineLatest(
-        reactor.state.map(\.image),
-        reactor.state.map(\.detail),
+        reactor.state.map(\.image).take(1),
+        reactor.state.map(\.detail).distinctUntilChanged(),
+        reactor.state.map(\.seriesImages).distinctUntilChanged(),
         reactor.pulse(\.$relatedImages)
       )
-      .bind { [weak dataSource] image, detail, relatedImage in
+      .bind { [weak dataSource] image, detail, seriesImages, relatedImage in
         guard let dataSource else {
           return
         }
@@ -57,6 +58,11 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
         if let detail {
           snapshot.appendSections([.tags])
           snapshot.appendItems(detail.tags.map(Item.tag), toSection: .tags)
+        }
+
+        if !seriesImages.isEmpty {
+          snapshot.appendSections([.series])
+          snapshot.appendItems(seriesImages.map(Item.seriesImage), toSection: .series)
         }
 
         if !relatedImage.isEmpty {
@@ -159,6 +165,35 @@ extension ImageDetailViewController {
           $0.interGroupSpacing = 8
           $0.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 40, trailing: 20)
         }
+      case .series:
+        let headerSupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(50)
+          ),
+          elementKind: UICollectionView.elementKindSectionHeader,
+          alignment: .top
+        )
+        let item = NSCollectionLayoutItem(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .estimated(150),
+            heightDimension: .fractionalHeight(1)
+          )
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+          layoutSize: NSCollectionLayoutSize(
+            widthDimension: .estimated(150),
+            heightDimension: .absolute(150)
+          ),
+          subitems: [item]
+        )
+        return NSCollectionLayoutSection(group: group).then {
+          $0.boundarySupplementaryItems = [headerSupplementaryItem]
+          $0.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 40, trailing: 20)
+          $0.orthogonalScrollingBehavior = .continuous
+          $0.interGroupSpacing = 8
+        }
+
       case .related:
         let headerSupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(
           layoutSize: NSCollectionLayoutSize(
@@ -193,7 +228,7 @@ extension ImageDetailViewController {
     let userCellRegistration = CellRegistration<ProfileCell, User> { cell, _, user in
       cell.profileView.user = user
     }
-    let imageCellRegistration = CellRegistration<DetailImageCell, ImageAsset> { cell, _, image in
+    let detailImageCellRegistration = CellRegistration<DetailImageCell, ImageAsset> { cell, _, image in
       cell.configure(image: image)
     }
     let infoCellRegistration = CellRegistration<UICollectionViewCell, ImageAssetDetail> { cell, _, detail in
@@ -208,7 +243,7 @@ extension ImageDetailViewController {
       }
       .margins(.all, .zero)
     }
-    let relatedImageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
+    let imageCellRegistration = UICollectionView.CellRegistration<ImageCell, ImageAsset> { cell, _, image in
       cell.configure(image, size: .compact)
     }
     let dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { collectionView, indexPath, item in
@@ -216,22 +251,29 @@ extension ImageDetailViewController {
       case .profile(let user):
         collectionView.dequeueConfiguredReusableCell(using: userCellRegistration, for: indexPath, item: user)
       case .image(let image):
-        collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: image)
+        collectionView.dequeueConfiguredReusableCell(using: detailImageCellRegistration, for: indexPath, item: image)
       case .info(let detail):
         collectionView.dequeueConfiguredReusableCell(using: infoCellRegistration, for: indexPath, item: detail)
       case .tag(let tag):
         collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tag)
-      case .relatedImage(let image):
-        collectionView.dequeueConfiguredReusableCell(using: relatedImageCellRegistration, for: indexPath, item: image)
+      case .seriesImage(let image), .relatedImage(let image):
+        collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: image)
       }
     }
 
     typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration<SupplementaryTitleView>
     let supplementaryRegistration = SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] view, _, indexPath in
-      guard let section = self?.dataSource.sectionIdentifier(for: indexPath.section), section == .related else {
+      guard let section = self?.dataSource.sectionIdentifier(for: indexPath.section) else {
         return
       }
-      view.title = .localized("Related Images")
+      switch section {
+      case .series:
+        view.title = .localized("From this series")
+      case .related:
+        view.title = .localized("Related Images")
+      default:
+        break
+      }
     }
     dataSource.supplementaryViewProvider = { collectionView, _, indexPath in
       collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
@@ -246,6 +288,7 @@ extension ImageDetailViewController {
   enum Section {
     case detail
     case tags
+    case series
     case related
   }
 }
@@ -258,6 +301,7 @@ extension ImageDetailViewController {
     case image(ImageAsset)
     case info(ImageAssetDetail)
     case tag(ImageAssetDetail.Tag)
+    case seriesImage(ImageAsset)
     case relatedImage(ImageAsset)
   }
 }
