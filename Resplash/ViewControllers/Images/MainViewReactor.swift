@@ -136,13 +136,13 @@ final class MainViewReactor: BaseReactor {
 extension MainViewReactor {
   private func fetch(mediaType: MediaType) -> Observable<Mutation> {
     let topics = unsplash
-      .topics(for: currentState.mediaType)
+      .topics(for: mediaType)
       .asObservable()
     let collections = unsplash
-      .collections(for: currentState.mediaType, page: 1)
+      .collections(for: mediaType, page: 1)
       .asObservable()
     let images = unsplash
-      .images(for: currentState.mediaType, page: 1)
+      .images(for: mediaType, page: 1)
       .asObservable()
     return .merge(
       topics.map { .setTopics($0) },
