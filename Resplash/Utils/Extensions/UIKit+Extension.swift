@@ -104,6 +104,7 @@ extension UIButton.Configuration {
 }
 
 // MARK: - UIImageView (URL)
+
 #if canImport(Kingfisher)
 import Kingfisher
 #endif
@@ -118,5 +119,37 @@ extension UIImageView {
       image = nil
       completion?()
     }
+  }
+}
+
+// MARK: - UISpringTimingParameters
+
+extension UITimingCurveProvider where Self == UISpringTimingParameters {
+  @inlinable static func smooth(duration: CGFloat, initialVelocity: CGVector = .zero) -> UISpringTimingParameters {
+    UISpringTimingParameters(duration: duration, bounce: 0.0, initialVelocity: initialVelocity)
+  }
+
+  @inlinable static func snappy(duration: CGFloat, initialVelocity: CGVector = .zero) -> UISpringTimingParameters {
+    UISpringTimingParameters(duration: duration, bounce: 0.15, initialVelocity: initialVelocity)
+  }
+
+  @inlinable static func bouncy(duration: CGFloat, initialVelocity: CGVector = .zero) -> UISpringTimingParameters {
+    UISpringTimingParameters(duration: duration, bounce: 0.3, initialVelocity: initialVelocity)
+  }
+}
+
+// MARK: - UIViewPropertyAnimator
+
+extension UIViewPropertyAnimator {
+  @inlinable static func smooth(duration: TimeInterval = 0.5, initialVelocity: CGVector = .zero) -> UIViewPropertyAnimator {
+    UIViewPropertyAnimator(duration: duration, timingParameters: .smooth(duration: duration, initialVelocity: initialVelocity))
+  }
+
+  @inlinable static func snappy(duration: TimeInterval = 0.3, initialVelocity: CGVector = .zero) -> UIViewPropertyAnimator {
+    UIViewPropertyAnimator(duration: duration, timingParameters: .snappy(duration: duration, initialVelocity: initialVelocity))
+  }
+
+  @inlinable static func bouncy(duration: CGFloat = 0.5, initialVelocity: CGVector = .zero) -> UIViewPropertyAnimator {
+    UIViewPropertyAnimator(duration: duration, timingParameters: .bouncy(duration: duration, initialVelocity: initialVelocity))
   }
 }
