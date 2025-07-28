@@ -32,7 +32,6 @@ final class CategoryItemCell: UICollectionViewCell {
     contentView.addSubview(imageView)
     imageView.snp.makeConstraints {
       $0.top.leading.trailing.equalToSuperview()
-      $0.height.equalTo(imageView.snp.width).multipliedBy(0.5625)
     }
 
     contentView.addSubview(titleLabel)
