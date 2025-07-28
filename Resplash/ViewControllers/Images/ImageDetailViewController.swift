@@ -77,7 +77,7 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
       .withUnretained(dataSource) { $0.itemIdentifier(for: $1) }
       .compactMap {
         switch $0 {
-        case .relatedImage(let image):
+        case .seriesImage(let image), .relatedImage(let image):
           return .navigateToImageDetail(image)
         default:
           return nil
