@@ -23,7 +23,7 @@ final class ProfileView: UIView {
 
   private let hireLabel = UILabel().then {
     $0.font = .preferredFont(forTextStyle: .caption1)
-    $0.text = "Available for hire"
+    $0.text = .localized("Available for hire")
     $0.textColor = .app.secondary
   }
 

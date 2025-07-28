@@ -45,6 +45,16 @@
         }
       }
     },
+    "Available for hire" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고용 가능"
+          }
+        }
+      }
+    },
     "Collections" : {
       "localizations" : {
         "ko" : {
