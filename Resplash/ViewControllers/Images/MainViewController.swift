@@ -312,7 +312,7 @@ extension MainViewController {
 // MARK: - MainViewController.Section
 
 extension MainViewController {
-  nonisolated enum Section {
+  enum Section {
     case topics
     case collections
     case images
@@ -333,7 +333,7 @@ extension MainViewController {
 // MARK: - MainViewController.Item
 
 extension MainViewController {
-  nonisolated enum Item: Hashable {
+  enum Item: Hashable {
     case topic(Topic)
     case collection(ImageAssetCollection)
     case image(ImageAsset)

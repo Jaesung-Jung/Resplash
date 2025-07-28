@@ -19,7 +19,7 @@ final class ExploreTabFlow: Flow {
     }
     switch step {
     case .exploreTab:
-      let viewController = ExploreViewController()
+      let viewController = ExploreViewController(reactor: ExploreViewReactor())
       navigationController.pushViewController(viewController, animated: true)
       return .one(flowContributor: .contribute(with: viewController))
     default:

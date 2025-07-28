@@ -37,8 +37,8 @@ struct UnsplashService {
     }
   }
 
-  @inlinable func featured() -> Single<[Featured]> {
-    request(.featured)
+  @inlinable func categories() -> Single<[Category]> {
+    request(.categories)
   }
 
   @inlinable func photos(page: Int) -> Single<Page<[ImageAsset]>> {

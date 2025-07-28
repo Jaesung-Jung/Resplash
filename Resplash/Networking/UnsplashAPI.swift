@@ -11,7 +11,7 @@ import Moya
 
 enum UnsplashAPI {
   case topics
-  case featured
+  case categories
   case photos(page: Int, perPage: Int)
   case illustrations(page: Int, perPage: Int)
   case collections(mediaType: MediaType, page: Int, perPage: Int)
@@ -35,7 +35,7 @@ extension UnsplashAPI: TargetType {
     switch self {
     case .topics:
       return "napi/topics"
-    case .featured:
+    case .categories:
       return "napi/landing_pages/featured"
     case .photos:
       return "napi/photos"
@@ -103,7 +103,7 @@ extension UnsplashAPI: TargetType {
         parameters: ["query": query, "page": page, "per_page": perPage],
         encoding: URLEncoding.default
       )
-    case .featured, .imageDetail, .autocomplete:
+    case .categories, .imageDetail, .autocomplete:
       return .requestPlain
     }
   }
@@ -122,8 +122,8 @@ extension UnsplashAPI {
     switch self {
     case .topics:
       return file("topics") ?? object([])
-    case .featured:
-      return file("featured") ?? object([])
+    case .categories:
+      return file("categories") ?? object([])
     case .photos(let page, _):
       return file("photos_\(page)") ?? object([])
     case .illustrations(let page, _):

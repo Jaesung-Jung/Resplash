@@ -11,6 +11,16 @@
         }
       }
     },
+    "%@+ images" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@개+ 이미지"
+          }
+        }
+      }
+    },
     "%lld image" : {
       "localizations" : {
         "en" : {
@@ -171,6 +181,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "사진"
+          }
+        }
+      }
+    },
+    "Popular Images" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인기 이미지"
           }
         }
       }
