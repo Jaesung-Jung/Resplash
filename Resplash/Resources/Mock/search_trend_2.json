@@ -1,0 +1,2710 @@
+[
+  {
+    "category": "움직임",
+    "thumb": {
+      "id": "JhqhGfX_Wd8",
+      "slug": "콘크리트-포장-도로에-춤추는-여자-JhqhGfX_Wd8",
+      "created_at": "2017-11-26T16:59:43Z",
+      "updated_at": "2025-07-29T03:00:22Z",
+      "blur_hash": "L35OEH4o4.^l4T%MW=xZ?uIVxuM_",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1511715282680-fbf93a50e721"
+      }
+    },
+    "demand": "High",
+    "search_views": 2548643,
+    "growth": 1,
+    "results": 247066,
+    "top_keywords": [
+      {
+        "keyword": "현대 미술",
+        "demand": "Low",
+        "search_views": 1030699,
+        "growth": 22,
+        "results": 205889,
+        "thumb": {
+          "id": "k39RGHmLoV8",
+          "slug": "두-인간의-손-그림-k39RGHmLoV8",
+          "created_at": "2019-05-22T10:50:04Z",
+          "updated_at": "2025-07-29T04:46:07Z",
+          "blur_hash": "LOLNx$%1xvf,N_?wWVM{%NoLDini",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1558522195-e1201b090344?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1558522195-e1201b090344?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1558522195-e1201b090344?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1558522195-e1201b090344?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1558522195-e1201b090344?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1558522195-e1201b090344"
+          }
+        }
+      },
+      {
+        "keyword": "최소",
+        "demand": "High",
+        "search_views": 2548643,
+        "growth": 1,
+        "results": 32716,
+        "thumb": {
+          "id": "R9OueKOtGGU",
+          "slug": "설원을-걷는-사람-R9OueKOtGGU",
+          "created_at": "2017-02-16T15:55:37Z",
+          "updated_at": "2025-07-29T06:37:29Z",
+          "blur_hash": "L7R:E8ofM{xu_MofaefQIAaybGay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1487260211189-670c54da558d"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "지속 가능한 패션",
+    "thumb": {
+      "id": "J6MJPuJiDPo",
+      "slug": "white-wooden-drawer-with-i-love-you-print-J6MJPuJiDPo",
+      "created_at": "2020-07-30T08:21:46Z",
+      "updated_at": "2025-07-29T06:37:50Z",
+      "blur_hash": "LZNmc*s,R+f6_NkDaeozWWjZaKV@",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1596097198305-e4844a56ddb8?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1596097198305-e4844a56ddb8?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1596097198305-e4844a56ddb8?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1596097198305-e4844a56ddb8?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1596097198305-e4844a56ddb8?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1596097198305-e4844a56ddb8"
+      }
+    },
+    "demand": "High",
+    "search_views": 2548643,
+    "growth": 1,
+    "results": 39259,
+    "top_keywords": [
+      {
+        "keyword": "최소",
+        "demand": "High",
+        "search_views": 2548643,
+        "growth": 1,
+        "results": 32716,
+        "thumb": {
+          "id": "R9OueKOtGGU",
+          "slug": "설원을-걷는-사람-R9OueKOtGGU",
+          "created_at": "2017-02-16T15:55:37Z",
+          "updated_at": "2025-07-29T06:37:29Z",
+          "blur_hash": "L7R:E8ofM{xu_MofaefQIAaybGay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1487260211189-670c54da558d"
+          }
+        }
+      },
+      {
+        "keyword": "지속 가능한",
+        "demand": "Medium",
+        "search_views": 303716,
+        "growth": -6,
+        "results": 4687,
+        "thumb": {
+          "id": "x8ZStukS2PM",
+          "slug": "그린-플랜트-x8ZStukS2PM",
+          "created_at": "2018-11-19T04:32:52Z",
+          "updated_at": "2025-07-29T06:23:25Z",
+          "blur_hash": "LA7wj1Rk0et7?GR*E1s:W.WCs:j[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1542601906990-b4d3fb778b09"
+          }
+        }
+      },
+      {
+        "keyword": "재활용",
+        "demand": "High",
+        "search_views": 257476,
+        "growth": -18,
+        "results": 1476,
+        "thumb": {
+          "id": "RkIsyD_AVvc",
+          "slug": "four-assorted-color-trash-bins-beside-gray-wall-RkIsyD_AVvc",
+          "created_at": "2018-07-31T00:19:47Z",
+          "updated_at": "2025-07-29T07:21:23Z",
+          "blur_hash": "LbHy8zxUtkr:JDf8a}a#?wRoVaXA",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1532996122724-e3c354a0b15b"
+          }
+        }
+      },
+      {
+        "keyword": "에코",
+        "demand": "High",
+        "search_views": 239040,
+        "growth": -37,
+        "results": 3348,
+        "thumb": {
+          "id": "x8ZStukS2PM",
+          "slug": "그린-플랜트-x8ZStukS2PM",
+          "created_at": "2018-11-19T04:32:52Z",
+          "updated_at": "2025-07-29T06:23:25Z",
+          "blur_hash": "LA7wj1Rk0et7?GR*E1s:W.WCs:j[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1542601906990-b4d3fb778b09"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "파티",
+    "thumb": {
+      "id": "Xaanw0s0pMk",
+      "slug": "여러-가지-빛깔의-색종이-조각의-선택적-초점-사진-Xaanw0s0pMk",
+      "created_at": "2017-12-13T07:47:36Z",
+      "updated_at": "2025-07-29T07:45:16Z",
+      "blur_hash": "LX5be=ozn4ofUuWBbvayWAayWVWo",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1513151233558-d860c5398176"
+      }
+    },
+    "demand": "High",
+    "search_views": 2778157,
+    "growth": 1,
+    "results": 1105545,
+    "top_keywords": [
+      {
+        "keyword": "해변 파티",
+        "demand": "Low",
+        "search_views": 158316,
+        "growth": 61,
+        "results": 194144,
+        "thumb": {
+          "id": "kvBOc0nxNlk",
+          "slug": "일몰-동안-손을-드는-사람들의-실루엣-kvBOc0nxNlk",
+          "created_at": "2021-01-21T16:23:17Z",
+          "updated_at": "2025-07-29T04:52:19Z",
+          "blur_hash": "L,J}ekWFbaod}Fa$bHazIcofahR,",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1611244806964-91d204d4a2a7?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1611244806964-91d204d4a2a7?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1611244806964-91d204d4a2a7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1611244806964-91d204d4a2a7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1611244806964-91d204d4a2a7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1611244806964-91d204d4a2a7"
+          }
+        }
+      },
+      {
+        "keyword": "갈라",
+        "demand": "High",
+        "search_views": 101112,
+        "growth": 25,
+        "results": 120,
+        "thumb": {
+          "id": "P1djASp78Ss",
+          "slug": "책상-위에-맑은-와인잔-3개-P1djASp78Ss",
+          "created_at": "2018-01-26T20:06:28Z",
+          "updated_at": "2025-07-29T06:28:33Z",
+          "blur_hash": "LJIfyM9r5MxC?wwJSjR%W=ngoyoN",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1516997121675-4c2d1684aa3e"
+          }
+        }
+      },
+      {
+        "keyword": "응원",
+        "demand": "High",
+        "search_views": 89420,
+        "growth": 15,
+        "results": 1106,
+        "thumb": {
+          "id": "zeqWK0n5PNM",
+          "slug": "두-여성이-손을-들고-수역-옆에-서-있습니다-zeqWK0n5PNM",
+          "created_at": "2019-03-06T04:18:22Z",
+          "updated_at": "2025-07-29T03:41:17Z",
+          "blur_hash": "LXFr#2D%Ioaf_NaeWBof_4Rjs-Rj",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1551845728-6820a30c64e2?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1551845728-6820a30c64e2?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1551845728-6820a30c64e2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1551845728-6820a30c64e2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1551845728-6820a30c64e2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1551845728-6820a30c64e2"
+          }
+        }
+      },
+      {
+        "keyword": "축하",
+        "demand": "High",
+        "search_views": 621931,
+        "growth": 0,
+        "results": 6232,
+        "thumb": {
+          "id": "Xaanw0s0pMk",
+          "slug": "여러-가지-빛깔의-색종이-조각의-선택적-초점-사진-Xaanw0s0pMk",
+          "created_at": "2017-12-13T07:47:36Z",
+          "updated_at": "2025-07-29T07:45:16Z",
+          "blur_hash": "LX5be=ozn4ofUuWBbvayWAayWVWo",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1513151233558-d860c5398176"
+          }
+        }
+      },
+      {
+        "keyword": "클럽",
+        "demand": "High",
+        "search_views": 236531,
+        "growth": -1,
+        "results": 10189,
+        "thumb": {
+          "id": "A_0C42zmz1Q",
+          "slug": "초록색-불빛이-있는-방-안에서-춤을-추는-사람들-A_0C42zmz1Q",
+          "created_at": "2020-01-11T09:58:52Z",
+          "updated_at": "2025-07-29T06:19:08Z",
+          "blur_hash": "Le9JhWnmHcb;%_oMMzbFHvaytjai",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1578736641330-3155e606cd40?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1578736641330-3155e606cd40?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1578736641330-3155e606cd40?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1578736641330-3155e606cd40?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1578736641330-3155e606cd40?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1578736641330-3155e606cd40"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "정치",
+    "thumb": {
+      "id": "KVOtJAxULK4",
+      "slug": "dont-think-dont-ask-pay-tax-vote-for-us-text-KVOtJAxULK4",
+      "created_at": "2018-07-08T21:03:48Z",
+      "updated_at": "2024-01-25T09:57:51Z",
+      "blur_hash": "L5G]p|Obp0RPDN-;S%V@-qIqnMof",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1531083476725-62df3b84b21c?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1531083476725-62df3b84b21c?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1531083476725-62df3b84b21c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1531083476725-62df3b84b21c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1531083476725-62df3b84b21c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1531083476725-62df3b84b21c"
+      }
+    },
+    "demand": "High",
+    "search_views": 854268,
+    "growth": 0,
+    "results": 134119,
+    "top_keywords": [
+      {
+        "keyword": "랠리",
+        "demand": "Medium",
+        "search_views": 112650,
+        "growth": 67,
+        "results": 4626,
+        "thumb": {
+          "id": "yoDErtbVgeA",
+          "slug": "갈색과-검은-색-추상-그림-yoDErtbVgeA",
+          "created_at": "2021-02-09T15:54:10Z",
+          "updated_at": "2025-07-29T03:10:17Z",
+          "blur_hash": "LVJG.v$%E2s.*0R*niR,?vxZIpR+",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1612885852854-e2b8ea2f34e7?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1612885852854-e2b8ea2f34e7?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1612885852854-e2b8ea2f34e7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1612885852854-e2b8ea2f34e7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1612885852854-e2b8ea2f34e7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1612885852854-e2b8ea2f34e7"
+          }
+        }
+      },
+      {
+        "keyword": "항의",
+        "demand": "High",
+        "search_views": 201312,
+        "growth": 47,
+        "results": 7836,
+        "thumb": {
+          "id": "rd5uNIUJCF0",
+          "slug": "도시-건물의-회색조-사진-rd5uNIUJCF0",
+          "created_at": "2020-06-04T08:35:19Z",
+          "updated_at": "2025-07-29T07:53:48Z",
+          "blur_hash": "LAAAac-;M{t7~qRjRjofM{WBxuay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1591259622709-bdb033b4be2b?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1591259622709-bdb033b4be2b?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1591259622709-bdb033b4be2b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1591259622709-bdb033b4be2b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1591259622709-bdb033b4be2b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1591259622709-bdb033b4be2b"
+          }
+        }
+      },
+      {
+        "keyword": "선거",
+        "demand": "High",
+        "search_views": 87239,
+        "growth": 37,
+        "results": 378,
+        "thumb": {
+          "id": "T9CXBZLUvic",
+          "slug": "한-사람이-상자에-투표를-던지고-있습니다-T9CXBZLUvic",
+          "created_at": "2018-10-30T14:41:55Z",
+          "updated_at": "2025-07-29T07:05:47Z",
+          "blur_hash": "LoNAr3IU~qxu~qIUD%ogM{RjM{WB",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1540910419892-4a36d2c3266c"
+          }
+        }
+      },
+      {
+        "keyword": "양성 평등",
+        "demand": "High",
+        "search_views": 74877,
+        "growth": 25,
+        "results": 1254,
+        "thumb": {
+          "id": "UcUROHSJfRA",
+          "slug": "컴포트-룸-사이니지-UcUROHSJfRA",
+          "created_at": "2018-12-24T23:16:13Z",
+          "updated_at": "2025-07-29T04:52:04Z",
+          "blur_hash": "LaH1*$0LI:NHxuaeR*WVoyWBRjt7",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1545693315-85b6be26a3d6?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1545693315-85b6be26a3d6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1545693315-85b6be26a3d6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1545693315-85b6be26a3d6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1545693315-85b6be26a3d6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1545693315-85b6be26a3d6"
+          }
+        }
+      },
+      {
+        "keyword": "소식",
+        "demand": "High",
+        "search_views": 854268,
+        "growth": 0,
+        "results": 55090,
+        "thumb": {
+          "id": "_Zua2hyvTBk",
+          "slug": "man-sitting-on-bench-reading-newspaper-_Zua2hyvTBk",
+          "created_at": "2017-05-17T11:32:17Z",
+          "updated_at": "2025-07-29T05:20:13Z",
+          "blur_hash": "LZI=Gdx]4TRQt7%2tSkDI:xtxujZ",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1495020689067-958852a7765e"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "장치",
+    "thumb": {
+      "id": "WcYeiHMexR0",
+      "slug": "스마트폰-더미-WcYeiHMexR0",
+      "created_at": "2017-12-18T15:43:32Z",
+      "updated_at": "2025-07-29T04:14:19Z",
+      "blur_hash": "LRI=MW4U9Ft7E1%LofRjIUxutQj[",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1513611771808-7e8ab7f1dec6?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1513611771808-7e8ab7f1dec6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1513611771808-7e8ab7f1dec6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1513611771808-7e8ab7f1dec6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1513611771808-7e8ab7f1dec6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1513611771808-7e8ab7f1dec6"
+      }
+    },
+    "demand": "High",
+    "search_views": 2240709,
+    "growth": 0,
+    "results": 248979,
+    "top_keywords": [
+      {
+        "keyword": "Apple Watch",
+        "demand": "High",
+        "search_views": 178657,
+        "growth": 241,
+        "results": 23755,
+        "thumb": {
+          "id": "vCF5sB7QecM",
+          "slug": "person-wearing-silver-aluminium-case-apple-watch-with-white-sports-band-vCF5sB7QecM",
+          "created_at": "2015-06-10T22:30:41Z",
+          "updated_at": "2025-07-29T07:25:27Z",
+          "blur_hash": "LQH2i*xuNHxa.T.Twboe.9NGM{t7",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1434493789847-2f02dc6ca35d"
+          }
+        }
+      },
+      {
+        "keyword": "외침",
+        "demand": "High",
+        "search_views": 368363,
+        "growth": -1,
+        "results": 2257,
+        "thumb": {
+          "id": "JYGnB9gTCls",
+          "slug": "검은색-유선-전화기-JYGnB9gTCls",
+          "created_at": "2018-04-17T11:57:46Z",
+          "updated_at": "2025-07-29T06:06:38Z",
+          "blur_hash": "L4ODk5xu~q%2jYofWVWB~qxu9FRj",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1523966211575-eb4a01e7dd51"
+          }
+        }
+      },
+      {
+        "keyword": "5K 아이맥",
+        "demand": "Low",
+        "search_views": 115063,
+        "growth": -2,
+        "results": 1279,
+        "thumb": {
+          "id": "CSpjU6hYo_0",
+          "slug": "푸른-하늘-아래-갈색-암석-CSpjU6hYo_0",
+          "created_at": "2017-10-23T06:23:29Z",
+          "updated_at": "2025-07-29T06:09:06Z",
+          "blur_hash": "LxDw%6ofkWbH*0j[jtj@E1WBV@j[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1508739773434-c26b3d09e071"
+          }
+        }
+      },
+      {
+        "keyword": "계산기",
+        "demand": "High",
+        "search_views": 213604,
+        "growth": -7,
+        "results": 404,
+        "thumb": {
+          "id": "JhevWHCbVyw",
+          "slug": "검은색-컴퓨터-키보드를-사용하는-사람-JhevWHCbVyw",
+          "created_at": "2021-07-14T12:37:37Z",
+          "updated_at": "2025-07-29T07:16:18Z",
+          "blur_hash": "LeJu1NIoRiXT.TafWBjs%iV@WEso",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1626266061368-46a8f578ddd6"
+          }
+        }
+      },
+      {
+        "keyword": "세포",
+        "demand": "High",
+        "search_views": 215283,
+        "growth": -13,
+        "results": 20620,
+        "thumb": {
+          "id": "L7en7Lb-Ovc",
+          "slug": "보라색-세포-L7en7Lb-Ovc",
+          "created_at": "2019-12-11T17:44:59Z",
+          "updated_at": "2025-07-29T07:35:34Z",
+          "blur_hash": "L33t+iXBE]ncwbWQNVoPI%o5xJbM",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1576086213369-97a306d36557"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "패턴/색상",
+    "thumb": {
+      "id": "AkYGy_ymFqo",
+      "slug": "검은색-배경의-여러-가지-빛깔의-화면-AkYGy_ymFqo",
+      "created_at": "2018-03-07T18:03:44Z",
+      "updated_at": "2025-07-29T04:00:41Z",
+      "blur_hash": "LAEw??NHv}}[oc9txD^Q$*WW-WEL",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1520445694166-4a2ca1ba362f?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1520445694166-4a2ca1ba362f?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1520445694166-4a2ca1ba362f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1520445694166-4a2ca1ba362f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1520445694166-4a2ca1ba362f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1520445694166-4a2ca1ba362f"
+      }
+    },
+    "demand": "High",
+    "search_views": 29547798,
+    "growth": 0,
+    "results": 1211749,
+    "top_keywords": [
+      {
+        "keyword": "갈색",
+        "demand": "High",
+        "search_views": 524815,
+        "growth": 375,
+        "results": 305265,
+        "thumb": {
+          "id": "pVr6wvUneMk",
+          "slug": "디저트-필드-pVr6wvUneMk",
+          "created_at": "2018-11-16T20:58:43Z",
+          "updated_at": "2025-07-29T04:38:02Z",
+          "blur_hash": "LhMY[}oJWVj[~poLayj[Ioj[j@WV",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1542401886-65d6c61db217?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1542401886-65d6c61db217?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1542401886-65d6c61db217?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1542401886-65d6c61db217?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1542401886-65d6c61db217?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1542401886-65d6c61db217"
+          }
+        }
+      },
+      {
+        "keyword": "파란색 그라데이션",
+        "demand": "Medium",
+        "search_views": 188506,
+        "growth": 35,
+        "results": 358271,
+        "thumb": {
+          "id": "pJadQetzTkI",
+          "slug": "밝은-파란색에서-진한-파란색-그라데이션-pJadQetzTkI",
+          "created_at": "2019-05-12T17:48:53Z",
+          "updated_at": "2025-07-29T07:53:53Z",
+          "blur_hash": "LL5jwVdBg1g3iJeUe.e:e.f6fkfj",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1557683316-973673baf926"
+          }
+        }
+      },
+      {
+        "keyword": "블랙 화이트",
+        "demand": "Medium",
+        "search_views": 169028,
+        "growth": 24,
+        "results": 249289,
+        "thumb": {
+          "id": "Jrl_UQcZqOc",
+          "slug": "나무의-사진-Jrl_UQcZqOc",
+          "created_at": "2018-03-05T15:08:24Z",
+          "updated_at": "2025-07-29T06:35:07Z",
+          "blur_hash": "LCQ,L1xu-;t7~qj[xufQ-;WB9Fay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1520262494112-9fe481d36ec3?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1520262494112-9fe481d36ec3?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1520262494112-9fe481d36ec3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1520262494112-9fe481d36ec3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1520262494112-9fe481d36ec3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1520262494112-9fe481d36ec3"
+          }
+        }
+      },
+      {
+        "keyword": "추상 블랙",
+        "demand": "Low",
+        "search_views": 110071,
+        "growth": 5,
+        "results": 186458,
+        "thumb": {
+          "id": "RCAhiGJsUUE",
+          "slug": "회색-모래-파도-RCAhiGJsUUE",
+          "created_at": "2018-08-01T14:42:16Z",
+          "updated_at": "2025-07-29T03:09:31Z",
+          "blur_hash": "L02YkZ?bayj[?bxuofj[Rjoft7j[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1533134486753-c833f0ed4866"
+          }
+        }
+      },
+      {
+        "keyword": "검정",
+        "demand": "High",
+        "search_views": 3060678,
+        "growth": -3,
+        "results": 154192,
+        "thumb": {
+          "id": "YkXdt3429hc",
+          "slug": "하얀-비행기-YkXdt3429hc",
+          "created_at": "2017-04-01T18:37:38Z",
+          "updated_at": "2025-07-29T04:23:16Z",
+          "blur_hash": "L00+:,j[RjRjayayofofWBayofof",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1491071676596-825e11fccef5?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1491071676596-825e11fccef5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1491071676596-825e11fccef5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1491071676596-825e11fccef5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1491071676596-825e11fccef5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1491071676596-825e11fccef5"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "쓰기",
+    "thumb": {
+      "id": "s9CC2SKySJM",
+      "slug": "흰색-세라믹-머그잔-근처의-갈색-나무-테이블에-글을-쓰는-사람-s9CC2SKySJM",
+      "created_at": "2015-06-11T13:58:58Z",
+      "updated_at": "2025-07-29T07:34:57Z",
+      "blur_hash": "LVMQt^4n%MM{V?%LIUIU4mIUIUxu",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1434030216411-0b793f4b4173"
+      }
+    },
+    "demand": "High",
+    "search_views": 2101374,
+    "growth": -1,
+    "results": 105099,
+    "top_keywords": [
+      {
+        "keyword": "시",
+        "demand": "High",
+        "search_views": 129110,
+        "growth": 402,
+        "results": 805,
+        "thumb": {
+          "id": "hjwKMkehBco",
+          "slug": "블랙과-실버-만년필-hjwKMkehBco",
+          "created_at": "2016-09-06T18:30:43Z",
+          "updated_at": "2025-07-29T06:00:34Z",
+          "blur_hash": "LiJtxP%2M{s:0KoLbHfQD*Rjj[WC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1473186505569-9c61870c11f9"
+          }
+        }
+      },
+      {
+        "keyword": "러브 스토리",
+        "demand": "High",
+        "search_views": 44879,
+        "growth": 51,
+        "results": 35727,
+        "thumb": {
+          "id": "Lv0HAKKS5Lw",
+          "slug": "흰색-긴-소매-셔츠와-갈색-가죽-팔찌를-착용-한-사람-Lv0HAKKS5Lw",
+          "created_at": "2020-08-24T00:23:03Z",
+          "updated_at": "2025-07-29T04:48:13Z",
+          "blur_hash": "LsJ*xOflkXt7_4aee.kCoLbGV?WB",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1598228228033-c2c9761e2d4d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1598228228033-c2c9761e2d4d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1598228228033-c2c9761e2d4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1598228228033-c2c9761e2d4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1598228228033-c2c9761e2d4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1598228228033-c2c9761e2d4d"
+          }
+        }
+      },
+      {
+        "keyword": "해리 포터",
+        "demand": "Medium",
+        "search_views": 370585,
+        "growth": 17,
+        "results": 1235,
+        "thumb": {
+          "id": "tS-jh0M6JoA",
+          "slug": "종이에-해리-포터-로고-tS-jh0M6JoA",
+          "created_at": "2020-08-23T03:29:29Z",
+          "updated_at": "2025-07-29T06:23:58Z",
+          "blur_hash": "LSF=XL00o#IUIoNHj[t7f6ofRjkC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1598153346810-860daa814c4b"
+          }
+        }
+      },
+      {
+        "keyword": "달필",
+        "demand": "Medium",
+        "search_views": 121068,
+        "growth": 7,
+        "results": 1598,
+        "thumb": {
+          "id": "9TucEPaZxok",
+          "slug": "흑백-인쇄-용지의-근접-촬영-사진-9TucEPaZxok",
+          "created_at": "2019-08-01T03:32:10Z",
+          "updated_at": "2025-07-29T04:46:28Z",
+          "blur_hash": "LMP?s}%MWAof_Nt7axj@%MayWUfP",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1564630322990-4a9e93d13946?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1564630322990-4a9e93d13946?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1564630322990-4a9e93d13946?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1564630322990-4a9e93d13946?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1564630322990-4a9e93d13946?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1564630322990-4a9e93d13946"
+          }
+        }
+      },
+      {
+        "keyword": "책",
+        "demand": "High",
+        "search_views": 2101374,
+        "growth": -1,
+        "results": 27518,
+        "thumb": {
+          "id": "9DaOYUYnOls",
+          "slug": "여러-권의-쌓인-책-위에-펼쳐진-책-9DaOYUYnOls",
+          "created_at": "2018-11-23T19:49:53Z",
+          "updated_at": "2025-07-29T04:09:35Z",
+          "blur_hash": "LIKAWpV[I9IUV?IoNHjsH;NGtTxu",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1543002588-bfa74002ed7e"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "음식",
+    "thumb": {
+      "id": "fdlZBWIP0aM",
+      "slug": "삶은-달걀-샌드위치-fdlZBWIP0aM",
+      "created_at": "2016-12-18T08:11:37Z",
+      "updated_at": "2025-07-29T03:05:19Z",
+      "blur_hash": "LA9@39IA0N%f%LnN%1S#9hR$?Yn-",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1482049016688-2d3e1b311543"
+      }
+    },
+    "demand": "High",
+    "search_views": 13030404,
+    "growth": -2,
+    "results": 262984,
+    "top_keywords": [
+      {
+        "keyword": "유제품",
+        "demand": "Medium",
+        "search_views": 119127,
+        "growth": 28,
+        "results": 2457,
+        "thumb": {
+          "id": "_8bnn1GqX70",
+          "slug": "유리잔에-우유를-붓는-사람-_8bnn1GqX70",
+          "created_at": "2019-02-19T13:42:16Z",
+          "updated_at": "2025-07-29T06:14:07Z",
+          "blur_hash": "LEB|KdD%4nR5_49FNF-q8wbbx]xu",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1550583724-b2692b85b150"
+          }
+        }
+      },
+      {
+        "keyword": "요리",
+        "demand": "High",
+        "search_views": 3237154,
+        "growth": 22,
+        "results": 10330,
+        "thumb": {
+          "id": "APDMfLHZiRA",
+          "slug": "검은-프라이팬을-들고-있는-사람-APDMfLHZiRA",
+          "created_at": "2018-06-11T10:21:18Z",
+          "updated_at": "2025-07-29T03:13:50Z",
+          "blur_hash": "LcH2cr%Mt7t8~qt7RPWBR*%MWBay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1528712306091-ed0763094c98"
+          }
+        }
+      },
+      {
+        "keyword": "농업",
+        "demand": "Medium",
+        "search_views": 665980,
+        "growth": 14,
+        "results": 10507,
+        "thumb": {
+          "id": "fjj7lVpCxRE",
+          "slug": "낮에-싹을-틔우는-녹색-식물-fjj7lVpCxRE",
+          "created_at": "2019-05-07T13:03:59Z",
+          "updated_at": "2025-07-29T06:28:44Z",
+          "blur_hash": "LEDS:QxZDmof*9oJi%bFFqR*t5xs",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1557234195-bd9f290f0e4d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1557234195-bd9f290f0e4d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1557234195-bd9f290f0e4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1557234195-bd9f290f0e4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1557234195-bd9f290f0e4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1557234195-bd9f290f0e4d"
+          }
+        }
+      },
+      {
+        "keyword": "버거킹",
+        "demand": "High",
+        "search_views": 50719,
+        "growth": 14,
+        "results": 11662,
+        "thumb": {
+          "id": "rsNbV-PiCHc",
+          "slug": "unks-커피-숍-간판-rsNbV-PiCHc",
+          "created_at": "2021-03-16T19:05:59Z",
+          "updated_at": "2025-07-29T04:38:04Z",
+          "blur_hash": "L]IE-C-;Rkt8~qxuRjt7x]WBM{oL",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1615921511258-0aa98c84d400?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1615921511258-0aa98c84d400?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1615921511258-0aa98c84d400?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1615921511258-0aa98c84d400?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1615921511258-0aa98c84d400?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1615921511258-0aa98c84d400"
+          }
+        }
+      },
+      {
+        "keyword": "비즈니스",
+        "demand": "High",
+        "search_views": 102456,
+        "growth": 14,
+        "results": 523,
+        "thumb": {
+          "id": "KQ0C6WtEGlo",
+          "slug": "man-holding-his-head-while-sitting-on-chair-near-computer-desk-KQ0C6WtEGlo",
+          "created_at": "2017-11-20T18:50:04Z",
+          "updated_at": "2025-07-29T04:42:03Z",
+          "blur_hash": "LrNTqH-p%gay~qs:RibHIURjt6of",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1511203466129-824e631920d7?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1511203466129-824e631920d7?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1511203466129-824e631920d7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1511203466129-824e631920d7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1511203466129-824e631920d7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1511203466129-824e631920d7"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "음악",
+    "thumb": {
+      "id": "rPOmLGwai2w",
+      "slug": "음표의-기울기-선택-사진-rPOmLGwai2w",
+      "created_at": "2017-10-12T19:56:24Z",
+      "updated_at": "2025-07-29T07:35:01Z",
+      "blur_hash": "LBHoE~%M%NM_.8IUWBxu9Z_34Tt8",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1507838153414-b4b713384a76"
+      }
+    },
+    "demand": "High",
+    "search_views": 5189922,
+    "growth": -2,
+    "results": 221226,
+    "top_keywords": [
+      {
+        "keyword": "힙합",
+        "demand": "Medium",
+        "search_views": 267870,
+        "growth": 26,
+        "results": 2026,
+        "thumb": {
+          "id": "Qcl98B8Bk3I",
+          "slug": "힙합-낙서-Qcl98B8Bk3I",
+          "created_at": "2019-01-03T15:13:03Z",
+          "updated_at": "2025-07-29T07:02:47Z",
+          "blur_hash": "LcNuR{rC%|rq}?OF%fsSxsw]E,S$",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1546528377-9049abbac32f?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1546528377-9049abbac32f?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1546528377-9049abbac32f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1546528377-9049abbac32f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1546528377-9049abbac32f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1546528377-9049abbac32f"
+          }
+        }
+      },
+      {
+        "keyword": "앨범",
+        "demand": "High",
+        "search_views": 86208,
+        "growth": 15,
+        "results": 2202,
+        "thumb": {
+          "id": "z4KhbVhPP7s",
+          "slug": "흰색-나무-테이블에-사진-z4KhbVhPP7s",
+          "created_at": "2020-07-29T00:37:50Z",
+          "updated_at": "2025-07-29T04:52:05Z",
+          "blur_hash": "LTOzPmtS_2Io?GIoR*R+_NM{IVxt",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1595981234058-a9302fb97229?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1595981234058-a9302fb97229?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1595981234058-a9302fb97229?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1595981234058-a9302fb97229?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1595981234058-a9302fb97229?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1595981234058-a9302fb97229"
+          }
+        }
+      },
+      {
+        "keyword": "음악회",
+        "demand": "High",
+        "search_views": 788201,
+        "growth": 14,
+        "results": 8761,
+        "thumb": {
+          "id": "NcdG9mK3PBY",
+          "slug": "콘서트-사진-NcdG9mK3PBY",
+          "created_at": "2016-04-04T05:57:27Z",
+          "updated_at": "2025-07-29T07:05:35Z",
+          "blur_hash": "LKASxPof5AV[I[j[xCWU0%WC=[oe",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1459749411175-04bf5292ceea"
+          }
+        }
+      },
+      {
+        "keyword": "앨범 아트",
+        "demand": "Low",
+        "search_views": 138494,
+        "growth": 2,
+        "results": 184355,
+        "thumb": {
+          "id": "rX12B5uX7QM",
+          "slug": "사람이-물속에서-익사합니다-rX12B5uX7QM",
+          "created_at": "2017-07-15T06:24:56Z",
+          "updated_at": "2025-07-29T04:04:45Z",
+          "blur_hash": "LTBNWltRaxj[.8ofayfQ8^WBfQay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1500099817043-86d46000d58f?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1500099817043-86d46000d58f?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1500099817043-86d46000d58f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1500099817043-86d46000d58f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1500099817043-86d46000d58f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1500099817043-86d46000d58f"
+          }
+        }
+      },
+      {
+        "keyword": "무대",
+        "demand": "Medium",
+        "search_views": 68382,
+        "growth": 1,
+        "results": 284,
+        "thumb": {
+          "id": "dyJq7vzPeU8",
+          "slug": "어두운-방에-빨간색과-노란색-빛-dyJq7vzPeU8",
+          "created_at": "2021-05-24T16:31:34Z",
+          "updated_at": "2025-07-29T03:06:08Z",
+          "blur_hash": "LSCh~HtP0$RQs:oeW=WC0fRQ=_tQ",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1621873493371-9aea49f66b9b?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1621873493371-9aea49f66b9b?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1621873493371-9aea49f66b9b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1621873493371-9aea49f66b9b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1621873493371-9aea49f66b9b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1621873493371-9aea49f66b9b"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "집 외관",
+    "thumb": {
+      "id": "iaazZ7g07VQ",
+      "slug": "갈색과-흰색-콘크리트-건물-iaazZ7g07VQ",
+      "created_at": "2021-02-12T17:58:45Z",
+      "updated_at": "2025-07-29T04:09:48Z",
+      "blur_hash": "LbNTdu?v%3e:.Srskpt7~XXRV@of",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1613152161890-52aa17add7c9?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1613152161890-52aa17add7c9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1613152161890-52aa17add7c9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1613152161890-52aa17add7c9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1613152161890-52aa17add7c9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1613152161890-52aa17add7c9"
+      }
+    },
+    "demand": "High",
+    "search_views": 7720261,
+    "growth": -2,
+    "results": 930046,
+    "top_keywords": [
+      {
+        "keyword": "화려한 집",
+        "demand": "High",
+        "search_views": 32501,
+        "growth": 75,
+        "results": 184151,
+        "thumb": {
+          "id": "9qb1eRkgxc0",
+          "slug": "노란색-파란색과-녹색-콘크리트-건물-9qb1eRkgxc0",
+          "created_at": "2020-08-05T19:15:45Z",
+          "updated_at": "2025-07-29T03:37:40Z",
+          "blur_hash": "LgI~DMrs6BRO.TxYofWB%hovv|a}",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1596654907140-cac29b49fca4?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1596654907140-cac29b49fca4?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1596654907140-cac29b49fca4?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1596654907140-cac29b49fca4?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1596654907140-cac29b49fca4?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1596654907140-cac29b49fca4"
+          }
+        }
+      },
+      {
+        "keyword": "집",
+        "demand": "High",
+        "search_views": 114687,
+        "growth": 25,
+        "results": 913,
+        "thumb": {
+          "id": "yFV39g6AZ5o",
+          "slug": "2-층짜리-집의-풍경-사진-yFV39g6AZ5o",
+          "created_at": "2017-12-18T08:13:28Z",
+          "updated_at": "2025-07-29T04:04:44Z",
+          "blur_hash": "LvBOj|s.R.S6O^a{kDj[O_R-s8n$",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1513584684374-8bab748fbf90"
+          }
+        }
+      },
+      {
+        "keyword": "컨트리 하우스",
+        "demand": "Medium",
+        "search_views": 83368,
+        "growth": 17,
+        "results": 166264,
+        "thumb": {
+          "id": "Bkp3gLygyeA",
+          "slug": "푸른-잔디밭이-있는-갈색-목조-주택-Bkp3gLygyeA",
+          "created_at": "2019-05-16T19:48:45Z",
+          "updated_at": "2025-07-29T03:45:23Z",
+          "blur_hash": "L$J7t3xss:NG~Wt6oeWBo#ofR+t7",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1558036117-15d82a90b9b1"
+          }
+        }
+      },
+      {
+        "keyword": "재산",
+        "demand": "High",
+        "search_views": 134240,
+        "growth": 15,
+        "results": 4871,
+        "thumb": {
+          "id": "rgJ1J8SDEAY",
+          "slug": "갈색-테이블에-흰색과-빨간색-목조-주택-미니어처-rgJ1J8SDEAY",
+          "created_at": "2019-06-14T13:28:26Z",
+          "updated_at": "2025-07-29T07:30:16Z",
+          "blur_hash": "LGHx4#.8vxDOPXt8xZIVEMRlOGkB",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1560518883-ce09059eeffa"
+          }
+        }
+      },
+      {
+        "keyword": "비치 하우스",
+        "demand": "Medium",
+        "search_views": 198546,
+        "growth": 2,
+        "results": 336767,
+        "thumb": {
+          "id": "oji_NGmBI5o",
+          "slug": "물길-근처의-갈색-오두막-oji_NGmBI5o",
+          "created_at": "2017-07-11T17:38:21Z",
+          "updated_at": "2025-07-29T04:09:33Z",
+          "blur_hash": "LNEpWf?wIVM|okt7axWVX:ROV?kD",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1499793983690-e29da59ef1c2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "마시다",
+    "thumb": {
+      "id": "Qy2KMPRV3X4",
+      "slug": "맥주와-함께-맑은-마시는-유리-Qy2KMPRV3X4",
+      "created_at": "2021-04-11T23:24:49Z",
+      "updated_at": "2025-07-29T04:04:43Z",
+      "blur_hash": "LUBpISt7Ipj]01RjofWA_3ozsmoz",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1618183479302-1e0aa382c36b"
+      }
+    },
+    "demand": "Medium",
+    "search_views": 7210427,
+    "growth": -2,
+    "results": 944752,
+    "top_keywords": [
+      {
+        "keyword": "음료",
+        "demand": "High",
+        "search_views": 69871,
+        "growth": 66,
+        "results": 58404,
+        "thumb": {
+          "id": "y2ZnTVlTo8E",
+          "slug": "흰색-테이블에-게토레이-플라스틱-병-y2ZnTVlTo8E",
+          "created_at": "2021-07-09T21:11:44Z",
+          "updated_at": "2025-07-29T06:06:42Z",
+          "blur_hash": "LXLqU$*{1NNKK4-Vn%RPKkXRwHof",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1625865019845-7b2c89b8a8a9?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1625865019845-7b2c89b8a8a9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1625865019845-7b2c89b8a8a9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1625865019845-7b2c89b8a8a9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1625865019845-7b2c89b8a8a9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1625865019845-7b2c89b8a8a9"
+          }
+        }
+      },
+      {
+        "keyword": "전채",
+        "demand": "High",
+        "search_views": 41368,
+        "growth": 39,
+        "results": 529,
+        "thumb": {
+          "id": "STqHLqMne3k",
+          "slug": "흰색-세라믹-접시에-얇게-썬-빵-STqHLqMne3k",
+          "created_at": "2020-09-23T20:24:14Z",
+          "updated_at": "2025-07-29T04:04:42Z",
+          "blur_hash": "LRJG_.9Z0$NLMytRxsoz^iR*R.Nd",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1600891964599-f61ba0e24092"
+          }
+        }
+      },
+      {
+        "keyword": "맥주병",
+        "demand": "High",
+        "search_views": 75697,
+        "growth": 39,
+        "results": 37592,
+        "thumb": {
+          "id": "mhad_4H6S14",
+          "slug": "녹색-표면에-하이네켄-맥주병-mhad_4H6S14",
+          "created_at": "2021-04-20T02:27:48Z",
+          "updated_at": "2025-07-29T04:13:56Z",
+          "blur_hash": "LA4f]Sbu8yofR5jbt8WBH[e:x]ay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1618885472179-5e474019f2a9"
+          }
+        }
+      },
+      {
+        "keyword": "애프터눈 티",
+        "demand": "Low",
+        "search_views": 120411,
+        "growth": 30,
+        "results": 12395,
+        "thumb": {
+          "id": "qfRsevOtQXE",
+          "slug": "랙에-페이스트리-디스플레이-qfRsevOtQXE",
+          "created_at": "2018-07-25T09:02:39Z",
+          "updated_at": "2025-07-29T04:01:25Z",
+          "blur_hash": "LKEelO~B9wENOG%gofM|bxNexY%1",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1532509334149-d2130d74253c?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1532509334149-d2130d74253c?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1532509334149-d2130d74253c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1532509334149-d2130d74253c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1532509334149-d2130d74253c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1532509334149-d2130d74253c"
+          }
+        }
+      },
+      {
+        "keyword": "알코올",
+        "demand": "Medium",
+        "search_views": 239641,
+        "growth": 11,
+        "results": 30749,
+        "thumb": {
+          "id": "OxKFC5u0980",
+          "slug": "반쯤-채워진-와인-잔-옆에-반쯤-빈-투명-파인트-잔-OxKFC5u0980",
+          "created_at": "2015-07-20T19:04:24Z",
+          "updated_at": "2025-07-29T04:24:03Z",
+          "blur_hash": "LCByHX4;5RRB-VEL-9%11Ha2-U%L",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1437418747212-8d9709afab22?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1437418747212-8d9709afab22?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1437418747212-8d9709afab22?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1437418747212-8d9709afab22?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1437418747212-8d9709afab22?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1437418747212-8d9709afab22"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "문화적인",
+    "thumb": {
+      "id": "_xzz_gdkH1U",
+      "slug": "낮에-들여다보고-있는-갈색-모자를-쓴-사람-_xzz_gdkH1U",
+      "created_at": "2015-10-17T07:33:13Z",
+      "updated_at": "2025-07-29T06:04:56Z",
+      "blur_hash": "LFA^%;01Tf^GErx]kEROp1ngadW@",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1445067041505-b53988974abd?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1445067041505-b53988974abd?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1445067041505-b53988974abd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1445067041505-b53988974abd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1445067041505-b53988974abd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1445067041505-b53988974abd"
+      }
+    },
+    "demand": "High",
+    "search_views": 1204396,
+    "growth": -2,
+    "results": 170658,
+    "top_keywords": [
+      {
+        "keyword": "제재",
+        "demand": "High",
+        "search_views": 18136,
+        "growth": 1396,
+        "results": 1253,
+        "thumb": {
+          "id": "Af-gYALXZWw",
+          "slug": "흰색-바탕에-텍스트-Af-gYALXZWw",
+          "created_at": "2020-03-27T10:45:45Z",
+          "updated_at": "2025-07-29T07:35:17Z",
+          "blur_hash": "LIRC;{~qNHxuj?RjayazyFWWROa}",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1585305896551-8ac46bcc03f1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1585305896551-8ac46bcc03f1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1585305896551-8ac46bcc03f1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1585305896551-8ac46bcc03f1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1585305896551-8ac46bcc03f1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1585305896551-8ac46bcc03f1"
+          }
+        }
+      },
+      {
+        "keyword": "문화적 다양성",
+        "demand": "High",
+        "search_views": 24868,
+        "growth": 52,
+        "results": 5820,
+        "thumb": {
+          "id": "pMW4jzELQCw",
+          "slug": "flat-lay-photography-of-eight-coffee-latte-in-mugs-on-round-table-pMW4jzELQCw",
+          "created_at": "2017-06-30T06:30:03Z",
+          "updated_at": "2025-07-29T06:04:54Z",
+          "blur_hash": "LFH-=CRP%LWC00WrWBt6xZRk9ao0",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1498804103079-a6351b050096"
+          }
+        }
+      },
+      {
+        "keyword": "행렬",
+        "demand": "High",
+        "search_views": 56286,
+        "growth": 44,
+        "results": 8616,
+        "thumb": {
+          "id": "86pQMSmdv9M",
+          "slug": "낮에-거리를-걷는-주황색과-파란색-의상을-입은-사람들-86pQMSmdv9M",
+          "created_at": "2020-12-27T06:47:24Z",
+          "updated_at": "2025-07-29T04:11:01Z",
+          "blur_hash": "LOH-oo8^S#ah6-D$sltS%%ROaws:",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1609051589207-264fb1f91000?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1609051589207-264fb1f91000?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1609051589207-264fb1f91000?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1609051589207-264fb1f91000?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1609051589207-264fb1f91000?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1609051589207-264fb1f91000"
+          }
+        }
+      },
+      {
+        "keyword": "위기",
+        "demand": "High",
+        "search_views": 113593,
+        "growth": 31,
+        "results": 887,
+        "thumb": {
+          "id": "U3AKT6ryvic",
+          "slug": "상자를-들고-있는-남자-U3AKT6ryvic",
+          "created_at": "2019-10-03T15:39:53Z",
+          "updated_at": "2025-07-29T07:12:23Z",
+          "blur_hash": "LcLqe9WBt7of~qRjRjj[j[WBRjay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1570116908808-4eeb66d9bb1e?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1570116908808-4eeb66d9bb1e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1570116908808-4eeb66d9bb1e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1570116908808-4eeb66d9bb1e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1570116908808-4eeb66d9bb1e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1570116908808-4eeb66d9bb1e"
+          }
+        }
+      },
+      {
+        "keyword": "코로나 바이러스",
+        "demand": "High",
+        "search_views": 50781,
+        "growth": 6,
+        "results": 3665,
+        "thumb": {
+          "id": "rruOElkPdRA",
+          "slug": "빨간색과-흰색-정지-신호-rruOElkPdRA",
+          "created_at": "2021-03-18T21:09:23Z",
+          "updated_at": "2025-07-29T04:20:14Z",
+          "blur_hash": "LPKKvI4TITxtM_ovt7RQMyR-RnoM",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1616101746997-66ec55fa004f?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1616101746997-66ec55fa004f?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1616101746997-66ec55fa004f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1616101746997-66ec55fa004f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1616101746997-66ec55fa004f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1616101746997-66ec55fa004f"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "상호작용",
+    "thumb": {
+      "id": "nTXOmJL97MY",
+      "slug": "캐논-dslr-카메라를-들고-있는-사람-nTXOmJL97MY",
+      "created_at": "2016-07-22T20:21:07Z",
+      "updated_at": "2025-07-29T04:05:20Z",
+      "blur_hash": "LgEo*^~pxua#M{RjaeofWBj[j[Rj",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1469218692818-d972c42c4864?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1469218692818-d972c42c4864?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1469218692818-d972c42c4864?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1469218692818-d972c42c4864?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1469218692818-d972c42c4864?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1469218692818-d972c42c4864"
+      }
+    },
+    "demand": "High",
+    "search_views": 2265956,
+    "growth": -3,
+    "results": 257148,
+    "top_keywords": [
+      {
+        "keyword": "연결하다",
+        "demand": "High",
+        "search_views": 330960,
+        "growth": 2,
+        "results": 906,
+        "thumb": {
+          "id": "V5vqWC9gyEU",
+          "slug": "초록색-표면에-구겨진-노란색-종이-세-장이-노란색-줄이-그어진-종이로-둘러싸여-있습니다-V5vqWC9gyEU",
+          "created_at": "2019-12-28T20:12:42Z",
+          "updated_at": "2025-07-29T04:14:23Z",
+          "blur_hash": "LuN]K7ja},oLtNfjS3a|},j@Itaz",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1577563908411-5077b6dc7624"
+          }
+        }
+      },
+      {
+        "keyword": "대화",
+        "demand": "High",
+        "search_views": 464201,
+        "growth": 1,
+        "results": 1795,
+        "thumb": {
+          "id": "K8XYGbw4Ahg",
+          "slug": "검은-긴-소매-셔츠를-입은-여자-검은-세라믹-머그잔을-들고-K8XYGbw4Ahg",
+          "created_at": "2020-11-09T00:38:11Z",
+          "updated_at": "2025-07-29T03:09:43Z",
+          "blur_hash": "LOEMOL~q4nM_RjIUD%WBM{RjkCt7",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1604881988758-f76ad2f7aac1"
+          }
+        }
+      },
+      {
+        "keyword": "커플 사랑",
+        "demand": "Medium",
+        "search_views": 37642,
+        "growth": -2,
+        "results": 40760,
+        "thumb": {
+          "id": "p0vZplFhKYI",
+          "slug": "일몰-동안-해변에서-키스하는-남자와-여자의-실루엣-p0vZplFhKYI",
+          "created_at": "2021-03-17T08:38:47Z",
+          "updated_at": "2025-07-29T07:11:30Z",
+          "blur_hash": "LdFEGy9]IpxZ~BNHNGofTJnin$kC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1615966650071-855b15f29ad1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1615966650071-855b15f29ad1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1615966650071-855b15f29ad1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1615966650071-855b15f29ad1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1615966650071-855b15f29ad1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1615966650071-855b15f29ad1"
+          }
+        }
+      },
+      {
+        "keyword": "손을 잡고 있는 커플",
+        "demand": "High",
+        "search_views": 80643,
+        "growth": -6,
+        "results": 76250,
+        "thumb": {
+          "id": "V1sB2VwLNLQ",
+          "slug": "손을-잡고-있는-남녀-V1sB2VwLNLQ",
+          "created_at": "2018-11-08T12:16:49Z",
+          "updated_at": "2025-07-29T04:41:26Z",
+          "blur_hash": "LHE262%M0#oIIpI=xao29[nj$jW=",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1541679368093-5c967ac6de11?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1541679368093-5c967ac6de11?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1541679368093-5c967ac6de11?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1541679368093-5c967ac6de11?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1541679368093-5c967ac6de11?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1541679368093-5c967ac6de11"
+          }
+        }
+      },
+      {
+        "keyword": "연결",
+        "demand": "Medium",
+        "search_views": 469352,
+        "growth": -7,
+        "results": 1091,
+        "thumb": {
+          "id": "DNkoNXQti3c",
+          "slug": "나무-위에-손을-얹고-있는-한-무리의-사람들-DNkoNXQti3c",
+          "created_at": "2018-05-28T16:38:50Z",
+          "updated_at": "2025-07-29T04:38:22Z",
+          "blur_hash": "L7By~hRQ5OozB_M|-qbE2,Myr@s:",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1527525443983-6e60c75fff46"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "남자",
+    "thumb": {
+      "id": "Py8F6-hRn5o",
+      "slug": "안경과-민소매-상의를-입은-남자-Py8F6-hRn5o",
+      "created_at": "2017-08-22T23:09:44Z",
+      "updated_at": "2025-07-29T03:27:49Z",
+      "blur_hash": "LmLg;LIU_NX9?bRPIUxutln%WAt7",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1503443207922-dff7d543fd0e"
+      }
+    },
+    "demand": "High",
+    "search_views": 2451295,
+    "growth": -3,
+    "results": 500302,
+    "top_keywords": [
+      {
+        "keyword": "대머리 남자",
+        "demand": "High",
+        "search_views": 43437,
+        "growth": 180,
+        "results": 198296,
+        "thumb": {
+          "id": "2mWKL_I70qk",
+          "slug": "흰-드레스-셔츠를-입은-남자-2mWKL_I70qk",
+          "created_at": "2020-01-25T20:31:21Z",
+          "updated_at": "2025-07-29T04:52:59Z",
+          "blur_hash": "LtLgeKoJI@Io8^t7D%kB%NozjZV@",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1579983926774-399a9cb765c3?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1579983926774-399a9cb765c3?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1579983926774-399a9cb765c3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1579983926774-399a9cb765c3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1579983926774-399a9cb765c3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1579983926774-399a9cb765c3"
+          }
+        }
+      },
+      {
+        "keyword": "배우",
+        "demand": "High",
+        "search_views": 61650,
+        "growth": 154,
+        "results": 644,
+        "thumb": {
+          "id": "p6rNTdAPbuk",
+          "slug": "무대-위-세-명의-출연자의-실루엣-p6rNTdAPbuk",
+          "created_at": "2017-08-18T22:33:43Z",
+          "updated_at": "2025-07-29T07:11:43Z",
+          "blur_hash": "LPJxt:|xJR;i=0a|NusBNuN[oLw{",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1503095396549-807759245b35"
+          }
+        }
+      },
+      {
+        "keyword": "흑인 남자",
+        "demand": "High",
+        "search_views": 44420,
+        "growth": 41,
+        "results": 158654,
+        "thumb": {
+          "id": "2EGNqazbAMk",
+          "slug": "낮에-웃는-남자의-선택적-초점-2EGNqazbAMk",
+          "created_at": "2018-03-31T20:54:38Z",
+          "updated_at": "2025-07-29T03:05:18Z",
+          "blur_hash": "LCD9ht-W%#0e%f4:tlo#Oa9u%MWB",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1522529599102-193c0d76b5b6"
+          }
+        }
+      },
+      {
+        "keyword": "빵 굽는 사람",
+        "demand": "High",
+        "search_views": 157297,
+        "growth": 40,
+        "results": 1167,
+        "thumb": {
+          "id": "h3tP-D2eABI",
+          "slug": "갈색-나무-테이블에-흰-반죽을-들고-있는-사람-h3tP-D2eABI",
+          "created_at": "2021-02-09T15:31:22Z",
+          "updated_at": "2025-07-29T03:00:29Z",
+          "blur_hash": "LGF$CU?a%1%24TRj?HaeEM9ZxuRk",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1612884610549-ce221d92514a?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1612884610549-ce221d92514a?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1612884610549-ce221d92514a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1612884610549-ce221d92514a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1612884610549-ce221d92514a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1612884610549-ce221d92514a"
+          }
+        }
+      },
+      {
+        "keyword": "아프리카 남자",
+        "demand": "Medium",
+        "search_views": 43611,
+        "growth": 23,
+        "results": 221982,
+        "thumb": {
+          "id": "_ObjhzjnMmc",
+          "slug": "검은-드레스-셔츠를-입은-남자-검은-프레임-안경을-입고-_ObjhzjnMmc",
+          "created_at": "2021-02-22T19:53:05Z",
+          "updated_at": "2025-07-29T03:37:30Z",
+          "blur_hash": "LGFs0:%M_ND%?cWB9Zt6aeWBWBtR",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1614023342667-6f060e9d1e04"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "인테리어 장식",
+    "thumb": {
+      "id": "ti4kGLkGgmU",
+      "slug": "식탁-위의-화분-ti4kGLkGgmU",
+      "created_at": "2017-03-17T16:44:21Z",
+      "updated_at": "2025-07-29T07:54:00Z",
+      "blur_hash": "LKN-Dy4mIU%L?v%MRjoLs:%MtRM|",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1489769002049-ccd828976a6c?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1489769002049-ccd828976a6c?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1489769002049-ccd828976a6c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1489769002049-ccd828976a6c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1489769002049-ccd828976a6c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1489769002049-ccd828976a6c"
+      }
+    },
+    "demand": "High",
+    "search_views": 2092059,
+    "growth": -4,
+    "results": 799772,
+    "top_keywords": [
+      {
+        "keyword": "아름다운 집",
+        "demand": "High",
+        "search_views": 96481,
+        "growth": 25,
+        "results": 208198,
+        "thumb": {
+          "id": "g39p1kDjvSY",
+          "slug": "흰색-콘크리트-건물-g39p1kDjvSY",
+          "created_at": "2019-07-25T00:25:41Z",
+          "updated_at": "2025-07-29T04:52:09Z",
+          "blur_hash": "LTF7MFpevxk?BHyFSbs;CAS6v|WW",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1564013799919-ab600027ffc6"
+          }
+        }
+      },
+      {
+        "keyword": "큰 집",
+        "demand": "High",
+        "search_views": 46834,
+        "growth": 22,
+        "results": 168409,
+        "thumb": {
+          "id": "RKdLlTyjm5g",
+          "slug": "흰색과-검은-색-조명-콘크리트-집-RKdLlTyjm5g",
+          "created_at": "2017-09-19T17:53:45Z",
+          "updated_at": "2025-07-29T03:09:50Z",
+          "blur_hash": "LGDu[3$y59Nd}^s9IqR+0;R*s+WC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1505843513577-22bb7d21e455"
+          }
+        }
+      },
+      {
+        "keyword": "베이비룸",
+        "demand": "Medium",
+        "search_views": 80060,
+        "growth": 16,
+        "results": 72710,
+        "thumb": {
+          "id": "xz0paWiP3zs",
+          "slug": "갈색-나무-의자에-흰-수건-xz0paWiP3zs",
+          "created_at": "2020-12-07T06:34:42Z",
+          "updated_at": "2025-07-29T04:30:27Z",
+          "blur_hash": "LMO2a4WCaxs:.Ts:WBbHpIo~WBV?",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1607322851003-f5a88dc5b960?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1607322851003-f5a88dc5b960?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1607322851003-f5a88dc5b960?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1607322851003-f5a88dc5b960?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1607322851003-f5a88dc5b960?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1607322851003-f5a88dc5b960"
+          }
+        }
+      },
+      {
+        "keyword": "천장",
+        "demand": "Medium",
+        "search_views": 121752,
+        "growth": 9,
+        "results": 6778,
+        "thumb": {
+          "id": "YKE4zTW5lic",
+          "slug": "방-중앙의-나무-중앙-테이블-YKE4zTW5lic",
+          "created_at": "2018-08-27T16:15:47Z",
+          "updated_at": "2025-07-29T03:00:57Z",
+          "blur_hash": "LpL;jUj[R*fQ~qfRj@j[t7j[fQj[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1535385793343-27dff1413c5a?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1535385793343-27dff1413c5a?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1535385793343-27dff1413c5a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1535385793343-27dff1413c5a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1535385793343-27dff1413c5a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1535385793343-27dff1413c5a"
+          }
+        }
+      },
+      {
+        "keyword": "지하실",
+        "demand": "High",
+        "search_views": 117780,
+        "growth": 3,
+        "results": 996,
+        "thumb": {
+          "id": "u_khkgVDmxA",
+          "slug": "흰-벽-근처의-갈색-나무-문-u_khkgVDmxA",
+          "created_at": "2021-06-17T18:48:14Z",
+          "updated_at": "2025-07-29T03:31:35Z",
+          "blur_hash": "LKF~HmW?4.H=Q,ad%hbJ00skWEb{",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1623955277601-2aa7bb3fb240?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1623955277601-2aa7bb3fb240?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1623955277601-2aa7bb3fb240?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1623955277601-2aa7bb3fb240?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1623955277601-2aa7bb3fb240?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1623955277601-2aa7bb3fb240"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "유행",
+    "thumb": {
+      "id": "_3Q3tsJ01nc",
+      "slug": "photo-of-woman-holding-white-and-black-paper-bags-_3Q3tsJ01nc",
+      "created_at": "2017-01-09T18:20:33Z",
+      "updated_at": "2025-07-29T04:32:02Z",
+      "blur_hash": "LZK^{M?a.7WB~pIUV[ayxutQRQa{",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1483985988355-763728e1935b"
+      }
+    },
+    "demand": "High",
+    "search_views": 5026942,
+    "growth": -4,
+    "results": 152047,
+    "top_keywords": [
+      {
+        "keyword": "패스트 패션",
+        "demand": "Medium",
+        "search_views": 101960,
+        "growth": 160,
+        "results": 94350,
+        "thumb": {
+          "id": "TDOQPhq631s",
+          "slug": "문자-메시지-TDOQPhq631s",
+          "created_at": "2020-09-09T09:22:07Z",
+          "updated_at": "2025-07-29T04:05:17Z",
+          "blur_hash": "LjJ??AwJrrt8~UNaX7kC={r?WCt7",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1599642919995-f7ea5ee6a8c6?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1599642919995-f7ea5ee6a8c6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1599642919995-f7ea5ee6a8c6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1599642919995-f7ea5ee6a8c6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1599642919995-f7ea5ee6a8c6?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1599642919995-f7ea5ee6a8c6"
+          }
+        }
+      },
+      {
+        "keyword": "구찌",
+        "demand": "High",
+        "search_views": 123464,
+        "growth": 132,
+        "results": 578,
+        "thumb": {
+          "id": "iQiDp1EoSIY",
+          "slug": "구찌라고-적힌-간판이-있는-건물-iQiDp1EoSIY",
+          "created_at": "2021-09-21T13:44:56Z",
+          "updated_at": "2025-07-29T04:25:26Z",
+          "blur_hash": "LLHLSS^*~UIq%2aKs:o#D%n~xuR*",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1632231297158-82e2aa987af1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1632231297158-82e2aa987af1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1632231297158-82e2aa987af1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1632231297158-82e2aa987af1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1632231297158-82e2aa987af1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1632231297158-82e2aa987af1"
+          }
+        }
+      },
+      {
+        "keyword": "재료",
+        "demand": "High",
+        "search_views": 187325,
+        "growth": 23,
+        "results": 3293,
+        "thumb": {
+          "id": "aJTiW00qqtI",
+          "slug": "프레임-전체를-덮고-있는-흩어져-있는-흰-종이-aJTiW00qqtI",
+          "created_at": "2016-08-10T00:53:27Z",
+          "updated_at": "2025-07-29T06:28:44Z",
+          "blur_hash": "LJN1Gm00WBM{-;oft7ayD%Rjt7j@",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1470790376778-a9fbc86d70e2"
+          }
+        }
+      },
+      {
+        "keyword": "추측",
+        "demand": "High",
+        "search_views": 32884,
+        "growth": 16,
+        "results": 91,
+        "thumb": {
+          "id": "lW25Zxpkln8",
+          "slug": "클램프-뚜껑이-있는-투명한-유리-항아리에-담긴-둥근-사탕-lW25Zxpkln8",
+          "created_at": "2016-03-18T21:29:11Z",
+          "updated_at": "2025-07-29T03:52:23Z",
+          "blur_hash": "LbHxZ;tR4.xY00WAa{ofSiofs:Rk",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1458336458944-27b9f90c7f38?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1458336458944-27b9f90c7f38?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1458336458944-27b9f90c7f38?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1458336458944-27b9f90c7f38?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1458336458944-27b9f90c7f38?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1458336458944-27b9f90c7f38"
+          }
+        }
+      },
+      {
+        "keyword": "패션 모델",
+        "demand": "Low",
+        "search_views": 302537,
+        "growth": 9,
+        "results": 114273,
+        "thumb": {
+          "id": "VMeHP3mNJL4",
+          "slug": "건물-내부-바닥-타일에-앉아있는-여자-VMeHP3mNJL4",
+          "created_at": "2019-02-07T20:18:59Z",
+          "updated_at": "2025-07-29T07:01:26Z",
+          "blur_hash": "LTKx6txv_NRP?bRjIooL-=s:MxWU",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1549570652-97324981a6fd?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1549570652-97324981a6fd?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1549570652-97324981a6fd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1549570652-97324981a6fd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1549570652-97324981a6fd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1549570652-97324981a6fd"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "패션 스타일/무브먼트",
+    "thumb": {
+      "id": "xhwA4KXPdgs",
+      "slug": "서-있는-여자-xhwA4KXPdgs",
+      "created_at": "2018-11-05T06:46:18Z",
+      "updated_at": "2023-11-24T13:47:51Z",
+      "blur_hash": "L8A,qGIAad57~qnjE2W9^iNHR*My",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1541400233204-99b5378d5a9f?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1541400233204-99b5378d5a9f?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1541400233204-99b5378d5a9f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1541400233204-99b5378d5a9f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1541400233204-99b5378d5a9f?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1541400233204-99b5378d5a9f"
+      }
+    },
+    "demand": "High",
+    "search_views": 5997819,
+    "growth": -6,
+    "results": 106929,
+    "top_keywords": [
+      {
+        "keyword": "아프리카",
+        "demand": "Medium",
+        "search_views": 82102,
+        "growth": 79,
+        "results": 1230,
+        "thumb": {
+          "id": "xmSWVeGEnJw",
+          "slug": "a-woman-with-an-afro-is-looking-at-the-camera-xmSWVeGEnJw",
+          "created_at": "2021-09-27T18:08:44Z",
+          "updated_at": "2025-07-29T06:32:49Z",
+          "blur_hash": "LNEVg2%1~qIo_3D%xuR*x]bHRPxt",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1632765854612-9b02b6ec2b15"
+          }
+        }
+      },
+      {
+        "keyword": "학교로 돌아 가기",
+        "demand": "High",
+        "search_views": 513581,
+        "growth": 37,
+        "results": 27671,
+        "thumb": {
+          "id": "c-KRSHct7Ho",
+          "slug": "돋보기-옆의-흰색-프린터-용지-c-KRSHct7Ho",
+          "created_at": "2021-09-09T07:50:18Z",
+          "updated_at": "2025-07-29T06:28:35Z",
+          "blur_hash": "LPLrerMy0daKtlxZX8Rl0KRP,pWB",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1631173716529-fd1696a807b0?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1631173716529-fd1696a807b0?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1631173716529-fd1696a807b0?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1631173716529-fd1696a807b0?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1631173716529-fd1696a807b0?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1631173716529-fd1696a807b0"
+          }
+        }
+      },
+      {
+        "keyword": "대조",
+        "demand": "High",
+        "search_views": 129947,
+        "growth": 37,
+        "results": 12841,
+        "thumb": {
+          "id": "FCdi9-5EG_c",
+          "slug": "틸트-시프트-렌즈의-노란색-꽃-FCdi9-5EG_c",
+          "created_at": "2020-05-08T12:02:18Z",
+          "updated_at": "2025-07-29T03:09:45Z",
+          "blur_hash": "L13IhjV@0eofx^kCayfQ4:oz^iWB",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1588939240288-854695a834d1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1588939240288-854695a834d1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1588939240288-854695a834d1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1588939240288-854695a834d1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1588939240288-854695a834d1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1588939240288-854695a834d1"
+          }
+        }
+      },
+      {
+        "keyword": "다른",
+        "demand": "Medium",
+        "search_views": 233039,
+        "growth": 29,
+        "results": 1059,
+        "thumb": {
+          "id": "G1yhU1Ej-9A",
+          "slug": "체스-말의-선택적-초점-사진-G1yhU1Ej-9A",
+          "created_at": "2018-06-22T20:27:17Z",
+          "updated_at": "2025-07-29T04:46:14Z",
+          "blur_hash": "LeNJ2j%gyEof.Taeo#aeyEoLRjV?",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1529699211952-734e80c4d42b"
+          }
+        }
+      },
+      {
+        "keyword": "골동품",
+        "demand": "Medium",
+        "search_views": 178049,
+        "growth": 26,
+        "results": 7022,
+        "thumb": {
+          "id": "YSUnEXMVN5k",
+          "slug": "브라운과-실버-데스크-글로브-YSUnEXMVN5k",
+          "created_at": "2021-03-21T08:55:47Z",
+          "updated_at": "2025-07-29T03:10:13Z",
+          "blur_hash": "L68pu@t69u4:%L%LIoM|0fs;xZ%1",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1616315168316-61d6e5f16ead?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1616315168316-61d6e5f16ead?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1616315168316-61d6e5f16ead?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1616315168316-61d6e5f16ead?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1616315168316-61d6e5f16ead?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1616315168316-61d6e5f16ead"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "자연",
+    "thumb": {
+      "id": "-f0YLss50Bs",
+      "slug": "낮-동안-숲에-푸른-나무--f0YLss50Bs",
+      "created_at": "2020-05-02T04:08:04Z",
+      "updated_at": "2022-02-15T04:50:33Z",
+      "blur_hash": "LE7_DhM|03%L~nRk4q%L=|WUE2t7",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/flagged/photo-1588392382834-a891154bca4d?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/flagged/photo-1588392382834-a891154bca4d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/flagged/photo-1588392382834-a891154bca4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/flagged/photo-1588392382834-a891154bca4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/flagged/photo-1588392382834-a891154bca4d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1588392382834-a891154bca4d"
+      }
+    },
+    "demand": "High",
+    "search_views": 16831978,
+    "growth": -6,
+    "results": 1045302,
+    "top_keywords": [
+      {
+        "keyword": "꽃",
+        "demand": "High",
+        "search_views": 8664506,
+        "growth": 8,
+        "results": 376529,
+        "thumb": {
+          "id": "koy6FlCCy5s",
+          "slug": "주황색-꽃잎-꽃-koy6FlCCy5s",
+          "created_at": "2017-03-29T01:32:47Z",
+          "updated_at": "2025-07-29T06:19:00Z",
+          "blur_hash": "LgHU?~BYR.od1,WEe-j?MywHxBS4",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1490750967868-88aa4486c946"
+          }
+        }
+      },
+      {
+        "keyword": "란스케이프",
+        "demand": "Low",
+        "search_views": 82864,
+        "growth": 6,
+        "results": 1683,
+        "thumb": {
+          "id": "hke_MQn0xVU",
+          "slug": "흰-하늘-아래-사막-hke_MQn0xVU",
+          "created_at": "2017-11-12T23:40:19Z",
+          "updated_at": "2025-07-29T04:29:58Z",
+          "blur_hash": "L[HVo4NHj[j[pyjZazazogayo0j[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1510529769127-2adbcfcca438?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1510529769127-2adbcfcca438?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1510529769127-2adbcfcca438?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1510529769127-2adbcfcca438?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1510529769127-2adbcfcca438?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1510529769127-2adbcfcca438"
+          }
+        }
+      },
+      {
+        "keyword": "식물",
+        "demand": "Medium",
+        "search_views": 891150,
+        "growth": 3,
+        "results": 871066,
+        "thumb": {
+          "id": "xljtGZ2-P3Y",
+          "slug": "녹색-잎-식물-xljtGZ2-P3Y",
+          "created_at": "2018-02-13T14:27:12Z",
+          "updated_at": "2025-07-29T04:32:01Z",
+          "blur_hash": "L15FzQxuD6MeQVyptkoypakCVtQ.",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1518531933037-91b2f5f229cc"
+          }
+        }
+      },
+      {
+        "keyword": "요소",
+        "demand": "High",
+        "search_views": 81134,
+        "growth": -5,
+        "results": 1315,
+        "thumb": {
+          "id": "7qjqQjt7zXQ",
+          "slug": "close-up-photo-of-fire-at-nighttime-7qjqQjt7zXQ",
+          "created_at": "2017-06-03T09:52:07Z",
+          "updated_at": "2025-07-29T03:51:25Z",
+          "blur_hash": "LVD*;Eax0fR,9toL%2oL9vfk-UjZ",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1496483353456-90997957cf99?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1496483353456-90997957cf99?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1496483353456-90997957cf99?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1496483353456-90997957cf99?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1496483353456-90997957cf99?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1496483353456-90997957cf99"
+          }
+        }
+      },
+      {
+        "keyword": "요소",
+        "demand": "High",
+        "search_views": 47186,
+        "growth": -9,
+        "results": 1315,
+        "thumb": {
+          "id": "ZaU21K_4ZpA",
+          "slug": "검은색-배경의-흐릿한-불-사진-ZaU21K_4ZpA",
+          "created_at": "2018-11-12T23:31:00Z",
+          "updated_at": "2025-07-29T06:19:08Z",
+          "blur_hash": "LG8WgFs-9zR,NKazs-a|13R,=ts-",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1542065435-d6bc2eac3377?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1542065435-d6bc2eac3377?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1542065435-d6bc2eac3377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1542065435-d6bc2eac3377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1542065435-d6bc2eac3377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1542065435-d6bc2eac3377"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "자동차",
+    "thumb": {
+      "id": "GsJAkQHd7eU",
+      "slug": "낮-동안-보도에-주차된-검은색과-빨간색-오토바이-GsJAkQHd7eU",
+      "created_at": "2021-04-10T12:53:18Z",
+      "updated_at": "2025-07-29T04:18:43Z",
+      "blur_hash": "LYDu[7-oIoae~V$%M|aexusmfkaz",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1618058705968-d9720408caaa?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1618058705968-d9720408caaa?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1618058705968-d9720408caaa?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1618058705968-d9720408caaa?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1618058705968-d9720408caaa?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1618058705968-d9720408caaa"
+      }
+    },
+    "demand": "Low",
+    "search_views": 4962036,
+    "growth": -8,
+    "results": 639020,
+    "top_keywords": [
+      {
+        "keyword": "애스턴 마틴",
+        "demand": "Low",
+        "search_views": 149351,
+        "growth": 23,
+        "results": 1735,
+        "thumb": {
+          "id": "suCv48kiXnY",
+          "slug": "주차장에-주차된-블랙-포르쉐-911-suCv48kiXnY",
+          "created_at": "2020-03-13T06:54:57Z",
+          "updated_at": "2025-07-29T04:53:44Z",
+          "blur_hash": "LE9Q29NaNGj]$fa|WXj[0gxGs:ax",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1584082411947-dfa856e714eb?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1584082411947-dfa856e714eb?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1584082411947-dfa856e714eb?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1584082411947-dfa856e714eb?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1584082411947-dfa856e714eb?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1584082411947-dfa856e714eb"
+          }
+        }
+      },
+      {
+        "keyword": "아우디",
+        "demand": "Medium",
+        "search_views": 369592,
+        "growth": 5,
+        "results": 3524,
+        "thumb": {
+          "id": "Yp9FdEqaCdk",
+          "slug": "낮에-나무-사이-도로에-검은-차량-Yp9FdEqaCdk",
+          "created_at": "2018-11-04T16:18:51Z",
+          "updated_at": "2025-07-29T06:00:25Z",
+          "blur_hash": "L48y-dE257={1zs:,?jZ9GOYx[M{",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1541348263662-e068662d82af?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1541348263662-e068662d82af?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1541348263662-e068662d82af?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1541348263662-e068662d82af?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1541348263662-e068662d82af?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1541348263662-e068662d82af"
+          }
+        }
+      },
+      {
+        "keyword": "증권 시세 표시기",
+        "demand": "Medium",
+        "search_views": 67179,
+        "growth": 4,
+        "results": 460,
+        "thumb": {
+          "id": "XkOe8RoW3s0",
+          "slug": "낮-동안-브라운-필드에서-빨간색-atv를-타는-남자-XkOe8RoW3s0",
+          "created_at": "2020-03-19T23:20:57Z",
+          "updated_at": "2025-07-29T07:55:37Z",
+          "blur_hash": "LODSm}%Mt6Rk?wozayf6NdRPM|s:",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1584660042073-f22ae92b1c05?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1584660042073-f22ae92b1c05?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1584660042073-f22ae92b1c05?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1584660042073-f22ae92b1c05?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1584660042073-f22ae92b1c05?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1584660042073-f22ae92b1c05"
+          }
+        }
+      },
+      {
+        "keyword": "아우디 R8",
+        "demand": "Low",
+        "search_views": 135119,
+        "growth": -4,
+        "results": 3465,
+        "thumb": {
+          "id": "Dhol4s3fS_Y",
+          "slug": "낮-동안-도로에-블랙-메르세데스-벤츠-자동차-Dhol4s3fS_Y",
+          "created_at": "2021-01-17T10:54:40Z",
+          "updated_at": "2025-07-29T03:28:37Z",
+          "blur_hash": "L78X2#s:9GNd~pM{Ioof9YE1%MxF",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1610880846497-7257b23f6138?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1610880846497-7257b23f6138?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1610880846497-7257b23f6138?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1610880846497-7257b23f6138?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1610880846497-7257b23f6138?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1610880846497-7257b23f6138"
+          }
+        }
+      },
+      {
+        "keyword": "관객",
+        "demand": "High",
+        "search_views": 255008,
+        "growth": -7,
+        "results": 5416,
+        "thumb": {
+          "id": "U33fHryBYBU",
+          "slug": "흰-종이에-글을-쓰는-사람-U33fHryBYBU",
+          "created_at": "2020-12-11T16:33:09Z",
+          "updated_at": "2025-07-29T06:08:53Z",
+          "blur_hash": "LPN^b$?v00%M-pIoxtWBo}M{bHkC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1607703703520-bb638e84caf2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "아름다움",
+    "thumb": {
+      "id": "KVIlNRoGwxk",
+      "slug": "남자의-얼굴-KVIlNRoGwxk",
+      "created_at": "2019-04-21T04:23:29Z",
+      "updated_at": "2025-07-29T04:41:22Z",
+      "blur_hash": "LJOxdcQ,TdSh$%bcW;xu1KIoj[-;",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1555820585-c5ae44394b79"
+      }
+    },
+    "demand": "High",
+    "search_views": 1761965,
+    "growth": -8,
+    "results": 122047,
+    "top_keywords": [
+      {
+        "keyword": "금발",
+        "demand": "Medium",
+        "search_views": 104516,
+        "growth": 44,
+        "results": 20277,
+        "thumb": {
+          "id": "5VAKCs_Zg58",
+          "slug": "갈색-나무-벤치에-앉아-있는-파란색-데님-재킷을-입은-여자-5VAKCs_Zg58",
+          "created_at": "2021-07-15T22:15:04Z",
+          "updated_at": "2025-07-29T07:25:28Z",
+          "blur_hash": "LMFiJP_1cDxa4.E2E1Rj0MVs-BR*",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1626387133160-02364bcac6ed?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1626387133160-02364bcac6ed?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1626387133160-02364bcac6ed?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1626387133160-02364bcac6ed?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1626387133160-02364bcac6ed?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1626387133160-02364bcac6ed"
+          }
+        }
+      },
+      {
+        "keyword": "토대",
+        "demand": "High",
+        "search_views": 184706,
+        "growth": 26,
+        "results": 635,
+        "thumb": {
+          "id": "rsGd-rXFGkM",
+          "slug": "회색-콘크리트-건물의-공중보기-rsGd-rXFGkM",
+          "created_at": "2021-01-08T04:22:59Z",
+          "updated_at": "2025-07-29T07:26:53Z",
+          "blur_hash": "LAJtI]tiOiJU0ftQEL$%=^Ri9^%2",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1610079732288-72a77bd816c9?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1610079732288-72a77bd816c9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1610079732288-72a77bd816c9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1610079732288-72a77bd816c9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1610079732288-72a77bd816c9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1610079732288-72a77bd816c9"
+          }
+        }
+      },
+      {
+        "keyword": "수염",
+        "demand": "High",
+        "search_views": 154374,
+        "growth": 19,
+        "results": 9274,
+        "thumb": {
+          "id": "RukI4qZGlQs",
+          "slug": "입술에-검지-손가락을-가진-남자-RukI4qZGlQs",
+          "created_at": "2018-03-20T18:58:00Z",
+          "updated_at": "2025-07-29T07:40:52Z",
+          "blur_hash": "LKBV|m?b0#9Z9FMxn#ogEMR*%1xa",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1521572267360-ee0c2909d518"
+          }
+        }
+      },
+      {
+        "keyword": "곱슬머리",
+        "demand": "Low",
+        "search_views": 139048,
+        "growth": 13,
+        "results": 62856,
+        "thumb": {
+          "id": "dnL6ZIpht2s",
+          "slug": "회색-까마귀를-입고-웃는-여자-dnL6ZIpht2s",
+          "created_at": "2018-08-26T15:07:34Z",
+          "updated_at": "2025-07-29T06:04:44Z",
+          "blur_hash": "LJDwN|_3BqXTGwROwHn$pJR*iboM",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1535295972055-1c762f4483e5"
+          }
+        }
+      },
+      {
+        "keyword": "표지",
+        "demand": "High",
+        "search_views": 156676,
+        "growth": 9,
+        "results": 8039,
+        "thumb": {
+          "id": "QwoNAhbmLLo",
+          "slug": "multicolored-abstract-painting-QwoNAhbmLLo",
+          "created_at": "2017-01-16T17:53:38Z",
+          "updated_at": "2025-07-29T04:27:38Z",
+          "blur_hash": "LOBodVIq5SxDX8xaRjWV0#xa=wNH",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1484589065579-248aad0d8b13"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -22,6 +22,7 @@ enum UnsplashAPI {
   case relatedImages(image: ImageAsset, page: Int, perPage: Int)
   case autocomplete(query: String)
   case search(query: String, page: Int, perPage: Int)
+  case searchTrends(page: Int, perPage: Int)
 }
 
 // MARK: - UnsplashAPI (TargetType)
@@ -57,12 +58,14 @@ extension UnsplashAPI: TargetType {
       return "nautocomplete/\(query)"
     case .search:
       return "napi/search/photos"
+    case .searchTrends:
+      return "napi/search_trends"
     }
   }
 
   var task: Task {
     switch self {
-    case .photos(let page, let perPage), .illustrations(let page, let perPage), .topicImages(_, let page, let perPage):
+    case .photos(let page, let perPage), .illustrations(let page, let perPage), .topicImages(_, let page, let perPage), .relatedImages(_, let page, let perPage):
       return .requestParameters(
         parameters: ["page": page, "per_page": perPage],
         encoding: URLEncoding.default
@@ -93,14 +96,14 @@ extension UnsplashAPI: TargetType {
         parameters: ["limit": 10],
         encoding: URLEncoding.default
       )
-    case .relatedImages(_, let page, let perPage):
-      return .requestParameters(
-        parameters: ["page": page, "per_page": perPage],
-        encoding: URLEncoding.default
-      )
     case .search(let query, let page, let perPage):
       return .requestParameters(
         parameters: ["query": query, "page": page, "per_page": perPage],
+        encoding: URLEncoding.default
+      )
+    case .searchTrends(let page, let perPage):
+      return .requestParameters(
+        parameters: ["page": page, "per_page": 20],
         encoding: URLEncoding.default
       )
     case .categories, .imageDetail, .autocomplete:
@@ -144,6 +147,8 @@ extension UnsplashAPI {
       return file("autocomplete") ?? object([])
     case .search(_, let page, _):
       return file("") ?? object([])
+    case .searchTrends(let page, _):
+      return file("search_trend_\(page)") ?? object([])
     }
   }
 
