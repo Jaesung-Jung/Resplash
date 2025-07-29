@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 import SnapKit
 import RxSwift
 import RxCocoa
@@ -427,16 +428,39 @@ extension ImageDetailViewController {
             Image(systemName: "heart.fill")
             Text("\(detail.likes.formatted(.number)) likes")
           }
+          if let exif = detail.exif?.name {
+            HStack(spacing: 4) {
+              Image(systemName: "camera")
+              Text(exif)
+            }
+          }
           if let location = detail.location {
             HStack(spacing: 4) {
               Image(systemName: "location")
               Text(location.name)
             }
-          }
-          if let exif = detail.exif?.name {
-            HStack(spacing: 4) {
-              Image(systemName: "camera")
-              Text(exif)
+            if let position = location.position {
+              let coordinate = CLLocationCoordinate2D(latitude: position.latitude, longitude: position.longitude)
+              let camera = MapCamera(centerCoordinate: coordinate, distance: 500)
+              Map(initialPosition: .camera(camera)) {
+                Annotation(coordinate: coordinate) {
+                  Circle()
+                    .fill(.white)
+                    .frame(width: 40, height: 40)
+                    .shadow(color: .app.shadow.opacity(0.75), radius: 8, x: 0, y: 2)
+                    .overlay {
+                      AsyncImage(url: detail.image.url.s3) {
+                        $0.image?.resizable()
+                      }
+                      .clipShape(Circle())
+                      .padding(2)
+                    }
+                } label: {
+                  EmptyView()
+                }
+              }
+              .aspectRatio(1.75, contentMode: .fit)
+              .clipShape(RoundedRectangle(cornerRadius: 4))
             }
           }
         }
