@@ -19,7 +19,7 @@ final class SearchTabFlow: Flow {
     }
     switch step {
     case .searchTab:
-      let viewController = SearchViewController()
+      let viewController = SearchViewController(reactor: SearchViewReactor())
       navigationController.pushViewController(viewController, animated: true)
       return .one(flowContributor: .contribute(with: viewController))
     default:

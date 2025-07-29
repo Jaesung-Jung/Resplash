@@ -103,7 +103,7 @@ struct UnsplashService {
       .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
-  @inlinable func searchTrends() -> Single<Trend> {
+  @inlinable func searchTrends() -> Single<[Trend]> {
     // 2페이지 부터 응답속도 문제로 인해 1페이지만 요청
     request(.searchTrends(page: 1, perPage: 20))
   }

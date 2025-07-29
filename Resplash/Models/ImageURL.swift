@@ -77,9 +77,9 @@ extension ImageURL: Decodable {
 
 extension ImageURL {
   static let preview = ImageURL(
-    raw: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0")!,
-    full: URL(string: "https://images.unsplash.com/photo-1749738155703-b4650f21387b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDF8MXxhbGx8MXx8fHx8fHx8MTc1MTU5ODIwOHw&ixlib=rb-4.1.0&q=85")!,
-    s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1749738155703-b4650f21387b")!
+    raw: URL(string: "https://images.unsplash.com/photo-1592029383200-73fb26a5b925?ixlib=rb-4.1.0")!,
+    full: URL(string: "https://images.unsplash.com/photo-1592029383200-73fb26a5b925?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+    s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1592029383200-73fb26a5b925")!
   )
 }
 
