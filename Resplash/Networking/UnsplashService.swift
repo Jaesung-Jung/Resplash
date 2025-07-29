@@ -98,7 +98,7 @@ struct UnsplashService {
   }
 
   @inlinable func search(_ query: String, page: Int) -> Single<Page<[ImageAsset]>> {
-    let perPage = 30
+    let perPage = 20
     return request(.search(query: query, page: page, perPage: perPage), keyPath: "results")
       .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
