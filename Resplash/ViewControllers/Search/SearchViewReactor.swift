@@ -10,6 +10,7 @@ import RxRelay
 import RxFlow
 import ReactorKit
 import Dependencies
+import Algorithms
 
 final class SearchViewReactor: BaseReactor {
   @Dependency(\.unsplashService) var unsplash
@@ -25,6 +26,11 @@ final class SearchViewReactor: BaseReactor {
         fetchTrends.map { .setTrends($0) },
         .just(.setLoading(false))
       )
+      .catchAndReturn(.setLoading(false))
+
+    case .search(let query):
+      steps.accept(AppStep.search(query))
+      return .empty()
     }
   }
 
@@ -33,6 +39,11 @@ final class SearchViewReactor: BaseReactor {
     case .setTrends(let trends):
       return state.with {
         $0.trends = trends
+      }
+
+    case .setSearching(let isSearching):
+      return state.with {
+        $0.isSearching = isSearching
       }
 
     case .setLoading(let isLoading):
@@ -48,7 +59,7 @@ final class SearchViewReactor: BaseReactor {
 extension SearchViewReactor {
   struct State: Then {
     @Pulse var trends: [Trend] = []
-
+    var isSearching: Bool = false
     var isLoading: Bool = false
   }
 }
@@ -58,6 +69,7 @@ extension SearchViewReactor {
 extension SearchViewReactor {
   enum Action {
     case fetchTrends
+    case search(String)
   }
 }
 
@@ -66,6 +78,7 @@ extension SearchViewReactor {
 extension SearchViewReactor {
   enum Mutation {
     case setTrends([Trend])
+    case setSearching(Bool)
     case setLoading(Bool)
   }
 }

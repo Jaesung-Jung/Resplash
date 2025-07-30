@@ -20,5 +20,6 @@ enum AppStep: Step {
   case topicImages(Topic)
   case collectionImages(ImageAssetCollection)
   case imageDetail(ImageAsset)
+  case search(String)
   case share(URL)
 }

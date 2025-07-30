@@ -11,8 +11,15 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
+final class TestController: UIViewController {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .systemGreen
+  }
+}
+
 final class SearchViewController: BaseViewController<SearchViewReactor> {
-  private let searchController = UISearchController()
+  private let searchController: UISearchController
 
   private lazy var collectionView = UICollectionView(
     frame: .zero,
@@ -23,6 +30,11 @@ final class SearchViewController: BaseViewController<SearchViewReactor> {
   }
 
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
+
+  override init(reactor: SearchViewReactor? = nil) {
+    searchController = UISearchController(searchResultsController: nil)
+    super.init(reactor: reactor)
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,6 +58,25 @@ final class SearchViewController: BaseViewController<SearchViewReactor> {
         }
         dataSource.apply(snapshot)
       }
+      .disposed(by: disposeBag)
+
+    searchController.searchBar.searchTextField.rx
+      .controlEvent(.editingDidEndOnExit)
+      .withLatestFrom(searchController.searchBar.rx.text.orEmpty)
+      .map { .search($0) }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    collectionView.rx.itemSelected
+      .withUnretained(dataSource)
+      .compactMap { $0.itemIdentifier(for: $1) }
+      .compactMap {
+        if case .trendKeyword(let keyword) = $0 {
+          return .search(keyword.title)
+        }
+        return nil
+      }
+      .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
     rx.viewDidLoad

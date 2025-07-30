@@ -14,7 +14,11 @@ final class AppFlow: Flow {
   @Dependency(\.unsplashService) var unsplash
 
   let window: UIWindow
-  let tabBarController = UITabBarController()
+  let tabBarController = UITabBarController().then {
+    if #available(iOS 26.0, *) {
+      $0.tabBarMinimizeBehavior = .onScrollDown
+    }
+  }
 
   var root: any Presentable { tabBarController }
 
@@ -81,6 +85,11 @@ final class AppFlow: Flow {
       let detailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(image: image))
       navigate(to: detailViewController, animated: true)
       return .one(flowContributor: .contribute(with: detailViewController))
+
+    case .search(let query):
+      let searchResultViewController = SearchResultViewController(reactor: SearchResultViewReactor(query: query))
+      navigate(to: searchResultViewController, animated: true)
+      return .one(flowContributor: .contribute(with: searchResultViewController))
 
     case .share(let url):
       let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
