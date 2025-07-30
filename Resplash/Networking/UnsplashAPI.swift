@@ -17,6 +17,7 @@ enum UnsplashAPI {
   case collections(mediaType: MediaType, page: Int, perPage: Int)
   case topicImages(topic: Topic, page: Int, perPage: Int)
   case collectionImages(collection: ImageAssetCollection, page: Int, perPage: Int)
+  case categoryImages(category: Category.Item, page: Int, perPage: Int)
   case imageDetail(image: ImageAsset)
   case seriesImages(image: ImageAsset)
   case relatedImages(image: ImageAsset, page: Int, perPage: Int)
@@ -48,6 +49,8 @@ extension UnsplashAPI: TargetType {
       return "napi/topics/\(topic.slug)/photos"
     case .collectionImages(let collection, _, _):
       return "napi/collections/\(collection.id)/photos"
+    case .categoryImages(let category, _, _):
+      return "napi/landing_pages/images/stock/\(category.slug)"
     case .imageDetail(let image):
       return "napi/photos/\(image.slug)"
     case .seriesImages(let image):
@@ -91,6 +94,11 @@ extension UnsplashAPI: TargetType {
         parameters: ["page": page, "per_page": perPage, "share_key": collection.shareKey],
         encoding: URLEncoding.default
       )
+    case .categoryImages(_, let page, let perPage):
+      return .requestParameters(
+        parameters: ["page": page, "per_page": perPage],
+        encoding: URLEncoding.default
+      )
     case .seriesImages:
       return .requestParameters(
         parameters: ["limit": 10],
@@ -103,7 +111,7 @@ extension UnsplashAPI: TargetType {
       )
     case .searchTrends(let page, let perPage):
       return .requestParameters(
-        parameters: ["page": page, "per_page": 20],
+        parameters: ["page": page, "per_page": perPage],
         encoding: URLEncoding.default
       )
     case .categories, .imageDetail, .autocomplete:
@@ -137,6 +145,8 @@ extension UnsplashAPI {
       return file("topic_images_\(page)") ?? object([])
     case .collectionImages(_, let page, _):
       return file("collection_images_\(page)") ?? object([])
+    case .categoryImages(_, let page, let perPage):
+      return file("") ?? object([])
     case .imageDetail:
       return file("photo_detail_\(Int.random(in: 1...2))") ?? object([:])
     case .seriesImages:

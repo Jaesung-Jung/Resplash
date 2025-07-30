@@ -19,6 +19,7 @@ enum AppStep: Step {
   case collections(MediaType)
   case topicImages(Topic)
   case collectionImages(ImageAssetCollection)
+  case categoryImages(Category.Item)
   case imageDetail(ImageAsset)
   case search(String)
   case share(URL)

@@ -19,6 +19,9 @@ struct Category: Identifiable {
 extension Category {
   struct Item: Identifiable {
     let id = UUID()
+    let slug: String
+    let redirect: String?
+
     let title: String
     let subtitle: String
     let imageCount: Int
@@ -61,12 +64,17 @@ extension Category.Item: Hashable {
 extension Category.Item: Decodable {
   init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: StringCodingKey.self)
+    self.redirect = try container.decodeIfPresent(String.self, forKey: "redirect")
     self.title = try container.decode(String.self, forKey: "title")
     self.subtitle = try container.decode(String.self, forKey: "subtitle")
     let count = try container.decode(Int.self, forKey: "photos_count")
     self.imageCount = (count + 99) / 100 * 100 // round up
     let coverImageContainer = try container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "cover_photo")
     self.coverImageURL = try coverImageContainer.decode(ImageURL.self, forKey: "urls")
+
+    let ancestry = try container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "ancestry")
+    let subcategory = try ancestry.nestedContainer(keyedBy: StringCodingKey.self, forKey: "subcategory")
+    self.slug = try subcategory.decode(String.self, forKey: "slug")
   }
 }
 
@@ -92,6 +100,8 @@ extension Category {
 
 extension Category.Item {
   static let preview = Category.Item(
+    slug: "royalty-free",
+    redirect: nil,
     title: "로열티 프리 이미지",
     subtitle: "309,100+ 스톡 사진 및 이미지",
     imageCount: 309_099,

@@ -81,6 +81,18 @@ final class AppFlow: Flow {
       navigate(to: imagesViewController, animated: true)
       return .one(flowContributor: .contribute(with: imagesViewController))
 
+    case .categoryImages(let categoryItem):
+      if let redirect = categoryItem.redirect {
+        return .one(flowContributor: .forwardToCurrentFlow(withStep: AppStep.search(redirect)))
+      }
+      let imagesViewController = ImagesViewController(
+        reactor: ImagesViewReactor(title: categoryItem.title) { [unsplash] page in
+          unsplash.images(for: categoryItem, page: page)
+        }
+      )
+      navigate(to: imagesViewController, animated: true)
+      return .one(flowContributor: .contribute(with: imagesViewController))
+
     case .imageDetail(let image):
       let detailViewController = ImageDetailViewController(reactor: ImageDetailViewReactor(image: image))
       navigate(to: detailViewController, animated: true)

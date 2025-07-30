@@ -52,6 +52,8 @@ final class ExploreViewController: BaseViewController<ExploreViewReactor> {
       .withUnretained(dataSource)
       .compactMap {
         switch $0.itemIdentifier(for: $1) {
+        case .categoryItem(let item):
+          return .navigateToCategoryImages(item)
         case .image(let image):
           return .navigateToImageDetail(image)
         default:

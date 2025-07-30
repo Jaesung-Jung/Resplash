@@ -41,6 +41,10 @@ final class ExploreViewReactor: BaseReactor {
       )
       .catchAndReturn(.setLoading(false))
 
+    case .navigateToCategoryImages(let item):
+      steps.accept(AppStep.categoryImages(item))
+      return .empty()
+
     case .navigateToImageDetail(let image):
       steps.accept(AppStep.imageDetail(image))
       return .empty()
@@ -89,6 +93,7 @@ extension ExploreViewReactor {
     case fetchCategories
     case fetchPopularImages
 
+    case navigateToCategoryImages(Category.Item)
     case navigateToImageDetail(ImageAsset)
   }
 }

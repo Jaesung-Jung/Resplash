@@ -73,6 +73,12 @@ struct UnsplashService {
       .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
+  @inlinable func images(for category: Category.Item, page: Int) -> Single<Page<[ImageAsset]>> {
+    let perPage = 30
+    return request(.categoryImages(category: category, page: page, perPage: perPage), keyPath: "photos")
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
+  }
+
   @inlinable func collections(for mediaType: MediaType, page: Int) -> Single<Page<[ImageAssetCollection]>> {
     let perPage = 30
     return request(.collections(mediaType: mediaType, page: page, perPage: perPage))
