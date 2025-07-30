@@ -80,6 +80,8 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
         switch $0 {
         case .seriesImage(let image), .relatedImage(let image):
           return .navigateToImageDetail(image)
+        case .tag(let tag):
+          return .search(tag)
         default:
           return nil
         }
@@ -110,6 +112,11 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
       .reachedBottom()
       .map { .fetchNextRelatedImages }
       .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    Observable
+      .merge(rx.viewWillAppear.map { _ in .never }, rx.viewWillDisappear.map { _ in .automatic })
+      .bind(to: navigationItem.rx.largeTitleDisplayMode)
       .disposed(by: disposeBag)
 
     Observable
