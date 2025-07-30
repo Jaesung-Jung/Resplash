@@ -28,6 +28,14 @@ final class SearchViewReactor: BaseReactor {
       )
       .catchAndReturn(.setLoading(false))
 
+    case .fetchSuggestion(let query):
+      guard !query.isEmpty else {
+        return .just(.setSearchSuggestion(nil))
+      }
+      return unsplash.searchSuggestion(query)
+        .asObservable()
+        .map { .setSearchSuggestion($0) }
+
     case .search(let query):
       steps.accept(AppStep.search(query))
       return .empty()
@@ -39,6 +47,11 @@ final class SearchViewReactor: BaseReactor {
     case .setTrends(let trends):
       return state.with {
         $0.trends = trends
+      }
+
+    case .setSearchSuggestion(let suggestion):
+      return state.with {
+        $0.searchSuggestion = suggestion
       }
 
     case .setSearching(let isSearching):
@@ -59,6 +72,7 @@ final class SearchViewReactor: BaseReactor {
 extension SearchViewReactor {
   struct State: Then {
     @Pulse var trends: [Trend] = []
+    var searchSuggestion: SearchSuggestion?
     var isSearching: Bool = false
     var isLoading: Bool = false
   }
@@ -69,6 +83,7 @@ extension SearchViewReactor {
 extension SearchViewReactor {
   enum Action {
     case fetchTrends
+    case fetchSuggestion(String)
     case search(String)
   }
 }
@@ -78,6 +93,7 @@ extension SearchViewReactor {
 extension SearchViewReactor {
   enum Mutation {
     case setTrends([Trend])
+    case setSearchSuggestion(SearchSuggestion?)
     case setSearching(Bool)
     case setLoading(Bool)
   }

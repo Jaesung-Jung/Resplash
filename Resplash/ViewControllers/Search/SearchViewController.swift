@@ -20,6 +20,7 @@ final class TestController: UIViewController {
 
 final class SearchViewController: BaseViewController<SearchViewReactor> {
   private let searchController: UISearchController
+  private let searchSuggestionViewController: SearchSuggestionViewController
 
   private lazy var collectionView = UICollectionView(
     frame: .zero,
@@ -32,7 +33,8 @@ final class SearchViewController: BaseViewController<SearchViewReactor> {
   private lazy var dataSource = makeCollectionViewDataSource(collectionView)
 
   override init(reactor: SearchViewReactor? = nil) {
-    searchController = UISearchController(searchResultsController: nil)
+    searchSuggestionViewController = SearchSuggestionViewController()
+    searchController = UISearchController(searchResultsController: searchSuggestionViewController)
     super.init(reactor: reactor)
   }
 
@@ -60,9 +62,38 @@ final class SearchViewController: BaseViewController<SearchViewReactor> {
       }
       .disposed(by: disposeBag)
 
+    let suggestions = reactor.state
+      .map { $0.searchSuggestion?.suggestions ?? [] }
+      .distinctUntilChanged()
+      .share()
+
+    Observable
+      .combineLatest(suggestions, searchController.searchBar.rx.text.orEmpty)
+      .bind { [searchSuggestionViewController] suggestions, query in
+        searchSuggestionViewController.updateSuggestions(suggestions, query: query)
+      }
+      .disposed(by: disposeBag)
+
+    suggestions
+      .map { !$0.isEmpty }
+      .distinctUntilChanged()
+      .bind(to: searchController.rx.showsSearchResultsController)
+      .disposed(by: disposeBag)
+
+    searchController.searchBar.rx.text.orEmpty
+      .throttle(.milliseconds(100), scheduler: MainScheduler.instance)
+      .map { .fetchSuggestion($0) }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
     searchController.searchBar.searchTextField.rx
       .controlEvent(.editingDidEndOnExit)
       .withLatestFrom(searchController.searchBar.rx.text.orEmpty)
+      .map { .search($0) }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    searchSuggestionViewController.rx.itemSelected
       .map { .search($0) }
       .bind(to: reactor.action)
       .disposed(by: disposeBag)

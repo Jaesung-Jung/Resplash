@@ -93,8 +93,8 @@ struct UnsplashService {
       .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 
-  @inlinable func autocomplete(_ query: String) -> Single<[Autocomplete]> {
-    request(.autocomplete(query: query), keyPath: "autocomplete")
+  @inlinable func searchSuggestion(_ query: String) -> Single<SearchSuggestion> {
+    request(.autocomplete(query: query))
   }
 
   @inlinable func search(_ query: String, page: Int) -> Single<Page<[ImageAsset]>> {
