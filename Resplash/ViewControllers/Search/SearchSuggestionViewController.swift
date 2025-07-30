@@ -11,8 +11,8 @@ import RxSwift
 import RxCocoa
 
 final class SearchSuggestionViewController: BaseViewController<NoReactor> {
-  fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
-  fileprivate lazy var dataSource = makeCollectionViewDataSource(collectionView)
+  lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
+  lazy var dataSource = makeCollectionViewDataSource(collectionView)
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,11 +47,12 @@ extension SearchSuggestionViewController {
 
   private func makeCollectionViewDataSource(_ collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Int, Suggestion> {
     let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Suggestion> { cell, _, suggestion in
+      let font = UIFont.preferredFont(forTextStyle: .title3).withWeight(.bold)
       let attributedText = NSMutableAttributedString(
         string: suggestion.title,
         attributes: [
-          .foregroundColor: UIColor.app.secondary,
-          .font: UIFont.preferredFont(forTextStyle: .title3).withWeight(.bold)
+          .font: font,
+          .foregroundColor: UIColor.app.secondary
         ]
       )
       let characterSet = Set(suggestion.query.lowercased())
@@ -63,8 +64,14 @@ extension SearchSuggestionViewController {
       }
 
       var configuration = cell.defaultContentConfiguration()
+      configuration.image = UIImage(
+        systemName: "magnifyingglass.circle.fill",
+        withConfiguration: UIImage.SymbolConfiguration(font: font)
+          .applying(UIImage.SymbolConfiguration(hierarchicalColor: .app.secondary))
+      )
       configuration.attributedText = attributedText
       cell.contentConfiguration = configuration
+      cell.accessories = [.disclosureIndicator()]
       cell.selectedBackgroundView = UIView().then {
         $0.backgroundColor = .app.gray5
         $0.cornerRadius = 8

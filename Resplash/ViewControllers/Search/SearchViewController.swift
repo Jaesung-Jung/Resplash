@@ -49,6 +49,25 @@ final class SearchViewController: BaseViewController<SearchViewReactor> {
     }
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let collectionView = searchSuggestionViewController.collectionView
+    guard let selectedIndexPaths = collectionView.indexPathsForSelectedItems, let transitionCoordinator else {
+      return
+    }
+    transitionCoordinator.animate { _ in
+      for indexPath in selectedIndexPaths {
+        collectionView.deselectItem(at: indexPath, animated: true)
+      }
+    } completion: { context in
+      if context.isCancelled {
+        for indexPath in selectedIndexPaths {
+          collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+        }
+      }
+    }
+  }
+
   override func bind(reactor: SearchViewReactor) {
     reactor
       .pulse(\.$trends)
