@@ -38,17 +38,12 @@ final class TrendCell: UICollectionViewCell {
   private let highlightedBackgroundView = UIView().then {
     $0.backgroundColor = .app.gray5
     $0.cornerRadius = 8
-    $0.alpha = 0
+    $0.isHidden = true
   }
 
   override var isHighlighted: Bool {
     didSet {
-      let alpha: CGFloat = isHighlighted ? 1 : 0
-      let animator = UIViewPropertyAnimator.snappy()
-      animator.addAnimations {
-        self.highlightedBackgroundView.alpha = alpha
-      }
-      animator.startAnimation()
+      highlightedBackgroundView.isHidden = !isHighlighted
     }
   }
 
