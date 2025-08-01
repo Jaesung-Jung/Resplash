@@ -24,6 +24,7 @@ enum UnsplashAPI {
   case autocomplete(query: String)
   case search(query: String, page: Int, perPage: Int)
   case searchTrends(page: Int, perPage: Int)
+  case searchMeta(query: String)
 }
 
 // MARK: - UnsplashAPI (TargetType)
@@ -63,6 +64,8 @@ extension UnsplashAPI: TargetType {
       return "napi/search/photos"
     case .searchTrends:
       return "napi/search_trends"
+    case .searchMeta:
+      return "napi/search/meta"
     }
   }
 
@@ -114,6 +117,11 @@ extension UnsplashAPI: TargetType {
         parameters: ["page": page, "per_page": perPage],
         encoding: URLEncoding.default
       )
+    case .searchMeta(let query):
+      return .requestParameters(
+        parameters: ["query": query],
+        encoding: URLEncoding.default
+      )
     case .categories, .imageDetail, .autocomplete:
       return .requestPlain
     }
@@ -159,6 +167,8 @@ extension UnsplashAPI {
       return file("") ?? object([])
     case .searchTrends(let page, _):
       return file("search_trend_\(page)") ?? object([])
+    case .searchMeta:
+      return file("search_meta") ?? object([])
     }
   }
 
