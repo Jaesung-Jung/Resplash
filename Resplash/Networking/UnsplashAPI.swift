@@ -153,8 +153,8 @@ extension UnsplashAPI {
       return file("topic_images_\(page)") ?? object([])
     case .collectionImages(_, let page, _):
       return file("collection_images_\(page)") ?? object([])
-    case .categoryImages(_, let page, let perPage):
-      return file("") ?? object([])
+    case .categoryImages(_, let page, _):
+      return file("category_images_\(page)") ?? object([])
     case .imageDetail:
       return file("photo_detail_\(Int.random(in: 1...2))") ?? object([:])
     case .seriesImages:
@@ -164,7 +164,7 @@ extension UnsplashAPI {
     case .autocomplete:
       return file("autocomplete") ?? object([])
     case .search(_, let page, _):
-      return file("") ?? object([])
+      return file("search_\(page)") ?? object([])
     case .searchTrends(let page, _):
       return file("search_trend_\(page)") ?? object([])
     case .searchMeta:
