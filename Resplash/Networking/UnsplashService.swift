@@ -103,9 +103,27 @@ struct UnsplashService {
     request(.autocomplete(query: query))
   }
 
-  @inlinable func search(_ query: String, page: Int) -> Single<Page<[ImageAsset]>> {
+  @inlinable func searchPhotos(_ query: String, page: Int) -> Single<Page<[ImageAsset]>> {
     let perPage = 20
-    return request(.search(query: query, page: page, perPage: perPage), keyPath: "results")
+    return request(.searchPhotos(query: query, page: page, perPage: perPage), keyPath: "results")
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
+  }
+
+  @inlinable func searchIllustrations(_ query: String, page: Int) -> Single<Page<[ImageAsset]>> {
+    let perPage = 20
+    return request(.searchIllustrations(query: query, page: page, perPage: perPage), keyPath: "results")
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
+  }
+
+  @inlinable func searchCollections(_ query: String, page: Int) -> Single<Page<[ImageAssetCollection]>> {
+    let perPage = 20
+    return request(.searchCollections(query: query, page: page, perPage: perPage), keyPath: "results")
+      .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
+  }
+
+  @inlinable func searchUsers(_ query: String, page: Int) -> Single<Page<[User]>> {
+    let perPage = 20
+    return request(.searchUsers(query: query, page: page, perPage: perPage), keyPath: "results")
       .map { Page(page: page, isAtEnd: $0.count < perPage, items: $0) }
   }
 

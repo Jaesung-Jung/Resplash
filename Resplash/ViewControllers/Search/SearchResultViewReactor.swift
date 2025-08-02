@@ -27,7 +27,7 @@ final class SearchResultViewReactor: BaseReactor {
       guard !currentState.isLoading else {
         return .empty()
       }
-      let search = unsplash.search(currentState.query, page: 1).asObservable()
+      let search = unsplash.searchPhotos(currentState.query, page: 1).asObservable()
       return .concat(
         .just(.setLoading(true)),
         search.map { .setImages($0) },
@@ -40,7 +40,7 @@ final class SearchResultViewReactor: BaseReactor {
         return .empty()
       }
       let page = currentState.page + 1
-      let search = unsplash.search(currentState.query, page: page).asObservable()
+      let search = unsplash.searchPhotos(currentState.query, page: page).asObservable()
       return .concat(
         .just(.setLoading(true)),
         search.map { .appendImages($0) },

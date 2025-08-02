@@ -22,7 +22,10 @@ enum UnsplashAPI {
   case seriesImages(image: ImageAsset)
   case relatedImages(image: ImageAsset, page: Int, perPage: Int)
   case autocomplete(query: String)
-  case search(query: String, page: Int, perPage: Int)
+  case searchPhotos(query: String, page: Int, perPage: Int)
+  case searchIllustrations(query: String, page: Int, perPage: Int)
+  case searchCollections(query: String, page: Int, perPage: Int)
+  case searchUsers(query: String, page: Int, perPage: Int)
   case searchTrends(page: Int, perPage: Int)
   case searchMeta(query: String)
 }
@@ -60,8 +63,14 @@ extension UnsplashAPI: TargetType {
       return "napi/photos/\(image.slug)/related"
     case .autocomplete(let query):
       return "nautocomplete/\(query)"
-    case .search:
+    case .searchPhotos:
       return "napi/search/photos"
+    case .searchIllustrations:
+      return "napi/search/illustrations"
+    case .searchCollections:
+      return "napi/search/collections"
+    case .searchUsers:
+      return "napi/search/users"
     case .searchTrends:
       return "napi/search_trends"
     case .searchMeta:
@@ -107,7 +116,7 @@ extension UnsplashAPI: TargetType {
         parameters: ["limit": 10],
         encoding: URLEncoding.default
       )
-    case .search(let query, let page, let perPage):
+    case .searchPhotos(let query, let page, let perPage), .searchIllustrations(let query, let page, let perPage), .searchCollections(let query, let page, let perPage), .searchUsers(let query, let page, let perPage):
       return .requestParameters(
         parameters: ["query": query, "page": page, "per_page": perPage],
         encoding: URLEncoding.default
@@ -163,8 +172,14 @@ extension UnsplashAPI {
       return file("photo_related_\(page)") ?? object([:])
     case .autocomplete:
       return file("autocomplete") ?? object([])
-    case .search(_, let page, _):
-      return file("search_\(page)") ?? object([])
+    case .searchPhotos(_, let page, _):
+      return file("search_photos_\(page)") ?? object([])
+    case .searchIllustrations(_, let page, _):
+      return file("search_illustrations_\(page)") ?? object([])
+    case .searchCollections(_, let page, _):
+      return file("search_collections_\(page)") ?? object([])
+    case .searchUsers(_, let page, _):
+      return file("search_users_\(page)") ?? object([])
     case .searchTrends(let page, _):
       return file("search_trend_\(page)") ?? object([])
     case .searchMeta:
