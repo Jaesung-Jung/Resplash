@@ -16,7 +16,7 @@ struct User: Identifiable {
   let name: String
   let bio: String?
   let location: String?
-  let imageURL: ImageURL
+  let profileImageURL: ProfileImageURL
 
   let totalLikes: Int
   let totalCollections: Int
@@ -25,12 +25,14 @@ struct User: Identifiable {
 
   let socials: [Social]
   let shareLink: URL
+
+  let imageURLs: [ImageURL]
 }
 
-// MARK: - User.ImageURL
+// MARK: - User.ProfileImageURL
 
 extension User {
-  struct ImageURL: Decodable {
+  struct ProfileImageURL: Decodable {
     let small: URL
     let medium: URL
     let large: URL
@@ -72,7 +74,7 @@ extension User: Decodable {
     self.name = try container.decode(String.self, forKey: "name")
     self.bio = try container.decodeIfPresent(String.self, forKey: "bio")
     self.location = try container.decodeIfPresent(String.self, forKey: "location")
-    self.imageURL = try container.decode(ImageURL.self, forKey: "profile_image")
+    self.profileImageURL = try container.decode(ProfileImageURL.self, forKey: "profile_image")
 
     self.totalLikes = try container.decode(Int.self, forKey: "total_likes")
     self.totalCollections = try container.decode(Int.self, forKey: "total_collections")
@@ -95,6 +97,21 @@ extension User: Decodable {
 
     let linkContainer = try container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "links")
     self.shareLink = try linkContainer.decode(URL.self, forKey: "html")
+
+    do {
+      var photosContainer = try container.nestedUnkeyedContainer(forKey: "photos")
+      var imageURLs: [ImageURL] = []
+      if let count = photosContainer.count {
+        imageURLs.reserveCapacity(count)
+      }
+      while !photosContainer.isAtEnd {
+        let nestedContainer = try photosContainer.nestedContainer(keyedBy: StringCodingKey.self)
+        imageURLs.append(try nestedContainer.decode(ImageURL.self, forKey: "urls"))
+      }
+      self.imageURLs = imageURLs
+    } catch {
+      self.imageURLs = []
+    }
   }
 }
 
@@ -111,7 +128,7 @@ extension User {
     name: "SumUp",
     bio: "Developing tools & technology to help business owners around the world thrive.",
     location: "LA",
-    imageURL: ImageURL(
+    profileImageURL: ProfileImageURL(
       small: URL(string: "https://images.unsplash.com/profile-1668694018296-888e51022d71image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=32&h=32")!,
       medium: URL(string: "https://images.unsplash.com/profile-1668694018296-888e51022d71image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=64&h=64")!,
       large: URL(string: "https://images.unsplash.com/profile-1668694018296-888e51022d71image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128")!
@@ -125,7 +142,11 @@ extension User {
       .twitter("piensaenpixel"),
       .portfolio(URL(string: "https://api.unsplash.com/users/piensaenpixel/portfolio")!)
     ],
-    shareLink: URL(string: "https://unsplash.com/@sumup")!
+    shareLink: URL(string: "https://unsplash.com/@sumup")!,
+    imageURLs: [
+      .preview,
+      .preview
+    ]
   )
 }
 
