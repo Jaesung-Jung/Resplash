@@ -35,7 +35,7 @@ final class ProfileView: UIView {
 
   var user: User? {
     didSet {
-      profileImageView.setImageURL(user?.imageURL.medium)
+      profileImageView.setImageURL(user?.profileImageURL.medium)
       nameLabel.text = user?.name
       hireLabel.isHidden = user.map { !$0.forHire || size == .small } ?? true
       invalidateIntrinsicContentSize()
