@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import RxFlow
+import RxRelay
 import ReactorKit
 
-class BaseViewController<R: Reactor>: UIViewController, ReactorKit.View {
+class BaseViewController<R: Reactor>: UIViewController, Stepper, ReactorKit.View {
   typealias State = R.State
   typealias Action = R.Action
 
+  let steps = PublishRelay<Step>()
   var disposeBag = DisposeBag()
 
   init(reactor: R? = nil) {

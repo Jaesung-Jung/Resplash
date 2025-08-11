@@ -47,8 +47,8 @@ final class ImageCollectionsViewController: BaseViewController<ImageCollectionsV
 
     collectionView.rx.itemSelected
       .withLatestFrom(reactor.pulse(\.$collections)) { $1[$0.item] }
-      .map { .navigateToCollectionImages($0) }
-      .bind(to: reactor.action)
+      .map { AppStep.collectionImages($0) }
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     Observable

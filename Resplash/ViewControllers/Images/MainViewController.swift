@@ -113,14 +113,14 @@ final class MainViewController: BaseViewController<MainViewReactor> {
 
     shareActionReplay
       .map(\.shareLink)
-      .map { .share($0) }
-      .bind(to: reactor.action)
+      .map { AppStep.share($0) }
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     moreCollectionActionRelay
       .withLatestFrom(reactor.state.map(\.mediaType))
-      .map { .navigateToCollection($0) }
-      .bind(to: reactor.action)
+      .map { AppStep.collections($0) }
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     collectionView.rx
@@ -135,14 +135,14 @@ final class MainViewController: BaseViewController<MainViewReactor> {
       .map {
         switch $0 {
         case .topic(let topic):
-          return .navigateToTopicImages(topic)
+          return AppStep.topicImages(topic)
         case .collection(let collection):
-          return .navigateToCollectionImages(collection)
+          return AppStep.collectionImages(collection)
         case .image(let image):
-          return .navigateToImageDetail(image)
+          return AppStep.imageDetail(image)
         }
       }
-      .bind(to: reactor.action)
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     refreshControl.rx

@@ -52,8 +52,8 @@ final class SearchResultViewController: BaseViewController<SearchResultViewReact
     collectionView.rx.itemSelected
       .withUnretained(dataSource)
       .compactMap { $0.itemIdentifier(for: $1) }
-      .map { .navigateToImageDetail($0) }
-      .bind(to: reactor.action)
+      .map { AppStep.imageDetail($0) }
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     Observable.just(.search)

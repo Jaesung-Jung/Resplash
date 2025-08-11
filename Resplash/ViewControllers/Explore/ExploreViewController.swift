@@ -53,14 +53,14 @@ final class ExploreViewController: BaseViewController<ExploreViewReactor> {
       .compactMap {
         switch $0.itemIdentifier(for: $1) {
         case .categoryItem(let item):
-          return .navigateToCategoryImages(item)
+          return AppStep.categoryImages(item)
         case .image(let image):
-          return .navigateToImageDetail(image)
+          return AppStep.imageDetail(image)
         default:
           return nil
         }
       }
-      .bind(to: reactor.action)
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     collectionView.rx

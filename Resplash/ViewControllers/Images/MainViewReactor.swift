@@ -64,26 +64,6 @@ final class MainViewReactor: BaseReactor {
         nextImages.map { .appendImages($0) },
         .just(.setLoading(false))
       )
-
-    case .navigateToCollection(let mediaType):
-      steps.accept(AppStep.collections(mediaType))
-      return .empty()
-
-    case .navigateToTopicImages(let topic):
-      steps.accept(AppStep.topicImages(topic))
-      return .empty()
-
-    case .navigateToCollectionImages(let collection):
-      steps.accept(AppStep.collectionImages(collection))
-      return .empty()
-
-    case .navigateToImageDetail(let image):
-      steps.accept(AppStep.imageDetail(image))
-      return .empty()
-
-    case .share(let url):
-      steps.accept(AppStep.share(url))
-      return .empty()
     }
   }
 
@@ -176,12 +156,6 @@ extension MainViewReactor {
     case refresh
     case fetch
     case fetchNextImages
-
-    case navigateToCollection(MediaType)
-    case navigateToTopicImages(Topic)
-    case navigateToCollectionImages(ImageAssetCollection)
-    case navigateToImageDetail(ImageAsset)
-    case share(URL)
   }
 }
 

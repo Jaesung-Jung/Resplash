@@ -47,14 +47,6 @@ final class ImagesViewReactor: BaseReactor {
         nextImages.map { .appendImages($0) },
         .just(.setLoading(false))
       )
-
-    case .navigateToImageDetail(let image):
-      steps.accept(AppStep.imageDetail(image))
-      return .empty()
-
-    case .share(let url):
-      steps.accept(AppStep.share(url))
-      return .empty()
     }
   }
 
@@ -101,9 +93,6 @@ extension ImagesViewReactor {
   enum Action {
     case fetchImages
     case fetchNextImages
-
-    case navigateToImageDetail(ImageAsset)
-    case share(URL)
   }
 }
 

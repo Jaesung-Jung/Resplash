@@ -79,14 +79,14 @@ final class ImageDetailViewController: BaseViewController<ImageDetailViewReactor
       .compactMap {
         switch $0 {
         case .seriesImage(let image), .relatedImage(let image):
-          return .navigateToImageDetail(image)
+          return AppStep.imageDetail(image)
         case .tag(let tag):
-          return .search(tag)
+          return AppStep.search(tag.title)
         default:
           return nil
         }
       }
-      .bind(to: reactor.action)
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     collectionView.rx.itemSelected

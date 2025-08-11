@@ -47,11 +47,6 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
       }
       .disposed(by: disposeBag)
 
-    shareActionReplay
-      .map { .share($0.shareLink) }
-      .bind(to: reactor.action)
-      .disposed(by: disposeBag)
-
     collectionView.rx
       .reachedBottom()
       .map { .fetchNextImages }
@@ -61,8 +56,13 @@ final class ImagesViewController: BaseViewController<ImagesViewReactor> {
     collectionView.rx.itemSelected
       .withUnretained(dataSource)
       .compactMap { $0.itemIdentifier(for: $1) }
-      .map { .navigateToImageDetail($0) }
-      .bind(to: reactor.action)
+      .map { AppStep.imageDetail($0) }
+      .bind(to: steps)
+      .disposed(by: disposeBag)
+
+    shareActionReplay
+      .map { AppStep.share($0.shareLink) }
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     Observable.just(.fetchImages)

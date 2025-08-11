@@ -10,10 +10,7 @@ import ReactorKit
 
 extension FlowContributor {
   static func contribute<Presentable: BaseViewController<Reactor>, Reactor: BaseReactor>(with presentable: Presentable) -> FlowContributor {
-    guard let reactor = presentable.reactor else {
-      return .contribute(withNextPresentable: presentable, withNextStepper: DefaultStepper())
-    }
-    return .contribute(withNextPresentable: presentable, withNextStepper: reactor)
+    return .contribute(withNextPresentable: presentable, withNextStepper: presentable)
   }
 
   static func contribute(with presentable: Presentable, step: Step) -> FlowContributor {

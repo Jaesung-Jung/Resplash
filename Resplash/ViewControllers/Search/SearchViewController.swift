@@ -108,13 +108,13 @@ final class SearchViewController: BaseViewController<SearchViewReactor> {
     searchController.searchBar.searchTextField.rx
       .controlEvent(.editingDidEndOnExit)
       .withLatestFrom(searchController.searchBar.rx.text.orEmpty)
-      .map { .search($0) }
-      .bind(to: reactor.action)
+      .map { AppStep.search($0) }
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     searchSuggestionViewController.rx.itemSelected
-      .map { .search($0) }
-      .bind(to: reactor.action)
+      .map { AppStep.search($0) }
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     collectionView.rx.itemSelected
@@ -122,11 +122,11 @@ final class SearchViewController: BaseViewController<SearchViewReactor> {
       .compactMap { $0.itemIdentifier(for: $1) }
       .compactMap {
         if case .trendKeyword(let keyword) = $0 {
-          return .search(keyword.title)
+          return AppStep.search(keyword.title)
         }
         return nil
       }
-      .bind(to: reactor.action)
+      .bind(to: steps)
       .disposed(by: disposeBag)
 
     rx.viewDidLoad

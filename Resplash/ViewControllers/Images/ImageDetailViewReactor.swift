@@ -57,14 +57,6 @@ final class ImageDetailViewReactor: BaseReactor {
         nextImages.map { .appendRelatedImages($0) },
         .just(.setLoading(false))
       )
-
-    case .search(let tag):
-      steps.accept(AppStep.search(tag.title))
-      return .empty()
-
-    case .navigateToImageDetail(let image):
-      steps.accept(AppStep.imageDetail(image))
-      return .empty()
     }
   }
 
@@ -123,9 +115,6 @@ extension ImageDetailViewReactor {
   enum Action {
     case fetchImageDetail
     case fetchNextRelatedImages
-
-    case search(ImageAssetDetail.Tag)
-    case navigateToImageDetail(ImageAsset)
   }
 }
 

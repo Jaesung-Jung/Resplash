@@ -47,10 +47,6 @@ final class SearchResultViewReactor: BaseReactor {
         .just(.setLoading(false))
       )
       .catchAndReturn(.setLoading(false))
-
-    case .navigateToImageDetail(let image):
-      steps.accept(AppStep.imageDetail(image))
-      return .empty()
     }
   }
 
@@ -97,8 +93,6 @@ extension SearchResultViewReactor {
   enum Action {
     case search
     case searchNext
-
-    case navigateToImageDetail(ImageAsset)
   }
 }
 

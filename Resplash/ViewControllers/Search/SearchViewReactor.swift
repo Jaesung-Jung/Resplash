@@ -35,10 +35,6 @@ final class SearchViewReactor: BaseReactor {
       return unsplash.searchSuggestion(query)
         .asObservable()
         .map { .setSearchSuggestion($0) }
-
-    case .search(let query):
-      steps.accept(AppStep.search(query))
-      return .empty()
     }
   }
 
@@ -84,7 +80,6 @@ extension SearchViewReactor {
   enum Action {
     case fetchTrends
     case fetchSuggestion(String)
-    case search(String)
   }
 }
 

@@ -6,28 +6,15 @@
 //
 
 import Foundation
-import RxFlow
 import RxSwift
-import RxRelay
 import ReactorKit
 
-protocol BaseReactor: AnyObject, Reactor, Stepper {
+protocol BaseReactor: AnyObject, Reactor {
 }
-
-private var __stepsRelayAssociatedKey: UInt8 = 0
 
 extension BaseReactor {
   func transform(state: Observable<State>) -> Observable<State> {
     return state.observe(on: MainScheduler.instance)
-  }
-
-  var steps: PublishRelay<Step> {
-    if let object = objc_getAssociatedObject(self, &__stepsRelayAssociatedKey) as? PublishRelay<Step> {
-      return object
-    }
-    let newObject = PublishRelay<Step>()
-    objc_setAssociatedObject(self, &__stepsRelayAssociatedKey, newObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    return newObject
   }
 }
 

@@ -49,10 +49,6 @@ final class ImageCollectionsViewReactor: BaseReactor {
         nextImages.map { .appendCollections($0) },
         .just(.setLoading(false))
       )
-
-    case .navigateToCollectionImages(let collection):
-      steps.accept(AppStep.collectionImages(collection))
-      return .empty()
     }
   }
 
@@ -99,8 +95,6 @@ extension ImageCollectionsViewReactor {
   enum Action {
     case fetchCollections
     case fetchNextCollections
-
-    case navigateToCollectionImages(ImageAssetCollection)
   }
 }
 
