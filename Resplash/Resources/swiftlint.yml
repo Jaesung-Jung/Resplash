@@ -49,6 +49,7 @@ only_rules:
   - ibinspectable_in_extension
   - identical_operands
   - identifier_name
+  - indentation_width
   - implicit_getter
   - implicit_return
   - inclusive_language
@@ -173,6 +174,8 @@ identifier_name:
     - 'b'
     - 'w'
     - 'h'
+indentation_width:
+  indentation_width: 2
 implicit_return:
   included: [closure, getter, subscript]
 unneeded_override:
