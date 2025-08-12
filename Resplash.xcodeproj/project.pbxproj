@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4BF651A02E4A254600C4B386 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 4BF6519F2E4A254600C4B386 /* Algorithms */; };
+		4BF651A32E4A255A00C4B386 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 4BF651A22E4A255A00C4B386 /* AsyncAlgorithms */; };
+		4BF651A62E4A257900C4B386 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4BF651A52E4A257900C4B386 /* ComposableArchitecture */; };
+		4BF651CE2E4AC00500C4B386 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4BF651CD2E4AC00500C4B386 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4B57E6AB2E49E0060003D2F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -86,6 +93,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BF651A02E4A254600C4B386 /* Algorithms in Frameworks */,
+				4BF651CE2E4AC00500C4B386 /* Alamofire in Frameworks */,
+				4BF651A62E4A257900C4B386 /* ComposableArchitecture in Frameworks */,
+				4BF651A32E4A255A00C4B386 /* AsyncAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +149,10 @@
 			);
 			name = Resplash;
 			packageProductDependencies = (
+				4BF6519F2E4A254600C4B386 /* Algorithms */,
+				4BF651A22E4A255A00C4B386 /* AsyncAlgorithms */,
+				4BF651A52E4A257900C4B386 /* ComposableArchitecture */,
+				4BF651CD2E4AC00500C4B386 /* Alamofire */,
 			);
 			productName = Resplash;
 			productReference = 4B57E68F2E49DFA40003D2F0 /* Resplash.app */;
@@ -194,6 +209,12 @@
 			);
 			mainGroup = 4B57E6862E49DFA40003D2F0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4BF6519E2E4A254600C4B386 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				4BF651A12E4A255A00C4B386 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+				4BF651A42E4A257900C4B386 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				4BF651CC2E4AC00500C4B386 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B57E6902E49DFA40003D2F0 /* Products */;
 			projectDirPath = "";
@@ -415,7 +436,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
@@ -449,7 +470,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
@@ -532,6 +553,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4BF6519E2E4A254600C4B386 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+		4BF651A12E4A255A00C4B386 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		4BF651A42E4A257900C4B386 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.1;
+			};
+		};
+		4BF651CC2E4AC00500C4B386 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4BF6519F2E4A254600C4B386 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BF6519E2E4A254600C4B386 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+		4BF651A22E4A255A00C4B386 /* AsyncAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BF651A12E4A255A00C4B386 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			productName = AsyncAlgorithms;
+		};
+		4BF651A52E4A257900C4B386 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BF651A42E4A257900C4B386 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		4BF651CD2E4AC00500C4B386 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BF651CC2E4AC00500C4B386 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4B57E6872E49DFA40003D2F0 /* Project object */;
 }

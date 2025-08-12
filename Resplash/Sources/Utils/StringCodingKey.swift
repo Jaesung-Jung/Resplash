@@ -1,5 +1,5 @@
 //
-//  ResplashTests.swift
+//  StringCodingKey.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,9 +21,30 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Testing
+struct StringCodingKey: CodingKey {
+  let stringValue: String
+  let intValue: Int?
 
-struct ResplashTests {
-  @Test func example() async throws {
+  init?(stringValue: String) {
+    self.stringValue = stringValue
+    self.intValue = Int(stringValue)
+  }
+
+  init?(intValue: Int) {
+    self.intValue = intValue
+    self.stringValue = "\(intValue)"
+  }
+
+  init?<S: StringProtocol>(_ string: S) {
+    self.init(stringValue: String(string))
+  }
+}
+
+// MARK: - StringCodingKey (ExpressibleByStringLiteral)
+
+extension StringCodingKey: ExpressibleByStringLiteral {
+  init(stringLiteral: StringLiteralType) {
+    self.stringValue = stringLiteral
+    self.intValue = Int(stringLiteral)
   }
 }

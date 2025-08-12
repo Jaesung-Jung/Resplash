@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SearchMeta.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,20 +21,30 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import SwiftUI
-
-struct ContentView: View {
-  var body: some View {
-    VStack {
-      Image(systemName: "globe")
-        .imageScale(.large)
-        .foregroundStyle(.tint)
-      Text("Hello, world!")
-    }
-    .padding()
-  }
+struct SearchMeta {
+  let input: String
+  let photos: Int
+  let illustrations: Int
+  let collections: Int
+  let users: Int
+  let relatedSearches: [String]
 }
 
-#Preview {
-  ContentView()
+// MARK: - SearchMeta (Decodable)
+
+extension SearchMeta: Decodable {
+  init(from decoder: any Decoder) throws {
+    let container = try decoder.container(keyedBy: StringCodingKey.self)
+    self.input = try container.decode(String.self, forKey: "input")
+    self.photos = try container.decode(Int.self, forKey: "photos")
+    self.illustrations = try container.decode(Int.self, forKey: "illustrations")
+    self.collections = try container.decode(Int.self, forKey: "collections")
+    self.users = try container.decode(Int.self, forKey: "users")
+
+    struct RelatedSearch: Decodable {
+      let title: String
+    }
+    let relatedSearches = try container.decode([RelatedSearch].self, forKey: "related_searches")
+    self.relatedSearches = relatedSearches.map(\.title)
+  }
 }
