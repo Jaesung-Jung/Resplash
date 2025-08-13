@@ -118,8 +118,12 @@ extension IconLabel {
 
 // MARK: - IconLabel Preview
 
+#if DEBUG
+
 #Preview {
   IconLabel(spacing: 8, systemImage: "swift", text: "Swift")
     .font(.title)
     .fontWeight(.bold)
 }
+
+#endif

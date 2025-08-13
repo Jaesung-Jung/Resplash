@@ -27,28 +27,34 @@ import Kingfisher
 struct RemoteImage<Content: View>: View {
   let url: URL?
   let content: (Image) -> Content
+  @Binding var isCompleted: Bool
 
-  init(_ url: URL?, @ViewBuilder content: @escaping (Image) -> Content) {
+  init(_ url: URL?, isCompleted: Binding<Bool> = .constant(false), @ViewBuilder content: @escaping (Image) -> Content) {
     self.url = url
     self.content = content
+    self._isCompleted = isCompleted
   }
 
   var body: some View {
     KFImage(url)
       .fade(duration: 0.25)
       .contentConfigure(content)
+      .onSuccess { _ in isCompleted = true }
   }
 }
 
 extension RemoteImage where Content == Image {
   init(_ url: URL?) {
-    self.url = url
-    self.content = { $0 }
+    self.init(url, content: { $0 })
   }
 }
 
 // MARK: - RemoteImage Preview
 
+#if DEBUG
+
 #Preview {
   RemoteImage(ImageURL.preview.s3)
 }
+
+#endif

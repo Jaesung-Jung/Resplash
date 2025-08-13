@@ -32,11 +32,16 @@ struct CategoryView: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
-      RemoteImage(item.coverImageURL.sd) {
-        $0.resizable()
-          .aspectRatio(CGSize(width: 1, height: 0.625), contentMode: .fit)
-      }
-      .clipShape(RoundedRectangle(cornerRadius: 8))
+      Rectangle()
+        .fill(.clear)
+        .aspectRatio(CGSize(width: 1, height: 0.625), contentMode: .fit)
+        .background {
+          RemoteImage(item.coverImageURL.sd) {
+            $0.resizable()
+              .aspectRatio(contentMode: .fill)
+          }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 8))
 
       VStack(alignment: .leading, spacing: 4) {
         Text(item.title)
@@ -54,7 +59,11 @@ struct CategoryView: View {
 
 // MARK: - CategoryView Preview
 
+#if DEBUG
+
 #Preview {
   CategoryView(.preview)
     .frame(width: 300)
 }
+
+#endif

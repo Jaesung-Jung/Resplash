@@ -44,6 +44,10 @@ struct LikeView: View {
 
 // MARK: - LikeView Preview
 
+#if DEBUG
+
 #Preview {
   LikeView(9999)
 }
+
+#endif

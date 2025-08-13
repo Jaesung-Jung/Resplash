@@ -57,6 +57,10 @@ struct TopicView: View {
 
 // MARK: - TopicView Preview
 
+#if DEBUG
+
 #Preview {
   TopicView(.preview)
 }
+
+#endif

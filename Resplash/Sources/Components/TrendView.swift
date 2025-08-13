@@ -101,7 +101,11 @@ extension TrendKeywordView {
 
 // MARK: - TrendView Preview
 
+#if DEBUG
+
 #Preview {
   TrendKeywordView(Trend.preview.keywords[0])
     .padding(.horizontal, 20)
 }
+
+#endif
