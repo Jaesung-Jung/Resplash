@@ -23,7 +23,7 @@
 
 import Foundation
 
-struct Trend: Identifiable {
+struct Trend: Identifiable, Sendable {
   let id = UUID()
   let title: String
   let demand: Demand

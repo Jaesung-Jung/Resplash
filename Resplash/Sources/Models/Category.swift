@@ -23,7 +23,7 @@
 
 import Foundation
 
-struct Category: Identifiable {
+struct Category: Identifiable, Sendable {
   let id: UUID
   let slug: String
   let title: String

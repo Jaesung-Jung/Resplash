@@ -23,7 +23,7 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Sendable {
   let id: String
   let userId: String
   let updatedAt: Date

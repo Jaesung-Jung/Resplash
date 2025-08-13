@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-struct Topic: Identifiable {
+struct Topic: Identifiable, Sendable {
   let id: String
   let slug: String
   let visibility: Visibility

@@ -23,7 +23,7 @@
 
 import Foundation
 
-struct ImageURL {
+struct ImageURL: Sendable {
   let raw: URL
   let full: URL
   let s3: URL

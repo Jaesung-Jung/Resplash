@@ -23,7 +23,7 @@
 
 import Foundation
 
-struct ImageAssetCollection: Identifiable {
+struct ImageAssetCollection: Identifiable, Sendable {
   let id: String
   let shareKey: String
   let updatedAt: Date

@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-struct SearchMeta {
+struct SearchMeta: Sendable {
   let input: String
   let photos: Int
   let illustrations: Int

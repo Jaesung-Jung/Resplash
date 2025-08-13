@@ -23,7 +23,7 @@
 
 import Foundation
 
-enum MediaType: String, CaseIterable, Decodable {
+enum MediaType: String, CaseIterable, Decodable, Sendable {
   case photo
   case illustration
 }

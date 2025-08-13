@@ -24,7 +24,7 @@
 import Algorithms
 
 @dynamicMemberLookup
-struct ImageAssetDetail {
+struct ImageAssetDetail: Sendable {
   let image: ImageAsset
   let views: Int
   let downloads: Int

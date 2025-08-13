@@ -23,7 +23,7 @@
 
 import Algorithms
 
-struct SearchSuggestion {
+struct SearchSuggestion: Sendable {
   let suggestions: [String]
 }
 

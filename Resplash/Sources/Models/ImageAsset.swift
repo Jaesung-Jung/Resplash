@@ -23,7 +23,7 @@
 
 import Foundation
 
-struct ImageAsset: Identifiable {
+struct ImageAsset: Identifiable, Sendable {
   let id: String
   let slug: String
   let createdAt: Date

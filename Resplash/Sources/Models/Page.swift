@@ -31,6 +31,11 @@ struct Page<Base: Collection> {
   let items: Base
 }
 
+// MARK: - Page (Sendable)
+
+extension Page: Sendable where Base: Sendable {
+}
+
 // MARK: - Page (Collection)
 
 extension Page: Collection {
