@@ -27,7 +27,7 @@ struct TrendKeywordView: View {
           .font(.title2)
           .fontWeight(.heavy)
           .lineLimit(1)
-          .padding(.vertical, 12)
+          .padding(.vertical, 4)
       }
       .frame(maxWidth: .infinity, alignment: .leading)
 
