@@ -33,40 +33,6 @@
 		4BF6501A2E4A207E00C4B386 /* Exceptions for "Resplash" folder in "Resplash" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Resources/Development/Preview/autocomplete.json,
-				Resources/Development/Preview/categories.json,
-				Resources/Development/Preview/category_images_1.json,
-				Resources/Development/Preview/category_images_2.json,
-				Resources/Development/Preview/collection_images_1.json,
-				Resources/Development/Preview/collection_images_2.json,
-				Resources/Development/Preview/illustration_collections_1.json,
-				Resources/Development/Preview/illustration_collections_2.json,
-				Resources/Development/Preview/illustrations_1.json,
-				Resources/Development/Preview/illustrations_2.json,
-				Resources/Development/Preview/photo_collections_1.json,
-				Resources/Development/Preview/photo_collections_2.json,
-				Resources/Development/Preview/photo_detail_1.json,
-				Resources/Development/Preview/photo_detail_2.json,
-				Resources/Development/Preview/photo_related_1.json,
-				Resources/Development/Preview/photo_related_2.json,
-				Resources/Development/Preview/photo_series.json,
-				Resources/Development/Preview/photos_1.json,
-				Resources/Development/Preview/photos_2.json,
-				Resources/Development/Preview/search_collections_1.json,
-				Resources/Development/Preview/search_collections_2.json,
-				Resources/Development/Preview/search_illustrations_1.json,
-				Resources/Development/Preview/search_illustrations_2.json,
-				Resources/Development/Preview/search_meta.json,
-				Resources/Development/Preview/search_photos_1.json,
-				Resources/Development/Preview/search_photos_2.json,
-				Resources/Development/Preview/search_trend_1.json,
-				Resources/Development/Preview/search_trend_2.json,
-				Resources/Development/Preview/search_users_1.json,
-				Resources/Development/Preview/search_users_2.json,
-				Resources/Development/Preview/topic_images_1.json,
-				Resources/Development/Preview/topic_images_2.json,
-				Resources/Development/Preview/topics.json,
-				Resources/Development/Preview/user.json,
 				Resources/swiftlint.yml,
 			);
 			target = 4B57E68E2E49DFA40003D2F0 /* Resplash */;
@@ -421,7 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "$(SRCROOT)/$(PRODUCT_NAME)/Resources/Development";
+				DEVELOPMENT_ASSET_PATHS = Resplash/Resources/Development;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -456,7 +422,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "$(SRCROOT)/$(PRODUCT_NAME)/Resources/Development";
+				DEVELOPMENT_ASSET_PATHS = Resplash/Resources/Development;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
