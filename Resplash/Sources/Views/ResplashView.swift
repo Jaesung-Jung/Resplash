@@ -1,5 +1,5 @@
 //
-//  ResplashApp.swift
+//  ResplashView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -23,11 +23,31 @@
 
 import SwiftUI
 
-@main
-struct ResplashApp: App {
-  var body: some Scene {
-    WindowGroup {
-      ResplashView()
+struct ResplashView: View {
+  var body: some View {
+    TabView {
+      Tab("Image", systemImage: "photo.on.rectangle.angled") {
+        NavigationStack {
+          MainView()
+        }
+      }
+      Tab("Explore", systemImage: "safari") {
+        NavigationStack {
+          ExploreView()
+        }
+      }
+      Tab(role: .search) {
+        NavigationStack {
+          SearchView()
+        }
+      }
     }
+    .tabBarMinimizeBehavior(.onScrollDown)
   }
+}
+
+// MARK: - ResplashView Preview
+
+#Preview {
+  ResplashView()
 }

@@ -1,5 +1,5 @@
 //
-//  ResplashApp.swift
+//  SearchView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -23,11 +23,21 @@
 
 import SwiftUI
 
-@main
-struct ResplashApp: App {
-  var body: some Scene {
-    WindowGroup {
-      ResplashView()
-    }
+struct SearchView: View {
+  @State var query: String = ""
+
+  var body: some View {
+    Text("Search View")
+      .searchable(text: $query)
   }
 }
+
+// MARK: - SearchView Preview
+
+#if DEBUG
+
+#Preview {
+  SearchView()
+}
+
+#endif

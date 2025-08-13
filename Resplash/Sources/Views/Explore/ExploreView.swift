@@ -1,5 +1,5 @@
 //
-//  ResplashApp.swift
+//  ExploreView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -23,11 +23,18 @@
 
 import SwiftUI
 
-@main
-struct ResplashApp: App {
-  var body: some Scene {
-    WindowGroup {
-      ResplashView()
-    }
+struct ExploreView: View {
+  var body: some View {
+    Text("ExploreView")
   }
 }
+
+// MARK: - ExploreView Preview
+
+#if DEBUG
+
+#Preview {
+  ExploreView()
+}
+
+#endif

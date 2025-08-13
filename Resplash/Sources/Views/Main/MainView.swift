@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -23,20 +23,18 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
   var body: some View {
-    VStack {
-      Image(systemName: "globe")
-        .imageScale(.large)
-        .foregroundStyle(.tint)
-      Text("Hello, world!")
-    }
-    .padding()
-    .onAppear {
-    }
+    Text("Main View")
   }
 }
 
+// MARK: - MainView Preview
+
+#if DEBUG
+
 #Preview {
-  ContentView()
+  MainView()
 }
+
+#endif
