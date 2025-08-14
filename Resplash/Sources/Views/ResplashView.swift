@@ -22,24 +22,23 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ResplashView: View {
   var body: some View {
     TabView {
       Tab("Image", systemImage: "photo.on.rectangle.angled") {
-        NavigationStack {
-          MainView()
-        }
+        MainView(
+          store: Store(initialState: MainFeature.State()) {
+            MainFeature()
+          }
+        )
       }
       Tab("Explore", systemImage: "safari") {
-        NavigationStack {
-          ExploreView()
-        }
+        ExploreView()
       }
       Tab(role: .search) {
-        NavigationStack {
-          SearchView()
-        }
+        SearchView()
       }
     }
     .tabBarMinimizeBehavior(.onScrollDown)
