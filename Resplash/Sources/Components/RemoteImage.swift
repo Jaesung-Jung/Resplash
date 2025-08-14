@@ -27,7 +27,9 @@ import Kingfisher
 struct RemoteImage<Content: View>: View {
   let url: URL?
   let content: (Image) -> Content
+
   @Binding var isCompleted: Bool
+  @State var phase: Phase = .idle
 
   init(_ url: URL?, isCompleted: Binding<Bool> = .constant(false), @ViewBuilder content: @escaping (Image) -> Content) {
     self.url = url
@@ -39,13 +41,41 @@ struct RemoteImage<Content: View>: View {
     KFImage(url)
       .fade(duration: 0.25)
       .contentConfigure(content)
-      .onSuccess { _ in isCompleted = true }
+      .onSuccess { _ in phase = .success }
+      .onFailure { _ in phase = .failure }
+      .onChange(of: phase) { oldPhase, newPhase in
+        if phase == .success, oldPhase != newPhase {
+          isCompleted = true
+        }
+      }
+      .onAppear { phase = .loading }
+      .background {
+        if phase == .idle || phase == .loading {
+          Rectangle()
+            .fill(.tertiary)
+            .opacity(phase == .loading ? 0.25 : 1)
+            .animation(.linear(duration: 1).repeatForever(autoreverses: true), value: phase == .loading)
+        }
+      }
   }
 }
+
+// MARK: - RemoteImage<Image>
 
 extension RemoteImage where Content == Image {
   init(_ url: URL?) {
     self.init(url, content: { $0 })
+  }
+}
+
+// MARK: - RemoteImage.Phase
+
+extension RemoteImage {
+  enum Phase {
+    case idle
+    case loading
+    case success
+    case failure
   }
 }
 
