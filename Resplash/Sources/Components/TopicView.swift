@@ -33,11 +33,16 @@ struct TopicView: View {
   var body: some View {
     VStack {
       IconLabel(spacing: 0) {
-        RemoteImage(topic.coverImage.url.low) {
-          $0.resizable()
-            .aspectRatio(1, contentMode: .fill)
-        }
-        .clipShape(Circle())
+        Circle()
+          .fill(.clear)
+          .aspectRatio(1, contentMode: .fit)
+          .overlay {
+            RemoteImage(topic.coverImage.url.low) {
+              $0.resizable()
+                .aspectRatio(contentMode: .fill)
+            }
+            .clipShape(Circle())
+          }
       } content: {
         Text(topic.title)
           .font(.subheadline)
