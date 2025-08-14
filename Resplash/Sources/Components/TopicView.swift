@@ -24,6 +24,7 @@
 import SwiftUI
 
 struct TopicView: View {
+  @Environment(\.displayScale) var displayScale
   let topic: Topic
 
   init(_ topic: Topic) {
@@ -34,9 +35,9 @@ struct TopicView: View {
     VStack {
       IconLabel(spacing: 0) {
         Circle()
-          .fill(.clear)
+          .strokeBorder(.quaternary, lineWidth: 1 / displayScale)
           .aspectRatio(1, contentMode: .fit)
-          .overlay {
+          .background {
             RemoteImage(topic.coverImage.url.low) {
               $0.resizable()
                 .aspectRatio(contentMode: .fill)
@@ -52,10 +53,8 @@ struct TopicView: View {
       .padding(4)
       .background {
         Capsule()
-          .stroke(.quinary, lineWidth: 0.5)
-          .opacity(0.5)
+          .strokeBorder(.secondary, lineWidth: 1 / displayScale)
       }
-      .glassEffect(.identity.interactive())
     }
   }
 }
