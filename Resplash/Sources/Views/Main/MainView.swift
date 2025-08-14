@@ -22,10 +22,135 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
 
 struct MainView: View {
+  @Environment(\.colorScheme) var colorScheme
+  @Environment(\.horizontalSizeClass) var hSizeClass
+  let store: StoreOf<MainFeature>
+
   var body: some View {
-    Text("Main View")
+    NavigationStack {
+      ScrollView {
+        LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
+          Section {
+            if let collections = store.state.collections {
+              VStack(alignment: .leading) {
+                NavigationLink {
+                } label: {
+                  HStack {
+                    Text("Collections")
+                      .fontWeight(.heavy)
+                      .foregroundStyle(.primary)
+                    Spacer(minLength: 8)
+                    Image(systemName: "chevron.right")
+                      .foregroundStyle(.secondary)
+                  }
+                  .font(.title2)
+                  .tint(.primary)
+                  .padding(.horizontal, 20)
+                }
+
+                imageCollectons(collections)
+              }
+            }
+
+            if let images = store.state.images {
+              VStack(alignment: .leading) {
+                Text("Featured")
+                  .font(.title2)
+                  .fontWeight(.heavy)
+                  .padding(.horizontal, 20)
+
+                imageList(images)
+              }
+            }
+
+            if store.state.hasNextPage {
+              ProgressView()
+                .onAppear {
+                  store.send(.fetchNextImages)
+                }
+            }
+          } header: {
+            if let topics = store.state.topics {
+              topic(topics)
+            }
+          }
+        }
+      }
+      .scrollEdgeEffectStyle(.soft, for: [.top, .bottom])
+      .navigationTitle(store.state.mediaType.localizedStringResource)
+      .toolbar {
+        ToolbarItem(placement: .topBarTrailing) {
+          Menu {
+            Section("Media") {
+              ForEach(MediaType.allCases, id: \.self) { mediaType in
+                Button {
+                  store.send(.selectMediaType(mediaType))
+                } label: {
+                  HStack {
+                    if store.state.mediaType == mediaType {
+                      Image(systemName: "checkmark")
+                    }
+                    Text(mediaType.localizedStringResource)
+                  }
+                }
+              }
+            }
+          } label: {
+            Image(systemName: "chevron.down")
+          }
+        }
+      }
+    }
+    .task {
+      store.send(.fetch)
+    }
+  }
+
+  @ViewBuilder func topic(_ topics: [Topic]) -> some View {
+    ScrollView(.horizontal, showsIndicators: false) {
+      LazyHStack(spacing: 10) {
+        GlassEffectContainer {
+          ForEach(topics) {
+            TopicView($0)
+              .foregroundStyle(colorScheme == .dark ? .white : .primary)
+              .glassEffect(
+                .clear
+                  .tint((colorScheme == .dark ? Color.black : .white).opacity(0.5))
+                  .interactive()
+              )
+          }
+        }
+      }
+      .padding(.vertical, 10)
+      .padding(.horizontal, 20)
+    }
+  }
+
+  @ViewBuilder func imageCollectons(_ collections: [ImageAssetCollection]) -> some View {
+    ScrollView(.horizontal, showsIndicators: false) {
+      LazyHGrid(rows: [GridItem()], alignment: .top, spacing: 10) {
+        ForEach(collections) {
+          ImageCollectionView($0)
+            .containerRelativeFrame(.horizontal) { length, _ in (length - 20) / 1.5 }
+        }
+      }
+      .padding(.horizontal, 20)
+      .scrollTargetLayout()
+    }
+    .scrollTargetBehavior(.viewAligned(limitBehavior: .never, anchor: .leading))
+  }
+
+  @ViewBuilder func imageList(_ images: [ImageAsset]) -> some View {
+    LazyVStack(spacing: 10) {
+      ForEach(images) { image in
+        ImageAssetView(image)
+          .containerRelativeFrame([.horizontal]) { length, _ in length - 40 }
+          .aspectRatio(CGSize(width: image.width, height: image.height), contentMode: .fit)
+      }
+    }
   }
 }
 
@@ -34,7 +159,11 @@ struct MainView: View {
 #if DEBUG
 
 #Preview {
-  MainView()
+  MainView(
+    store: Store(initialState: MainFeature.State()) {
+      MainFeature()
+    }
+  )
 }
 
 #endif
