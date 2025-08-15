@@ -68,6 +68,7 @@ struct MainView: View {
 
             if store.state.hasNextPage {
               ProgressView()
+                .progressViewStyle(.app.circleScale())
                 .onAppear {
                   store.send(.fetchNextImages)
                 }
