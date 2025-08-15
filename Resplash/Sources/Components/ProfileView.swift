@@ -162,6 +162,8 @@ extension ProfileView {
 
 extension ProfileView {
   private struct CompactContent: View {
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.displayScale) var displayScale
     let user: User
 
     var body: some View {
@@ -171,6 +173,10 @@ extension ProfileView {
             .aspectRatio(1, contentMode: .fill)
         }
         .clipShape(Circle())
+        .overlay {
+          Circle()
+            .strokeBorder(colorScheme == .dark ? .primary : .quinary, lineWidth: 1 / displayScale)
+        }
       } content: {
         Text(user.name)
           .font(.subheadline)
