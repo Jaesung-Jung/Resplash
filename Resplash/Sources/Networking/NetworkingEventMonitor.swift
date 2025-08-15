@@ -26,9 +26,10 @@
 import Foundation
 import OSLog
 import Alamofire
+import Dependencies
 
 struct NetworkingEventMonitor: EventMonitor {
-  private let logger = Logger(subsystem: "Resplash", category: "Networking")
+  @Dependency(\.logger) var logger
 
   func request(_ request: Request, didResumeTask task: URLSessionTask) {
     guard let description = requestDescription(for: request.request) else {

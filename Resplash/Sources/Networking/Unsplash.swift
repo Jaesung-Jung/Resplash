@@ -25,13 +25,17 @@ import Foundation
 import Alamofire
 
 struct Unsplash: Sendable {
-  private typealias RequestHandler = @Sendable (Session, API) async throws -> Data
+  typealias RequestHandler = @Sendable (Session, API) async throws -> Data
+
   private let session: Session
   private let requestHandler: RequestHandler
 
-  private init(eventMonitors: [any EventMonitor] = [], requestHandler: @escaping RequestHandler) {
+  init(eventMonitors: [any EventMonitor] = [], requestHandler: RequestHandler? = nil) {
     self.session = Session(eventMonitors: eventMonitors)
-    self.requestHandler = requestHandler
+    self.requestHandler = requestHandler ?? { session, api in
+      let request = session.request(api.makeURL(), method: api.method, parameters: api.parameters, encoding: api.encoding)
+      return try await request.validate().serializingData().value
+    }
   }
 
   @inlinable func topics(for mediaType: MediaType) async throws -> [Topic] {
@@ -175,42 +179,3 @@ extension Unsplash {
     }
   }
 }
-
-// MARK: - Unsplash (Dependencies)
-
-#if canImport(Dependencies)
-
-import Dependencies
-
-extension Unsplash: DependencyKey {
-  static var liveValue: Unsplash {
-    let requestHandler: RequestHandler = { session, api in
-      let request = session.request(api.makeURL(), method: api.method, parameters: api.parameters, encoding: api.encoding)
-      return try await request.validate().serializingData().value
-    }
-    #if DEBUG
-    return Unsplash(eventMonitors: [NetworkingEventMonitor()], requestHandler: requestHandler)
-    #else
-    return Unsplash(requestHandler: requestHandler)
-    #endif
-  }
-
-  #if DEBUG
-  static var previewValue: Unsplash {
-    Unsplash { $1.sampleData }
-  }
-
-  static var testValue: Unsplash {
-    Unsplash { $1.sampleData }
-  }
-  #endif
-}
-
-extension DependencyValues {
-  var unsplash: Unsplash {
-    get { self[Unsplash.self] }
-    set { self[Unsplash.self] = newValue }
-  }
-}
-
-#endif
