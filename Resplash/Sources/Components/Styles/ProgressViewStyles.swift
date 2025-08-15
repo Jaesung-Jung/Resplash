@@ -102,15 +102,15 @@ private struct AnimatableCircle<Content: View>: View {
 // MARK: - ProgressViewStyle (App)
 
 extension ProgressViewStyle where Self == AppProgressViewStyles {
-  public static var app: AppProgressViewStyles.Type { AppProgressViewStyles.self }
+  static var app: AppProgressViewStyles.Type { AppProgressViewStyles.self }
 }
 
-public struct AppProgressViewStyles: ProgressViewStyle {
-  public static var circleFade: some ProgressViewStyle { CircleFadeProgressViewStyle() }
+struct AppProgressViewStyles: ProgressViewStyle {
+  static var circleFade: some ProgressViewStyle { CircleFadeProgressViewStyle() }
 
-  public static func circleScale(_ anchor: UnitPoint = .center) -> some ProgressViewStyle { CircleScaleProgressViewStyle(anchor: anchor) }
+  static func circleScale(_ anchor: UnitPoint = .center) -> some ProgressViewStyle { CircleScaleProgressViewStyle(anchor: anchor) }
 
-  public func makeBody(configuration: Configuration) -> some View {
+  func makeBody(configuration: Configuration) -> some View {
     EmptyView()
   }
 }
