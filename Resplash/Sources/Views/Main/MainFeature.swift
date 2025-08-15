@@ -21,6 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import OSLog
 import Algorithms
 import ComposableArchitecture
 
@@ -33,79 +34,103 @@ struct MainFeature {
     var images: [ImageAsset]?
 
     var mediaType: MediaType = .photo
+    var activityState: ActivityState = .idle
+
     var page: Int = 1
     var hasNextPage: Bool = false
-    var isLoading: Bool = false
-    var isRefreshing: Bool = false
+
+    var path = StackState<Path.State>()
   }
 
   enum Action: Sendable {
     case selectMediaType(MediaType)
-    case refresh
+
     case fetch
-    case fetchResponse([Topic], [ImageAssetCollection], Page<[ImageAsset]>)
     case fetchNextImages
-    case fetchNextImagesResponse(Page<[ImageAsset]>)
+    case fetchResponse(Result<(topics: [Topic], collections: [ImageAssetCollection], images: Page<[ImageAsset]>), Error>)
+    case fetchNextImagesResponse(Result<Page<[ImageAsset]>, Error>)
+
+    case path(StackActionOf<Path>)
+  }
+
+  @Reducer(state: .equatable)
+  enum Path {
+    case images(ImagesFeature)
   }
 
   @Dependency(\.unsplash) var unsplash
+  @Dependency(\.logger) var logger
 
   var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case .selectMediaType(let mediaType):
         state.mediaType = mediaType
-        state.isLoading = true
+        state.activityState = .reloading
         return fetch(mediaType: mediaType)
 
-      case .refresh:
-        state.isRefreshing = true
-        return fetch(mediaType: state.mediaType)
-
       case .fetch:
-        state.isLoading = true
+        state.activityState = .reloading
         return fetch(mediaType: state.mediaType)
-
-      case .fetchResponse(let topics, let collections, let images):
-        state.topics = topics
-        state.collections = collections
-        state.images = Array(images.uniqued(on: \.id))
-        state.page = images.page
-        state.hasNextPage = !images.isAtEnd
-        state.isLoading = false
-        state.isRefreshing = false
-        return .none
 
       case .fetchNextImages:
-        guard state.hasNextPage else {
+        guard state.hasNextPage, !state.activityState.isActive else {
           return .none
         }
-        state.isLoading = true
+        state.activityState = .loading
         return .run { [mediaType = state.mediaType, page = state.page] send in
-          let images = try await unsplash.images(for: mediaType, page: page + 1)
-          await send(.fetchNextImagesResponse(images))
+          do {
+            let images = try await unsplash.images(for: mediaType, page: page + 1)
+            await send(.fetchNextImagesResponse(.success(images)))
+          } catch {
+            await send(.fetchNextImagesResponse(.failure(error)))
+          }
         }
 
-      case .fetchNextImagesResponse(let images):
+      case .fetchResponse(.success(let result)):
+        state.topics = result.topics
+        state.collections = result.collections
+        state.images = Array(result.images.uniqued(on: \.id))
+        state.page = result.images.page
+        state.hasNextPage = !result.images.isAtEnd
+        state.activityState = .idle
+        return .none
+
+      case .fetchNextImagesResponse(.success(let images)):
         state.images = state.images.map { $0 + images }.map { Array($0.uniqued(on: \.id)) }
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
-        state.isLoading = false
-        state.isRefreshing = false
+        state.activityState = .idle
+        return .none
+
+      case .fetchResponse(.failure(let error)):
+        logger.fault("\(error)")
+        state.activityState = .idle
+        return .none
+
+      case .fetchNextImagesResponse(.failure(let error)):
+        logger.fault("\(error)")
+        state.activityState = .idle
+        return .none
+
+      case .path:
         return .none
       }
     }
+    .forEach(\.path, action: \.path)
   }
 
-  func fetch(mediaType: MediaType) -> Effect<Action> {
+  private func fetch(mediaType: MediaType) -> Effect<Action> {
     return .run { send in
       async let fetchTopics = unsplash.topics(for: mediaType)
       async let fetchCollections = unsplash.collections(for: mediaType, page: 1)
       async let fetchImages = unsplash.images(for: mediaType, page: 1)
-      let (topics, collections, images) = try await (fetchTopics, fetchCollections, fetchImages)
-      await send(
-        .fetchResponse(topics, collections.items, images)
-      )
+      do {
+        let (topics, collections, images) = try await (fetchTopics, fetchCollections, fetchImages)
+        await send(.fetchResponse(.success((topics, collections.items, images))))
+      } catch {
+        await send(.fetchResponse(.failure(error)))
+      }
     }
   }
 }

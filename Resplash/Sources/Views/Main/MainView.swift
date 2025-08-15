@@ -27,10 +27,10 @@ import ComposableArchitecture
 struct MainView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.horizontalSizeClass) var hSizeClass
-  let store: StoreOf<MainFeature>
+  @Bindable var store: StoreOf<MainFeature>
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
       ScrollView {
         LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
           Section {
@@ -39,9 +39,7 @@ struct MainView: View {
                 NavigationLink {
                 } label: {
                   HStack {
-                    Text("Collections")
-                      .fontWeight(.heavy)
-                      .foregroundStyle(.primary)
+                    sectionTitle("Collections")
                     Spacer(minLength: 8)
                     Image(systemName: "chevron.right")
                       .foregroundStyle(.secondary)
@@ -57,9 +55,7 @@ struct MainView: View {
 
             if let images = store.state.images {
               VStack(alignment: .leading) {
-                Text("Featured")
-                  .font(.title2)
-                  .fontWeight(.heavy)
+                sectionTitle("Featured")
                   .padding(.horizontal, 20)
 
                 imageList(images)
@@ -68,6 +64,7 @@ struct MainView: View {
 
             if store.state.hasNextPage {
               ProgressView()
+                .foregroundStyle(.tertiary)
                 .progressViewStyle(.app.circleScale())
                 .onAppear {
                   store.send(.fetchNextImages)
@@ -104,18 +101,33 @@ struct MainView: View {
           }
         }
       }
+    } destination: { store in
+      switch store.case {
+      case .images(let store):
+        ImagesView(store: store)
+      }
     }
     .task {
       store.send(.fetch)
     }
   }
+}
+
+// MARK: - MainView (ViewBuilder)
+
+extension MainView {
+  @ViewBuilder func sectionTitle(_ key: LocalizedStringKey) -> some View {
+    Text(key)
+      .fontWeight(.heavy)
+      .foregroundStyle(.primary)
+  }
 
   @ViewBuilder func topic(_ topics: [Topic]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       LazyHStack(spacing: 10) {
-        GlassEffectContainer {
-          ForEach(topics) {
-            TopicView($0)
+        ForEach(topics) { topic in
+          NavigationLink(state: images(.topic(topic))) {
+            TopicView(topic)
               .foregroundStyle(colorScheme == .dark ? .white : .primary)
               .glassEffect(
                 .clear
@@ -152,6 +164,14 @@ struct MainView: View {
           .aspectRatio(CGSize(width: image.width, height: image.height), contentMode: .fit)
       }
     }
+  }
+}
+
+// MARK: - MainView (Path.State)
+
+extension MainView {
+  @inlinable func images(_ item: ImagesFeature.Item) -> MainFeature.Path.State {
+    MainFeature.Path.State.images(ImagesFeature.State(item: item))
   }
 }
 
