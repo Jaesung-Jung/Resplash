@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B4F13352E4B5ACC0037242F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B4F13342E4B5ACC0037242F /* Kingfisher */; };
+		4BE56AF12E54AAE100276CC6 /* SwiftUILazyContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE56AF02E54AAE100276CC6 /* SwiftUILazyContainer */; };
 		4BF651A02E4A254600C4B386 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 4BF6519F2E4A254600C4B386 /* Algorithms */; };
 		4BF651A62E4A257900C4B386 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4BF651A52E4A257900C4B386 /* ComposableArchitecture */; };
 		4BF651CE2E4AC00500C4B386 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4BF651CD2E4AC00500C4B386 /* Alamofire */; };
@@ -62,6 +63,7 @@
 				4BF651A02E4A254600C4B386 /* Algorithms in Frameworks */,
 				4BF651CE2E4AC00500C4B386 /* Alamofire in Frameworks */,
 				4BF651A62E4A257900C4B386 /* ComposableArchitecture in Frameworks */,
+				4BE56AF12E54AAE100276CC6 /* SwiftUILazyContainer in Frameworks */,
 				4B4F13352E4B5ACC0037242F /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +121,7 @@
 				4BF651A52E4A257900C4B386 /* ComposableArchitecture */,
 				4BF651CD2E4AC00500C4B386 /* Alamofire */,
 				4B4F13342E4B5ACC0037242F /* Kingfisher */,
+				4BE56AF02E54AAE100276CC6 /* SwiftUILazyContainer */,
 			);
 			productName = Resplash;
 			productReference = 4B57E68F2E49DFA40003D2F0 /* Resplash.app */;
@@ -180,6 +183,7 @@
 				4BF651A42E4A257900C4B386 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				4BF651CC2E4AC00500C4B386 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4B4F13332E4B5ACC0037242F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				4BE56AEF2E54AAE100276CC6 /* XCRemoteSwiftPackageReference "SwiftUILazyContainer" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B57E6902E49DFA40003D2F0 /* Products */;
@@ -531,6 +535,14 @@
 				minimumVersion = 8.5.0;
 			};
 		};
+		4BE56AEF2E54AAE100276CC6 /* XCRemoteSwiftPackageReference "SwiftUILazyContainer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ciaranrobrien/SwiftUILazyContainer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		4BF6519E2E4A254600C4B386 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -562,6 +574,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B4F13332E4B5ACC0037242F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		4BE56AF02E54AAE100276CC6 /* SwiftUILazyContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BE56AEF2E54AAE100276CC6 /* XCRemoteSwiftPackageReference "SwiftUILazyContainer" */;
+			productName = SwiftUILazyContainer;
 		};
 		4BF6519F2E4A254600C4B386 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
