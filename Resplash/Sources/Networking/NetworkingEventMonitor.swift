@@ -38,27 +38,26 @@ struct NetworkingEventMonitor: EventMonitor {
     logger.debug("🌐 \(description)")
   }
 
-  func request(_ request: DataRequest, didParseResponse response: DataResponse<Data?, AFError>) {
-    switch response.result {
-    case .success:
-      guard let httpResponse = response.response, let description = responseDescription(for: httpResponse) else {
-        return
-      }
-      let validStatusCode = Set<Int>(200...299)
-      if validStatusCode.contains(httpResponse.statusCode) {
-        let message = ["💬\(description)", dataDescription(for: response.data) ?? "⚠️ <NO RESPONSE DATA>"].joined(separator: "\n")
-        logger.debug("\(message)")
-      } else {
-        let message = ["💬\(description)", dataDescription(for: response.data)].compactMap { $0 }.joined(separator: "\n")
-        logger.fault("\(message)")
-      }
-    case .failure(let error):
-      guard let description = requestDescription(for: request.request) else {
-        return
-      }
-      let message = ["❌ \(description)", "\(error)"].joined(separator: "\n")
+  func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+    guard let httpResponse = dataTask.response as? HTTPURLResponse, let description = responseDescription(for: httpResponse) else {
+      return
+    }
+    let validStatusCode = Set<Int>(200...299)
+    if validStatusCode.contains(httpResponse.statusCode) {
+      let message = ["💬 \(description)", dataDescription(for: data) ?? "⚠️ <NO RESPONSE DATA>"].joined(separator: "\n")
+      logger.debug("\(message)")
+    } else {
+      let message = ["💬 \(description)", dataDescription(for: data)].compactMap { $0 }.joined(separator: "\n")
       logger.fault("\(message)")
     }
+  }
+
+  func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
+    guard let description = requestDescription(for: task.originalRequest), let error else {
+      return
+    }
+    let message = ["❌ \(description)", "\(error)"].joined(separator: "\n")
+    logger.fault("\(message)")
   }
 }
 
