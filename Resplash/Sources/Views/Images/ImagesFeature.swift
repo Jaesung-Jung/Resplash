@@ -68,11 +68,11 @@ struct ImagesFeature {
   func images(for item: Item, page: Int) async throws -> Page<[ImageAsset]> {
     switch item {
     case .topic(let topic):
-      try await unsplash.images(for: topic, page: 1)
+      try await unsplash.images(for: topic, page: page)
     case .category(let category):
-      try await unsplash.images(for: category, page: 1)
+      try await unsplash.images(for: category, page: page)
     case .collection(let collection):
-      try await unsplash.images(for: collection, page: 1)
+      try await unsplash.images(for: collection, page: page)
     }
   }
 
