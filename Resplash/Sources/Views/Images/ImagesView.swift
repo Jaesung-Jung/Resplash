@@ -22,7 +22,6 @@
 //  THE SOFTWARE.
 
 import SwiftUI
-import SwiftUILazyContainer
 import ComposableArchitecture
 
 struct ImagesView: View {
@@ -30,15 +29,32 @@ struct ImagesView: View {
 
   var body: some View {
     ScrollView {
-      if let images = store.state.images {
-        LazyVMasonry(images, columns: 2, spacing: 10) {
-          ImageAssetView($0, size: .compact)
-        } contentHeight: {
-          LazySubviewSize.aspect(Double($0.width) / Double($0.height))
+      LazyVStack(spacing: 20) {
+        if let description = store.state.description {
+          HStack {
+            Text(description)
+            Spacer()
+          }
+        }
+        if let images = store.state.images {
+          MansonryGrid(images, columns: 2, spacing: 2) {
+            ImageAssetView($0, size: .compact)
+          } size: {
+            CGSize(width: $0.width, height: $0.height)
+          }
+
+          if store.state.hasNextPage {
+            ProgressView()
+              .foregroundStyle(.tertiary)
+              .progressViewStyle(.app.circleScale())
+              .onAppear {
+                store.send(.fetchNext)
+              }
+          }
         }
       }
+      .padding(.horizontal, 20)
     }
-    .lazyContainer()
     .navigationTitle(store.state.title)
     .task {
       store.send(.fetch)

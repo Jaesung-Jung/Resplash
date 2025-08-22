@@ -31,6 +31,7 @@ struct ImagesFeature {
   struct State: Equatable {
     let item: Item
     var title: String { item.title }
+    var description: String? { item.description }
     var images: [ImageAsset]?
     var activityState: ActivityState = .idle
 
@@ -58,6 +59,15 @@ struct ImagesFeature {
         category.title
       case .collection(let collection):
         collection.title
+      }
+    }
+
+    var description: String? {
+      switch self {
+      case .topic(let topic):
+        topic.description
+      default:
+        nil
       }
     }
   }
