@@ -21,10 +21,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import Foundation
+
 struct Topic: Identifiable, Sendable {
   let id: String
   let slug: String
   let visibility: Visibility
+  let owners: [User]
 
   let title: String
   let description: String
@@ -32,6 +35,7 @@ struct Topic: Identifiable, Sendable {
   let coverImage: ImageAsset
 
   let imageCount: Int
+  let shareLink: URL
 }
 
 // MARK: - Topic.Visibility
@@ -54,15 +58,19 @@ extension Topic: Hashable {
 // MARK: - Topic (Decodable)
 
 extension Topic: Decodable {
-  enum CodingKeys: String, CodingKey {
-    case id
-    case slug
-    case visibility
-    case title
-    case description
-    case mediaTypes = "media_types"
-    case coverImage = "cover_photo"
-    case imageCount = "total_photos"
+  init(from decoder: any Decoder) throws {
+    let container = try decoder.container(keyedBy: StringCodingKey.self)
+    self.id = try container.decode(String.self, forKey: "id")
+    self.slug = try container.decode(String.self, forKey: "slug")
+    self.visibility = try container.decode(Visibility.self, forKey: "visibility")
+    self.owners = try container.decode([User].self, forKey: "owners")
+    self.title = try container.decode(String.self, forKey: "title")
+    self.description = try container.decode(String.self, forKey: "description")
+    self.mediaTypes = try container.decode(Set<MediaType>.self, forKey: "media_types")
+    self.coverImage = try container.decode(ImageAsset.self, forKey: "cover_photo")
+    self.imageCount = try container.decode(Int.self, forKey: "total_photos")
+    let linkContainer = try container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "links")
+    self.shareLink = try linkContainer.decode(URL.self, forKey: "html")
   }
 }
 
@@ -75,11 +83,13 @@ extension Topic {
     id: "bo8jQKT",
     slug: "wallpapers",
     visibility: .featured,
+    owners: [.preview],
     title: "Wallpapers",
     description: "From epic drone shots to inspiring moments in nature — enjoy the best background for your desktop or mobile.",
     mediaTypes: [.photo],
     coverImage: .preview,
-    imageCount: 16_519
+    imageCount: 16_519,
+    shareLink: URL(string: "https://unsplash.com/ko/t/wallpapers")!
   )
 }
 

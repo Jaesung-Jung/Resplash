@@ -31,7 +31,8 @@ struct ImagesFeature {
   struct State: Equatable {
     let item: Item
     var title: String { item.title }
-    var description: String? { item.description }
+    var subtitle: LocalizedStringResource { item.subtitle }
+    var shareLink: URL? { item.shareLink }
     var images: [ImageAsset]?
     var activityState: ActivityState = .idle
 
@@ -62,12 +63,23 @@ struct ImagesFeature {
       }
     }
 
-    var description: String? {
+    var subtitle: LocalizedStringResource {
       switch self {
       case .topic(let topic):
-        topic.description
+        topic.owners.first.map { "Created by \($0.name)" } ?? ""
       default:
+        ""
+      }
+    }
+
+    var shareLink: URL? {
+      switch self {
+      case .topic(let topic):
+        topic.shareLink
+      case .category:
         nil
+      case .collection(let collection):
+        collection.shareLink
       }
     }
   }

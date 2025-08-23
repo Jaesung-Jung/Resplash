@@ -27,14 +27,19 @@ import ComposableArchitecture
 struct ImagesView: View {
   let store: StoreOf<ImagesFeature>
 
+  @ViewBuilder func topicHeader(_ topic: Topic) -> some View {
+    HStack {
+      Text(topic.description.trimmingCharacters(in: .whitespacesAndNewlines))
+        .fontWeight(.medium)
+      Spacer()
+    }
+  }
+
   var body: some View {
     ScrollView {
       LazyVStack(spacing: 20) {
-        if let description = store.state.description {
-          HStack {
-            Text(description)
-            Spacer()
-          }
+        if case .topic(let topic) = store.state.item {
+          topicHeader(topic)
         }
         if let images = store.state.images {
           MansonryGrid(images, columns: 2, spacing: 2) {
@@ -56,6 +61,14 @@ struct ImagesView: View {
       .padding(.horizontal, 20)
     }
     .navigationTitle(store.state.title)
+    .navigationSubtitle(store.state.subtitle)
+    .toolbar {
+      if let shareLink = store.state.shareLink {
+        ShareLink(item: shareLink) {
+          Image(systemName: "square.and.arrow.up")
+        }
+      }
+    }
     .task {
       store.send(.fetch)
     }
