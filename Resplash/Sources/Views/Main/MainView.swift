@@ -30,13 +30,15 @@ struct MainView: View {
   @Bindable var store: StoreOf<MainFeature>
 
   var body: some View {
-    NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+    NavigationStack(path: $store.scope(state: \.paths, action: \.path)) {
       ScrollView {
         LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
           Section {
             if let collections = store.state.collections {
               VStack(alignment: .leading) {
-                NavigationLink(state: collectionsPath(store.state.mediaType)) {
+                Button {
+                  store.send(.navigateToCollections(store.state.mediaType))
+                } label: {
                   sectionTitle("Collections", showsDisclosureIndicator: true)
                     .padding(.horizontal, 20)
                 }
@@ -110,7 +112,9 @@ extension MainView {
     ScrollView(.horizontal, showsIndicators: false) {
       LazyHStack(spacing: 10) {
         ForEach(topics) { topic in
-          NavigationLink(state: imagesPath(.topic(topic))) {
+          Button {
+            store.send(.navigateToImages(.topic(topic)))
+          } label: {
             TopicView(topic)
               .foregroundStyle(colorScheme == .dark ? .white : .primary)
               .glassEffect(
@@ -129,9 +133,14 @@ extension MainView {
   @ViewBuilder func imageCollectons(_ collections: [ImageAssetCollection]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       LazyHGrid(rows: [GridItem()], alignment: .top, spacing: 10) {
-        ForEach(collections) {
-          ImageCollectionView($0)
-            .containerRelativeFrame(.horizontal) { length, _ in (length - 20) / 1.5 }
+        ForEach(collections) { collection in
+          Button {
+            store.send(.navigateToImages(.collection(collection)))
+          } label: {
+            ImageCollectionView(collection)
+              .containerRelativeFrame(.horizontal) { length, _ in (length - 20) / 1.5 }
+          }
+          .foregroundStyle(.primary)
         }
       }
       .padding(.horizontal, 20)
@@ -169,18 +178,6 @@ extension MainView {
     } label: {
       Image(systemName: "chevron.down")
     }
-  }
-}
-
-// MARK: - MainView (Path.State)
-
-extension MainView {
-  @inlinable func imagesPath(_ item: ImagesFeature.Item) -> MainFeature.Path.State {
-    MainFeature.Path.State.images(ImagesFeature.State(item: item))
-  }
-
-  @inlinable func collectionsPath(_ mediaType: MediaType) -> MainFeature.Path.State {
-    MainFeature.Path.State.collections(ImageCollectionsFeature.State(mediaType: mediaType))
   }
 }
 

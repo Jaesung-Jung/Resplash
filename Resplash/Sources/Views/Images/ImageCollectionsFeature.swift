@@ -42,6 +42,8 @@ struct ImageCollectionsFeature {
     case fetchNext
     case fetchResponse(Result<Page<[ImageAssetCollection]>, Error>)
     case fetchNextResponse(Result<Page<[ImageAssetCollection]>, Error>)
+
+    case navigateToImages(ImageAssetCollection)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -92,6 +94,9 @@ struct ImageCollectionsFeature {
       case .fetchResponse(.failure(let error)), .fetchNextResponse(.failure(let error)):
         logger.fault("\(error)")
         state.activityState = .idle
+        return .none
+
+      case .navigateToImages:
         return .none
       }
     }

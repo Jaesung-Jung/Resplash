@@ -32,7 +32,12 @@ struct ImageCollectionsView: View {
       if let collections = store.state.collections {
         LazyVGrid( columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
           ForEach(collections) { collection in
-            ImageCollectionView(collection)
+            Button {
+              store.send(.navigateToImages(collection))
+            } label: {
+              ImageCollectionView(collection)
+            }
+            .foregroundStyle(.primary)
           }
         }
         .padding(20)

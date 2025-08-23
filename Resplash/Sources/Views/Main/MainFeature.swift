@@ -39,7 +39,7 @@ struct MainFeature {
     var page: Int = 1
     var hasNextPage: Bool = false
 
-    var path = StackState<Path.State>()
+    var paths = StackState<Path.State>()
   }
 
   enum Action: Sendable {
@@ -49,6 +49,9 @@ struct MainFeature {
     case fetchNextImages
     case fetchResponse(Result<(topics: [Topic], collections: [ImageAssetCollection], images: Page<[ImageAsset]>), Error>)
     case fetchNextImagesResponse(Result<Page<[ImageAsset]>, Error>)
+
+    case navigateToCollections(MediaType)
+    case navigateToImages(ImagesFeature.Item)
 
     case path(StackActionOf<Path>)
   }
@@ -114,11 +117,22 @@ struct MainFeature {
         state.activityState = .idle
         return .none
 
+      case .navigateToCollections(let mediaType):
+        state.paths.append(.collections(ImageCollectionsFeature.State(mediaType: mediaType)))
+        return .none
+
+      case .navigateToImages(let item):
+        state.paths.append(.images(ImagesFeature.State(item: item)))
+        return .none
+
+      case .path(.element(id: _, action: .collections(.navigateToImages(let collection)))):
+        return .send(.navigateToImages(.collection(collection)))
+
       case .path:
         return .none
       }
     }
-    .forEach(\.path, action: \.path)
+    .forEach(\.paths, action: \.path)
   }
 
   private func fetch(mediaType: MediaType) -> Effect<Action> {
