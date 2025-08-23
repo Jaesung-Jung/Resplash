@@ -56,6 +56,7 @@ struct MainFeature {
   @Reducer(state: .equatable)
   enum Path {
     case images(ImagesFeature)
+    case collections(ImageCollectionsFeature)
   }
 
   @Dependency(\.unsplash) var unsplash

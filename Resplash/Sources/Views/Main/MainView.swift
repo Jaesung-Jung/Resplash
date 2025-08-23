@@ -36,18 +36,11 @@ struct MainView: View {
           Section {
             if let collections = store.state.collections {
               VStack(alignment: .leading) {
-                NavigationLink {
-                } label: {
-                  HStack {
-                    sectionTitle("Collections")
-                    Spacer(minLength: 8)
-                    Image(systemName: "chevron.right")
-                      .foregroundStyle(.secondary)
-                  }
-                  .font(.title2)
-                  .tint(.primary)
-                  .padding(.horizontal, 20)
+                NavigationLink(state: collectionsPath(store.state.mediaType)) {
+                  sectionTitle("Collections", showsDisclosureIndicator: true)
+                    .padding(.horizontal, 20)
                 }
+                .foregroundStyle(.primary)
 
                 imageCollectons(collections)
               }
@@ -80,31 +73,14 @@ struct MainView: View {
       .scrollEdgeEffectStyle(.soft, for: [.top, .bottom])
       .navigationTitle(store.state.mediaType.localizedStringResource)
       .toolbar {
-        ToolbarItem(placement: .topBarTrailing) {
-          Menu {
-            Section("Media") {
-              ForEach(MediaType.allCases, id: \.self) { mediaType in
-                Button {
-                  store.send(.selectMediaType(mediaType))
-                } label: {
-                  HStack {
-                    if store.state.mediaType == mediaType {
-                      Image(systemName: "checkmark")
-                    }
-                    Text(mediaType.localizedStringResource)
-                  }
-                }
-              }
-            }
-          } label: {
-            Image(systemName: "chevron.down")
-          }
-        }
+        mediaPickerMenu()
       }
     } destination: { store in
       switch store.case {
       case .images(let store):
         ImagesView(store: store)
+      case .collections(let store):
+        ImageCollectionsView(store: store)
       }
     }
     .task {
@@ -116,17 +92,25 @@ struct MainView: View {
 // MARK: - MainView (ViewBuilder)
 
 extension MainView {
-  @ViewBuilder func sectionTitle(_ key: LocalizedStringKey) -> some View {
-    Text(key)
-      .fontWeight(.heavy)
-      .foregroundStyle(.primary)
+  @ViewBuilder func sectionTitle(_ key: LocalizedStringKey, showsDisclosureIndicator: Bool = false) -> some View {
+    HStack {
+      Text(key)
+        .font(.title2)
+      Spacer(minLength: 8)
+      if showsDisclosureIndicator {
+        Image(systemName: "chevron.right")
+          .foregroundStyle(.secondary)
+      }
+    }
+    .fontWeight(.bold)
+    .foregroundStyle(.primary)
   }
 
   @ViewBuilder func topic(_ topics: [Topic]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       LazyHStack(spacing: 10) {
         ForEach(topics) { topic in
-          NavigationLink(state: images(.topic(topic))) {
+          NavigationLink(state: imagesPath(.topic(topic))) {
             TopicView(topic)
               .foregroundStyle(colorScheme == .dark ? .white : .primary)
               .glassEffect(
@@ -165,13 +149,38 @@ extension MainView {
       }
     }
   }
+
+  @ViewBuilder func mediaPickerMenu() -> some View {
+    Menu {
+      Section("Media") {
+        ForEach(MediaType.allCases, id: \.self) { mediaType in
+          Button {
+            store.send(.selectMediaType(mediaType))
+          } label: {
+            HStack {
+              if store.state.mediaType == mediaType {
+                Image(systemName: "checkmark")
+              }
+              Text(mediaType.localizedStringResource)
+            }
+          }
+        }
+      }
+    } label: {
+      Image(systemName: "chevron.down")
+    }
+  }
 }
 
 // MARK: - MainView (Path.State)
 
 extension MainView {
-  @inlinable func images(_ item: ImagesFeature.Item) -> MainFeature.Path.State {
+  @inlinable func imagesPath(_ item: ImagesFeature.Item) -> MainFeature.Path.State {
     MainFeature.Path.State.images(ImagesFeature.State(item: item))
+  }
+
+  @inlinable func collectionsPath(_ mediaType: MediaType) -> MainFeature.Path.State {
+    MainFeature.Path.State.collections(ImageCollectionsFeature.State(mediaType: mediaType))
   }
 }
 

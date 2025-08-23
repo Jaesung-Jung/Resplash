@@ -1,5 +1,5 @@
 //
-//  ImagesFeature.swift
+//  ImageCollectionsFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -26,14 +26,11 @@ import Algorithms
 import ComposableArchitecture
 
 @Reducer
-struct ImagesFeature {
+struct ImageCollectionsFeature {
   @ObservableState
   struct State: Equatable {
-    let item: Item
-    var title: String { item.title }
-    var subtitle: LocalizedStringResource { item.subtitle }
-    var shareLink: URL? { item.shareLink }
-    var images: [ImageAsset]?
+    let mediaType: MediaType
+    var collections: [ImageAssetCollection]?
     var activityState: ActivityState = .idle
 
     var page: Int = 1
@@ -43,70 +40,22 @@ struct ImagesFeature {
   enum Action {
     case fetch
     case fetchNext
-    case fetchResponse(Result<Page<[ImageAsset]>, Error>)
-    case fetchNextResponse(Result<Page<[ImageAsset]>, Error>)
-  }
-
-  enum Item: Equatable {
-    case topic(Topic)
-    case category(Category.Item)
-    case collection(ImageAssetCollection)
-
-    var title: String {
-      switch self {
-      case .topic(let topic):
-        topic.title
-      case .category(let category):
-        category.title
-      case .collection(let collection):
-        collection.title
-      }
-    }
-
-    var subtitle: LocalizedStringResource {
-      switch self {
-      case .topic(let topic):
-        topic.owners.first.map { "Created by \($0.name)" } ?? ""
-      default:
-        ""
-      }
-    }
-
-    var shareLink: URL? {
-      switch self {
-      case .topic(let topic):
-        topic.shareLink
-      case .category:
-        nil
-      case .collection(let collection):
-        collection.shareLink
-      }
-    }
+    case fetchResponse(Result<Page<[ImageAssetCollection]>, Error>)
+    case fetchNextResponse(Result<Page<[ImageAssetCollection]>, Error>)
   }
 
   @Dependency(\.unsplash) var unsplash
   @Dependency(\.logger) var logger
 
-  func images(for item: Item, page: Int) async throws -> Page<[ImageAsset]> {
-    switch item {
-    case .topic(let topic):
-      try await unsplash.images(for: topic, page: page)
-    case .category(let category):
-      try await unsplash.images(for: category, page: page)
-    case .collection(let collection):
-      try await unsplash.images(for: collection, page: page)
-    }
-  }
-
   var body: some ReducerOf<Self> {
-    Reduce<State, Action> { state, action in
+    Reduce { state, action in
       switch action {
       case .fetch:
         state.activityState = .reloading
-        return .run { [item = state.item] send in
+        return .run { [mediaType = state.mediaType] send in
           do {
-            let images = try await images(for: item, page: 1)
-            await send(.fetchResponse(.success(images)))
+            let collections = try await unsplash.collections(for: mediaType, page: 1)
+            await send(.fetchResponse(.success(collections)))
           } catch {
             await send(.fetchResponse(.failure(error)))
           }
@@ -117,26 +66,26 @@ struct ImagesFeature {
           return .none
         }
         state.activityState = .loading
-        return .run { [item = state.item, page = state.page] send in
+        return .run { [mediaType = state.mediaType, page = state.page] send in
           do {
-            let images = try await images(for: item, page: page + 1)
-            await send(.fetchNextResponse(.success(images)))
+            let collections = try await unsplash.collections(for: mediaType, page: page + 1)
+            await send(.fetchNextResponse(.success(collections)))
           } catch {
             await send(.fetchNextResponse(.failure(error)))
           }
         }
 
-      case .fetchResponse(.success(let images)):
-        state.images = Array(images.uniqued(on: \.id))
-        state.page = images.page
-        state.hasNextPage = !images.isAtEnd
+      case .fetchResponse(.success(let collections)):
+        state.collections = Array(collections.uniqued(on: \.id))
+        state.page = collections.page
+        state.hasNextPage = !collections.isAtEnd
         state.activityState = .idle
         return .none
 
-      case .fetchNextResponse(.success(let images)):
-        state.images = state.images.map { $0 + images }.map { Array($0.uniqued(on: \.id)) }
-        state.page = images.page
-        state.hasNextPage = !images.isAtEnd
+      case .fetchNextResponse(.success(let collections)):
+        state.collections = state.collections.map { $0 + collections }.map { Array($0.uniqued(on: \.id)) }
+        state.page = collections.page
+        state.hasNextPage = !collections.isAtEnd
         state.activityState = .idle
         return .none
 
