@@ -40,10 +40,10 @@ struct ImageCollectionView: View {
         .aspectRatio(CGSize(width: 1, height: 0.75), contentMode: .fit)
         .overlay {
           HStack(spacing: 2) {
-            image(collection.imageURLs[safe: 0]?.sd)
+            image(collection.imageURLs[safe: 0]?.low)
             VStack(spacing: 2) {
-              image(collection.imageURLs[safe: 1]?.sd)
-              image(collection.imageURLs[safe: 2]?.sd)
+              image(collection.imageURLs[safe: 1]?.low)
+              image(collection.imageURLs[safe: 2]?.low)
             }
           }
         }
