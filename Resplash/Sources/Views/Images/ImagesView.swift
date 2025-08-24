@@ -42,8 +42,12 @@ struct ImagesView: View {
           topicHeader(topic)
         }
         if let images = store.state.images {
-          MansonryGrid(images, columns: 2, spacing: 2) {
-            ImageAssetView($0, size: .compact)
+          MansonryGrid(images, columns: 2, spacing: 2) { image in
+            Button {
+              store.send(.navigateToImageDetail(image))
+            } label: {
+              ImageAssetView(image, size: .compact)
+            }
           } size: {
             CGSize(width: $0.width, height: $0.height)
           }

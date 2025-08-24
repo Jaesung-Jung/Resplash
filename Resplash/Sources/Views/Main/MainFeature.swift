@@ -52,6 +52,7 @@ struct MainFeature {
 
     case navigateToCollections(MediaType)
     case navigateToImages(ImagesFeature.Item)
+    case navigateToImageDetail(ImageAsset)
 
     case path(StackActionOf<Path>)
   }
@@ -60,6 +61,7 @@ struct MainFeature {
   enum Path {
     case images(ImagesFeature)
     case collections(ImageCollectionsFeature)
+    case imageDetail(ImageDetailFeature)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -125,8 +127,18 @@ struct MainFeature {
         state.paths.append(.images(ImagesFeature.State(item: item)))
         return .none
 
+      case .navigateToImageDetail(let image):
+        state.paths.append(.imageDetail(ImageDetailFeature.State(image: image)))
+        return .none
+
       case .path(.element(id: _, action: .collections(.navigateToImages(let collection)))):
         return .send(.navigateToImages(.collection(collection)))
+
+      case .path(.element(id: _, action: .images(.navigateToImageDetail(let image)))):
+        return .send(.navigateToImageDetail(image))
+
+      case .path(.element(id: _, action: .imageDetail(.navigateToImageDetail(let image)))):
+        return .send(.navigateToImageDetail(image))
 
       case .path:
         return .none

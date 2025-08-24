@@ -83,6 +83,8 @@ struct MainView: View {
         ImagesView(store: store)
       case .collections(let store):
         ImageCollectionsView(store: store)
+      case .imageDetail(let store):
+        ImageDetailView(store: store)
       }
     }
     .task {
@@ -152,9 +154,13 @@ extension MainView {
   @ViewBuilder func imageList(_ images: [ImageAsset]) -> some View {
     LazyVStack(spacing: 10) {
       ForEach(images) { image in
-        ImageAssetView(image)
-          .containerRelativeFrame([.horizontal]) { length, _ in length - 40 }
-          .aspectRatio(CGSize(width: image.width, height: image.height), contentMode: .fit)
+        Button {
+          store.send(.navigateToImageDetail(image))
+        } label: {
+          ImageAssetView(image)
+            .containerRelativeFrame([.horizontal]) { length, _ in length - 40 }
+            .aspectRatio(CGSize(width: image.width, height: image.height), contentMode: .fit)
+        }
       }
     }
   }

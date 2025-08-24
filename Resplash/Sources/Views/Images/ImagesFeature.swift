@@ -45,6 +45,8 @@ struct ImagesFeature {
     case fetchNext
     case fetchResponse(Result<Page<[ImageAsset]>, Error>)
     case fetchNextResponse(Result<Page<[ImageAsset]>, Error>)
+
+    case navigateToImageDetail(ImageAsset)
   }
 
   enum Item: Equatable {
@@ -143,6 +145,9 @@ struct ImagesFeature {
       case .fetchResponse(.failure(let error)), .fetchNextResponse(.failure(let error)):
         logger.fault("\(error)")
         state.activityState = .idle
+        return .none
+
+      case .navigateToImageDetail:
         return .none
       }
     }
