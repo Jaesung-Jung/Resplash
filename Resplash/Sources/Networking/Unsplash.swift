@@ -93,7 +93,7 @@ struct Unsplash: Sendable {
     try await request(.seriesImages(image: image))
   }
 
-  @inlinable func relatedImage(for image: ImageAsset, page: Int) async throws -> Page<[ImageAsset]> {
+  @inlinable func relatedImages(for image: ImageAsset, page: Int) async throws -> Page<[ImageAsset]> {
     let perPage = 20
     return try await request(.relatedImages(image: image, page: page, perPage: perPage), page: page, perPage: perPage, at: "results")
   }
