@@ -89,17 +89,6 @@ struct ImagesFeature {
   @Dependency(\.unsplash) var unsplash
   @Dependency(\.logger) var logger
 
-  func images(for item: Item, page: Int) async throws -> Page<[ImageAsset]> {
-    switch item {
-    case .topic(let topic):
-      try await unsplash.images(for: topic, page: page)
-    case .category(let category):
-      try await unsplash.images(for: category, page: page)
-    case .collection(let collection):
-      try await unsplash.images(for: collection, page: page)
-    }
-  }
-
   var body: some ReducerOf<Self> {
     Reduce<State, Action> { state, action in
       switch action {
@@ -107,7 +96,7 @@ struct ImagesFeature {
         state.activityState = .reloading
         return .run { [item = state.item] send in
           do {
-            let images = try await images(for: item, page: 1)
+            let images = try await unsplash.images(for: item, page: 1)
             await send(.fetchResponse(.success(images)))
           } catch {
             await send(.fetchResponse(.failure(error)))
@@ -121,7 +110,7 @@ struct ImagesFeature {
         state.activityState = .loading
         return .run { [item = state.item, page = state.page] send in
           do {
-            let images = try await images(for: item, page: page + 1)
+            let images = try await unsplash.images(for: item, page: page + 1)
             await send(.fetchNextResponse(.success(images)))
           } catch {
             await send(.fetchNextResponse(.failure(error)))
@@ -150,6 +139,21 @@ struct ImagesFeature {
       case .navigateToImageDetail:
         return .none
       }
+    }
+  }
+}
+
+// MARK: - Unsplash (ImagesFeature.Item)
+
+extension Unsplash {
+  fileprivate func images(for item: ImagesFeature.Item, page: Int) async throws -> Page<[ImageAsset]> {
+    switch item {
+    case .topic(let topic):
+      try await images(for: topic, page: page)
+    case .category(let category):
+      try await images(for: category, page: page)
+    case .collection(let collection):
+      try await images(for: collection, page: page)
     }
   }
 }
