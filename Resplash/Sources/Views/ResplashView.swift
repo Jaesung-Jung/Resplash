@@ -51,6 +51,10 @@ struct ResplashView: View {
 
 // MARK: - ResplashView Preview
 
+#if DEBUG
+
 #Preview {
   ResplashView()
 }
+
+#endif

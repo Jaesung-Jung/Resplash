@@ -86,6 +86,8 @@ struct HFlow: Layout {
 
 // MARK: - HFlow Preview
 
+#if DEBUG
+
 #Preview {
   @Previewable @State var items = (1...20).map { "Item \($0)" }
   HFlow(itemSpacing: 8, lineSpacing: 8) {
@@ -102,3 +104,5 @@ struct HFlow: Layout {
   }
   .padding(.horizontal, 20)
 }
+
+#endif

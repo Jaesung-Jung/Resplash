@@ -117,6 +117,8 @@ struct AppProgressViewStyles: ProgressViewStyle {
 
 // MARK: - ProgressViewStyles Preview
 
+#if DEBUG
+
 #Preview {
   VStack(spacing: 80) {
     VStack(spacing: 20) {
@@ -136,3 +138,5 @@ struct AppProgressViewStyles: ProgressViewStyle {
     }
   }
 }
+
+#endif

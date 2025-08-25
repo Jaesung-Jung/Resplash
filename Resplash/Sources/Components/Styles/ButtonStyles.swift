@@ -49,6 +49,8 @@ struct AppButtonStyles: ButtonStyle {
 
 // MARK: - ButtonStyles Preview
 
+#if DEBUG
+
 #Preview {
   VStack {
     Button {
@@ -61,3 +63,5 @@ struct AppButtonStyles: ButtonStyle {
     .buttonStyle(.app.scaleEffect)
   }
 }
+
+#endif 

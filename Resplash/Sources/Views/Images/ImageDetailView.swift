@@ -231,6 +231,8 @@ struct ImageDetailView: View {
 
 // MARK: - ImageDetailView Preview
 
+#if DEBUG
+
 #Preview {
   NavigationStack {
     ImageDetailView(
@@ -240,3 +242,5 @@ struct ImageDetailView: View {
     )
   }
 }
+
+#endif

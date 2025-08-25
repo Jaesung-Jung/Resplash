@@ -63,6 +63,8 @@ struct ImageCollectionsView: View {
 
 // MARK: - ImageCollectionsView Preview
 
+#if DEBUG
+
 #Preview {
   NavigationStack {
     ImageCollectionsView(
@@ -72,3 +74,5 @@ struct ImageCollectionsView: View {
     )
   }
 }
+
+#endif
