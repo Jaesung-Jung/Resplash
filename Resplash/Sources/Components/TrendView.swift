@@ -33,11 +33,16 @@ struct TrendKeywordView: View {
   var body: some View {
     HStack(spacing: 8) {
       IconLabel(spacing: 12) {
-        RemoteImage(keyword.thumbnailURL.sd) {
-          $0.resizable()
-            .aspectRatio(1, contentMode: .fill)
-        }
-        .clipShape(Circle())
+        Circle()
+          .fill(.clear)
+          .aspectRatio(1, contentMode: .fit)
+          .background {
+            RemoteImage(keyword.thumbnailURL.sd) {
+              $0.resizable()
+                .aspectRatio(contentMode: .fill)
+            }
+            .clipShape(Circle())
+          }
       } content: {
         Text(keyword.title)
           .font(.title2)
