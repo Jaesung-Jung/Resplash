@@ -69,6 +69,8 @@ struct ImagesFeature {
       switch self {
       case .topic(let topic):
         topic.owners.first.map { "Created by \($0.name)" } ?? ""
+      case .collection(let collection):
+        "Created by \(collection.user.name)"
       default:
         ""
       }
