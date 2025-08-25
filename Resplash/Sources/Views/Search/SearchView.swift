@@ -22,13 +22,85 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SearchView: View {
-  @State var query: String = ""
+  @Bindable var store: StoreOf<SearchFeature>
 
   var body: some View {
-    Text("Search View")
-      .searchable(text: $query)
+    NavigationStack(path: $store.scope(state: \.paths, action: \.path)) {
+      ScrollView {
+        VStack(alignment: .leading, spacing: 0) {
+          if let trends = store.state.trends {
+            ForEach(trends.enumerated(), id: \.element.id) { offset, trend in
+              Text("#\(offset + 1). \(trend.title)")
+                .font(.body)
+                .fontWeight(.bold)
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 10)
+                .padding(.top, offset == 0 ? 0 : 20)
+
+              ForEach(trend.keywords) { keyword in
+                Button {
+                  store.send(.search(keyword.title))
+                } label: {
+                  TrendKeywordView(keyword)
+                }
+                .foregroundStyle(.primary)
+                .padding(.vertical, 10)
+              }
+            }
+          }
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 10)
+        .padding(.bottom, 40)
+      }
+      .navigationTitle("Search")
+      .scrollDismissesKeyboard(.immediately)
+    } destination: { store in
+      switch store.case {
+      case .search(let store):
+        SearchResultView(store: store)
+      case .imageDetail(let store):
+        ImageDetailView(store: store)
+      }
+    }
+    .searchable(text: $store.query.sending(\.fetchSuggestion)) {
+      let suggestions = store.state.suggestion?.suggestions ?? []
+      ForEach(suggestions, id: \.self) { suggestion in
+        Button {
+        } label: {
+          HStack {
+            Image(systemName: "magnifyingglass.circle.fill")
+            Text(attributedString(suggestion.capitalized, query: store.state.query))
+          }
+        }
+        .font(.title3)
+        .fontWeight(.bold)
+        .foregroundStyle(.secondary)
+        .listRowSeparator(.hidden)
+      }
+    }
+    .onSubmit(of: .search) {
+      store.send(.search(store.state.query))
+    }
+    .task {
+      store.send(.fetchTrends)
+    }
+  }
+
+  func attributedString(_ suggestion: String, query: String) -> AttributedString {
+    var attributedString = AttributedString(suggestion)
+    let characterSet = Set(query.lowercased())
+    for (offset, character) in suggestion.enumerated() where characterSet.contains(character.lowercased()) {
+      let index = suggestion.index(suggestion.startIndex, offsetBy: offset)
+      let range = index..<suggestion.index(after: index)
+      if let lower = AttributedString.Index(range.lowerBound, within: attributedString), let upper = AttributedString.Index(range.upperBound, within: attributedString) {
+        attributedString[lower..<upper].foregroundColor = .primary
+      }
+    }
+    return attributedString
   }
 }
 
@@ -37,7 +109,11 @@ struct SearchView: View {
 #if DEBUG
 
 #Preview {
-  SearchView()
+  SearchView(
+    store: Store(initialState: SearchFeature.State()) {
+      SearchFeature()
+    }
+  )
 }
 
 #endif

@@ -38,7 +38,11 @@ struct ResplashView: View {
         ExploreView()
       }
       Tab(role: .search) {
-        SearchView()
+        SearchView(
+          store: Store(initialState: SearchFeature.State()) {
+            SearchFeature()
+          }
+        )
       }
     }
     .tabBarMinimizeBehavior(.onScrollDown)
