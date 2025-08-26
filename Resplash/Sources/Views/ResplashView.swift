@@ -35,7 +35,11 @@ struct ResplashView: View {
         )
       }
       Tab("Explore", systemImage: "safari") {
-        ExploreView()
+        ExploreView(
+          store: Store(initialState: ExploreFeature.State()) {
+            ExploreFeature()
+          }
+        )
       }
       Tab(role: .search) {
         SearchView(
