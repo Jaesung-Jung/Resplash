@@ -28,69 +28,71 @@ struct ExploreView: View {
   let store: StoreOf<ExploreFeature>
 
   var body: some View {
-    NavigationStack {
-      ScrollView {
-        if let categories = store.state.categories {
-          LazyVStack(spacing: 0) {
-            ForEach(categories) { category in
-              HStack(spacing: 0) {
-                Text(category.title)
-                  .font(.title2)
-                  .fontWeight(.bold)
-                Spacer(minLength: 0)
-              }
-              .padding(.horizontal, 20)
-              .padding(.bottom, 10)
+    ScrollView {
+      if let categories = store.state.categories {
+        LazyVStack(spacing: 0) {
+          ForEach(categories) { category in
+            HStack(spacing: 0) {
+              Text(category.title)
+                .font(.title2)
+                .fontWeight(.bold)
+              Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 10)
 
-              ScrollView(.horizontal) {
-                LazyHGrid(rows: [GridItem(), GridItem()]) {
-                  ForEach(category.items) { item in
+            ScrollView(.horizontal) {
+              LazyHGrid(rows: [GridItem(), GridItem()]) {
+                ForEach(category.items) { item in
+                  Button {
+                    store.send(.navigateToImages(.category(item)))
+                  } label: {
                     CategoryView(item)
                       .containerRelativeFrame(.horizontal) { length, _ in (length - 50) / 2 }
                       .lineLimit(1)
                   }
                 }
-                .padding(.horizontal, 20)
               }
-              .scrollIndicators(.hidden)
-              .padding(.bottom, 40)
+              .padding(.horizontal, 20)
             }
+            .scrollIndicators(.hidden)
+            .padding(.bottom, 40)
+          }
 
-            if let images = store.state.images {
-              HStack(spacing: 0) {
-                Text("Popular Images")
-                  .font(.title2)
-                  .fontWeight(.bold)
-                Spacer(minLength: 0)
+          if let images = store.state.images {
+            HStack(spacing: 0) {
+              Text("Popular Images")
+                .font(.title2)
+                .fontWeight(.bold)
+              Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 10)
+
+            MansonryGrid(images, columns: 2, spacing: 2) { image in
+              Button {
+                store.send(.navigateToImageDetail(image))
+              } label: {
+                ImageAssetView(image, size: .compact)
               }
-              .padding(.horizontal, 20)
-              .padding(.bottom, 10)
+            } size: {
+              CGSize(width: $0.width, height: $0.height)
+            }
+            .padding(.horizontal, 20)
 
-              MansonryGrid(images, columns: 2, spacing: 2) { image in
-                Button {
-                  // store.send(.navigateToImageDetail(image))
-                } label: {
-                  ImageAssetView(image, size: .compact)
+            if store.state.hasNextPage {
+              ProgressView()
+                .foregroundStyle(.tertiary)
+                .progressViewStyle(.app.circleScale())
+                .onAppear {
+                  store.send(.fetchNext)
                 }
-              } size: {
-                CGSize(width: $0.width, height: $0.height)
-              }
-              .padding(.horizontal, 20)
-
-              if store.state.hasNextPage {
-                ProgressView()
-                  .foregroundStyle(.tertiary)
-                  .progressViewStyle(.app.circleScale())
-                  .onAppear {
-                    store.send(.fetchNext)
-                  }
-              }
             }
           }
         }
       }
-      .navigationTitle("Explore")
     }
+    .navigationTitle("Explore")
     .task {
       store.send(.fetch)
     }

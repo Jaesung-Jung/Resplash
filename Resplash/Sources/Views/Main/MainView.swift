@@ -30,62 +30,51 @@ struct MainView: View {
   @Bindable var store: StoreOf<MainFeature>
 
   var body: some View {
-    NavigationStack(path: $store.scope(state: \.paths, action: \.path)) {
-      ScrollView {
-        LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
-          Section {
-            if let collections = store.state.collections {
-              VStack(alignment: .leading) {
-                Button {
-                  store.send(.navigateToCollections(store.state.mediaType))
-                } label: {
-                  sectionTitle("Collections", showsDisclosureIndicator: true)
-                    .padding(.horizontal, 20)
-                }
-                .foregroundStyle(.primary)
-
-                imageCollectons(collections)
-              }
-            }
-
-            if let images = store.state.images {
-              VStack(alignment: .leading) {
-                sectionTitle("Featured")
+    ScrollView {
+      LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
+        Section {
+          if let collections = store.state.collections {
+            VStack(alignment: .leading) {
+              Button {
+                store.send(.navigateToCollections(store.state.mediaType))
+              } label: {
+                sectionTitle("Collections", showsDisclosureIndicator: true)
                   .padding(.horizontal, 20)
-
-                imageList(images)
               }
-            }
+              .foregroundStyle(.primary)
 
-            if store.state.hasNextPage {
-              ProgressView()
-                .foregroundStyle(.tertiary)
-                .progressViewStyle(.app.circleScale())
-                .onAppear {
-                  store.send(.fetchNextImages)
-                }
+              imageCollectons(collections)
             }
-          } header: {
-            if let topics = store.state.topics {
-              topic(topics)
+          }
+
+          if let images = store.state.images {
+            VStack(alignment: .leading) {
+              sectionTitle("Featured")
+                .padding(.horizontal, 20)
+
+              imageList(images)
             }
+          }
+
+          if store.state.hasNextPage {
+            ProgressView()
+              .foregroundStyle(.tertiary)
+              .progressViewStyle(.app.circleScale())
+              .onAppear {
+                store.send(.fetchNextImages)
+              }
+          }
+        } header: {
+          if let topics = store.state.topics {
+            topic(topics)
           }
         }
       }
-      .scrollEdgeEffectStyle(.soft, for: [.top, .bottom])
-      .navigationTitle(store.state.mediaType.localizedStringResource)
-      .toolbar {
-        mediaPickerMenu()
-      }
-    } destination: { store in
-      switch store.case {
-      case .images(let store):
-        ImagesView(store: store)
-      case .collections(let store):
-        ImageCollectionsView(store: store)
-      case .imageDetail(let store):
-        ImageDetailView(store: store)
-      }
+    }
+    .scrollEdgeEffectStyle(.soft, for: [.top, .bottom])
+    .navigationTitle(store.state.mediaType.localizedStringResource)
+    .toolbar {
+      mediaPickerMenu()
     }
     .task {
       store.send(.fetch)

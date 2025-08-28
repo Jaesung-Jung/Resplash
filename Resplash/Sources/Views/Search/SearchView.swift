@@ -28,44 +28,35 @@ struct SearchView: View {
   @Bindable var store: StoreOf<SearchFeature>
 
   var body: some View {
-    NavigationStack(path: $store.scope(state: \.paths, action: \.path)) {
-      ScrollView {
-        VStack(alignment: .leading, spacing: 0) {
-          if let trends = store.state.trends {
-            ForEach(trends.enumerated(), id: \.element.id) { offset, trend in
-              Text("#\(offset + 1). \(trend.title)")
-                .font(.body)
-                .fontWeight(.bold)
-                .foregroundStyle(.secondary)
-                .padding(.bottom, 10)
-                .padding(.top, offset == 0 ? 0 : 20)
+    ScrollView {
+      VStack(alignment: .leading, spacing: 0) {
+        if let trends = store.state.trends {
+          ForEach(trends.enumerated(), id: \.element.id) { offset, trend in
+            Text("#\(offset + 1). \(trend.title)")
+              .font(.body)
+              .fontWeight(.bold)
+              .foregroundStyle(.secondary)
+              .padding(.bottom, 10)
+              .padding(.top, offset == 0 ? 0 : 20)
 
-              ForEach(trend.keywords) { keyword in
-                Button {
-                  store.send(.search(keyword.title))
-                } label: {
-                  TrendKeywordView(keyword)
-                }
-                .foregroundStyle(.primary)
-                .padding(.vertical, 10)
+            ForEach(trend.keywords) { keyword in
+              Button {
+                store.send(.search(keyword.title))
+              } label: {
+                TrendKeywordView(keyword)
               }
+              .foregroundStyle(.primary)
+              .padding(.vertical, 10)
             }
           }
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 10)
-        .padding(.bottom, 40)
       }
-      .navigationTitle("Search")
-      .scrollDismissesKeyboard(.immediately)
-    } destination: { store in
-      switch store.case {
-      case .search(let store):
-        SearchResultView(store: store)
-      case .imageDetail(let store):
-        ImageDetailView(store: store)
-      }
+      .padding(.horizontal, 20)
+      .padding(.top, 10)
+      .padding(.bottom, 40)
     }
+    .navigationTitle("Search")
+    .scrollDismissesKeyboard(.immediately)
     .searchable(text: $store.query.sending(\.fetchSuggestion)) {
       let suggestions = store.state.suggestion?.suggestions ?? []
       ForEach(suggestions, id: \.self) { suggestion in

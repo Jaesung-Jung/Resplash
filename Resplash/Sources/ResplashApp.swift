@@ -22,12 +22,17 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct ResplashApp: App {
   var body: some Scene {
     WindowGroup {
-      ResplashView()
+      ResplashView(
+        store: Store(initialState: ResplashFeature.State()) {
+          ResplashFeature()
+        }
+      )
     }
   }
 }

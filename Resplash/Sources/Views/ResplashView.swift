@@ -25,31 +25,48 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ResplashView: View {
+  typealias TabItem = ResplashFeature.Tab
+
+  @Bindable var store: StoreOf<ResplashFeature>
+
   var body: some View {
-    TabView {
-      Tab("Image", systemImage: "photo.on.rectangle.angled") {
-        MainView(
-          store: Store(initialState: MainFeature.State()) {
-            MainFeature()
-          }
-        )
+    TabView(selection: $store.selectedTab.sending(\.selectTab)) {
+      Tab("Image", systemImage: "photo.on.rectangle.angled", value: TabItem.main) {
+        NavigationStack(path: $store.scope(state: \.mainPath, action: \.mainPath)) {
+          MainView(store: store.scope(state: \.main, action: \.main))
+        } destination: {
+          destination($0)
+        }
       }
-      Tab("Explore", systemImage: "safari") {
-        ExploreView(
-          store: Store(initialState: ExploreFeature.State()) {
-            ExploreFeature()
-          }
-        )
+      Tab("Explore", systemImage: "safari", value: TabItem.explore) {
+        NavigationStack(path: $store.scope(state: \.explorePath, action: \.explorePath)) {
+          ExploreView(store: store.scope(state: \.explore, action: \.explore))
+        } destination: {
+          destination($0)
+        }
       }
-      Tab(role: .search) {
-        SearchView(
-          store: Store(initialState: SearchFeature.State()) {
-            SearchFeature()
-          }
-        )
+      Tab(value: TabItem.search, role: .search) {
+        NavigationStack(path: $store.scope(state: \.searchPath, action: \.searchPath)) {
+          SearchView(store: store.scope(state: \.search, action: \.search))
+        } destination: {
+          destination($0)
+        }
       }
     }
     .tabBarMinimizeBehavior(.onScrollDown)
+  }
+
+  @ViewBuilder func destination(_ store: Store<ResplashFeature.Path.State, ResplashFeature.Path.Action>) -> some View {
+    switch store.case {
+    case .collections(let store):
+      ImageCollectionsView(store: store)
+    case .images(let store):
+      ImagesView(store: store)
+    case .imageDetail(let store):
+      ImageDetailView(store: store)
+    case .searchResults(let store):
+      SearchResultsView(store: store)
+    }
   }
 }
 
@@ -58,7 +75,11 @@ struct ResplashView: View {
 #if DEBUG
 
 #Preview {
-  ResplashView()
+  ResplashView(
+    store: Store(initialState: ResplashFeature.State()) {
+      ResplashFeature()
+    }
+  )
 }
 
 #endif

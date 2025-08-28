@@ -29,9 +29,9 @@ import OSLog
 extension Unsplash: DependencyKey {
   static var liveValue: Unsplash {
     #if DEBUG
-    return Unsplash(eventMonitors: [NetworkingEventMonitor()])
+    Unsplash(eventMonitors: [NetworkingEventMonitor()])
     #else
-    return Unsplash()
+    Unsplash()
     #endif
   }
 

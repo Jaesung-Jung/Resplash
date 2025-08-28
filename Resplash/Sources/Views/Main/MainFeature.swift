@@ -38,8 +38,6 @@ struct MainFeature {
 
     var page: Int = 1
     var hasNextPage: Bool = false
-
-    var paths = StackState<Path.State>()
   }
 
   enum Action: Sendable {
@@ -53,15 +51,6 @@ struct MainFeature {
     case navigateToCollections(MediaType)
     case navigateToImages(ImagesFeature.Item)
     case navigateToImageDetail(ImageAsset)
-
-    case path(StackActionOf<Path>)
-  }
-
-  @Reducer(state: .equatable)
-  enum Path {
-    case images(ImagesFeature)
-    case collections(ImageCollectionsFeature)
-    case imageDetail(ImageDetailFeature)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -109,42 +98,15 @@ struct MainFeature {
         state.activityState = .idle
         return .none
 
-      case .fetchResponse(.failure(let error)):
+      case .fetchResponse(.failure(let error)), .fetchNextImagesResponse(.failure(let error)):
         logger.fault("\(error)")
         state.activityState = .idle
         return .none
 
-      case .fetchNextImagesResponse(.failure(let error)):
-        logger.fault("\(error)")
-        state.activityState = .idle
-        return .none
-
-      case .navigateToCollections(let mediaType):
-        state.paths.append(.collections(ImageCollectionsFeature.State(mediaType: mediaType)))
-        return .none
-
-      case .navigateToImages(let item):
-        state.paths.append(.images(ImagesFeature.State(item: item)))
-        return .none
-
-      case .navigateToImageDetail(let image):
-        state.paths.append(.imageDetail(ImageDetailFeature.State(image: image)))
-        return .none
-
-      case .path(.element(id: _, action: .collections(.navigateToImages(let collection)))):
-        return .send(.navigateToImages(.collection(collection)))
-
-      case .path(.element(id: _, action: .images(.navigateToImageDetail(let image)))):
-        return .send(.navigateToImageDetail(image))
-
-      case .path(.element(id: _, action: .imageDetail(.navigateToImageDetail(let image)))):
-        return .send(.navigateToImageDetail(image))
-
-      case .path:
+      case .navigateToCollections, .navigateToImages, .navigateToImageDetail:
         return .none
       }
     }
-    .forEach(\.paths, action: \.path)
   }
 
   private func fetch(mediaType: MediaType) -> Effect<Action> {

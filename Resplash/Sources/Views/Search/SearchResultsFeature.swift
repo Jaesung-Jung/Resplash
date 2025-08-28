@@ -1,5 +1,5 @@
 //
-//  SearchResultView.swift
+//  SearchResultsFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,30 +21,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import SwiftUI
+import OSLog
+import Algorithms
 import ComposableArchitecture
 
-struct SearchResultView: View {
-  let store: StoreOf<SearchResultFeature>
+@Reducer
+struct SearchResultsFeature {
+  @ObservableState
+  struct State: Equatable {
+    let query: String
+  }
 
-  var body: some View {
-    Text("SearchResult")
-      .navigationTitle(store.state.query.capitalized)
+  enum Action {
+  }
+
+  @Dependency(\.unsplash) var unsplash
+  @Dependency(\.logger) var logger
+
+  var body: some ReducerOf<Self> {
+    Reduce { state, action in
+      .none
+    }
   }
 }
-
-// MARK: - SearchResultView Preview
-
-#if DEBUG
-
-#Preview {
-  NavigationStack {
-    SearchResultView(
-      store: Store(initialState: SearchResultFeature.State(query: "Query")) {
-        SearchResultFeature()
-      }
-    )
-  }
-}
-
-#endif

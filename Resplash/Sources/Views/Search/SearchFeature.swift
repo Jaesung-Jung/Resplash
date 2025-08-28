@@ -35,7 +35,6 @@ struct SearchFeature {
     var suggestion: SearchSuggestion?
 
     var activityState: ActivityState = .idle
-    var paths = StackState<Path.State>()
   }
 
   enum Action {
@@ -45,13 +44,11 @@ struct SearchFeature {
     case fetchSuggestionResponse(Result<SearchSuggestion, Error>)
 
     case search(String)
-
-    case path(StackActionOf<Path>)
   }
 
   @Reducer(state: .equatable)
   enum Path {
-    case search(SearchResultFeature)
+    case search(SearchResultsFeature)
     case imageDetail(ImageDetailFeature)
   }
 
@@ -109,14 +106,9 @@ struct SearchFeature {
         state.activityState = .idle
         return .none
 
-      case .search(let query):
-        state.paths.append(.search(SearchResultFeature.State(query: query)))
-        return .none
-
-      case .path:
+      case .search:
         return .none
       }
     }
-    .forEach(\.paths, action: \.path)
   }
 }
