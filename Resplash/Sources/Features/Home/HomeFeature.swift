@@ -1,5 +1,5 @@
 //
-//  MainFeature.swift
+//  HomeFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,12 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import OSLog
 import Algorithms
 import ComposableArchitecture
 
 @Reducer
-struct MainFeature {
+struct HomeFeature {
   @ObservableState
   struct State: Equatable {
     var topics: [Topic]?
@@ -34,7 +33,7 @@ struct MainFeature {
     var images: [ImageAsset]?
 
     var mediaType: MediaType = .photo
-    var activityState: ActivityState = .idle
+    var loadingPhase: LoadingPhase = .idle
 
     var page: Int = 1
     var hasNextPage: Bool = false
@@ -47,10 +46,14 @@ struct MainFeature {
     case fetchNextImages
     case fetchResponse(Result<(topics: [Topic], collections: [ImageAssetCollection], images: Page<[ImageAsset]>), Error>)
     case fetchNextImagesResponse(Result<Page<[ImageAsset]>, Error>)
+    case delegate(Delegate)
+  }
 
-    case navigateToCollections(MediaType)
-    case navigateToImages(ImagesFeature.Item)
-    case navigateToImageDetail(ImageAsset)
+  enum Delegate {
+    case selectCollections
+    case selectCollection(ImageAssetCollection)
+    case selectTopic(Topic)
+    case selectImage(ImageAsset)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -61,18 +64,18 @@ struct MainFeature {
       switch action {
       case .selectMediaType(let mediaType):
         state.mediaType = mediaType
-        state.activityState = .reloading
+        state.loadingPhase = .initial
         return fetch(mediaType: mediaType)
 
       case .fetch:
-        state.activityState = .reloading
+        state.loadingPhase = .initial
         return fetch(mediaType: state.mediaType)
 
       case .fetchNextImages:
-        guard state.hasNextPage, !state.activityState.isActive else {
+        guard state.hasNextPage, !state.loadingPhase.isLoading else {
           return .none
         }
-        state.activityState = .loading
+        state.loadingPhase = .loading
         return .run { [mediaType = state.mediaType, page = state.page] send in
           do {
             let images = try await unsplash.images(for: mediaType, page: page + 1)
@@ -88,22 +91,22 @@ struct MainFeature {
         state.images = Array(result.images.uniqued(on: \.id))
         state.page = result.images.page
         state.hasNextPage = !result.images.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchNextImagesResponse(.success(let images)):
         state.images = state.images.map { $0 + images }.map { Array($0.uniqued(on: \.id)) }
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchResponse(.failure(let error)), .fetchNextImagesResponse(.failure(let error)):
         logger.fault("\(error)")
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
-      case .navigateToCollections, .navigateToImages, .navigateToImageDetail:
+      case .delegate:
         return .none
       }
     }

@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import OSLog
+import Foundation
 import Algorithms
 import ComposableArchitecture
 
@@ -31,10 +31,10 @@ struct ImagesFeature {
   struct State: Equatable {
     let item: Item
     var title: String { item.title }
-    var subtitle: LocalizedStringResource { item.subtitle }
+    var subtitle: String { item.subtitle.map { String(localized: $0) } ?? "" }
     var shareLink: URL? { item.shareLink }
     var images: [ImageAsset]?
-    var activityState: ActivityState = .idle
+    var loadingPhase: LoadingPhase = .idle
 
     var page: Int = 1
     var hasNextPage: Bool = false
@@ -46,7 +46,11 @@ struct ImagesFeature {
     case fetchResponse(Result<Page<[ImageAsset]>, Error>)
     case fetchNextResponse(Result<Page<[ImageAsset]>, Error>)
 
-    case navigateToImageDetail(ImageAsset)
+    case delegate(Delegate)
+  }
+
+  enum Delegate {
+    case selectImage(ImageAsset)
   }
 
   enum Item: Equatable {
@@ -65,14 +69,14 @@ struct ImagesFeature {
       }
     }
 
-    var subtitle: LocalizedStringResource {
+    var subtitle: LocalizedStringResource? {
       switch self {
       case .topic(let topic):
-        topic.owners.first.map { "Created by \($0.name)" } ?? ""
+        topic.owners.first.map { "Created by \($0.name)" }
       case .collection(let collection):
         "Created by \(collection.user.name)"
       default:
-        ""
+        nil
       }
     }
 
@@ -95,7 +99,7 @@ struct ImagesFeature {
     Reduce<State, Action> { state, action in
       switch action {
       case .fetch:
-        state.activityState = .reloading
+        state.loadingPhase = .initial
         return .run { [item = state.item] send in
           do {
             let images = try await unsplash.images(for: item, page: 1)
@@ -106,10 +110,10 @@ struct ImagesFeature {
         }
 
       case .fetchNext:
-        guard state.hasNextPage, !state.activityState.isActive else {
+        guard state.hasNextPage, !state.loadingPhase.isLoading else {
           return .none
         }
-        state.activityState = .loading
+        state.loadingPhase = .loading
         return .run { [item = state.item, page = state.page] send in
           do {
             let images = try await unsplash.images(for: item, page: page + 1)
@@ -123,22 +127,22 @@ struct ImagesFeature {
         state.images = Array(images.uniqued(on: \.id))
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchNextResponse(.success(let images)):
         state.images = state.images.map { $0 + images }.map { Array($0.uniqued(on: \.id)) }
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchResponse(.failure(let error)), .fetchNextResponse(.failure(let error)):
         logger.fault("\(error)")
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
-      case .navigateToImageDetail:
+      case .delegate:
         return .none
       }
     }

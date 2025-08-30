@@ -39,7 +39,6 @@ struct RemoteImage<Content: View>: View {
 
   var body: some View {
     KFImage(url)
-      .fade(duration: 0.25)
       .contentConfigure(content)
       .onSuccess { _ in phase = .success }
       .onFailure { _ in phase = .failure }
@@ -53,8 +52,6 @@ struct RemoteImage<Content: View>: View {
         if phase == .idle || phase == .loading {
           Rectangle()
             .fill(.tertiary)
-            .opacity(phase == .loading ? 0.25 : 1)
-            .animation(.linear(duration: 1).repeatForever(autoreverses: true), value: phase == .loading)
         }
       }
   }

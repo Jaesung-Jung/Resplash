@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import OSLog
+import Foundation
 import Algorithms
 import ComposableArchitecture
 
@@ -34,7 +34,7 @@ struct SearchFeature {
     var trends: [Trend]?
     var suggestion: SearchSuggestion?
 
-    var activityState: ActivityState = .idle
+    var loadingPhase: LoadingPhase = .idle
   }
 
   enum Action {
@@ -44,12 +44,6 @@ struct SearchFeature {
     case fetchSuggestionResponse(Result<SearchSuggestion, Error>)
 
     case search(String)
-  }
-
-  @Reducer(state: .equatable)
-  enum Path {
-    case search(SearchResultsFeature)
-    case imageDetail(ImageDetailFeature)
   }
 
   enum CancelID {
@@ -63,7 +57,7 @@ struct SearchFeature {
     Reduce { state, action in
       switch action {
       case .fetchTrends:
-        state.activityState = .loading
+        state.loadingPhase = .loading
         return .run { send in
           do {
             let trends = try await unsplash.searchTrends()
@@ -82,19 +76,17 @@ struct SearchFeature {
         }
         return .run { send in
           do {
-            print("searchSuggestion")
             let suggestion = try await unsplash.searchSuggestion(trimmedQuery)
             await send(.fetchSuggestionResponse(.success(suggestion)))
           } catch {
             await send(.fetchSuggestionResponse(.failure(error)))
           }
         }
-        .debounce(id: CancelID.fetchSuggestion, for: .milliseconds(300), scheduler: DispatchQueue.main)
         .cancellable(id: CancelID.fetchSuggestion)
 
       case .fetchTrendsResponse(.success(let trends)):
         state.trends = trends
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchSuggestionResponse(.success(let suggestion)):
@@ -103,7 +95,7 @@ struct SearchFeature {
 
       case .fetchTrendsResponse(.failure(let error)), .fetchSuggestionResponse(.failure(let error)):
         logger.fault("\(error)")
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .search:

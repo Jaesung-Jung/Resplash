@@ -1,0 +1,76 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "#%lld. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "#%1$lld. %2$@"
+          }
+        }
+      }
+    },
+    "%@ likes" : {
+
+    },
+    "%@+ images" : {
+
+    },
+    "%lld image" : {
+
+    },
+    "Available for hire" : {
+
+    },
+    "Collections" : {
+
+    },
+    "Created by %@" : {
+
+    },
+    "Downloads" : {
+
+    },
+    "Explore" : {
+
+    },
+    "Featured" : {
+
+    },
+    "Featured in" : {
+
+    },
+    "From this series" : {
+
+    },
+    "Home" : {
+
+    },
+    "Illustrations" : {
+
+    },
+    "Media" : {
+
+    },
+    "Photos" : {
+
+    },
+    "Popular Images" : {
+
+    },
+    "Published on %@" : {
+
+    },
+    "Related Images" : {
+
+    },
+    "Search" : {
+
+    },
+    "Views" : {
+
+    }
+  },
+  "version" : "1.1"
+}

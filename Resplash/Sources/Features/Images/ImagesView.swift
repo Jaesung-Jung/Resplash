@@ -44,7 +44,7 @@ struct ImagesView: View {
         if let images = store.state.images {
           MansonryGrid(images, columns: 2, spacing: 2) { image in
             Button {
-              store.send(.navigateToImageDetail(image))
+              store.send(.delegate(.selectImage(image)))
             } label: {
               ImageAssetView(image, size: .compact)
             }
@@ -55,7 +55,7 @@ struct ImagesView: View {
           if store.state.hasNextPage {
             ProgressView()
               .foregroundStyle(.tertiary)
-              .progressViewStyle(.app.circleScale())
+              // .progressViewStyle(.app.circleScale())
               .onAppear {
                 store.send(.fetchNext)
               }

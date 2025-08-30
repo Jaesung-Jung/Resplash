@@ -21,7 +21,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import OSLog
 import Algorithms
 import ComposableArchitecture
 
@@ -31,7 +30,7 @@ struct ImageCollectionsFeature {
   struct State: Equatable {
     let mediaType: MediaType
     var collections: [ImageAssetCollection]?
-    var activityState: ActivityState = .idle
+    var loadingPhase: LoadingPhase = .idle
 
     var page: Int = 1
     var hasNextPage: Bool = false
@@ -43,7 +42,11 @@ struct ImageCollectionsFeature {
     case fetchResponse(Result<Page<[ImageAssetCollection]>, Error>)
     case fetchNextResponse(Result<Page<[ImageAssetCollection]>, Error>)
 
-    case navigateToImages(ImageAssetCollection)
+    case delegate(Delegate)
+  }
+
+  enum Delegate {
+    case selectImageCollection(ImageAssetCollection)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -53,7 +56,7 @@ struct ImageCollectionsFeature {
     Reduce { state, action in
       switch action {
       case .fetch:
-        state.activityState = .reloading
+        state.loadingPhase = .initial
         return .run { [mediaType = state.mediaType] send in
           do {
             let collections = try await unsplash.collections(for: mediaType, page: 1)
@@ -64,10 +67,10 @@ struct ImageCollectionsFeature {
         }
 
       case .fetchNext:
-        guard state.hasNextPage, !state.activityState.isActive else {
+        guard state.hasNextPage, !state.loadingPhase.isLoading else {
           return .none
         }
-        state.activityState = .loading
+        state.loadingPhase = .loading
         return .run { [mediaType = state.mediaType, page = state.page] send in
           do {
             let collections = try await unsplash.collections(for: mediaType, page: page + 1)
@@ -81,22 +84,22 @@ struct ImageCollectionsFeature {
         state.collections = Array(collections.uniqued(on: \.id))
         state.page = collections.page
         state.hasNextPage = !collections.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchNextResponse(.success(let collections)):
         state.collections = state.collections.map { $0 + collections }.map { Array($0.uniqued(on: \.id)) }
         state.page = collections.page
         state.hasNextPage = !collections.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchResponse(.failure(let error)), .fetchNextResponse(.failure(let error)):
         logger.fault("\(error)")
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
-      case .navigateToImages:
+      case .delegate:
         return .none
       }
     }

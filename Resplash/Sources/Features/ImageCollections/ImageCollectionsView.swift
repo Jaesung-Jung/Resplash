@@ -1,5 +1,5 @@
 //
-//  SearchResultsView.swift
+//  ImageCollectionsView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -24,24 +24,52 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct SearchResultsView: View {
-  let store: StoreOf<SearchResultsFeature>
+struct ImageCollectionsView: View {
+  let store: StoreOf<ImageCollectionsFeature>
 
   var body: some View {
-    Text("SearchResultsView")
-      .navigationTitle(store.state.query.capitalized)
+    ScrollView {
+      if let collections = store.state.collections {
+        LazyVGrid( columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
+          ForEach(collections) { collection in
+            Button {
+              store.send(.delegate(.selectImageCollection(collection)))
+            } label: {
+              ImageCollectionView(collection)
+            }
+            .foregroundStyle(.primary)
+          }
+        }
+        .padding(20)
+
+        LazyVStack {
+          if store.state.hasNextPage {
+            ProgressView()
+              .foregroundStyle(.tertiary)
+              // .progressViewStyle(.app.circleScale())
+              .onAppear {
+                store.send(.fetchNext)
+              }
+          }
+        }
+      }
+    }
+    .navigationTitle("Collections")
+    .task {
+      store.send(.fetch)
+    }
   }
 }
 
-// MARK: - SearchResultView Preview
+// MARK: - ImageCollectionsView Preview
 
 #if DEBUG
 
 #Preview {
   NavigationStack {
-    SearchResultsView(
-      store: Store(initialState: SearchResultsFeature.State(query: "Query")) {
-        SearchResultsFeature()
+    ImageCollectionsView(
+      store: Store(initialState: ImageCollectionsFeature.State(mediaType: .photo)) {
+        ImageCollectionsFeature()
       }
     )
   }

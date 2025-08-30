@@ -80,7 +80,7 @@ struct UnsplashTests {
   }
 
   @Test func relatedImage() async throws {
-    let images = try await unsplash.relatedImage(for: .preview, page: 1)
+    let images = try await unsplash.relatedImages(for: .preview, page: 1)
     #expect(!images.isEmpty)
   }
 

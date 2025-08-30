@@ -1,5 +1,5 @@
 //
-//  ImageCollectionsView.swift
+//  ResplashNavigation.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -24,55 +24,27 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ImageCollectionsView: View {
-  let store: StoreOf<ImageCollectionsFeature>
+struct ResplashNavigation<Root: View>: View {
+  let path: Binding<Store<StackState<ResplashNavigationPath.State>, StackActionOf<ResplashNavigationPath>>>
+  let root: Root
+
+  init(path: Binding<Store<StackState<ResplashNavigationPath.State>, StackActionOf<ResplashNavigationPath>>>, @ViewBuilder root: () -> Root) {
+    self.path = path
+    self.root = root()
+  }
 
   var body: some View {
-    ScrollView {
-      if let collections = store.state.collections {
-        LazyVGrid( columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
-          ForEach(collections) { collection in
-            Button {
-              store.send(.navigateToImages(collection))
-            } label: {
-              ImageCollectionView(collection)
-            }
-            .foregroundStyle(.primary)
-          }
-        }
-        .padding(20)
-
-        LazyVStack {
-          if store.state.hasNextPage {
-            ProgressView()
-              .foregroundStyle(.tertiary)
-              .progressViewStyle(.app.circleScale())
-              .onAppear {
-                store.send(.fetchNext)
-              }
-          }
-        }
+    NavigationStack(path: path) {
+      root
+    } destination: { store in
+      switch store.case {
+      case .collections(let store):
+        ImageCollectionsView(store: store)
+      case .images(let store):
+        ImagesView(store: store)
+      case .imageDetail(let store):
+        ImageDetailView(store: store)
       }
-    }
-    .navigationTitle("Collections")
-    .task {
-      store.send(.fetch)
     }
   }
 }
-
-// MARK: - ImageCollectionsView Preview
-
-#if DEBUG
-
-#Preview {
-  NavigationStack {
-    ImageCollectionsView(
-      store: Store(initialState: ImageCollectionsFeature.State(mediaType: .photo)) {
-        ImageCollectionsFeature()
-      }
-    )
-  }
-}
-
-#endif

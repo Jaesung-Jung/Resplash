@@ -22,7 +22,6 @@
 //  THE SOFTWARE.
 
 import Dependencies
-import OSLog
 
 // MARK: - Unsplash
 
@@ -55,8 +54,8 @@ extension DependencyValues {
 
 // MARK: - Logger
 
-extension Logger: @retroactive DependencyKey {
-  public static let liveValue = Logger(subsystem: "Resplash", category: "Resplash")
+extension Logger: DependencyKey {
+  public static let liveValue = Logger()
 }
 
 extension DependencyValues {

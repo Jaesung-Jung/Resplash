@@ -73,10 +73,10 @@ extension TrendKeywordView {
       HStack(spacing: 4) {
         switch growth {
         case .up:
-          Text("\(value.formatted(.number))%")
+          Text(value.formatted(.percent))
           Image(systemName: "arrow.turn.right.up")
         case .down:
-          Text("\(value.formatted(.number))%")
+          Text(value.formatted(.percent))
           Image(systemName: "arrow.turn.right.down")
         case .stedy:
           Image(systemName: "minus")

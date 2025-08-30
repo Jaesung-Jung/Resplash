@@ -67,7 +67,7 @@ struct ImageDetailView: View {
         if store.state.hasNextPage {
           ProgressView()
             .foregroundStyle(.tertiary)
-            .progressViewStyle(.app.circleScale())
+            // .progressViewStyle(.app.circleScale())
             .onAppear {
               store.send(.fetchNextRelatedImages)
             }
@@ -194,7 +194,7 @@ struct ImageDetailView: View {
         LazyHStack(spacing: 2) {
           ForEach(images) { image in
             Button {
-              store.send(.navigateToImageDetail(image))
+              store.send(.delegate(.selectImage(image)))
             } label: {
               ImageAssetView(image, size: .compact)
                 .aspectRatio(CGSize(width: CGFloat(image.width) / CGFloat(image.height), height: 1), contentMode: .fit)
@@ -217,7 +217,7 @@ struct ImageDetailView: View {
 
       MansonryGrid(images, columns: 2, spacing: 2) { image in
         Button {
-          store.send(.navigateToImageDetail(image))
+          store.send(.delegate(.selectImage(image)))
         } label: {
           ImageAssetView(image, size: .compact)
         }

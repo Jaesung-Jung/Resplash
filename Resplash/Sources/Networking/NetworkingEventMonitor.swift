@@ -24,7 +24,6 @@
 #if DEBUG
 
 import Foundation
-import OSLog
 import Alamofire
 import Dependencies
 

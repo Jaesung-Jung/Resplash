@@ -1,5 +1,5 @@
 //
-//  DataResponseTests.swift
+//  UnsplashDataResponseTests.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //

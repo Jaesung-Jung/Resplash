@@ -21,7 +21,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import OSLog
 import Algorithms
 import ComposableArchitecture
 
@@ -31,7 +30,7 @@ struct ExploreFeature {
   struct State: Equatable {
     var categories: [Category]?
     var images: [ImageAsset]?
-    var activityState: ActivityState = .idle
+    var loadingPhase: LoadingPhase = .idle
 
     var page: Int = 1
     var hasNextPage: Bool = false
@@ -54,7 +53,7 @@ struct ExploreFeature {
     Reduce { state, action in
       switch action {
       case .fetch:
-        state.activityState = .reloading
+        state.loadingPhase = .initial
         return .run { send in
           do {
             async let fetchCategories = unsplash.categories()
@@ -67,10 +66,10 @@ struct ExploreFeature {
         }
 
       case .fetchNext:
-        guard state.hasNextPage, !state.activityState.isActive else {
+        guard state.hasNextPage, !state.loadingPhase.isLoading else {
           return .none
         }
-        state.activityState = .loading
+        state.loadingPhase = .loading
         return .run { [page = state.page] send in
           do {
             let images = try await unsplash.images(for: .photo, page: page + 1)
@@ -85,19 +84,19 @@ struct ExploreFeature {
         state.images = Array(images.uniqued(on: \.id))
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchNextResponse(.success(let images)):
         state.images = state.images.map { $0 + images }.map { Array($0.uniqued(on: \.id)) }
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchResponse(.failure(let error)), .fetchNextResponse(.failure(let error)):
         logger.fault("\(error)")
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .navigateToImages, .navigateToImageDetail:

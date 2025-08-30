@@ -1,5 +1,5 @@
 //
-//  ButtonStyles.swift
+//  LoadingPhase.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,47 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import SwiftUI
+enum LoadingPhase: Sendable {
+  case idle
+  case initial
+  case refreshing
+  case loading
 
-// MARK: - ScaleEffectButtonStyle
-
-struct ScaleEffectButtonStyle: ButtonStyle {
-  func makeBody(configuration: Configuration) -> some View {
-    configuration.label
-      .scaleEffect(configuration.isPressed ? 0.95 : 1)
-      .animation(.smooth(duration: 0.3), value: configuration.isPressed)
-  }
+  @inlinable var isLoading: Bool { self != .idle }
 }
-
-// MARK: - ButtonStyle (App)
-
-extension ButtonStyle where Self == AppButtonStyles {
-  static var app: AppButtonStyles.Type { AppButtonStyles.self }
-}
-
-struct AppButtonStyles: ButtonStyle {
-  static var scaleEffect: some ButtonStyle { ScaleEffectButtonStyle() }
-
-  func makeBody(configuration: Configuration) -> some View {
-    EmptyView()
-  }
-}
-
-// MARK: - ButtonStyles Preview
-
-#if DEBUG
-
-#Preview {
-  VStack {
-    Button {
-    } label: {
-      Text("Scale Effect Button")
-        .foregroundStyle(.white)
-        .padding(8)
-        .background(RoundedRectangle(cornerRadius: 8))
-    }
-    .buttonStyle(.app.scaleEffect)
-  }
-}
-
-#endif

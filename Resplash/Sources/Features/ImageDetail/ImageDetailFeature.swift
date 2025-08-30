@@ -21,7 +21,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import OSLog
 import Algorithms
 import ComposableArchitecture
 
@@ -32,7 +31,7 @@ struct ImageDetailFeature {
     let image: ImageAsset
     var detail: ImageAssetDetail?
     var seriesImages: [ImageAsset]?
-    var activityState: ActivityState = .idle
+    var loadingPhase: LoadingPhase = .idle
 
     var relatedImages: [ImageAsset]?
     var page: Int = 1
@@ -45,7 +44,11 @@ struct ImageDetailFeature {
     case fetchDetailResponse(Result<(ImageAssetDetail, [ImageAsset], Page<[ImageAsset]>), Error>)
     case fetchNextRelatedImagesResponse(Result<Page<[ImageAsset]>, Error>)
 
-    case navigateToImageDetail(ImageAsset)
+    case delegate(Delegate)
+  }
+
+  enum Delegate {
+    case selectImage(ImageAsset)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -55,7 +58,7 @@ struct ImageDetailFeature {
     Reduce { state, action in
       switch action {
       case .fetchDetail:
-        state.activityState = .reloading
+        state.loadingPhase = .initial
         return .run { [image = state.image] send in
           async let fetchDetail = unsplash.imageDetail(for: image)
           async let fetchSeriesImages = unsplash.seriesImages(for: image)
@@ -69,10 +72,10 @@ struct ImageDetailFeature {
         }
 
       case .fetchNextRelatedImages:
-        guard state.hasNextPage, !state.activityState.isActive else {
+        guard state.hasNextPage, !state.loadingPhase.isLoading else {
           return .none
         }
-        state.activityState = .loading
+        state.loadingPhase = .loading
         return .run { [image = state.image, page = state.page] send in
           do {
             let relatedImages = try await unsplash.relatedImages(for: image, page: page + 1)
@@ -88,22 +91,22 @@ struct ImageDetailFeature {
         state.relatedImages = Array(relatedImages.uniqued(on: \.id))
         state.page = relatedImages.page
         state.hasNextPage = !relatedImages.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchNextRelatedImagesResponse(.success(let relatedImages)):
         state.relatedImages = state.relatedImages.map { $0 + relatedImages }.map { Array($0.uniqued(on: \.id)) }
         state.page = relatedImages.page
         state.hasNextPage = !relatedImages.isAtEnd
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
       case .fetchDetailResponse(.failure(let error)), .fetchNextRelatedImagesResponse(.failure(let error)):
         logger.fault("\(error)")
-        state.activityState = .idle
+        state.loadingPhase = .idle
         return .none
 
-      case .navigateToImageDetail:
+      case .delegate:
         return .none
       }
     }

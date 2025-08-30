@@ -1,5 +1,5 @@
 //
-//  SearchResultsFeature.swift
+//  ResplashView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,26 +21,43 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import OSLog
-import Algorithms
+import SwiftUI
 import ComposableArchitecture
 
-@Reducer
-struct SearchResultsFeature {
-  @ObservableState
-  struct State: Equatable {
-    let query: String
-  }
+struct ResplashView: View {
+  typealias TabItem = ResplashFeature.Tab
 
-  enum Action {
-  }
+  @Bindable var store: StoreOf<ResplashFeature>
 
-  @Dependency(\.unsplash) var unsplash
-  @Dependency(\.logger) var logger
+  var body: some View {
+    TabView(selection: $store.selectedTab) {
+      Tab("Home", systemImage: "photo.on.rectangle.angled", value: TabItem.home) {
+        ResplashNavigation(path: $store.scope(state: \.homePath, action: \.homePath)) {
+          HomeView(store: store.scope(state: \.home, action: \.home))
+        }
+      }
 
-  var body: some ReducerOf<Self> {
-    Reduce { state, action in
-      .none
+      Tab("Explore", systemImage: "safari", value: TabItem.explore) {
+        ResplashNavigation(path: $store.scope(state: \.explorePath, action: \.explorePath)) {
+          ExploreView(store: store.scope(state: \.explore, action: \.explore))
+        }
+      }
+
+      Tab(value: TabItem.search, role: .search) {
+        ResplashNavigation(path: $store.scope(state: \.searchPath, action: \.searchPath)) {
+          SearchView(store: store.scope(state: \.search, action: \.search))
+        }
+      }
     }
   }
+}
+
+// MARK: - ResplashView Preview
+
+#Preview {
+  ResplashView(
+    store: Store(initialState: ResplashFeature.State()) {
+      ResplashFeature()
+    }
+  )
 }

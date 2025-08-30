@@ -1,5 +1,5 @@
 //
-//  ActivityState.swift
+//  ResplashNavigationPath.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,10 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-enum ActivityState {
-  case idle
-  case loading
-  case reloading
+import ComposableArchitecture
 
-  @inlinable var isActive: Bool { self != .idle }
+@Reducer(state: .equatable)
+enum ResplashNavigationPath {
+  case collections(ImageCollectionsFeature)
+  case images(ImagesFeature)
+  case imageDetail(ImageDetailFeature)
 }

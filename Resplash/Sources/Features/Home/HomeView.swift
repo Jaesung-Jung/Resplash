@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  HomeView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -24,10 +24,10 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct MainView: View {
+struct HomeView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.horizontalSizeClass) var hSizeClass
-  @Bindable var store: StoreOf<MainFeature>
+  let store: StoreOf<HomeFeature>
 
   var body: some View {
     ScrollView {
@@ -36,7 +36,7 @@ struct MainView: View {
           if let collections = store.state.collections {
             VStack(alignment: .leading) {
               Button {
-                store.send(.navigateToCollections(store.state.mediaType))
+                store.send(.delegate(.selectCollections))
               } label: {
                 sectionTitle("Collections", showsDisclosureIndicator: true)
                   .padding(.horizontal, 20)
@@ -59,7 +59,7 @@ struct MainView: View {
           if store.state.hasNextPage {
             ProgressView()
               .foregroundStyle(.tertiary)
-              .progressViewStyle(.app.circleScale())
+              // .progressViewStyle(.app.circleScale())
               .onAppear {
                 store.send(.fetchNextImages)
               }
@@ -82,9 +82,9 @@ struct MainView: View {
   }
 }
 
-// MARK: - MainView (ViewBuilder)
+// MARK: - HomeView (ViewBuilder)
 
-extension MainView {
+extension HomeView {
   @ViewBuilder func sectionTitle(_ key: LocalizedStringKey, showsDisclosureIndicator: Bool = false) -> some View {
     HStack {
       Text(key)
@@ -104,7 +104,7 @@ extension MainView {
       LazyHStack(spacing: 10) {
         ForEach(topics) { topic in
           Button {
-            store.send(.navigateToImages(.topic(topic)))
+            store.send(.delegate(.selectTopic(topic)))
           } label: {
             TopicView(topic)
               .foregroundStyle(colorScheme == .dark ? .white : .primary)
@@ -126,7 +126,7 @@ extension MainView {
       LazyHGrid(rows: [GridItem()], alignment: .top, spacing: 10) {
         ForEach(collections) { collection in
           Button {
-            store.send(.navigateToImages(.collection(collection)))
+            store.send(.delegate(.selectCollection(collection)))
           } label: {
             ImageCollectionView(collection)
               .containerRelativeFrame(.horizontal) { length, _ in (length - 20) / 1.5 }
@@ -144,7 +144,7 @@ extension MainView {
     LazyVStack(spacing: 10) {
       ForEach(images) { image in
         Button {
-          store.send(.navigateToImageDetail(image))
+          store.send(.delegate(.selectImage(image)))
         } label: {
           ImageAssetView(image)
             .containerRelativeFrame([.horizontal]) { length, _ in length - 40 }
@@ -176,14 +176,14 @@ extension MainView {
   }
 }
 
-// MARK: - MainView Preview
+// MARK: - HomeView Preview
 
 #if DEBUG
 
 #Preview {
-  MainView(
-    store: Store(initialState: MainFeature.State()) {
-      MainFeature()
+  HomeView(
+    store: Store(initialState: HomeFeature.State()) {
+      HomeFeature()
     }
   )
 }
