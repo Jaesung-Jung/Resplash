@@ -46,7 +46,7 @@ struct ImageCollectionsView: View {
           if store.state.hasNextPage {
             ProgressView()
               .foregroundStyle(.tertiary)
-              // .progressViewStyle(.app.circleScale())
+              .progressViewStyle(.circleScale)
               .onAppear {
                 store.send(.fetchNext)
               }
