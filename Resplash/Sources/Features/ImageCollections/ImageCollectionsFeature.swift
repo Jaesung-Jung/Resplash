@@ -42,11 +42,11 @@ struct ImageCollectionsFeature {
     case fetchResponse(Result<Page<[ImageAssetCollection]>, Error>)
     case fetchNextResponse(Result<Page<[ImageAssetCollection]>, Error>)
 
-    case delegate(Delegate)
+    case navigate(Navigation)
   }
 
-  enum Delegate {
-    case selectImageCollection(ImageAssetCollection)
+  enum Navigation {
+    case collection(ImageAssetCollection)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -58,12 +58,8 @@ struct ImageCollectionsFeature {
       case .fetch:
         state.loadingPhase = .initial
         return .run { [mediaType = state.mediaType] send in
-          do {
-            let collections = try await unsplash.collections(for: mediaType, page: 1)
-            await send(.fetchResponse(.success(collections)))
-          } catch {
-            await send(.fetchResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.collections(for: mediaType, page: 1) }
+          await send(.fetchResponse(result))
         }
 
       case .fetchNext:
@@ -72,12 +68,8 @@ struct ImageCollectionsFeature {
         }
         state.loadingPhase = .loading
         return .run { [mediaType = state.mediaType, page = state.page] send in
-          do {
-            let collections = try await unsplash.collections(for: mediaType, page: page + 1)
-            await send(.fetchNextResponse(.success(collections)))
-          } catch {
-            await send(.fetchNextResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.collections(for: mediaType, page: page + 1) }
+          await send(.fetchNextResponse(result))
         }
 
       case .fetchResponse(.success(let collections)):
@@ -99,7 +91,7 @@ struct ImageCollectionsFeature {
         state.loadingPhase = .idle
         return .none
 
-      case .delegate:
+      case .navigate:
         return .none
       }
     }

@@ -46,14 +46,14 @@ struct HomeFeature {
     case fetchNextImages
     case fetchResponse(Result<(topics: [Topic], collections: [ImageAssetCollection], images: Page<[ImageAsset]>), Error>)
     case fetchNextImagesResponse(Result<Page<[ImageAsset]>, Error>)
-    case delegate(Delegate)
+    case navigate(Navigation)
   }
 
-  enum Delegate {
-    case selectCollections
-    case selectCollection(ImageAssetCollection)
-    case selectTopic(Topic)
-    case selectImage(ImageAsset)
+  enum Navigation {
+    case collections
+    case collection(ImageAssetCollection)
+    case topic(Topic)
+    case image(ImageAsset)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -77,12 +77,8 @@ struct HomeFeature {
         }
         state.loadingPhase = .loading
         return .run { [mediaType = state.mediaType, page = state.page] send in
-          do {
-            let images = try await unsplash.images(for: mediaType, page: page + 1)
-            await send(.fetchNextImagesResponse(.success(images)))
-          } catch {
-            await send(.fetchNextImagesResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.images(for: mediaType, page: page + 1) }
+          await send(.fetchNextImagesResponse(result))
         }
 
       case .fetchResponse(.success(let result)):
@@ -106,23 +102,21 @@ struct HomeFeature {
         state.loadingPhase = .idle
         return .none
 
-      case .delegate:
+      case .navigate:
         return .none
       }
     }
   }
 
   private func fetch(mediaType: MediaType) -> Effect<Action> {
-    return .run { send in
-      async let fetchTopics = unsplash.topics(for: mediaType)
-      async let fetchCollections = unsplash.collections(for: mediaType, page: 1)
-      async let fetchImages = unsplash.images(for: mediaType, page: 1)
-      do {
-        let (topics, collections, images) = try await (fetchTopics, fetchCollections, fetchImages)
-        await send(.fetchResponse(.success((topics, collections.items, images))))
-      } catch {
-        await send(.fetchResponse(.failure(error)))
+    .run { send in
+      let result = await Result {
+        async let fetchTopics = unsplash.topics(for: mediaType)
+        async let fetchCollections = unsplash.collections(for: mediaType, page: 1)
+        async let fetchImages = unsplash.images(for: mediaType, page: 1)
+        return try await (topics: fetchTopics, collections: fetchCollections.items, images: fetchImages)
       }
+      await send(.fetchResponse(result))
     }
   }
 }

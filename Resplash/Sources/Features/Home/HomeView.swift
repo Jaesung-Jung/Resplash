@@ -36,7 +36,7 @@ struct HomeView: View {
           if let collections = store.state.collections {
             VStack(alignment: .leading) {
               Button {
-                store.send(.delegate(.selectCollections))
+                store.send(.navigate(.collections))
               } label: {
                 sectionTitle("Collections", showsDisclosureIndicator: true)
                   .padding(.horizontal, 20)
@@ -104,7 +104,7 @@ extension HomeView {
       LazyHStack(spacing: 10) {
         ForEach(topics) { topic in
           Button {
-            store.send(.delegate(.selectTopic(topic)))
+            store.send(.navigate(.topic(topic)))
           } label: {
             TopicView(topic)
               .foregroundStyle(colorScheme == .dark ? .white : .primary)
@@ -126,7 +126,7 @@ extension HomeView {
       LazyHGrid(rows: [GridItem()], alignment: .top, spacing: 10) {
         ForEach(collections) { collection in
           Button {
-            store.send(.delegate(.selectCollection(collection)))
+            store.send(.navigate(.collection(collection)))
           } label: {
             ImageCollectionView(collection)
               .containerRelativeFrame(.horizontal) { length, _ in (length - 20) / 1.5 }
@@ -144,7 +144,7 @@ extension HomeView {
     LazyVStack(spacing: 10) {
       ForEach(images) { image in
         Button {
-          store.send(.delegate(.selectImage(image)))
+          store.send(.navigate(.image(image)))
         } label: {
           ImageAssetView(image)
             .containerRelativeFrame([.horizontal]) { length, _ in length - 40 }

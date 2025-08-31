@@ -46,11 +46,11 @@ struct ImagesFeature {
     case fetchResponse(Result<Page<[ImageAsset]>, Error>)
     case fetchNextResponse(Result<Page<[ImageAsset]>, Error>)
 
-    case delegate(Delegate)
+    case navigate(Navigation)
   }
 
-  enum Delegate {
-    case selectImage(ImageAsset)
+  enum Navigation {
+    case image(ImageAsset)
   }
 
   enum Item: Equatable {
@@ -101,12 +101,8 @@ struct ImagesFeature {
       case .fetch:
         state.loadingPhase = .initial
         return .run { [item = state.item] send in
-          do {
-            let images = try await unsplash.images(for: item, page: 1)
-            await send(.fetchResponse(.success(images)))
-          } catch {
-            await send(.fetchResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.images(for: item, page: 1) }
+          await send(.fetchResponse(result))
         }
 
       case .fetchNext:
@@ -115,12 +111,8 @@ struct ImagesFeature {
         }
         state.loadingPhase = .loading
         return .run { [item = state.item, page = state.page] send in
-          do {
-            let images = try await unsplash.images(for: item, page: page + 1)
-            await send(.fetchNextResponse(.success(images)))
-          } catch {
-            await send(.fetchNextResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.images(for: item, page: page + 1) }
+          await send(.fetchNextResponse(result))
         }
 
       case .fetchResponse(.success(let images)):
@@ -142,7 +134,7 @@ struct ImagesFeature {
         state.loadingPhase = .idle
         return .none
 
-      case .delegate:
+      case .navigate:
         return .none
       }
     }

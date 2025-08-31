@@ -39,15 +39,23 @@ struct SearchFeature {
 
   enum Action {
     case fetchTrends
-    case fetchSuggestion(String)
+    case fetchSuggestion
     case fetchTrendsResponse(Result<[Trend], Error>)
     case fetchSuggestionResponse(Result<SearchSuggestion, Error>)
+    case updateQuery(String)
+    case search
+    case selectKeyword(Trend.Keyword)
+    case selectSuggestion(String)
 
+    case navigate(Navigation)
+  }
+
+  enum Navigation {
     case search(String)
   }
 
   enum CancelID {
-    case fetchSuggestion
+    case suggestion
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -59,30 +67,19 @@ struct SearchFeature {
       case .fetchTrends:
         state.loadingPhase = .loading
         return .run { send in
-          do {
-            let trends = try await unsplash.searchTrends()
-            await send(.fetchTrendsResponse(.success(trends)))
-          } catch {
-            await send(.fetchTrendsResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.searchTrends() }
+          await send(.fetchTrendsResponse(result))
         }
 
-      case .fetchSuggestion(let query):
-        state.query = query
-        let trimmedQuery = query.trimmingCharacters(in: .whitespaces)
-        guard !trimmedQuery.isEmpty else {
-          state.suggestion = nil
+      case .fetchSuggestion:
+        guard !state.query.isEmpty else {
           return .none
         }
-        return .run { send in
-          do {
-            let suggestion = try await unsplash.searchSuggestion(trimmedQuery)
-            await send(.fetchSuggestionResponse(.success(suggestion)))
-          } catch {
-            await send(.fetchSuggestionResponse(.failure(error)))
-          }
+        return .run { [query = state.query] send in
+          let result = await Result { try await unsplash.searchSuggestion(query) }
+          await send(.fetchSuggestionResponse(result))
         }
-        .cancellable(id: CancelID.fetchSuggestion)
+        .cancellable(id: CancelID.suggestion)
 
       case .fetchTrendsResponse(.success(let trends)):
         state.trends = trends
@@ -98,7 +95,24 @@ struct SearchFeature {
         state.loadingPhase = .idle
         return .none
 
+      case .updateQuery(let query):
+        state.query = query.trimmingCharacters(in: .whitespaces)
+        guard !query.isEmpty else {
+          state.suggestion = nil
+          return .cancel(id: CancelID.suggestion)
+        }
+        return .none
+
       case .search:
+        return .send(.navigate(.search(state.query)))
+
+      case .selectKeyword(let keyword):
+        return .send(.navigate(.search(keyword.title)))
+
+      case .selectSuggestion(let suggestion):
+        return .send(.navigate(.search(suggestion)))
+
+      case .navigate:
         return .none
       }
     }

@@ -31,6 +31,18 @@ struct ScaleEffectButtonStyle: ButtonStyle {
   }
 }
 
+struct ListButtonStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .background {
+        RoundedRectangle(cornerRadius: 8)
+          .fill(.tertiary)
+          .opacity(configuration.isPressed ? 1 : 0)
+      }
+      .animation(.bouncy(duration: 0.25), value: configuration.isPressed)
+  }
+}
+
 extension ButtonStyle where Self == ScaleEffectButtonStyle {
   static var scaleEffect: ScaleEffectButtonStyle { ScaleEffectButtonStyle() }
 }

@@ -67,25 +67,41 @@ struct ResplashFeature {
       SearchFeature()
     }
     Reduce { state, action in
+      print("🚀 action: \(action)")
+      defer {
+        print("🚀 searchPath: \(state.searchPath.count)")
+      }
       switch action {
-      case .home(.delegate(.selectCollections)):
+      case .home(.navigate(.collections)):
         state.homePath.append(.collections(ImageCollectionsFeature.State(mediaType: state.home.mediaType)))
         return .none
 
-      case .home(.delegate(.selectCollection(let collection))):
+      case .home(.navigate(.collection(let collection))):
         state.homePath.append(.images(ImagesFeature.State(item: .collection(collection))))
         return .none
 
-      case .home(.delegate(.selectTopic(let topic))):
+      case .home(.navigate(.topic(let topic))):
         state.homePath.append(.images(ImagesFeature.State(item: .topic(topic))))
         return .none
 
-      case .home(.delegate(.selectImage(let image))):
+      case .home(.navigate(.image(let image))):
         state.homePath.append(.imageDetail(ImageDetailFeature.State(image: image)))
         return .none
 
-      case .homePath(.element(id: _, action: .images(.delegate(.selectImage(let image))))):
+      case .homePath(.element(id: _, action: .collections(.navigate(.collection(let collection))))):
+        state.homePath.append(.images(ImagesFeature.State(item: .collection(collection))))
+        return .none
+
+      case .homePath(.element(id: _, action: .images(.navigate(.image(let image))))):
         state.homePath.append(.imageDetail(ImageDetailFeature.State(image: image)))
+        return .none
+
+      case .homePath(.element(id: _, action: .imageDetail(.navigate(.image(let image))))):
+        state.homePath.append(.imageDetail(ImageDetailFeature.State(image: image)))
+        return .none
+
+      case .search(.navigate(.search(let query))):
+        state.searchPath.append(.search(SearchResultFeature.State(query: query)))
         return .none
 
       default:
@@ -94,5 +110,6 @@ struct ResplashFeature {
     }
     .forEach(\.homePath, action: \.homePath)
     .forEach(\.explorePath, action: \.explorePath)
+    .forEach(\.searchPath, action: \.searchPath)
   }
 }

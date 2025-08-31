@@ -55,14 +55,12 @@ struct ExploreFeature {
       case .fetch:
         state.loadingPhase = .initial
         return .run { send in
-          do {
+          let result = await Result {
             async let fetchCategories = unsplash.categories()
             async let fetchImages = unsplash.images(for: .photo, page: 1)
-            let results = try await (fetchCategories, fetchImages)
-            await send(.fetchResponse(.success(results)))
-          } catch {
-            await send(.fetchResponse(.failure(error)))
+            return try await (fetchCategories, fetchImages)
           }
+          await send(.fetchResponse(result))
         }
 
       case .fetchNext:
@@ -71,12 +69,8 @@ struct ExploreFeature {
         }
         state.loadingPhase = .loading
         return .run { [page = state.page] send in
-          do {
-            let images = try await unsplash.images(for: .photo, page: page + 1)
-            await send(.fetchNextResponse(.success(images)))
-          } catch {
-            await send(.fetchNextResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.images(for: .photo, page: page + 1) }
+          await send(.fetchNextResponse(result))
         }
 
       case .fetchResponse(.success((let categories, let images))):

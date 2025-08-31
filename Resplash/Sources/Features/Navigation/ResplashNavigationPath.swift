@@ -28,4 +28,5 @@ enum ResplashNavigationPath {
   case collections(ImageCollectionsFeature)
   case images(ImagesFeature)
   case imageDetail(ImageDetailFeature)
+  case search(SearchResultFeature)
 }

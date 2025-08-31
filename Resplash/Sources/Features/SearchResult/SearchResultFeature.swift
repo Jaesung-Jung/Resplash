@@ -1,5 +1,5 @@
 //
-//  ResplashNavigation.swift
+//  SearchResultFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,32 +21,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import SwiftUI
 import ComposableArchitecture
 
-struct ResplashNavigation<Root: View>: View {
-  let path: Binding<Store<StackState<ResplashNavigationPath.State>, StackActionOf<ResplashNavigationPath>>>
-  let root: Root
-
-  init(path: Binding<Store<StackState<ResplashNavigationPath.State>, StackActionOf<ResplashNavigationPath>>>, @ViewBuilder root: () -> Root) {
-    self.path = path
-    self.root = root()
+@Reducer
+struct SearchResultFeature {
+  @ObservableState
+  struct State: Equatable {
+    let query: String
   }
 
-  var body: some View {
-    NavigationStack(path: path) {
-      root
-    } destination: { store in
-      switch store.case {
-      case .collections(let store):
-        ImageCollectionsView(store: store)
-      case .images(let store):
-        ImagesView(store: store)
-      case .imageDetail(let store):
-        ImageDetailView(store: store)
-      case .search(let store):
-        SearchResultView(store: store)
-      }
-    }
+  enum Action {
+  }
+
+  var body: some ReducerOf<Self> {
+    EmptyReducer()
   }
 }

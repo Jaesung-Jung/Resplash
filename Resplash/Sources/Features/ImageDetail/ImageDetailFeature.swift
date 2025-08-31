@@ -44,11 +44,11 @@ struct ImageDetailFeature {
     case fetchDetailResponse(Result<(ImageAssetDetail, [ImageAsset], Page<[ImageAsset]>), Error>)
     case fetchNextRelatedImagesResponse(Result<Page<[ImageAsset]>, Error>)
 
-    case delegate(Delegate)
+    case navigate(Navigation)
   }
 
-  enum Delegate {
-    case selectImage(ImageAsset)
+  enum Navigation {
+    case image(ImageAsset)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -60,15 +60,13 @@ struct ImageDetailFeature {
       case .fetchDetail:
         state.loadingPhase = .initial
         return .run { [image = state.image] send in
-          async let fetchDetail = unsplash.imageDetail(for: image)
-          async let fetchSeriesImages = unsplash.seriesImages(for: image)
-          async let fetchRelatedImages = unsplash.relatedImages(for: image, page: 1)
-          do {
-            let (detail, seriesImages, relatedImages) = try await (fetchDetail, fetchSeriesImages, fetchRelatedImages)
-            await send(.fetchDetailResponse(.success((detail, seriesImages, relatedImages))))
-          } catch {
-            await send(.fetchDetailResponse(.failure(error)))
+          let result = await Result {
+            async let fetchDetail = unsplash.imageDetail(for: image)
+            async let fetchSeriesImages = unsplash.seriesImages(for: image)
+            async let fetchRelatedImages = unsplash.relatedImages(for: image, page: 1)
+            return try await (fetchDetail, fetchSeriesImages, fetchRelatedImages)
           }
+          await send(.fetchDetailResponse(result))
         }
 
       case .fetchNextRelatedImages:
@@ -77,12 +75,8 @@ struct ImageDetailFeature {
         }
         state.loadingPhase = .loading
         return .run { [image = state.image, page = state.page] send in
-          do {
-            let relatedImages = try await unsplash.relatedImages(for: image, page: page + 1)
-            await send(.fetchNextRelatedImagesResponse(.success(relatedImages)))
-          } catch {
-            await send(.fetchNextRelatedImagesResponse(.failure(error)))
-          }
+          let result = await Result { try await unsplash.relatedImages(for: image, page: page + 1) }
+          await send(.fetchNextRelatedImagesResponse(result))
         }
 
       case .fetchDetailResponse(.success((let detail, let seriesImages, let relatedImages))):
@@ -106,7 +100,7 @@ struct ImageDetailFeature {
         state.loadingPhase = .idle
         return .none
 
-      case .delegate:
+      case .navigate:
         return .none
       }
     }
