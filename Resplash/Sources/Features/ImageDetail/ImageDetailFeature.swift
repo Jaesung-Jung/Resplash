@@ -48,6 +48,7 @@ struct ImageDetailFeature {
   }
 
   enum Navigation {
+    case search(String)
     case image(ImageAsset)
   }
 

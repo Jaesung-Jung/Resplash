@@ -45,7 +45,7 @@ struct ExploreView: View {
               LazyHGrid(rows: [GridItem(), GridItem()]) {
                 ForEach(category.items) { item in
                   Button {
-                    store.send(.navigateToImages(.category(item)))
+                    store.send(.navigate(.images(item)))
                   } label: {
                     CategoryView(item)
                       .containerRelativeFrame(.horizontal) { length, _ in (length - 50) / 2 }
@@ -71,7 +71,7 @@ struct ExploreView: View {
 
             MansonryGrid(images, columns: 2, spacing: 2) { image in
               Button {
-                store.send(.navigateToImageDetail(image))
+                store.send(.navigate(.imageDetail(image)))
               } label: {
                 ImageAssetView(image, size: .compact)
               }

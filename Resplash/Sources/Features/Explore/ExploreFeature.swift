@@ -42,8 +42,12 @@ struct ExploreFeature {
     case fetchResponse(Result<([Category], Page<[ImageAsset]>), Error>)
     case fetchNextResponse(Result<Page<[ImageAsset]>, Error>)
 
-    case navigateToImages(ImagesFeature.Item)
-    case navigateToImageDetail(ImageAsset)
+    case navigate(Navigation)
+  }
+
+  enum Navigation {
+    case images(Category.Item)
+    case imageDetail(ImageAsset)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -93,7 +97,7 @@ struct ExploreFeature {
         state.loadingPhase = .idle
         return .none
 
-      case .navigateToImages, .navigateToImageDetail:
+      case .navigate:
         return .none
       }
     }

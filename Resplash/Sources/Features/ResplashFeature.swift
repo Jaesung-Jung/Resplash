@@ -53,6 +53,17 @@ struct ResplashFeature {
     case home
     case explore
     case search
+
+    var keyPath: WritableKeyPath<State, StackState<ResplashNavigationPath.State>> {
+      switch self {
+      case .home:
+        return \.homePath
+      case .explore:
+        return \.explorePath
+      case .search:
+        return \.searchPath
+      }
+    }
   }
 
   var body: some ReducerOf<Self> {
@@ -67,45 +78,85 @@ struct ResplashFeature {
       SearchFeature()
     }
     Reduce { state, action in
-      print("🚀 action: \(action)")
-      defer {
-        print("🚀 searchPath: \(state.searchPath.count)")
-      }
       switch action {
       case .home(.navigate(.collections)):
-        state.homePath.append(.collections(ImageCollectionsFeature.State(mediaType: state.home.mediaType)))
+        let collectionsState = ImageCollectionsFeature.State(mediaType: state.home.mediaType)
+        state.homePath.append(.collections(collectionsState))
         return .none
 
       case .home(.navigate(.collection(let collection))):
-        state.homePath.append(.images(ImagesFeature.State(item: .collection(collection))))
+        let imagesState = ImagesFeature.State(item: .collection(collection))
+        state.homePath.append(.images(imagesState))
         return .none
 
       case .home(.navigate(.topic(let topic))):
-        state.homePath.append(.images(ImagesFeature.State(item: .topic(topic))))
+        let imagesState = ImagesFeature.State(item: .topic(topic))
+        state.homePath.append(.images(imagesState))
         return .none
 
       case .home(.navigate(.image(let image))):
-        state.homePath.append(.imageDetail(ImageDetailFeature.State(image: image)))
+        let imageDetailState = ImageDetailFeature.State(image: image)
+        state.homePath.append(.imageDetail(imageDetailState))
         return .none
 
-      case .homePath(.element(id: _, action: .collections(.navigate(.collection(let collection))))):
-        state.homePath.append(.images(ImagesFeature.State(item: .collection(collection))))
+      case .home:
         return .none
 
-      case .homePath(.element(id: _, action: .images(.navigate(.image(let image))))):
-        state.homePath.append(.imageDetail(ImageDetailFeature.State(image: image)))
+      case .explore(.navigate(.images(let category))):
+        let imagesState = ImagesFeature.State(item: .category(category))
+        state.explorePath.append(.images(imagesState))
         return .none
 
-      case .homePath(.element(id: _, action: .imageDetail(.navigate(.image(let image))))):
-        state.homePath.append(.imageDetail(ImageDetailFeature.State(image: image)))
+      case .explore(.navigate(.imageDetail(let image))):
+        let imageDetailState = ImageDetailFeature.State(image: image)
+        state.explorePath.append(.imageDetail(imageDetailState))
+        return .none
+
+      case .explore:
         return .none
 
       case .search(.navigate(.search(let query))):
-        state.searchPath.append(.search(SearchResultFeature.State(query: query)))
+        let searchResultState = SearchResultFeature.State(query: query)
+        state.searchPath.append(.search(searchResultState))
         return .none
 
-      default:
+      case .search:
         return .none
+
+      case .binding:
+        return .none
+
+      case .homePath(let path), .explorePath(let path), .searchPath(let path):
+        switch path {
+        case .element(id: _, action: .collections(.navigate(.collection(let collection)))):
+          let collectionState = ImagesFeature.State(item: .collection(collection))
+          state[keyPath: state.selectedTab.keyPath].append(.images(collectionState))
+          return .none
+
+        case .element(id: _, action: .images(.navigate(.image(let image)))):
+          let imageDetailState = ImageDetailFeature.State(image: image)
+          state[keyPath: state.selectedTab.keyPath].append(.imageDetail(imageDetailState))
+          return .none
+
+        case .element(id: _, action: .imageDetail(.navigate(.image(let image)))):
+          let imageDetailState = ImageDetailFeature.State(image: image)
+          state[keyPath: state.selectedTab.keyPath].append(.imageDetail(imageDetailState))
+          return .none
+
+        case .element(id: _, action: .imageDetail(.navigate(.search(let query)))):
+          let searchResultState = SearchResultFeature.State(query: query)
+          state[keyPath: state.selectedTab.keyPath].append(.search(searchResultState))
+          return .none
+
+        case .element:
+          return .none
+
+        case .push:
+          return .none
+
+        case .popFrom:
+          return .none
+        }
       }
     }
     .forEach(\.homePath, action: \.homePath)

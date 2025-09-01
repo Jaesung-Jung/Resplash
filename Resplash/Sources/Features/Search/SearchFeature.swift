@@ -65,7 +65,7 @@ struct SearchFeature {
     Reduce { state, action in
       switch action {
       case .fetchTrends:
-        state.loadingPhase = .loading
+        state.loadingPhase = .initial
         return .run { send in
           let result = await Result { try await unsplash.searchTrends() }
           await send(.fetchTrendsResponse(result))
