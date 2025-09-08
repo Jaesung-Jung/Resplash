@@ -24,15 +24,34 @@
 import SwiftUI
 
 struct Zoom<Content: View>: UIViewRepresentable {
-  private let view: ScrollWrapperView
+  private let zoomScale: Binding<CGFloat>?
+  private let minimumZoomScale: CGFloat
+  private let maximumZoomScale: CGFloat
+  private let content: Content
 
-  init(@ViewBuilder content: () -> Content) {
-    view = ScrollWrapperView(content: content)
+  init(zoomScale: Binding<CGFloat>? = nil, minimumZoomScale: CGFloat = 1, maximumZoomScale: CGFloat = 3, @ViewBuilder content: () -> Content) {
+    self.zoomScale = zoomScale
+    self.minimumZoomScale = minimumZoomScale
+    self.maximumZoomScale = maximumZoomScale
+    self.content = content()
   }
 
-  func makeUIView(context: Context) -> UIView { view }
+  func makeUIView(context: Context) -> UIView {
+    ScrollWrapperView(scale: zoomScale ?? .constant(1), content: content)
+  }
 
   func updateUIView(_ view: UIView, context: Context) {
+    guard let view = view as? ScrollWrapperView else {
+      return
+    }
+    view.context = context
+    view.scrollView.minimumZoomScale = minimumZoomScale
+    view.scrollView.maximumZoomScale = maximumZoomScale
+    if let zoomScale = zoomScale?.wrappedValue, view.scrollView.zoomScale != zoomScale {
+      context.animate {
+        view.scrollView.setZoomScale(zoomScale, animated: false)
+      }
+    }
   }
 }
 
@@ -40,6 +59,10 @@ struct Zoom<Content: View>: UIViewRepresentable {
 
 extension Zoom {
   private class ScrollWrapperView: UIView, UIScrollViewDelegate {
+    private(set) var isInitialized = false
+    private var shouldAdjustContentInset: Bool = true
+
+    @Binding var zoomScale: CGFloat
     let hostingController: UIHostingController<Content>
 
     let scrollView = UIScrollView().then {
@@ -47,18 +70,19 @@ extension Zoom {
       $0.showsHorizontalScrollIndicator = false
       $0.bouncesZoom = true
       $0.bounces = true
-      $0.minimumZoomScale = 1.0
-      $0.maximumZoomScale = 2.0
       $0.backgroundColor = .clear
       $0.contentInsetAdjustmentBehavior = .never
       $0.clipsToBounds = false
     }
 
+    var context: UIViewRepresentableContext<Zoom<Content>>?
+
     @inlinable var contentView: UIView { hostingController.view }
     @inlinable var isZoomed: Bool { scrollView.zoomScale > 1 }
 
-    init(@ViewBuilder content: () -> Content) {
-      hostingController = UIHostingController(rootView: content())
+    init(scale: Binding<CGFloat>, content: Content) {
+      _zoomScale = scale
+      hostingController = UIHostingController(rootView: content)
       super.init(frame: .zero)
       scrollView.delegate = self
       scrollView.addSubview(contentView)
@@ -78,13 +102,24 @@ extension Zoom {
 
     override func layoutSubviews() {
       super.layoutSubviews()
-      scrollView.frame = bounds
-      guard !isZoomed else {
-        return
-      }
-      let contentSize = contentView.sizeThatFits(bounds.size)
+      let scale = scrollView.zoomScale
+      let fitSize = contentView.sizeThatFits(bounds.size)
+      let contentSize = CGSize(
+        width: fitSize.width * scale,
+        height: fitSize.height * scale
+      )
+
       contentView.frame = CGRect(origin: .zero, size: contentSize)
+      scrollView.frame = bounds
+      scrollView.zoomScale = scale
       scrollView.contentInset = contentInset(for: contentSize, in: bounds)
+      if shouldAdjustContentInset {
+        shouldAdjustContentInset = false
+        scrollView.contentOffset = CGPoint(
+          x: (contentSize.width - bounds.width) * 0.5,
+          y: (contentSize.height - bounds.height) * 0.5
+        )
+      }
     }
 
     private func contentInset(for size: CGSize, in bounds: CGRect) -> UIEdgeInsets {
@@ -98,24 +133,42 @@ extension Zoom {
       )
     }
 
+    private func adjustContentInset(_ scale: CGFloat) {
+      scrollView.contentInset = contentInset(
+        for: contentView.frame.size,
+        in: scrollView.bounds
+      )
+      if zoomScale != scale {
+        DispatchQueue.main.async {
+          self.zoomScale = scale
+        }
+      }
+    }
+
     @objc
     private func handleTapGestureRecognizer(_ gestureRecognizer: UITapGestureRecognizer) {
-      let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
-      if scrollView.zoomScale != 1 {
-        animator.addAnimations { [scrollView] in
-          scrollView.setZoomScale(1, animated: false)
+      let hasAnimation = context?.transaction.animation != nil
+      let animations: () -> Void
+      if isZoomed {
+        animations = { [scrollView] in
+          scrollView.setZoomScale(max(scrollView.minimumZoomScale, 1), animated: !hasAnimation)
         }
       } else {
         let location = gestureRecognizer.location(in: gestureRecognizer.view)
-        let scale = 2.0
+        let scale = scrollView.maximumZoomScale
         let width = bounds.width / scale
         let height = bounds.height / scale
         let rect = CGRect(x: location.x - width * 0.5, y: location.y - height * 0.5, width: width, height: height)
-        animator.addAnimations { [scrollView] in
-          scrollView.zoom(to: rect, animated: false)
+        animations = { [scrollView] in
+          scrollView.zoom(to: rect, animated: !hasAnimation)
         }
       }
-      animator.startAnimation()
+
+      if let context {
+        context.animate(changes: animations)
+      } else {
+        animations()
+      }
     }
 
     // MARK: UISCrollViewDelegate
@@ -123,12 +176,7 @@ extension Zoom {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? { contentView }
 
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-      let scale = scrollView.zoomScale
-      let contentSize = contentView.sizeThatFits(bounds.size)
-      scrollView.contentInset = contentInset(
-        for: CGSize(width: contentSize.width * scale, height: contentSize.height * scale),
-        in: scrollView.bounds
-      )
+      adjustContentInset(scrollView.zoomScale)
     }
   }
 }
