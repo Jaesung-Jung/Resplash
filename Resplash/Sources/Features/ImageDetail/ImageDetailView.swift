@@ -26,7 +26,7 @@ import MapKit
 import ComposableArchitecture
 
 struct ImageDetailView: View {
-  let store: StoreOf<ImageDetailFeature>
+  @Bindable var store: StoreOf<ImageDetailFeature>
 
   var body: some View {
     ScrollView {
@@ -39,6 +39,9 @@ struct ImageDetailView: View {
               .aspectRatio(CGSize(width: 1, height: CGFloat(store.state.image.height) / CGFloat(store.state.image.width)), contentMode: .fit)
           }
           .cornerRadius(4)
+          .onTapGesture {
+            store.send(.presentImageViewer)
+          }
 
           if let description = store.state.image.description {
             Text(description)
@@ -84,6 +87,9 @@ struct ImageDetailView: View {
     }
     .task {
       store.send(.fetchDetail)
+    }
+    .fullScreenCover(item: $store.scope(state: \.imageViewer, action: \.imageViewer)) {
+      ImageViewer(store: $0)
     }
   }
 

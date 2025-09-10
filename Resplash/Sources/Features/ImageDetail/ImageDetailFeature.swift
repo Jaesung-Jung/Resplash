@@ -36,6 +36,8 @@ struct ImageDetailFeature {
     var relatedImages: [ImageAsset]?
     var page: Int = 1
     var hasNextPage: Bool = false
+
+    @Presents var imageViewer: ImageViewerFeature.State?
   }
 
   enum Action {
@@ -44,6 +46,8 @@ struct ImageDetailFeature {
     case fetchDetailResponse(Result<(ImageAssetDetail, [ImageAsset], Page<[ImageAsset]>), Error>)
     case fetchNextRelatedImagesResponse(Result<Page<[ImageAsset]>, Error>)
 
+    case presentImageViewer
+    case imageViewer(PresentationAction<ImageViewerFeature.Action>)
     case navigate(Navigation)
   }
 
@@ -101,9 +105,21 @@ struct ImageDetailFeature {
         state.loadingPhase = .idle
         return .none
 
+      case .presentImageViewer:
+        state.imageViewer = ImageViewerFeature.State(
+          image: state.image
+        )
+        return .none
+
+      case .imageViewer:
+        return .none
+
       case .navigate:
         return .none
       }
+    }
+    .ifLet(\.$imageViewer, action: \.imageViewer) {
+      ImageViewerFeature()
     }
   }
 }
