@@ -23,10 +23,13 @@
 
 import ComposableArchitecture
 
-@Reducer(state: .equatable)
+@Reducer
 enum ResplashNavigationPath {
   case collections(ImageCollectionsFeature)
   case images(ImagesFeature)
   case imageDetail(ImageDetailFeature)
   case search(SearchResultFeature)
+}
+
+extension ResplashNavigationPath.State: Equatable {
 }
