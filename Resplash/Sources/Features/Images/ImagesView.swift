@@ -38,10 +38,10 @@ struct ImagesView: View {
   var body: some View {
     ScrollView {
       LazyVStack(spacing: 20) {
-        if case .topic(let topic) = store.state.item {
+        if case .topic(let topic) = store.item {
           topicHeader(topic)
         }
-        if let images = store.state.images {
+        if let images = store.images {
           MansonryGrid(images, columns: 2, spacing: 2) { image in
             Button {
               store.send(.navigate(.image(image)))
@@ -64,10 +64,10 @@ struct ImagesView: View {
       }
       .padding(.horizontal, 20)
     }
-    .navigationTitle(store.state.title)
-    .navigationSubtitle(store.state.subtitle)
+    .navigationTitle(store.title)
+    .navigationSubtitle(store.subtitle)
     .toolbar {
-      if let shareLink = store.state.shareLink {
+      if let shareLink = store.shareLink {
         ShareLink(item: shareLink) {
           Image(systemName: "square.and.arrow.up")
         }

@@ -29,7 +29,7 @@ struct ExploreView: View {
 
   var body: some View {
     ScrollView {
-      if let categories = store.state.categories {
+      if let categories = store.categories {
         LazyVStack(spacing: 0) {
           ForEach(categories) { category in
             HStack(spacing: 0) {
@@ -59,7 +59,7 @@ struct ExploreView: View {
             .padding(.bottom, 40)
           }
 
-          if let images = store.state.images {
+          if let images = store.images {
             HStack(spacing: 0) {
               Text("Popular Images")
                 .font(.title2)
@@ -80,7 +80,7 @@ struct ExploreView: View {
             }
             .padding(.horizontal, 20)
 
-            if store.state.hasNextPage {
+            if store.hasNextPage {
               ProgressView()
                 .foregroundStyle(.tertiary)
                 .progressViewStyle(.circleScale)

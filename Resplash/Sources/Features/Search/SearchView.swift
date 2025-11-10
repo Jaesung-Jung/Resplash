@@ -30,7 +30,7 @@ struct SearchView: View {
   var body: some View {
     ScrollView {
       VStack(alignment: .leading, spacing: 0) {
-        if let trends = store.state.trends {
+        if let trends = store.trends {
           ForEach(trends.enumerated(), id: \.element.id) { offset, trend in
             Text("#\(offset + 1). \(trend.title)")
               .font(.body)
@@ -56,7 +56,7 @@ struct SearchView: View {
       .padding(.horizontal, 20)
     }
     .overlay {
-      if let suggestions = store.state.suggestion?.suggestions, !suggestions.isEmpty {
+      if let suggestions = store.suggestion?.suggestions, !suggestions.isEmpty {
         suggestionView(suggestions)
       }
     }
@@ -86,7 +86,7 @@ struct SearchView: View {
           } label: {
             HStack {
               Label {
-                Text(attributedString(suggestion.capitalized, query: store.state.query))
+                Text(attributedString(suggestion.capitalized, query: store.query))
               } icon: {
                 Image(systemName: "magnifyingglass.circle.fill")
               }

@@ -28,6 +28,6 @@ struct SearchResultView: View {
   let store: StoreOf<SearchResultFeature>
 
   var body: some View {
-    Text("\(store.state.query)")
+    Text("\(store.query)")
   }
 }

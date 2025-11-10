@@ -32,42 +32,42 @@ struct ImageDetailView: View {
     ScrollView {
       LazyVStack(spacing: 16) {
         VStack(alignment: .leading, spacing: 8) {
-          ProfileView(store.state.image.user)
+          ProfileView(store.image.user)
 
-          RemoteImage(store.state.image.url.hd) {
+          RemoteImage(store.image.url.hd) {
             $0.resizable()
-              .aspectRatio(CGSize(width: 1, height: CGFloat(store.state.image.height) / CGFloat(store.state.image.width)), contentMode: .fit)
+              .aspectRatio(CGSize(width: 1, height: store.image.height / store.image.width), contentMode: .fit)
           }
           .cornerRadius(4)
           .onTapGesture {
             store.send(.presentImageViewer)
           }
 
-          if let description = store.state.image.description {
+          if let description = store.image.description {
             Text(description)
           }
         }
 
-        if let detail = store.state.detail {
+        if let detail = store.detail {
           imageInfo(detail)
         }
 
-        if let tags = store.state.detail?.tags {
+        if let tags = store.detail?.tags {
           tagGrid(tags)
         }
       }
       .padding(.horizontal, 20)
 
       LazyVStack(spacing: 20) {
-        if let images = store.state.seriesImages, !images.isEmpty {
+        if let images = store.seriesImages, !images.isEmpty {
           seriesImages(images)
         }
 
-        if let images = store.state.relatedImages, !images.isEmpty {
+        if let images = store.relatedImages, !images.isEmpty {
           relatedImages(images)
         }
 
-        if store.state.hasNextPage {
+        if store.hasNextPage {
           ProgressView()
             .foregroundStyle(.tertiary)
             .progressViewStyle(.circleScale)
@@ -78,7 +78,7 @@ struct ImageDetailView: View {
       }
       .padding(.top, 20)
     }
-    .navigationTitle(store.state.image.description ?? "Image")
+    .navigationTitle(store.image.description ?? "Image")
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
       ToolbarItem(placement: .principal) {
@@ -203,7 +203,7 @@ struct ImageDetailView: View {
               store.send(.navigate(.image(image)))
             } label: {
               ImageAssetView(image, size: .compact)
-                .aspectRatio(CGSize(width: CGFloat(image.width) / CGFloat(image.height), height: 1), contentMode: .fit)
+                .aspectRatio(CGSize(width: image.width / image.height, height: 1), contentMode: .fit)
                 .cornerRadius(2)
             }
           }

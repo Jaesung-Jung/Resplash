@@ -29,7 +29,7 @@ struct ImageCollectionsView: View {
 
   var body: some View {
     ScrollView {
-      if let collections = store.state.collections {
+      if let collections = store.collections {
         LazyVGrid( columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
           ForEach(collections) { collection in
             Button {
@@ -43,7 +43,7 @@ struct ImageCollectionsView: View {
         .padding(20)
 
         LazyVStack {
-          if store.state.hasNextPage {
+          if store.hasNextPage {
             ProgressView()
               .foregroundStyle(.tertiary)
               .progressViewStyle(.circleScale)

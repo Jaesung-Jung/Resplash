@@ -33,7 +33,7 @@ struct ImageViewer: View {
         RemoteImage(store.image.url.hd) {
           $0.resizable()
         }
-        .aspectRatio(CGSize(width: 1, height: CGFloat(store.image.height) / CGFloat(store.image.width)), contentMode: .fit)
+        .aspectRatio(CGSize(width: 1, height: store.image.height / store.image.width), contentMode: .fit)
       }
       .ignoresSafeArea()
       .toolbar {

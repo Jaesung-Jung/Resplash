@@ -34,8 +34,8 @@ struct ImageAsset: Identifiable, Sendable {
   let description: String?
   let likes: Int
 
-  let width: Int
-  let height: Int
+  let width: CGFloat
+  let height: CGFloat
   let color: String
   let url: ImageURL
 
@@ -72,8 +72,8 @@ extension ImageAsset: Decodable {
     self.description = description ?? altDescription
     self.likes = try container.decode(Int.self, forKey: "likes")
 
-    self.width = try container.decode(Int.self, forKey: "width")
-    self.height = try container.decode(Int.self, forKey: "height")
+    self.width = try container.decode(CGFloat.self, forKey: "width")
+    self.height = try container.decode(CGFloat.self, forKey: "height")
     self.color = try container.decode(String.self, forKey: "color")
     self.url = try container.decode(ImageURL.self, forKey: "urls")
 

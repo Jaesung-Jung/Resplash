@@ -33,7 +33,7 @@ struct HomeView: View {
     ScrollView {
       LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
         Section {
-          if let collections = store.state.collections {
+          if let collections = store.collections {
             VStack(alignment: .leading) {
               Button {
                 store.send(.navigate(.collections))
@@ -47,7 +47,7 @@ struct HomeView: View {
             }
           }
 
-          if let images = store.state.images {
+          if let images = store.images {
             VStack(alignment: .leading) {
               sectionTitle("Featured")
                 .padding(.horizontal, 20)
@@ -56,7 +56,7 @@ struct HomeView: View {
             }
           }
 
-          if store.state.hasNextPage {
+          if store.hasNextPage {
             ProgressView()
               .foregroundStyle(.tertiary)
               .progressViewStyle(.circleScale)
@@ -65,14 +65,14 @@ struct HomeView: View {
               }
           }
         } header: {
-          if let topics = store.state.topics {
+          if let topics = store.topics {
             topic(topics)
           }
         }
       }
     }
     .scrollEdgeEffectStyle(.soft, for: [.top, .bottom])
-    .navigationTitle(store.state.mediaType.localizedStringResource)
+    .navigationTitle(store.mediaType.localizedStringResource)
     .toolbar {
       mediaPickerMenu()
     }
@@ -162,7 +162,7 @@ extension HomeView {
             store.send(.selectMediaType(mediaType))
           } label: {
             HStack {
-              if store.state.mediaType == mediaType {
+              if store.mediaType == mediaType {
                 Image(systemName: "checkmark")
               }
               Text(mediaType.localizedStringResource)
