@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="516px" height="516px" viewBox="0 0 516 516" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" transform="translate(258, 258) rotate(180) translate(-258, -258)" fill="#000000" fill-rule="nonzero">
-            <path d="M161.25,145.125 L161.25,0 L354.75,0 L354.75,145.125 L161.25,145.125 Z M354.75,225.75 L516,225.75 L516,516 L0,516 L0,225.75 L161.25,225.75 L161.25,370.875 L354.75,370.875 L354.75,225.75 Z" id="Shape"></path>
-        </g>
-    </g>
-</svg>
