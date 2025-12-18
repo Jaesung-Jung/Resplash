@@ -1,0 +1,1126 @@
+[
+  {
+    "category": "오스트레일리아",
+    "thumb": {
+      "id": "7Zb7kUyQg1E",
+      "slug": "시드니-낮에는-오페라-하우스-7Zb7kUyQg1E",
+      "created_at": "2017-10-02T19:37:57Z",
+      "updated_at": "2025-12-17T10:10:35Z",
+      "blur_hash": "L$I$1vxujYa}~qjZWBj[xvs.f+ax",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1506973035872-a4ec16b8e8d9"
+      }
+    },
+    "demand": "High",
+    "search_views": 8352015,
+    "growth": 4384,
+    "results": 290575,
+    "top_keywords": [
+      {
+        "keyword": "오스트레일리아",
+        "demand": "High",
+        "search_views": 8352015,
+        "growth": 4384,
+        "results": 42322,
+        "thumb": {
+          "id": "7Zb7kUyQg1E",
+          "slug": "시드니-낮에는-오페라-하우스-7Zb7kUyQg1E",
+          "created_at": "2017-10-02T19:37:57Z",
+          "updated_at": "2025-12-17T10:10:35Z",
+          "blur_hash": "L$I$1vxujYa}~qjZWBj[xvs.f+ax",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1506973035872-a4ec16b8e8d9"
+          }
+        }
+      },
+      {
+        "keyword": "멜버른",
+        "demand": "Medium",
+        "search_views": 203435,
+        "growth": 28,
+        "results": 9241,
+        "thumb": {
+          "id": "-gmtAa0Q5MI",
+          "slug": "도시-건물을-가로지르는-하얀-다리--gmtAa0Q5MI",
+          "created_at": "2018-12-17T11:10:05Z",
+          "updated_at": "2025-12-17T12:25:41Z",
+          "blur_hash": "LsDmw9t6tRWB%%oLoLazT1ofaxfl",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1545044846-351ba102b6d5?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1545044846-351ba102b6d5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1545044846-351ba102b6d5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1545044846-351ba102b6d5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1545044846-351ba102b6d5?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1545044846-351ba102b6d5"
+          }
+        }
+      },
+      {
+        "keyword": "골드 코스트",
+        "demand": "Low",
+        "search_views": 70993,
+        "growth": 17,
+        "results": 221998,
+        "thumb": {
+          "id": "O3ji6Tv0PtY",
+          "slug": "낮-동안-바다-근처-도시-건물의-공중보기-O3ji6Tv0PtY",
+          "created_at": "2020-12-07T03:02:19Z",
+          "updated_at": "2025-12-17T12:00:25Z",
+          "blur_hash": "LcDwdmnMaLay_4M|SOa{x]T0odn*",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1607309843659-f4ad95cf3277?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1607309843659-f4ad95cf3277?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1607309843659-f4ad95cf3277?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1607309843659-f4ad95cf3277?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1607309843659-f4ad95cf3277?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1607309843659-f4ad95cf3277"
+          }
+        }
+      },
+      {
+        "keyword": "보낸 사람",
+        "demand": "High",
+        "search_views": 27042,
+        "growth": 16,
+        "results": 30183,
+        "thumb": {
+          "id": "fAOV6_u_uhI",
+          "slug": "시드니-오페라-호주-낮-시간-fAOV6_u_uhI",
+          "created_at": "2019-07-10T20:38:27Z",
+          "updated_at": "2025-12-17T09:57:13Z",
+          "blur_hash": "LrC[CII[o$jEcbn#aebHRlWCRPog",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1562791098-df1ae65dee79?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1562791098-df1ae65dee79?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1562791098-df1ae65dee79?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1562791098-df1ae65dee79?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1562791098-df1ae65dee79?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1562791098-df1ae65dee79"
+          }
+        }
+      },
+      {
+        "keyword": "퍼스",
+        "demand": "Medium",
+        "search_views": 98080,
+        "growth": 8,
+        "results": 5635,
+        "thumb": {
+          "id": "RESEQty1uvc",
+          "slug": "낮-동안-수역-근처의-도시-RESEQty1uvc",
+          "created_at": "2018-04-24T16:16:46Z",
+          "updated_at": "2025-12-17T09:22:01Z",
+          "blur_hash": "LgLDr#^*xaof_NkVWVfk%gjaWBoL",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1524586410818-196d249560e4?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1524586410818-196d249560e4?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1524586410818-196d249560e4?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1524586410818-196d249560e4?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1524586410818-196d249560e4?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1524586410818-196d249560e4"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "태국",
+    "thumb": {
+      "id": "jWKk-0ZBUyg",
+      "slug": "5-개의-갈색-나무-보트-jWKk-0ZBUyg",
+      "created_at": "2019-03-13T08:17:53Z",
+      "updated_at": "2025-12-17T13:43:12Z",
+      "blur_hash": "LbD0[^TMtQe,5exaRPjYrVM_t7f-",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1552465011-b4e21bf6e79a"
+      }
+    },
+    "demand": "High",
+    "search_views": 25672620,
+    "growth": 4091,
+    "results": 20912,
+    "top_keywords": [
+      {
+        "keyword": "태국",
+        "demand": "High",
+        "search_views": 25672620,
+        "growth": 4091,
+        "results": 17427,
+        "thumb": {
+          "id": "jWKk-0ZBUyg",
+          "slug": "5-개의-갈색-나무-보트-jWKk-0ZBUyg",
+          "created_at": "2019-03-13T08:17:53Z",
+          "updated_at": "2025-12-17T13:43:12Z",
+          "blur_hash": "LbD0[^TMtQe,5exaRPjYrVM_t7f-",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1552465011-b4e21bf6e79a"
+          }
+        }
+      },
+      {
+        "keyword": "파타야",
+        "demand": "Medium",
+        "search_views": 55997,
+        "growth": 22,
+        "results": 8552,
+        "thumb": {
+          "id": "QayxhLotMvM",
+          "slug": "낮-동안-바다-근처-도시-건물의-공중보기-QayxhLotMvM",
+          "created_at": "2021-07-05T13:39:44Z",
+          "updated_at": "2025-12-17T09:59:24Z",
+          "blur_hash": "LsJIX[tlNbs:?wV[xFoexZV@WVkC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1625492206717-61c584a8b11e?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1625492206717-61c584a8b11e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1625492206717-61c584a8b11e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1625492206717-61c584a8b11e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1625492206717-61c584a8b11e?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1625492206717-61c584a8b11e"
+          }
+        }
+      },
+      {
+        "keyword": "방콕",
+        "demand": "Medium",
+        "search_views": 373310,
+        "growth": 7,
+        "results": 14387,
+        "thumb": {
+          "id": "-y3sidWvDxg",
+          "slug": "거리에-있는-두-대의-자동-인력거--y3sidWvDxg",
+          "created_at": "2017-10-14T19:35:43Z",
+          "updated_at": "2025-12-17T12:19:43Z",
+          "blur_hash": "LMEU4C}8x[ACR6V]IqJ.J7SNWVkC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1508009603885-50cf7c579365"
+          }
+        }
+      },
+      {
+        "keyword": "코사무이",
+        "demand": "High",
+        "search_views": 45086,
+        "growth": -36,
+        "results": 4161,
+        "thumb": {
+          "id": "EerfoqyC7aM",
+          "slug": "해변-라인-근처의-녹색-나무-EerfoqyC7aM",
+          "created_at": "2019-10-31T13:47:33Z",
+          "updated_at": "2025-12-17T15:32:18Z",
+          "blur_hash": "LmDwmo#*WBaz?wxZjYay%1o#o0oL",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1572529593091-6c05c37cacc7?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1572529593091-6c05c37cacc7?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1572529593091-6c05c37cacc7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1572529593091-6c05c37cacc7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1572529593091-6c05c37cacc7?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1572529593091-6c05c37cacc7"
+          }
+        }
+      },
+      {
+        "keyword": "치앙마이",
+        "demand": "High",
+        "search_views": 105254,
+        "growth": -43,
+        "results": 7862,
+        "thumb": {
+          "id": "IOeyew6U1Fc",
+          "slug": "태국-치앙마이의-도이-인타논-국립공원에-있는-랜드마크-탑-IOeyew6U1Fc",
+          "created_at": "2022-08-31T07:00:49Z",
+          "updated_at": "2025-11-15T01:46:18Z",
+          "blur_hash": "LfHLJTW8IpV@?Kt7Rjae9wxbodoL",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://plus.unsplash.com/premium_photo-1661929242720-140374d97c94?ixlib=rb-4.1.0",
+            "full": "https://plus.unsplash.com/premium_photo-1661929242720-140374d97c94?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://plus.unsplash.com/premium_photo-1661929242720-140374d97c94?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://plus.unsplash.com/premium_photo-1661929242720-140374d97c94?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://plus.unsplash.com/premium_photo-1661929242720-140374d97c94?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1661929242720-140374d97c94"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "영국",
+    "thumb": {
+      "id": "iXqTqC-f6jI",
+      "slug": "빅벤-런던-iXqTqC-f6jI",
+      "created_at": "2017-02-05T12:56:09Z",
+      "updated_at": "2025-12-17T13:28:09Z",
+      "blur_hash": "LjJ8kiWCt7M{_4ofaeWBD%aejsWX",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1486299267070-83823f5448dd?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1486299267070-83823f5448dd?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1486299267070-83823f5448dd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1486299267070-83823f5448dd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1486299267070-83823f5448dd?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1486299267070-83823f5448dd"
+      }
+    },
+    "demand": "High",
+    "search_views": 1737548,
+    "growth": 3248,
+    "results": 692761,
+    "top_keywords": [
+      {
+        "keyword": "캠브리지",
+        "demand": "High",
+        "search_views": 105678,
+        "growth": 110,
+        "results": 4161,
+        "thumb": {
+          "id": "y-3pw0FHsYQ",
+          "slug": "낮에는-푸른-하늘-아래-갈색-콘크리트-건물-y-3pw0FHsYQ",
+          "created_at": "2021-07-27T18:44:55Z",
+          "updated_at": "2025-12-17T15:15:05Z",
+          "blur_hash": "LaHf6aM|Nyf5cbxubIRjxtofWAt7",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1627411437849-4bc5a9b9341d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1627411437849-4bc5a9b9341d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1627411437849-4bc5a9b9341d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1627411437849-4bc5a9b9341d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1627411437849-4bc5a9b9341d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1627411437849-4bc5a9b9341d"
+          }
+        }
+      },
+      {
+        "keyword": "첼시",
+        "demand": "High",
+        "search_views": 26854,
+        "growth": 35,
+        "results": 4161,
+        "thumb": {
+          "id": "YofQmnc-wns",
+          "slug": "셔츠에-첼시-배지의-클로즈업-YofQmnc-wns",
+          "created_at": "2021-08-13T00:23:04Z",
+          "updated_at": "2025-12-17T12:31:32Z",
+          "blur_hash": "LA5OT_of9DM_XCacs*oMD*V?-;t8",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1628813640706-ca88bcdfb228?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1628813640706-ca88bcdfb228?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1628813640706-ca88bcdfb228?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1628813640706-ca88bcdfb228?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1628813640706-ca88bcdfb228?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1628813640706-ca88bcdfb228"
+          }
+        }
+      },
+      {
+        "keyword": "브라이튼",
+        "demand": "Low",
+        "search_views": 76436,
+        "growth": 33,
+        "results": 4161,
+        "thumb": {
+          "id": "eKcYTT9mgMI",
+          "slug": "seashore-viewing-sea-주변-사람들-eKcYTT9mgMI",
+          "created_at": "2019-04-26T15:42:20Z",
+          "updated_at": "2025-12-17T09:25:43Z",
+          "blur_hash": "LkG[m6R%R*s:?wNGn$j[n,Rjayf6",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1556292877-913332494cdf?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1556292877-913332494cdf?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1556292877-913332494cdf?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1556292877-913332494cdf?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1556292877-913332494cdf?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1556292877-913332494cdf"
+          }
+        }
+      },
+      {
+        "keyword": "브리스톨",
+        "demand": "Medium",
+        "search_views": 56630,
+        "growth": 32,
+        "results": 4161,
+        "thumb": {
+          "id": "iOMkcADNoq8",
+          "slug": "나무-위를-날아다니는-열기구-iOMkcADNoq8",
+          "created_at": "2017-08-14T17:47:02Z",
+          "updated_at": "2025-12-17T15:31:47Z",
+          "blur_hash": "LwH2fut7t7t7~qt6t7ofo#j@oLay",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1502732728614-8329a1bf1415?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1502732728614-8329a1bf1415?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1502732728614-8329a1bf1415?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1502732728614-8329a1bf1415?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1502732728614-8329a1bf1415?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1502732728614-8329a1bf1415"
+          }
+        }
+      },
+      {
+        "keyword": "버밍엄",
+        "demand": "Medium",
+        "search_views": 80355,
+        "growth": 26,
+        "results": 4161,
+        "thumb": {
+          "id": "u44HcmdG0Oo",
+          "slug": "원이-많은-건물-u44HcmdG0Oo",
+          "created_at": "2019-01-30T14:58:10Z",
+          "updated_at": "2025-12-17T09:21:06Z",
+          "blur_hash": "LQECFP0J-pt75B=_RiNL%1NHobog",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1548860258-be5cfff4f165?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1548860258-be5cfff4f165?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1548860258-be5cfff4f165?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1548860258-be5cfff4f165?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1548860258-be5cfff4f165?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1548860258-be5cfff4f165"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "에콰도르",
+    "thumb": {
+      "id": "EOFUPSOYApc",
+      "slug": "낮에는-푸른-하늘-아래-녹색-산-근처의-흰색과-갈색-콘크리트-건물-EOFUPSOYApc",
+      "created_at": "2021-01-09T21:22:28Z",
+      "updated_at": "2025-12-17T09:40:07Z",
+      "blur_hash": "LgEy=GRlbIj[KnxtR,azkta~flWD",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1610226977124-9fd2755d09f2"
+      }
+    },
+    "demand": "High",
+    "search_views": 589714,
+    "growth": 3182,
+    "results": 9577,
+    "top_keywords": [
+      {
+        "keyword": "에콰도르",
+        "demand": "High",
+        "search_views": 589714,
+        "growth": 3182,
+        "results": 7981,
+        "thumb": {
+          "id": "EOFUPSOYApc",
+          "slug": "낮에는-푸른-하늘-아래-녹색-산-근처의-흰색과-갈색-콘크리트-건물-EOFUPSOYApc",
+          "created_at": "2021-01-09T21:22:28Z",
+          "updated_at": "2025-12-17T09:40:07Z",
+          "blur_hash": "LgEy=GRlbIj[KnxtR,azkta~flWD",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1610226977124-9fd2755d09f2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "콜롬비아",
+    "thumb": {
+      "id": "P3PFi8THbUs",
+      "slug": "노란색-파란색-빨간색-플래그-P3PFi8THbUs",
+      "created_at": "2018-08-08T04:46:39Z",
+      "updated_at": "2025-12-17T13:48:23Z",
+      "blur_hash": "LWHo2pVYDNWo-pbvIpivXTR*RPRk",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1533699224246-6dc3b3ed3304"
+      }
+    },
+    "demand": "High",
+    "search_views": 1975954,
+    "growth": 3099,
+    "results": 21351,
+    "top_keywords": [
+      {
+        "keyword": "콜롬비아",
+        "demand": "High",
+        "search_views": 1975954,
+        "growth": 3099,
+        "results": 6480,
+        "thumb": {
+          "id": "P3PFi8THbUs",
+          "slug": "노란색-파란색-빨간색-플래그-P3PFi8THbUs",
+          "created_at": "2018-08-08T04:46:39Z",
+          "updated_at": "2025-12-17T13:48:23Z",
+          "blur_hash": "LWHo2pVYDNWo-pbvIpivXTR*RPRk",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1533699224246-6dc3b3ed3304"
+          }
+        }
+      },
+      {
+        "keyword": "컬럼비아",
+        "demand": "High",
+        "search_views": 28777,
+        "growth": 38,
+        "results": 17793,
+        "thumb": {
+          "id": "6TTRv195rfo",
+          "slug": "낮-동안-푸른-나무와-강의-공중보기-6TTRv195rfo",
+          "created_at": "2021-01-20T13:11:42Z",
+          "updated_at": "2025-12-17T12:47:25Z",
+          "blur_hash": "LxEzK1jFofay?wazn$j[%Mofodj[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1611148261486-4e315d904232?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1611148261486-4e315d904232?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1611148261486-4e315d904232?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1611148261486-4e315d904232?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1611148261486-4e315d904232?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1611148261486-4e315d904232"
+          }
+        }
+      },
+      {
+        "keyword": "보고타",
+        "demand": "Medium",
+        "search_views": 112521,
+        "growth": 33,
+        "results": 12249,
+        "thumb": {
+          "id": "GkacI-_mGlg",
+          "slug": "산-근처-건물-GkacI-_mGlg",
+          "created_at": "2019-09-16T11:12:58Z",
+          "updated_at": "2025-12-17T12:30:41Z",
+          "blur_hash": "LKFiiQITD%jEY79Foeof?wbHoJV@",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1568632234157-ce7aecd03d0d"
+          }
+        }
+      },
+      {
+        "keyword": "카르타헤나",
+        "demand": "Medium",
+        "search_views": 104268,
+        "growth": -6,
+        "results": 15439,
+        "thumb": {
+          "id": "GcHar4P8V_Q",
+          "slug": "낮에는-흰-하늘-아래-갈색-콘크리트-집들-GcHar4P8V_Q",
+          "created_at": "2018-08-22T13:13:03Z",
+          "updated_at": "2025-12-17T12:00:30Z",
+          "blur_hash": "LOG8cXMd01^*?wD*D%x]%hRjMwg4",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1534943441045-1009d7cb0bb9"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "페루",
+    "thumb": {
+      "id": "4hMET7vYTAQ",
+      "slug": "구름이-있는-산-4hMET7vYTAQ",
+      "created_at": "2018-05-15T14:12:45Z",
+      "updated_at": "2025-12-17T15:21:39Z",
+      "blur_hash": "LkGu%lt7NHWC~qS5jsoJ%1IpRjof",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1526392060635-9d6019884377"
+      }
+    },
+    "demand": "High",
+    "search_views": 1400104,
+    "growth": 3094,
+    "results": 15812,
+    "top_keywords": [
+      {
+        "keyword": "페루",
+        "demand": "High",
+        "search_views": 1400104,
+        "growth": 3094,
+        "results": 13177,
+        "thumb": {
+          "id": "4hMET7vYTAQ",
+          "slug": "구름이-있는-산-4hMET7vYTAQ",
+          "created_at": "2018-05-15T14:12:45Z",
+          "updated_at": "2025-12-17T15:21:39Z",
+          "blur_hash": "LkGu%lt7NHWC~qS5jsoJ%1IpRjof",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1526392060635-9d6019884377"
+          }
+        }
+      },
+      {
+        "keyword": "파일",
+        "demand": "High",
+        "search_views": 54363,
+        "growth": 44,
+        "results": 6588,
+        "thumb": {
+          "id": "Yrqyn1Gb80k",
+          "slug": "낮-동안-섬에-도시-Yrqyn1Gb80k",
+          "created_at": "2019-12-29T02:42:31Z",
+          "updated_at": "2025-12-17T09:55:18Z",
+          "blur_hash": "LiGcZ4iaWAt8%%s.s8WUs;kWs:jF",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1577587230708-187fdbef4d91?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1577587230708-187fdbef4d91?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1577587230708-187fdbef4d91?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1577587230708-187fdbef4d91?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1577587230708-187fdbef4d91?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1577587230708-187fdbef4d91"
+          }
+        }
+      },
+      {
+        "keyword": "마추픽추",
+        "demand": "High",
+        "search_views": 94946,
+        "growth": -68,
+        "results": 4161,
+        "thumb": {
+          "id": "rFESpq5MMTg",
+          "slug": "낮에는-푸른-하늘-아래-녹색과-갈색-산-rFESpq5MMTg",
+          "created_at": "2020-04-22T22:44:10Z",
+          "updated_at": "2025-12-17T10:10:39Z",
+          "blur_hash": null,
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1587595431973-160d0d94add1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "스리랑카",
+    "thumb": {
+      "id": "sGg_8msiIt0",
+      "slug": "흐린-하늘-아래-갈색-바위-산-sGg_8msiIt0",
+      "created_at": "2018-09-21T17:33:18Z",
+      "updated_at": "2025-12-17T15:21:37Z",
+      "blur_hash": "LtCtU.kCR-WV.Tj]WBWCj]azjYf6",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1537551080512-fb7dd14fbf90"
+      }
+    },
+    "demand": "High",
+    "search_views": 2157525,
+    "growth": 2944,
+    "results": 18774,
+    "top_keywords": [
+      {
+        "keyword": "스리랑카",
+        "demand": "High",
+        "search_views": 2157525,
+        "growth": 2944,
+        "results": 15645,
+        "thumb": {
+          "id": "sGg_8msiIt0",
+          "slug": "흐린-하늘-아래-갈색-바위-산-sGg_8msiIt0",
+          "created_at": "2018-09-21T17:33:18Z",
+          "updated_at": "2025-12-17T15:21:37Z",
+          "blur_hash": "LtCtU.kCR-WV.Tj]WBWCj]azjYf6",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1537551080512-fb7dd14fbf90?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1537551080512-fb7dd14fbf90"
+          }
+        }
+      },
+      {
+        "keyword": "스리랑카",
+        "demand": "Low",
+        "search_views": 81727,
+        "growth": 0,
+        "results": 12079,
+        "thumb": {
+          "id": "Rz9pQ3ZEuTw",
+          "slug": "숲-한가운데에-있는-큰-바위-Rz9pQ3ZEuTw",
+          "created_at": "2024-10-29T11:54:32Z",
+          "updated_at": "2025-12-12T09:42:06Z",
+          "blur_hash": "L$Gb*Ma{WVj[~qayfQj[?cfQoLaz",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203?ixlib=rb-4.1.0",
+            "full": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1730145749791-28fc538d7203"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "남아메리카",
+    "thumb": {
+      "id": "jpMyAqHat7g",
+      "slug": "산의-조감도-jpMyAqHat7g",
+      "created_at": "2016-04-28T17:06:33Z",
+      "updated_at": "2025-12-17T10:51:26Z",
+      "blur_hash": "LiD0WFIVogWB.AIVt6j?R:Rjaeof",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1461863109726-246fa9598dc3?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1461863109726-246fa9598dc3?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1461863109726-246fa9598dc3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1461863109726-246fa9598dc3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1461863109726-246fa9598dc3?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1461863109726-246fa9598dc3"
+      }
+    },
+    "demand": "High",
+    "search_views": 9149673,
+    "growth": 2837,
+    "results": 494967,
+    "top_keywords": [
+      {
+        "keyword": "볼리비아",
+        "demand": "High",
+        "search_views": 833522,
+        "growth": 6962,
+        "results": 4161,
+        "thumb": {
+          "id": "kp_87tExCwI",
+          "slug": "낮에는-흰-구름과-푸른-하늘-아래-마른-토양-kp_87tExCwI",
+          "created_at": "2018-05-11T09:20:00Z",
+          "updated_at": "2025-12-17T09:25:50Z",
+          "blur_hash": "L:MR0@o#ofj[0Lt7t7fPM{j[j[j@",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1526029655228-b7ee496c7819?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1526029655228-b7ee496c7819?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1526029655228-b7ee496c7819?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1526029655228-b7ee496c7819?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1526029655228-b7ee496c7819?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1526029655228-b7ee496c7819"
+          }
+        }
+      },
+      {
+        "keyword": "아르헨티나",
+        "demand": "High",
+        "search_views": 1481883,
+        "growth": 2578,
+        "results": 9300,
+        "thumb": {
+          "id": "jN8wERXCnkE",
+          "slug": "낮-동안-수역-근처의-나무-선착장에-흰색과-파란색-깃발-jN8wERXCnkE",
+          "created_at": "2019-12-31T14:14:04Z",
+          "updated_at": "2025-12-17T12:20:07Z",
+          "blur_hash": "LbEN3mt8RPj[pfNGn~j[?cofogWC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1577801599718-f4e3ad3fc794"
+          }
+        }
+      },
+      {
+        "keyword": "브라질리아",
+        "demand": "Low",
+        "search_views": 70929,
+        "growth": 40,
+        "results": 4161,
+        "thumb": {
+          "id": "40sPNStw_40",
+          "slug": "낮-동안-푸른-하늘-아래-도시-건물-40sPNStw_40",
+          "created_at": "2020-08-31T14:12:58Z",
+          "updated_at": "2025-12-17T15:34:40Z",
+          "blur_hash": "LdACS%ozROa}Dibbt8j[iFWARjf6",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1598882949753-4d2a8b61ebbe?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1598882949753-4d2a8b61ebbe?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1598882949753-4d2a8b61ebbe?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1598882949753-4d2a8b61ebbe?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1598882949753-4d2a8b61ebbe?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1598882949753-4d2a8b61ebbe"
+          }
+        }
+      },
+      {
+        "keyword": "아마존 열대우림",
+        "demand": "Medium",
+        "search_views": 78079,
+        "growth": 37,
+        "results": 83132,
+        "thumb": {
+          "id": "vkQgb1lZZPQ",
+          "slug": "낮-동안-푸른-나무와-강의-공중보기-vkQgb1lZZPQ",
+          "created_at": "2020-06-02T07:08:09Z",
+          "updated_at": "2025-12-17T10:16:11Z",
+          "blur_hash": "LDAAgZ%LoLj^_N%KazoftSj[jsa#",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1591081658714-f576fb7ea3ed"
+          }
+        }
+      },
+      {
+        "keyword": "보고타",
+        "demand": "Medium",
+        "search_views": 112521,
+        "growth": 33,
+        "results": 12249,
+        "thumb": {
+          "id": "GkacI-_mGlg",
+          "slug": "산-근처-건물-GkacI-_mGlg",
+          "created_at": "2019-09-16T11:12:58Z",
+          "updated_at": "2025-12-17T12:30:41Z",
+          "blur_hash": "LKFiiQITD%jEY79Foeof?wbHoJV@",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1568632234157-ce7aecd03d0d"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "군데",
+    "thumb": {
+      "id": "l5-za_iUUdA",
+      "slug": "낮에는-갈색과-회색-도로-도로-표지판-l5-za_iUUdA",
+      "created_at": "2018-08-31T19:53:22Z",
+      "updated_at": "2025-12-17T10:51:30Z",
+      "blur_hash": "LHEW%.XATh-:^GxUs*kXkWjsfkWF",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1535745122259-f1e187953c4c?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1535745122259-f1e187953c4c?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1535745122259-f1e187953c4c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1535745122259-f1e187953c4c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1535745122259-f1e187953c4c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1535745122259-f1e187953c4c"
+      }
+    },
+    "demand": "High",
+    "search_views": 132412039,
+    "growth": 2667,
+    "results": 127940,
+    "top_keywords": [
+      {
+        "keyword": "오스트레일리아",
+        "demand": "High",
+        "search_views": 8352015,
+        "growth": 4384,
+        "results": 42322,
+        "thumb": {
+          "id": "7Zb7kUyQg1E",
+          "slug": "시드니-낮에는-오페라-하우스-7Zb7kUyQg1E",
+          "created_at": "2017-10-02T19:37:57Z",
+          "updated_at": "2025-12-17T10:10:35Z",
+          "blur_hash": "L$I$1vxujYa}~qjZWBj[xvs.f+ax",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1506973035872-a4ec16b8e8d9"
+          }
+        }
+      },
+      {
+        "keyword": "아르헨티나",
+        "demand": "High",
+        "search_views": 1481883,
+        "growth": 2578,
+        "results": 9300,
+        "thumb": {
+          "id": "jN8wERXCnkE",
+          "slug": "낮-동안-수역-근처의-나무-선착장에-흰색과-파란색-깃발-jN8wERXCnkE",
+          "created_at": "2019-12-31T14:14:04Z",
+          "updated_at": "2025-12-17T12:20:07Z",
+          "blur_hash": "LbEN3mt8RPj[pfNGn~j[?cofogWC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1577801599718-f4e3ad3fc794"
+          }
+        }
+      },
+      {
+        "keyword": "안도라",
+        "demand": "Medium",
+        "search_views": 39746,
+        "growth": 81,
+        "results": 12407,
+        "thumb": {
+          "id": "LsvORaJkZnQ",
+          "slug": "눈으로-덮인-흑백-산-LsvORaJkZnQ",
+          "created_at": "2018-04-01T17:53:20Z",
+          "updated_at": "2025-12-17T09:16:31Z",
+          "blur_hash": "LkG[{5M{t7Rj~qt7Rjt7t7ofRjj[",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1522605134966-9c31524aa339?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1522605134966-9c31524aa339?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1522605134966-9c31524aa339?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1522605134966-9c31524aa339?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1522605134966-9c31524aa339?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1522605134966-9c31524aa339"
+          }
+        }
+      },
+      {
+        "keyword": "아르메니아",
+        "demand": "Low",
+        "search_views": 149667,
+        "growth": 31,
+        "results": 11845,
+        "thumb": {
+          "id": "VQ07UveM3-U",
+          "slug": "낮-마을의-항공-사진-VQ07UveM3-U",
+          "created_at": "2018-06-10T20:52:23Z",
+          "updated_at": "2025-12-17T11:01:48Z",
+          "blur_hash": "LmG*{AIoNGoe~qM{aebH?bV@WBjt",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1528663775703-dba64f806cd1?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1528663775703-dba64f806cd1?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1528663775703-dba64f806cd1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1528663775703-dba64f806cd1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1528663775703-dba64f806cd1?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1528663775703-dba64f806cd1"
+          }
+        }
+      },
+      {
+        "keyword": "아프가니스탄",
+        "demand": "Medium",
+        "search_views": 105451,
+        "growth": 26,
+        "results": 4765,
+        "thumb": {
+          "id": "8A7M2u4G4d0",
+          "slug": "낮에는-호수와-산-근처의-푸른-잔디밭-8A7M2u4G4d0",
+          "created_at": "2020-05-26T22:26:14Z",
+          "updated_at": "2025-12-17T09:54:51Z",
+          "blur_hash": "LlHVe%xuRkoz.AbIRjf6?cWBWXWC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1590531970580-046a37dfbb68?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1590531970580-046a37dfbb68?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1590531970580-046a37dfbb68?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1590531970580-046a37dfbb68?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1590531970580-046a37dfbb68?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1590531970580-046a37dfbb68"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "아르헨티나",
+    "thumb": {
+      "id": "jN8wERXCnkE",
+      "slug": "낮-동안-수역-근처의-나무-선착장에-흰색과-파란색-깃발-jN8wERXCnkE",
+      "created_at": "2019-12-31T14:14:04Z",
+      "updated_at": "2025-12-17T12:20:07Z",
+      "blur_hash": "LbEN3mt8RPj[pfNGn~j[?cofogWC",
+      "asset_type": "photo",
+      "urls": {
+        "raw": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0",
+        "full": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+        "regular": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+        "small": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+        "thumb": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+        "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1577801599718-f4e3ad3fc794"
+      }
+    },
+    "demand": "High",
+    "search_views": 1481883,
+    "growth": 2578,
+    "results": 16875,
+    "top_keywords": [
+      {
+        "keyword": "아르헨티나",
+        "demand": "High",
+        "search_views": 1481883,
+        "growth": 2578,
+        "results": 9300,
+        "thumb": {
+          "id": "jN8wERXCnkE",
+          "slug": "낮-동안-수역-근처의-나무-선착장에-흰색과-파란색-깃발-jN8wERXCnkE",
+          "created_at": "2019-12-31T14:14:04Z",
+          "updated_at": "2025-12-17T12:20:07Z",
+          "blur_hash": "LbEN3mt8RPj[pfNGn~j[?cofogWC",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1577801599718-f4e3ad3fc794?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1577801599718-f4e3ad3fc794"
+          }
+        }
+      },
+      {
+        "keyword": "파타고니아",
+        "demand": "Medium",
+        "search_views": 162385,
+        "growth": 3,
+        "results": 14063,
+        "thumb": {
+          "id": "H3oXiq7_bII",
+          "slug": "수역-근처-산의-풍경-사진-H3oXiq7_bII",
+          "created_at": "2019-05-22T09:39:06Z",
+          "updated_at": "2025-12-17T12:25:52Z",
+          "blur_hash": "LdB;X-kDNHR.%%flWXWCD*jZn$oK",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1558517286-8a9cb0b8c793?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1558517286-8a9cb0b8c793?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1558517286-8a9cb0b8c793?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1558517286-8a9cb0b8c793?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1558517286-8a9cb0b8c793?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1558517286-8a9cb0b8c793"
+          }
+        }
+      },
+      {
+        "keyword": "부에노스아이레스",
+        "demand": "Medium",
+        "search_views": 228488,
+        "growth": -22,
+        "results": 11615,
+        "thumb": {
+          "id": "QhQ4WgX77G0",
+          "slug": "낮-동안-도시-건물-근처-도로의-자동차-QhQ4WgX77G0",
+          "created_at": "2020-05-19T17:27:02Z",
+          "updated_at": "2025-12-17T13:48:26Z",
+          "blur_hash": "LaD^M}%MIpozu6ofofV[peWBxuof",
+          "asset_type": "photo",
+          "urls": {
+            "raw": "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.1.0",
+            "full": "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "regular": "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+            "small": "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max",
+            "thumb": "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+            "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1589909202802-8f4aadce1849"
+          }
+        }
+      }
+    ]
+  }
+]
