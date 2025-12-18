@@ -25,7 +25,8 @@ let project = Project.module(
     case .homeUI, .exploreUI, .searchUI:
       return withPreviewSupports(
         .presentation(.ui),
-        .domain(.useCases),
+        .domain(.clients),
+        .domain(.entities),
         .core(.strings),
         .external(.composableArchitecture)
       )

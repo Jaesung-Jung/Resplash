@@ -28,12 +28,12 @@ extension UnsplashClient {
     let fetchItems: @Sendable (MediaType, Int, Int) async throws -> Page<AssetCollection>
     let fetchImages: @Sendable (AssetCollection, Int, Int) async throws -> Page<Asset>
 
-    public func items(for mediaType: MediaType, page: Int, count: Int) async throws -> Page<AssetCollection> {
-      try await fetchItems(mediaType, page, count)
+    public func items(for mediaType: MediaType, page: Int) async throws -> Page<AssetCollection> {
+      try await fetchItems(mediaType, page, 30)
     }
 
-    public func images(for collection: AssetCollection, page: Int, count: Int) async throws -> Page<Asset> {
-      try await fetchImages(collection, page, count)
+    public func images(for collection: AssetCollection, page: Int) async throws -> Page<Asset> {
+      try await fetchImages(collection, page, 30)
     }
   }
 }

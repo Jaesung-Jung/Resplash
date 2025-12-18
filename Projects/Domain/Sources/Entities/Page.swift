@@ -29,9 +29,7 @@ public struct Page<Item> {
 
   public let page: Int
   public let isAtEnd: Bool
-
-  @usableFromInline
-  let items: [Item]
+  public let items: [Item]
 
   public init(page: Int, pageSize: Int, items: [Item]) {
     self.page = page

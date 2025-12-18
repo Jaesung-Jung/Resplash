@@ -22,6 +22,7 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
 import ResplashAppUI
 
 @main
@@ -30,7 +31,9 @@ struct ResplashApp: App {
 
   var body: some Scene {
     WindowGroup {
-      AppView()
+      AppView(store: Store(initialState: AppFeature.State()) {
+        AppFeature()
+      })
     }
   }
 }

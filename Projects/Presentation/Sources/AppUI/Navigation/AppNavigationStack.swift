@@ -1,5 +1,5 @@
 //
-//  ExploreView.swift
+//  AppNavigationStack.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -23,35 +23,20 @@
 
 import SwiftUI
 import ComposableArchitecture
-import ResplashStrings
 
-public struct ExploreView: View {
-  let store: StoreOf<ExploreFeature>
+struct AppNavigationStack<Root: View>: View {
+  let path: Binding<Store<StackState<AppNavigationPath.State>, StackActionOf<AppNavigationPath>>>
+  let root: Root
 
-  public init(store: StoreOf<ExploreFeature>) {
-    self.store = store
+  init(path: Binding<Store<StackState<AppNavigationPath.State>, StackActionOf<AppNavigationPath>>>, @ViewBuilder root: () -> Root) {
+    self.path = path
+    self.root = root()
   }
 
-  public var body: some View {
-    Text(.localizable(.explore))
-  }
-}
-
-// MARK: - ExploreView Preview
-
-#if DEBUG
-
-import ResplashPreviewSupports
-
-#Preview {
-  NavigationStack {
-    ExploreView(store: Store(initialState: ExploreFeature.State()) {
-      ExploreFeature()
-    } withDependencies: {
-      $0.unsplash = .preview()
-    })
-    .navigationTitle(.localizable(.explore))
+  var body: some View {
+    NavigationStack(path: path) {
+      root
+    } destination: { store in
+    }
   }
 }
-
-#endif

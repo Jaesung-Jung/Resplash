@@ -22,13 +22,44 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
+import ResplashHomeUI
+import ResplashExploreUI
+import ResplashSearchUI
+import ResplashStrings
 
 public struct AppView: View {
-  public init() {
+  typealias TabItem = AppFeature.Tab
+
+  @Bindable var store: StoreOf<AppFeature>
+
+  public init(store: StoreOf<AppFeature>) {
+    self.store = store
   }
 
   public var body: some View {
-    Text("App")
+    TabView(selection: $store.selectedTab) {
+      Tab(.localizable(.home), systemImage: "photo.on.rectangle.angled", value: TabItem.home) {
+        AppNavigationStack(path: $store.scope(state: \.homePath, action: \.homePath)) {
+          HomeView(store: store.scope(state: \.home, action: \.home))
+            .navigationTitle(.localizable(.home))
+        }
+      }
+
+      Tab(.localizable(.explore), systemImage: "safari", value: TabItem.explore) {
+        AppNavigationStack(path: $store.scope(state: \.explorePath, action: \.explorePath)) {
+          ExploreView(store: store.scope(state: \.explore, action: \.explore))
+            .navigationTitle(.localizable(.explore))
+        }
+      }
+
+      Tab(value: TabItem.search, role: .search) {
+        AppNavigationStack(path: $store.scope(state: \.searchPath, action: \.searchPath)) {
+          SearchView(store: store.scope(state: \.search, action: \.search))
+            .navigationTitle(.localizable(.search))
+        }
+      }
+    }
   }
 }
 
@@ -39,7 +70,11 @@ public struct AppView: View {
 import ResplashPreviewSupports
 
 #Preview {
-  AppView()
+  AppView(store: Store(initialState: AppFeature.State()) {
+    AppFeature()
+  } withDependencies: {
+    $0.unsplash = .preview()
+  })
 }
 
 #endif

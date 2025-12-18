@@ -14,12 +14,6 @@ let project = Project.module(
         .domain(.entities),
         .external(.dependencies)
       ]
-    case .useCases:
-      return [
-        .domain(.entities),
-        .domain(.clients),
-        .external(.dependencies)
-      ]
     }
   }
 )

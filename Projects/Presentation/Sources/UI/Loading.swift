@@ -1,5 +1,5 @@
 //
-//  ExploreView.swift
+//  Loading.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,37 +21,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import SwiftUI
-import ComposableArchitecture
-import ResplashStrings
-
-public struct ExploreView: View {
-  let store: StoreOf<ExploreFeature>
-
-  public init(store: StoreOf<ExploreFeature>) {
-    self.store = store
-  }
-
-  public var body: some View {
-    Text(.localizable(.explore))
-  }
+public enum Loading {
+  case none
+  case loading
+  case loadingMore
 }
-
-// MARK: - ExploreView Preview
-
-#if DEBUG
-
-import ResplashPreviewSupports
-
-#Preview {
-  NavigationStack {
-    ExploreView(store: Store(initialState: ExploreFeature.State()) {
-      ExploreFeature()
-    } withDependencies: {
-      $0.unsplash = .preview()
-    })
-    .navigationTitle(.localizable(.explore))
-  }
-}
-
-#endif

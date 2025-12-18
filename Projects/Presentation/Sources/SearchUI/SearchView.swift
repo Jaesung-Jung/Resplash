@@ -22,13 +22,18 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
+import ResplashStrings
 
 public struct SearchView: View {
-  public init() {
+  let store: StoreOf<SearchFeature>
+
+  public init(store: StoreOf<SearchFeature>) {
+    self.store = store
   }
 
   public var body: some View {
-    Text("Search")
+    Text(.localizable(.search))
   }
 }
 
@@ -39,7 +44,14 @@ public struct SearchView: View {
 import ResplashPreviewSupports
 
 #Preview {
-  SearchView()
+  NavigationStack {
+    SearchView(store: Store(initialState: SearchFeature.State()) {
+      SearchFeature()
+    } withDependencies: {
+      $0.unsplash = .preview()
+    })
+    .navigationTitle(.localizable(.search))
+  }
 }
 
 #endif

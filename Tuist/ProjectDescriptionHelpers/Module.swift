@@ -68,7 +68,6 @@ public struct Domain: Module {
   public enum Target: String, ModuleTarget {
     case entities
     case clients
-    case useCases
   }
 }
 

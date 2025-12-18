@@ -22,13 +22,18 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
+import ResplashStrings
 
 public struct HomeView: View {
-  public init() {
+  let store: StoreOf<HomeFeature>
+
+  public init(store: StoreOf<HomeFeature>) {
+    self.store = store
   }
 
   public var body: some View {
-    Text("Home")
+    Text(.localizable(.home))
   }
 }
 
@@ -39,7 +44,14 @@ public struct HomeView: View {
 import ResplashPreviewSupports
 
 #Preview {
-  HomeView()
+  NavigationStack {
+    HomeView(store: Store(initialState: HomeFeature.State()) {
+      HomeFeature()
+    } withDependencies: {
+      $0.unsplash = .preview()
+    })
+    .navigationTitle(.localizable(.home))
+  }
 }
 
 #endif

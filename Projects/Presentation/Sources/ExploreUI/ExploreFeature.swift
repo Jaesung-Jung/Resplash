@@ -1,5 +1,5 @@
 //
-//  ExploreView.swift
+//  ExploreFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,37 +21,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import SwiftUI
 import ComposableArchitecture
-import ResplashStrings
 
-public struct ExploreView: View {
-  let store: StoreOf<ExploreFeature>
-
-  public init(store: StoreOf<ExploreFeature>) {
-    self.store = store
+@Reducer
+public struct ExploreFeature {
+  @ObservableState
+  public struct State: Equatable {
+    public init() {
+    }
   }
 
-  public var body: some View {
-    Text(.localizable(.explore))
+  public enum Action {
   }
-}
 
-// MARK: - ExploreView Preview
+  public init() {
+  }
 
-#if DEBUG
-
-import ResplashPreviewSupports
-
-#Preview {
-  NavigationStack {
-    ExploreView(store: Store(initialState: ExploreFeature.State()) {
-      ExploreFeature()
-    } withDependencies: {
-      $0.unsplash = .preview()
-    })
-    .navigationTitle(.localizable(.explore))
+  public var body: some ReducerOf<Self> {
+    EmptyReducer()
   }
 }
-
-#endif
