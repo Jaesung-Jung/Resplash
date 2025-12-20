@@ -11,6 +11,7 @@ let project = Project.module(
     switch $0 {
     case .ui:
       return withPreviewSupports(
+        .domain(.entities),
         .core(.designSystem),
         .core(.strings)
       )

@@ -35,7 +35,7 @@ public struct HomeFeature {
   public struct State: Equatable {
     var topics: [Topic]?
     var collections: [AssetCollection]?
-    var images: IdentifiedArrayOf<Asset>?
+    var images: [Asset]?
 
     var mediaType: MediaType = .photo
     var loading: Loading = .none
@@ -53,6 +53,10 @@ public struct HomeFeature {
     case fetchContentsResponse(Result<Contents, Error>)
     case fetchNextImagesResponse(Result<Page<Asset>, Error>)
     case selectMediaType(MediaType)
+
+    case selectTopic(Topic)
+    case selectCollection(AssetCollection)
+    case selectImage(Asset)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -91,7 +95,7 @@ public struct HomeFeature {
         state.loading = .none
         state.topics = contents.topics
         state.collections = contents.collections
-        state.images = IdentifiedArray(uniqueElements: contents.images.uniqued())
+        state.images = Array(contents.images.uniqued())
         state.page = contents.images.page
         state.hasNextPage = !contents.images.isAtEnd
         return .none
@@ -100,7 +104,7 @@ public struct HomeFeature {
         state.loading = .none
         state.images = state.images
           .map { $0 + images }
-          .map { IdentifiedArray(uniqueElements: $0.uniqued()) }
+          .map { Array($0.uniqued()) }
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
         return .none
@@ -115,6 +119,9 @@ public struct HomeFeature {
         }
         state.mediaType = mediaType
         return .send(.fetchContents)
+
+      case .selectTopic, .selectCollection, .selectImage:
+        return .none
       }
     }
   }

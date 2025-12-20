@@ -1,5 +1,5 @@
 //
-//  DesignSystem.swift
+//  LikeView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -20,3 +20,34 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+
+import SwiftUI
+
+public struct LikeView: View {
+  let count: Int
+
+  public init(_ count: Int) {
+    self.count = count
+  }
+
+  public var body: some View {
+    HStack(spacing: 4) {
+      Image(systemName: "heart.fill")
+        .font(.footnote)
+        .foregroundStyle(.red)
+      Text(count.formatted(.number))
+        .font(.subheadline)
+        .fontWeight(.semibold)
+    }
+  }
+}
+
+// MARK: - LikeView Preview
+
+#if DEBUG
+
+#Preview {
+  LikeView(9999)
+}
+
+#endif

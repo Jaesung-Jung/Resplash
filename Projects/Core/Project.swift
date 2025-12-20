@@ -18,7 +18,8 @@ let project = Project.module(
       ]
     case .designSystem:
       return [
-        .core(.utils)
+        .core(.utils),
+        .external(.kingfisher)
       ]
     case .networking:
       return [

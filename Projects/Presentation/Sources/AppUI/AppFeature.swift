@@ -86,7 +86,13 @@ public struct AppFeature {
     }
     Reduce { state, action in
       switch action {
-      case .home:
+      case .home(.selectTopic(let topic)):
+        return .none
+
+      case .home(.selectCollection(let collection)):
+        return .none
+
+      case .home(.selectImage(let asset)):
         return .none
 
       case .explore:

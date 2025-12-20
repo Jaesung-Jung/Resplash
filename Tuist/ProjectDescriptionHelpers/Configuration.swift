@@ -17,7 +17,7 @@ public enum ProjectConfig {
     "ja"    // Japanese
   ]
 
-  static let deploymentTargets: DeploymentTargets = .iOS("18.0")
+  static let deploymentTargets: DeploymentTargets = .iOS("26.0")
 
   static let marketingVersion = "1.0.0"
   static let projectVersion = "1"
