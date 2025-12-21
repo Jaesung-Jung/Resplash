@@ -25,6 +25,9 @@ import ComposableArchitecture
 import ResplashHomeUI
 import ResplashExploreUI
 import ResplashSearchUI
+import ResplashCollectionsUI
+import ResplashImagesUI
+import ResplashImageDetailUI
 
 @Reducer
 public struct AppFeature {
@@ -86,13 +89,24 @@ public struct AppFeature {
     }
     Reduce { state, action in
       switch action {
-      case .home(.selectTopic(let topic)):
+      case .home(.navigate(.collections)):
+        let collectionsState = CollectionsFeature.State(mediaType: state.home.mediaType)
+        state.homePath.append(.collections(collectionsState))
         return .none
 
-      case .home(.selectCollection(let collection)):
+      case .home(.navigate(.topicImages(let topic))):
+        let imagesState = ImagesFeature.State(item: .topic(topic))
+        state.homePath.append(.images(imagesState))
         return .none
 
-      case .home(.selectImage(let asset)):
+      case .home(.navigate(.collectionImages(let collection))):
+        let imageState = ImagesFeature.State(item: .collection(collection))
+        state.homePath.append(.images(imageState))
+        return .none
+
+      case .home(.navigate(.imageDetail(let image))):
+        let imageDetailState = ImageDetailFeature.State(image: image)
+        state.homePath.append(.imageDetail(imageDetailState))
         return .none
 
       case .explore:

@@ -1,5 +1,5 @@
 //
-//  HomeFeature.swift
+//  CollectionsFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -26,42 +26,37 @@ import ResplashUI
 import ResplashClients
 import ResplashEntities
 import ResplashUtils
+import ResplashStrings
 
 @Reducer
-public struct HomeFeature {
-  public typealias Contents = (topics: [Topic], collections: [AssetCollection], images: Page<Asset>)
-
+public struct CollectionsFeature {
   @ObservableState
   public struct State: Equatable {
-    public var mediaType: MediaType = .photo
-    public var topics: [Topic]?
+    public let mediaType: MediaType
     public var collections: [AssetCollection]?
-    public var images: [Asset]?
 
     var loading: Loading = .none
     var isLoading: Bool { loading != .none }
 
-    var page = 1
-    var hasNextPage = false
+    var page: Int = 1
+    var hasNextPage: Bool = false
 
-    public init() {}
+    public init(mediaType: MediaType) {
+      self.mediaType = mediaType
+    }
   }
 
   public enum Action {
-    case fetchContents
-    case fetchNextImages
-    case fetchContentsResponse(Result<Contents, Error>)
-    case fetchNextImagesResponse(Result<Page<Asset>, Error>)
-    case selectMediaType(MediaType)
+    case fetchCollections
+    case fetchNextCollections
+    case fetchCollectionsResponse(Result<Page<AssetCollection>, Error>)
+    case fetchNextCollectionsResponse(Result<Page<AssetCollection>, Error>)
 
     case navigate(Navigation)
   }
 
   public enum Navigation {
-    case collections
-    case topicImages(Topic)
     case collectionImages(AssetCollection)
-    case imageDetail(Asset)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -72,58 +67,40 @@ public struct HomeFeature {
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
-      case .fetchContents:
+      case .fetchCollections:
         state.loading = .loading
         return .run { [unsplash, mediaType = state.mediaType] send in
-          let result = await Result {
-            async let topics = unsplash.topic.items(for: mediaType)
-            async let collections = unsplash.collection.items(for: mediaType, page: 1)
-            async let images = unsplash.asset.images(for: mediaType, page: 1)
-            return try await (topics: topics, collections: collections.items, images: images)
-          }
-          await send(.fetchContentsResponse(result))
+          let result = await Result { try await unsplash.collection.items(for: mediaType, page: 1) }
+          await send(.fetchCollectionsResponse(result))
         }
 
-      case .fetchNextImages:
+      case .fetchNextCollections:
         guard state.hasNextPage, !state.isLoading else {
           return .none
         }
-        state.loading = .loadingMore
+        state.loading = .loading
         return .run { [unsplash, mediaType = state.mediaType, page = state.page] send in
-          let result = await Result {
-            try await unsplash.asset.images(for: mediaType, page: page + 1)
-          }
-          await send(.fetchNextImagesResponse(result))
+          let result = await Result { try await unsplash.collection.items(for: mediaType, page: page + 1) }
+          await send(.fetchNextCollectionsResponse(result))
         }
 
-      case .fetchContentsResponse(.success(let contents)):
+      case .fetchCollectionsResponse(.success(let collections)):
         state.loading = .none
-        state.topics = contents.topics
-        state.collections = contents.collections
-        state.images = Array(contents.images.uniqued())
-        state.page = contents.images.page
-        state.hasNextPage = !contents.images.isAtEnd
+        state.collections = Array(collections.uniqued())
+        state.page = collections.page
+        state.hasNextPage = !collections.isAtEnd
         return .none
 
-      case .fetchNextImagesResponse(.success(let images)):
+      case .fetchNextCollectionsResponse(.success(let collections)):
         state.loading = .none
-        state.images = state.images
-          .map { $0 + images }
-          .map { Array($0.uniqued()) }
-        state.page = images.page
-        state.hasNextPage = !images.isAtEnd
+        state.collections = state.collections.map { $0 + collections }.map { Array($0.uniqued()) }
+        state.page = collections.page
+        state.hasNextPage = !collections.isAtEnd
         return .none
 
-      case .fetchContentsResponse(.failure(let error)), .fetchNextImagesResponse(.failure(let error)):
-        print(error)
+      case .fetchCollectionsResponse(.failure(let error)), .fetchNextCollectionsResponse(.failure(let error)):
+        state.loading = .none
         return .none
-
-      case .selectMediaType(let mediaType):
-        guard mediaType != state.mediaType else {
-          return .none
-        }
-        state.mediaType = mediaType
-        return .send(.fetchContents)
 
       case .navigate:
         return .none

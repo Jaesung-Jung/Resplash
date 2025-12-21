@@ -78,6 +78,7 @@ public struct ImageCollectionView: View {
         }
       }
       .clipShape(Rectangle())
+      .contentShape(Rectangle())
   }
 }
 

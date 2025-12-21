@@ -35,7 +35,7 @@ public struct UnsplashClient {
     fetchTopics: @Sendable @escaping () async throws -> [Topic],
     fetchTopicImages: @Sendable @escaping (Topic, Int, Int) async throws -> Page<Asset>,
     fetchCategories: @Sendable @escaping () async throws -> [Category],
-    fetchCategoryImages: @Sendable @escaping (Category, Int, Int) async throws -> Page<Asset>,
+    fetchCategoryImages: @Sendable @escaping (Category.Item, Int, Int) async throws -> Page<Asset>,
     fetchCollections: @Sendable @escaping (MediaType, Int, Int) async throws -> Page<AssetCollection>,
     fetchCollectionImages: @Sendable @escaping (AssetCollection, Int, Int) async throws -> Page<Asset>,
     fetchPhotos: @Sendable @escaping (Int, Int) async throws -> Page<Asset>,

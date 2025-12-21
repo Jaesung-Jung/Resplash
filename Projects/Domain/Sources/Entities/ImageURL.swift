@@ -59,6 +59,9 @@ public struct ImageURL {
   }
 }
 
+extension ImageURL: Equatable {
+}
+
 extension ImageURL: Sendable {
 }
 

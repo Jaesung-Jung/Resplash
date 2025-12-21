@@ -24,6 +24,7 @@
 import SwiftUI
 import ComposableArchitecture
 import ResplashAppUI
+import ResplashDesignSystem
 
 @main
 struct ResplashApp: App {
@@ -34,6 +35,7 @@ struct ResplashApp: App {
       AppView(store: Store(initialState: AppFeature.State()) {
         AppFeature()
       })
+      .providesLayoutEnvironment()
     }
   }
 }

@@ -75,7 +75,7 @@ extension UserView {
           .font(.body)
           .fontWeight(.bold)
 
-        Text("Available for hire")
+        Text(user.id)
           .font(.caption)
           .foregroundStyle(.secondary)
       }

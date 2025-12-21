@@ -1,5 +1,5 @@
 //
-//  LayoutContainer.swift
+//  LayoutEnvironment.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -22,22 +22,6 @@
 //  THE SOFTWARE.
 
 import SwiftUI
-
-public struct LayoutContainer<Content: View>: View {
-  @Environment(\.horizontalSizeClass) var horizontalSizeClass
-
-  let content: (LayoutEnvironment) -> Content
-
-  public init(@ViewBuilder content: @escaping (LayoutEnvironment) -> Content) {
-    self.content = content
-  }
-
-  public var body: some View {
-    content(horizontalSizeClass == .regular ? .regularLayoutEnvironment() : .compactLayoutEnvironment())
-  }
-}
-
-// MARK: - LayoutEnvironment
 
 public struct LayoutEnvironment: Sendable {
   @usableFromInline
@@ -63,5 +47,41 @@ public struct LayoutEnvironment: Sendable {
     LayoutEnvironment(
       contentInsets: EdgeInsets(top: 0, leading: 40, bottom: 40, trailing: 40)
     )
+  }
+}
+
+// MARK: - Environment
+
+extension LayoutEnvironment: EnvironmentKey {
+  public static let defaultValue: LayoutEnvironment = compactLayoutEnvironment()
+}
+
+extension EnvironmentValues {
+  public var layoutEnvironment: LayoutEnvironment {
+    get { self[LayoutEnvironment.self] }
+    set { self[LayoutEnvironment.self] = newValue }
+  }
+}
+
+// MARK: - ViewModifier
+
+struct LayoutEnvironmentProvider: ViewModifier {
+  @Environment(\.horizontalSizeClass) private var hSizeClass
+  @Environment(\.verticalSizeClass) private var vSizeClass
+
+  func body(content: Content) -> some View {
+    let layoutEnvironment = switch (hSizeClass, vSizeClass) {
+    case (.regular, .regular):
+      LayoutEnvironment.regularLayoutEnvironment()
+    default:
+      LayoutEnvironment.compactLayoutEnvironment()
+    }
+    return content.environment(\.layoutEnvironment, layoutEnvironment)
+  }
+}
+
+extension View {
+  public func providesLayoutEnvironment() -> some View {
+    modifier(LayoutEnvironmentProvider())
   }
 }

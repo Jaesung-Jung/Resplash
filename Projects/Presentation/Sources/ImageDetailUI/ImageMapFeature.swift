@@ -1,5 +1,5 @@
 //
-//  CategoryAPI.swift
+//  ImageMapFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,27 +21,52 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import SwiftUI
+import MapKit
+import ComposableArchitecture
 import ResplashEntities
-import ResplashNetworking
 
-extension Endpoint {
-  public static func categories() -> Endpoint {
-    Endpoint(
-      resourceId: "categories",
-      path: "napi/landing_pages/featured",
-      method: .get
-    )
+@Reducer
+public struct ImageMapFeature {
+  @ObservableState
+  public struct State: Equatable {
+    public let camera: MapCamera
+    public let imageURL: URL
+    public let label: String?
+    public let coordinate: CLLocationCoordinate2D
+
+    public init(camera: MapCamera, imageURL: URL, label: String?, coordinate: CLLocationCoordinate2D) {
+      self.camera = camera
+      self.imageURL = imageURL
+      self.label = label
+      self.coordinate = coordinate
+    }
+
+    public static func == (lhs: Self, rhs: Self) -> Bool { true }
   }
 
-  public static func categoryImages(for category: Category.Item, page: Int, count: Int) -> Endpoint {
-    Endpoint(
-      resourceId: "category_images_\(page)",
-      path: "napi/landing_pages/images/stock/\(category.slug)",
-      method: .get,
-      parameters: [
-        "page": page,
-        "per_page": count
-      ]
-    )
+  public enum Action {
+    case close
+    case delegate(DelegateAction)
+  }
+
+  public enum DelegateAction {
+    case updateCamera(MapCamera)
+  }
+
+  @Dependency(\.dismiss) var dismiss
+
+  public init() {
+  }
+
+  public var body: some ReducerOf<Self> {
+    Reduce { state, action in
+      switch action {
+      case .close:
+        return .run { [dismiss] _ in await dismiss() }
+      default:
+        return .none
+      }
+    }
   }
 }

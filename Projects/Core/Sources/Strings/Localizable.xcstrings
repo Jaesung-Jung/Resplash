@@ -24,6 +24,34 @@
         }
       }
     },
+    "createdBy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created by %@"
+          }
+        }
+      }
+    },
+    "downloadCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloads"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다운로드"
+          }
+        }
+      }
+    },
     "explore" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -66,6 +94,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "추천"
+          }
+        }
+      }
+    },
+    "featuredIn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Featured in"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소개 매체"
+          }
+        }
+      }
+    },
+    "fromThisSeries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From this series"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 시리즈의 다른 컨텐츠"
+          }
+        }
+      }
+    },
+    "hitCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Views"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "조회수"
           }
         }
       }
@@ -116,6 +195,23 @@
         }
       }
     },
+    "image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지"
+          }
+        }
+      }
+    },
     "media" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -158,6 +254,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "사진"
+          }
+        }
+      }
+    },
+    "relatedImages" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Related Images"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "관련 이미지"
           }
         }
       }

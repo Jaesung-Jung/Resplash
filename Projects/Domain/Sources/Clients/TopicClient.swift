@@ -32,8 +32,8 @@ extension UnsplashClient {
       try await fetchItems().filter { $0.mediaTypes.contains(mediaType) }
     }
 
-    public func images(for topic: Topic, page: Int, count: Int) async throws -> Page<Asset> {
-      try await fetchImages(topic, page, count)
+    public func images(for topic: Topic, page: Int) async throws -> Page<Asset> {
+      try await fetchImages(topic, page, 30)
     }
   }
 }

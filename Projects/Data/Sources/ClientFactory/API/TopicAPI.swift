@@ -38,7 +38,7 @@ extension Endpoint {
 
   public static func topicImages(for topic: Topic, page: Int, count: Int) -> Endpoint {
     Endpoint(
-      resourceId: "toic_\(topic.mediaTypes.first?.rawValue ?? "")_\(page)",
+      resourceId: "topic_\(topic.mediaTypes.first?.rawValue ?? "")_\(page)",
       path: "napi/topics/\(topic.slug)/photos",
       method: .get,
       parameters: [

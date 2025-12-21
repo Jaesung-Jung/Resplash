@@ -60,6 +60,7 @@ public struct AppView: View {
         }
       }
     }
+    .tabBarMinimizeBehavior(.onScrollDown)
   }
 }
 

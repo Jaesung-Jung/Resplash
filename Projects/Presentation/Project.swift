@@ -20,10 +20,13 @@ let project = Project.module(
         .presentation(.homeUI),
         .presentation(.exploreUI),
         .presentation(.searchUI),
+        .presentation(.collectionsUI),
+        .presentation(.imagesUI),
+        .presentation(.imageDetailUI),
         .core(.strings),
         .external(.composableArchitecture)
       )
-    case .homeUI, .exploreUI, .searchUI:
+    case .homeUI, .exploreUI, .searchUI, .collectionsUI, .imagesUI, .imageDetailUI:
       return withPreviewSupports(
         .presentation(.ui),
         .domain(.clients),

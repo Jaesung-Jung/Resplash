@@ -67,8 +67,13 @@ public struct AssetView<MenuContent: View>: View {
       }
       .overlay(alignment: .bottom) {
         BottomContentLayout {
-          UserView(asset.user)
-            .foregroundStyle(.white)
+          if size == .regular {
+            UserView(asset.user)
+              .foregroundStyle(.white)
+          } else {
+            UserView(asset.user)
+              .hidden()
+          }
 
           if usesMenu {
             Menu {
@@ -85,7 +90,7 @@ public struct AssetView<MenuContent: View>: View {
         }
         .padding(16)
         .background(
-          gradient(startPoint: .bottom, endPoint: .top).opacity(imageLoaded ? 1 : 0)
+          gradient(startPoint: .bottom, endPoint: .top).opacity(imageLoaded && size == .regular ? 1 : 0)
         )
       }
       .clipShape(RoundedRectangle(cornerRadius: size == .regular ? 12 : 0))

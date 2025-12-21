@@ -30,7 +30,7 @@ import ResplashDesignSystem
 
 public struct HomeView: View {
   @Environment(\.colorScheme) var colorScheme
-  @Environment(\.horizontalSizeClass) var hSizeClass
+  @Environment(\.layoutEnvironment) var layoutEnvironment
 
   let store: StoreOf<HomeFeature>
 
@@ -39,8 +39,47 @@ public struct HomeView: View {
   }
 
   public var body: some View {
-    LayoutContainer { environment in
-      content(environment: environment)
+    ScrollView {
+      LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
+        Section {
+          if let collections = store.collections {
+            VStack(alignment: .leading) {
+              Button {
+                store.send(.navigate(.collections))
+              } label: {
+                sectionTitle(.localizable(.assetCollections), showsDisclosureIndicator: true)
+              }
+              .padding(layoutEnvironment.contentInsets(.horizontal))
+              .buttonStyle(.ds.plain())
+
+              collectionList(collections)
+            }
+          }
+
+          if let images = store.images {
+            VStack(alignment: .leading) {
+              sectionTitle(.localizable(.featured))
+                .padding(layoutEnvironment.contentInsets(.horizontal))
+
+              imageList(images)
+            }
+          }
+
+          if store.hasNextPage {
+            ProgressView()
+              .foregroundStyle(.tertiary)
+              // .progressViewStyle(.circleScale)
+              .onAppear {
+                store.send(.fetchNextImages)
+              }
+          }
+        } header: {
+          if let topics = store.topics {
+            topicList(topics)
+          }
+        }
+      }
+      .padding(layoutEnvironment.contentInsets(.bottom))
     }
     .navigationTitle(.localizable(.home))
     .toolbar {
@@ -55,51 +94,6 @@ public struct HomeView: View {
 // MARK: - HomeView (ViewBuilders)
 
 extension HomeView {
-  @ViewBuilder func content(environment: LayoutEnvironment) -> some View {
-    ScrollView {
-      LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
-        Section {
-          if let collections = store.collections {
-            VStack(alignment: .leading) {
-              Button {
-                // store.send(.navigate(.collections))
-              } label: {
-                sectionTitle(.localizable(.assetCollections), showsDisclosureIndicator: true)
-              }
-              .padding(environment.contentInsets(.horizontal))
-              .buttonStyle(.ds.plain())
-
-              collectionList(collections, environment: environment)
-            }
-          }
-
-          if let images = store.images {
-            VStack(alignment: .leading) {
-              sectionTitle(.localizable(.featured))
-                .padding(environment.contentInsets(.horizontal))
-
-              imageList(images, environment: environment)
-            }
-          }
-
-          if store.hasNextPage {
-            ProgressView()
-              .foregroundStyle(.tertiary)
-              // .progressViewStyle(.circleScale)
-              .onAppear {
-                store.send(.fetchNextImages)
-              }
-          }
-        } header: {
-          if let topics = store.topics {
-            topicList(topics, environment: environment)
-          }
-        }
-      }
-      .padding(environment.contentInsets(.bottom))
-    }
-  }
-
   @ViewBuilder func mediaPickerMenu() -> some View {
     Menu {
       Section(.localizable(.media)) {
@@ -144,32 +138,32 @@ extension HomeView {
     .foregroundStyle(.primary)
   }
 
-  @ViewBuilder func topicList(_ topics: [Topic], environment: LayoutEnvironment) -> some View {
+  @ViewBuilder func topicList(_ topics: [Topic]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       GlassEffectContainer {
         LazyHStack(spacing: 8) {
           ForEach(topics) { topic in
             Button {
-              // store.send(.navigate(.topic(topic)))
+              store.send(.navigate(.topicImages(topic)))
             } label: {
               TopicView(topic)
-                .foregroundStyle(.foreground)
                 .glassEffect(.regular.interactive())
             }
+            .buttonStyle(.plain)
           }
         }
-        .padding(environment.contentInsets([.top, .horizontal]))
+        .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
       }
     }
     .scrollClipDisabled()
   }
 
-  @ViewBuilder func collectionList(_ collections: [AssetCollection], environment: LayoutEnvironment) -> some View {
+  @ViewBuilder func collectionList(_ collections: [AssetCollection]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       LazyHGrid(rows: [GridItem()], alignment: .top, spacing: 10) {
         ForEach(collections) { collection in
           Button {
-            // store.send(.navigate(.collection(collection)))
+            store.send(.navigate(.collectionImages(collection)))
           } label: {
             ImageCollectionView(collection)
               .containerRelativeFrame(.horizontal) { length, _ in (length - 20) / 1.5 }
@@ -177,22 +171,22 @@ extension HomeView {
           .buttonStyle(.ds.plain())
         }
       }
-      .padding(environment.contentInsets(.horizontal))
+      .padding(layoutEnvironment.contentInsets(.horizontal))
 
       .scrollTargetLayout()
     }
     .scrollTargetBehavior(.viewAligned(limitBehavior: .never, anchor: .leading))
   }
 
-  @ViewBuilder func imageList(_ images: [Asset], environment: LayoutEnvironment) -> some View {
+  @ViewBuilder func imageList(_ images: [Asset]) -> some View {
     LazyVStack(spacing: 10) {
       ForEach(images) { image in
         Button {
-          // store.send(.navigate(.image(image)))
+          store.send(.navigate(.imageDetail(image)))
         } label: {
           AssetView(image)
             .containerRelativeFrame([.horizontal]) { length, _ in
-              let insets = environment.contentInsets(.horizontal)
+              let insets = layoutEnvironment.contentInsets(.horizontal)
               return length - insets.leading - insets.trailing
             }
             .aspectRatio(CGSize(width: image.width, height: image.height), contentMode: .fit)
@@ -203,7 +197,7 @@ extension HomeView {
   }
 }
 
-// MARK: - HomeView (String)
+// MARK: - HomeView (Strings)
 
 extension HomeView {
   @inlinable

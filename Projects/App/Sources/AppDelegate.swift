@@ -23,7 +23,7 @@
 
 import UIKit
 import Dependencies
-import ResplashLiveClients
+import ResplashLiveSupports
 import ResplashLog
 
 final class AppDelegate: NSObject, UIApplicationDelegate {

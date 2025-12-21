@@ -1,5 +1,5 @@
 //
-//  HomeFeature.swift
+//  ImagesFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,47 +21,63 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import Foundation
 import ComposableArchitecture
 import ResplashUI
 import ResplashClients
 import ResplashEntities
 import ResplashUtils
+import ResplashStrings
 
 @Reducer
-public struct HomeFeature {
-  public typealias Contents = (topics: [Topic], collections: [AssetCollection], images: Page<Asset>)
+public struct ImagesFeature {
+  public typealias Category = ResplashEntities.Category
 
   @ObservableState
   public struct State: Equatable {
-    public var mediaType: MediaType = .photo
-    public var topics: [Topic]?
-    public var collections: [AssetCollection]?
+    public let item: Item
+    public var shareLink: URL? { item.shareLink }
     public var images: [Asset]?
 
     var loading: Loading = .none
     var isLoading: Bool { loading != .none }
 
-    var page = 1
-    var hasNextPage = false
+    var page: Int = 1
+    var hasNextPage: Bool = false
 
-    public init() {}
+    public init(item: Item) {
+      self.item = item
+    }
   }
 
   public enum Action {
-    case fetchContents
+    case fetchImages
     case fetchNextImages
-    case fetchContentsResponse(Result<Contents, Error>)
+    case fetchImagesResponse(Result<Page<Asset>, Error>)
     case fetchNextImagesResponse(Result<Page<Asset>, Error>)
-    case selectMediaType(MediaType)
 
     case navigate(Navigation)
   }
 
   public enum Navigation {
-    case collections
-    case topicImages(Topic)
-    case collectionImages(AssetCollection)
-    case imageDetail(Asset)
+    case image(Asset)
+  }
+
+  public enum Item: Equatable, Sendable {
+    case topic(Topic)
+    case category(Category.Item)
+    case collection(AssetCollection)
+
+    var shareLink: URL? {
+      switch self {
+      case .topic(let topic):
+        topic.shareLink
+      case .category:
+        nil
+      case .collection(let collection):
+        collection.shareLink
+      }
+    }
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -72,16 +88,11 @@ public struct HomeFeature {
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
-      case .fetchContents:
+      case .fetchImages:
         state.loading = .loading
-        return .run { [unsplash, mediaType = state.mediaType] send in
-          let result = await Result {
-            async let topics = unsplash.topic.items(for: mediaType)
-            async let collections = unsplash.collection.items(for: mediaType, page: 1)
-            async let images = unsplash.asset.images(for: mediaType, page: 1)
-            return try await (topics: topics, collections: collections.items, images: images)
-          }
-          await send(.fetchContentsResponse(result))
+        return .run { [unsplash, item = state.item] send in
+          let result = await Result { try await unsplash.images(for: item, page: 1) }
+          await send(.fetchImagesResponse(result))
         }
 
       case .fetchNextImages:
@@ -89,45 +100,48 @@ public struct HomeFeature {
           return .none
         }
         state.loading = .loadingMore
-        return .run { [unsplash, mediaType = state.mediaType, page = state.page] send in
-          let result = await Result {
-            try await unsplash.asset.images(for: mediaType, page: page + 1)
-          }
+        return .run { [unsplash, item = state.item, page = state.page] send in
+          let result = await Result { try await unsplash.images(for: item, page: page + 1) }
           await send(.fetchNextImagesResponse(result))
         }
 
-      case .fetchContentsResponse(.success(let contents)):
+      case .fetchImagesResponse(.success(let images)):
         state.loading = .none
-        state.topics = contents.topics
-        state.collections = contents.collections
-        state.images = Array(contents.images.uniqued())
-        state.page = contents.images.page
-        state.hasNextPage = !contents.images.isAtEnd
-        return .none
-
-      case .fetchNextImagesResponse(.success(let images)):
-        state.loading = .none
-        state.images = state.images
-          .map { $0 + images }
-          .map { Array($0.uniqued()) }
+        state.images = Array(images.uniqued())
         state.page = images.page
         state.hasNextPage = !images.isAtEnd
         return .none
 
-      case .fetchContentsResponse(.failure(let error)), .fetchNextImagesResponse(.failure(let error)):
-        print(error)
+      case .fetchNextImagesResponse(.success(let images)):
+        state.loading = .none
+        state.images = state.images.map { $0 + images }.map { Array($0.uniqued()) }
+        state.page = images.page
+        state.hasNextPage = !images.isAtEnd
         return .none
 
-      case .selectMediaType(let mediaType):
-        guard mediaType != state.mediaType else {
-          return .none
-        }
-        state.mediaType = mediaType
-        return .send(.fetchContents)
+      case .fetchImagesResponse(.failure(let error)), .fetchNextImagesResponse(.failure(let error)):
+        state.loading = .none
+        print(error)
+        return .none
 
       case .navigate:
         return .none
       }
+    }
+  }
+}
+
+// MARK: - UnsplashClient
+
+extension UnsplashClient {
+  func images(for item: ImagesFeature.Item, page: Int) async throws -> Page<Asset> {
+    switch item {
+    case .topic(let topic):
+      try await self.topic.images(for: topic, page: page)
+    case .category(let category):
+      try await self.category.images(for: category, page: page)
+    case .collection(let collection):
+      try await self.collection.images(for: collection, page: page)
     }
   }
 }

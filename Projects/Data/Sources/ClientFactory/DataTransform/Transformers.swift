@@ -183,7 +183,7 @@ struct AssetDetailTransformer: DataTransformer {
       views: container.decode(Int.self, forKey: "views"),
       downloads: container.decode(Int.self, forKey: "downloads"),
       exif: container.decodeIfPresent(DTO<ExifTransformer>.self, forKey: "exif")?.domain,
-      location: container.decodeIfPresent(DTO<LocationTransformer>.self, forKey: "location")?.domain,
+      location: try? container.decodeIfPresent(DTO<LocationTransformer>.self, forKey: "location")?.domain,
       topics: container.decodeIfPresent([DTO<TopicTransformer>].self, forKey: "topics")?.map(\.domain) ?? [],
       tags: Array(container.decode([DTO<TagTransformer>].self, forKey: "tags").map(\.domain).uniqued())
     )

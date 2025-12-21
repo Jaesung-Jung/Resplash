@@ -22,12 +22,15 @@
 //  THE SOFTWARE.
 
 import ComposableArchitecture
+import ResplashCollectionsUI
+import ResplashImagesUI
+import ResplashImageDetailUI
 
 @Reducer
 public enum AppNavigationPath {
-//  case collections(ImageCollectionsFeature)
-//  case images(ImagesFeature)
-//  case imageDetail(ImageDetailFeature)
+  case collections(CollectionsFeature)
+  case images(ImagesFeature)
+  case imageDetail(ImageDetailFeature)
 //  case search(SearchResultFeature)
 }
 
