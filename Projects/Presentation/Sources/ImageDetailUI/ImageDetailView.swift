@@ -33,19 +33,6 @@ public struct ImageDetailView: View {
   @Environment(\.layoutEnvironment) var layoutEnvironment
   @Bindable var store: StoreOf<ImageDetailFeature>
 
-//  var mapCameraPosition: Binding<MapCameraPosition> {
-//    Binding(
-//      get: {
-//        .camera(store.mapCamera)
-//      },
-//      set: {
-//        if let camera = $0.camera {
-//          store.send(.updateCamera(camera))
-//        }
-//      }
-//    )
-//  }
-
   public init(store: StoreOf<ImageDetailFeature>) {
     self.store = store
   }
@@ -102,20 +89,10 @@ public struct ImageDetailView: View {
     }
     .navigationTitle(store.image.description ?? .localizable(.image))
     .navigationBarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .principal) {
-        Text(verbatim: "")
-      }
-    }
+    .buttonStyle(.ds.plain())
     .task {
       store.send(.fetchImageDetail)
     }
-    .fullScreenCover(item: $store.scope(state: \.imageMap, action: \.imageMap)) {
-      ImageMapView(store: $0)
-    }
-    // .fullScreenCover(item: $store.scope(state: \.imageViewer, action: \.imageViewer)) {
-    //   ImageViewer(store: $0)
-    // }
   }
 }
 
@@ -175,25 +152,27 @@ extension ImageDetailView {
       .fontWeight(.medium)
       .foregroundStyle(.secondary)
 
-      if let coordinate = store.mapCoordinate, let camera = store.mapCamera {
-        ImageMapView.MapView(
-          camera: camera,
-          imageURL: store.mapImageURL,
-          label: store.mapLabel,
-          coordinate: coordinate
-        )
-        .aspectRatio(1.75, contentMode: .fit)
-        .clipShape(RoundedRectangle(cornerRadius: 4))
-        .onMapCameraChange { ctx in
-          print("[1] rect: \(ctx.rect), region: \(ctx.region)")
-        }
-        .overlay(alignment: .bottomTrailing) {
-          Button {
-            store.send(.presentImageMap)
-          } label: {
-            Image(systemName: "viewfinder")
+      if let location = detail.location, let position = location.position {
+        Button {
+
+        } label: {
+          ZStack {
+            mapView(
+              coordinate: CLLocationCoordinate2D(
+                latitude: position.latitude,
+                longitude: position.longitude
+              ),
+              image: store.image,
+              label: location.name
+            )
+            .allowsHitTesting(false)
+
+            Rectangle()
+              .fill(.clear)
+              .contentShape(Rectangle())
           }
-          .buttonStyle(.glass)
+          .aspectRatio(1.5, contentMode: .fit)
+          .clipShape(RoundedRectangle(cornerRadius: 4))
         }
       }
     }
@@ -262,6 +241,27 @@ extension ImageDetailView {
       }
     }
     .padding(layoutEnvironment.contentInsets(.horizontal))
+  }
+
+  @ViewBuilder func mapView(coordinate: CLLocationCoordinate2D, image: Asset, label: String) -> some View {
+    let camera = MapCamera(centerCoordinate: coordinate, distance: 500)
+    Map(initialPosition: .camera(camera), interactionModes: []) {
+      Annotation(coordinate: coordinate) {
+        Circle()
+          .fill(.white)
+          .frame(width: 40, height: 40)
+          .shadow(color: .black.opacity(0.75), radius: 8, x: 0, y: 2)
+          .overlay {
+            RemoteImage(image.url.s3) {
+              $0.resizable()
+            }
+            .clipShape(Circle())
+            .padding(2)
+          }
+      } label: {
+        Text(label)
+      }
+    }
   }
 }
 

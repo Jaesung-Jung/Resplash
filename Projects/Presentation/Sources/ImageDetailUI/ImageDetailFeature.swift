@@ -22,7 +22,6 @@
 //  THE SOFTWARE.
 
 import SwiftUI
-import MapKit
 import ComposableArchitecture
 import ResplashUI
 import ResplashClients
@@ -38,25 +37,11 @@ public struct ImageDetailFeature {
     public var seriesImages: [Asset]?
     public var relatedImages: [Asset]?
 
-    @ObservationStateIgnored
-    public var mapCamera: MapCamera?
-    public var mapCoordinate: CLLocationCoordinate2D? {
-      detail
-        .flatMap(\.location)
-        .flatMap(\.position)
-        .map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
-    }
-    public var mapImageURL: URL { image.url.s3 }
-    public var mapLabel: String? { detail.flatMap(\.location).map(\.name) }
-
     var loading: Loading = .none
     var isLoading: Bool { loading != .none }
 
     var page: Int = 1
     var hasNextPage: Bool = false
-
-    @Presents public var imageMap: ImageMapFeature.State?
-    // @Presents var imageViewer: ImageViewerFeature.State?
 
     public init(image: Asset) {
       self.image = image
@@ -69,11 +54,6 @@ public struct ImageDetailFeature {
     case fetchImageDetailResponse(Result<(AssetDetail, [Asset], Page<Asset>), Error>)
     case fetchNextRelatedImagesResponse(Result<Page<Asset>, Error>)
 
-    case updateCamera(MapCamera)
-    case presentImageMap
-    case imageMap(PresentationAction<ImageMapFeature.Action>)
-    // case presentImageViewer
-    // case imageViewer(PresentationAction<ImageViewerFeature.Action>)
     case navigate(Navigation)
   }
 
@@ -119,10 +99,6 @@ public struct ImageDetailFeature {
         state.relatedImages = Array(relatedImages.uniqued())
         state.page = relatedImages.page
         state.hasNextPage = !relatedImages.isAtEnd
-        if let position = detail.location?.position {
-          let coordinate = CLLocationCoordinate2D(latitude: position.latitude, longitude: position.longitude)
-          state.mapCamera = MapCamera(centerCoordinate: coordinate, distance: 500)
-        }
         return .none
 
       case .fetchNextRelatedImagesResponse(.success(let relatedImages)):
@@ -137,47 +113,9 @@ public struct ImageDetailFeature {
         print(error)
         return .none
 
-      case .updateCamera(let camera):
-        print("updateCaemra: \(camera)")
-        state.mapCamera = camera
-        return .none
-
-//      case .presentImageViewer:
-//        state.imageViewer = ImageViewerFeature.State(
-//          image: state.image
-//        )
-//        return .none
-
-      case .presentImageMap:
-        if let camera = state.mapCamera, let coordinate = state.mapCoordinate {
-          state.imageMap = ImageMapFeature.State(
-            camera: camera,
-            imageURL: state.mapImageURL,
-            label: state.mapLabel,
-            coordinate: coordinate
-          )
-        }
-        return .none
-
-      case .imageMap(.presented(.delegate(.updateCamera(let camera)))):
-        return .send(.updateCamera(camera))
-
-      case .imageMap:
-        print("Dismiss")
-        return .none
-
-      // case .imageViewer:
-      //   return .none
-
       case .navigate:
         return .none
       }
     }
-    .ifLet(\.$imageMap, action: \.imageMap) {
-      ImageMapFeature()
-    }
-    // .ifLet(\.$imageViewer, action: \.imageViewer) {
-    //   ImageViewerFeature()
-    // }
   }
 }
