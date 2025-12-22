@@ -5,13 +5,13 @@ import Testing
 @Suite
 struct ImageURLTests {
   @Test(arguments: [
-    ImageURL.Size.fhd,
-    ImageURL.Size.hd,
-    ImageURL.Size.sd,
-    ImageURL.Size.low
+    Unsplash.ImageURL.Size.fhd,
+    Unsplash.ImageURL.Size.hd,
+    Unsplash.ImageURL.Size.sd,
+    Unsplash.ImageURL.Size.low
   ])
-  func urlQueryTests(size: ImageURL.Size) throws {
-    let imageURL = try ImageURL(
+  func urlQueryTests(size: Unsplash.ImageURL.Size) throws {
+    let imageURL = try Unsplash.ImageURL(
       raw: #require(URL(string: "https://image.raw.test")),
       full: #require(URL(string: "https://image.full.test")),
       s3: #require(URL(string: "https://image.s3.test"))

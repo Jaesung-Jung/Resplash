@@ -51,7 +51,7 @@ public struct ImagesView: View {
             Button {
               store.send(.navigate(.image(image)))
             } label: {
-              AssetView(image)
+              ImageItemView(image)
                 .size(.compact)
             }
             .buttonStyle(.ds.plain())

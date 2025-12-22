@@ -24,19 +24,16 @@
 import ResplashEntities
 
 extension UnsplashClient {
-  public struct CategoryClient {
-    let fetchItems: @Sendable () async throws -> [Category]
-    let fetchImages: @Sendable (Category.Item, Int, Int) async throws -> Page<Asset>
+  public struct CategoryClient: Sendable {
+    let fetchItems: @Sendable () async throws -> [Unsplash.Category]
+    let fetchImages: @Sendable (Unsplash.Category.Item, Int, Int) async throws -> Page<Unsplash.Image>
 
-    public func items() async throws -> [Category] {
+    public func items() async throws -> [Unsplash.Category] {
       try await fetchItems()
     }
 
-    public func images(for category: Category.Item, page: Int) async throws -> Page<Asset> {
+    public func images(for category: Unsplash.Category.Item, page: Int) async throws -> Page<Unsplash.Image> {
       try await fetchImages(category, page, 30)
     }
   }
-}
-
-extension UnsplashClient.CategoryClient: Sendable{
 }

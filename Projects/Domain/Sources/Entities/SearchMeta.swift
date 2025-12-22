@@ -23,15 +23,14 @@
 
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct SearchMeta {
-  public let input: String
-  public let photos: Int
-  public let illustrations: Int
-  public let collections: Int
-  public let users: Int
-  public let relatedSearches: [String]
-}
-
-extension SearchMeta: Sendable {
+extension Unsplash {
+  @MemberwiseInit(.public)
+  public struct SearchMeta: Sendable {
+    public let input: String
+    public let photos: Int
+    public let illustrations: Int
+    public let collections: Int
+    public let users: Int
+    public let relatedSearches: [String]
+  }
 }

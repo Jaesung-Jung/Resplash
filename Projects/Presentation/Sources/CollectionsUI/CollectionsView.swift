@@ -62,7 +62,7 @@ public struct CollectionsView: View {
         }
       }
     }
-    .navigationTitle(.localizable(.assetCollections))
+    .navigationTitle(.localizable(.imageCollections))
     .task {
       store.send(.fetchCollections)
     }

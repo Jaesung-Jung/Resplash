@@ -36,7 +36,7 @@ extension Endpoint {
     )
   }
 
-  public static func topicImages(for topic: Topic, page: Int, count: Int) -> Endpoint {
+  public static func topicImages(for topic: Unsplash.Topic, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "topic_\(topic.mediaTypes.first?.rawValue ?? "")_\(page)",
       path: "napi/topics/\(topic.slug)/photos",

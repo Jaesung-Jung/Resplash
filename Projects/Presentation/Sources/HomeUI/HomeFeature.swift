@@ -29,14 +29,12 @@ import ResplashUtils
 
 @Reducer
 public struct HomeFeature {
-  public typealias Contents = (topics: [Topic], collections: [AssetCollection], images: Page<Asset>)
-
   @ObservableState
   public struct State: Equatable {
-    public var mediaType: MediaType = .photo
-    public var topics: [Topic]?
-    public var collections: [AssetCollection]?
-    public var images: [Asset]?
+    public var mediaType: Unsplash.MediaType = .photo
+    public var topics: [Unsplash.Topic]?
+    public var collections: [Unsplash.ImageCollection]?
+    public var images: [Unsplash.Image]?
 
     var loading: Loading = .none
     var isLoading: Bool { loading != .none }
@@ -50,18 +48,18 @@ public struct HomeFeature {
   public enum Action {
     case fetchContents
     case fetchNextImages
-    case fetchContentsResponse(Result<Contents, Error>)
-    case fetchNextImagesResponse(Result<Page<Asset>, Error>)
-    case selectMediaType(MediaType)
+    case fetchContentsResponse(Result<([Unsplash.Topic], [Unsplash.ImageCollection], Page<Unsplash.Image>), Error>)
+    case fetchNextImagesResponse(Result<Page<Unsplash.Image>, Error>)
+    case selectMediaType(Unsplash.MediaType)
 
     case navigate(Navigation)
   }
 
   public enum Navigation {
     case collections
-    case topicImages(Topic)
-    case collectionImages(AssetCollection)
-    case imageDetail(Asset)
+    case topicImages(Unsplash.Topic)
+    case collectionImages(Unsplash.ImageCollection)
+    case imageDetail(Unsplash.Image)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -78,8 +76,8 @@ public struct HomeFeature {
           let result = await Result {
             async let topics = unsplash.topic.items(for: mediaType)
             async let collections = unsplash.collection.items(for: mediaType, page: 1)
-            async let images = unsplash.asset.images(for: mediaType, page: 1)
-            return try await (topics: topics, collections: collections.items, images: images)
+            async let images = unsplash.image.images(for: mediaType, page: 1)
+            return try await (topics, collections.items, images)
           }
           await send(.fetchContentsResponse(result))
         }
@@ -91,18 +89,18 @@ public struct HomeFeature {
         state.loading = .loadingMore
         return .run { [unsplash, mediaType = state.mediaType, page = state.page] send in
           let result = await Result {
-            try await unsplash.asset.images(for: mediaType, page: page + 1)
+            try await unsplash.image.images(for: mediaType, page: page + 1)
           }
           await send(.fetchNextImagesResponse(result))
         }
 
-      case .fetchContentsResponse(.success(let contents)):
+      case .fetchContentsResponse(.success((let topics, let collections, let images))):
         state.loading = .none
-        state.topics = contents.topics
-        state.collections = contents.collections
-        state.images = Array(contents.images.uniqued())
-        state.page = contents.images.page
-        state.hasNextPage = !contents.images.isAtEnd
+        state.topics = topics
+        state.collections = collections
+        state.images = Array(images.uniqued())
+        state.page = images.page
+        state.hasNextPage = !images.isAtEnd
         return .none
 
       case .fetchNextImagesResponse(.success(let images)):

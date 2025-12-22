@@ -65,7 +65,7 @@ extension DataTransformer where Output: RawRepresentable, Output.RawValue == Str
 // MARK: - MediaTypeDataTransformer
 
 struct MediaTypeTransformer: DataTransformer {
-  typealias Output = MediaType
+  typealias Output = Unsplash.MediaType
   typealias Container = any SingleValueDecodingContainer
 }
 
@@ -80,9 +80,9 @@ struct ShareLinkTransformer: DataTransformer {
 // MARK: - ImageURLTransformer
 
 struct ImageURLTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> ImageURL {
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.ImageURL {
     let targetContainer = (try? container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "urls")) ?? container
-    return try ImageURL(
+    return try Unsplash.ImageURL(
       raw: targetContainer.decode(URL.self, forKey: "raw"),
       full: targetContainer.decode(URL.self, forKey: "full"),
       s3: targetContainer.decode(URL.self, forKey: "small_s3")
@@ -93,8 +93,8 @@ struct ImageURLTransformer: DataTransformer {
 // MARK: - UserTransformer
 
 struct UserTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> User {
-    try User(
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.User {
+    try Unsplash.User(
       id: container.decode(String.self, forKey: "id"),
       userId: container.decode(String.self, forKey: "username"),
       updatedAt: container.decode(Date.self, forKey: "updated_at"),
@@ -118,8 +118,8 @@ struct UserTransformer: DataTransformer {
 
 extension UserTransformer {
   struct ProfileImageURLTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> User.ProfileImageURL {
-      try User.ProfileImageURL(
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.User.ProfileImageURL {
+      try Unsplash.User.ProfileImageURL(
         small: container.decode(URL.self, forKey: "small"),
         medium: container.decode(URL.self, forKey: "medium"),
         large: container.decode(URL.self, forKey: "large")
@@ -132,7 +132,7 @@ extension UserTransformer {
 
 extension UserTransformer {
   struct SocialTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> [User.Social] {
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> [Unsplash.User.Social] {
       try container.allKeys.compactMap {
         switch $0.stringValue {
         case "twitter_username":
@@ -151,11 +151,11 @@ extension UserTransformer {
   }
 }
 
-// MARK: - AssetTransformer
+// MARK: - ImageTransformer
 
-struct AssetTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Asset {
-    try Asset(
+struct ImageTransformer: DataTransformer {
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.Image {
+    try Unsplash.Image(
       id: container.decode(String.self, forKey: "id"),
       slug: container.decode(String.self, forKey: "slug"),
       createdAt: container.decode(Date.self, forKey: "created_at"),
@@ -174,12 +174,12 @@ struct AssetTransformer: DataTransformer {
   }
 }
 
-// MARK: - AssetDetailTransformer
+// MARK: - ImageDetailTransformer
 
-struct AssetDetailTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> AssetDetail {
-    try AssetDetail(
-      image: AssetTransformer.transform(from: container),
+struct ImageDetailTransformer: DataTransformer {
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.ImageDetail {
+    try Unsplash.ImageDetail(
+      image: ImageTransformer.transform(from: container),
       views: container.decode(Int.self, forKey: "views"),
       downloads: container.decode(Int.self, forKey: "downloads"),
       exif: container.decodeIfPresent(DTO<ExifTransformer>.self, forKey: "exif")?.domain,
@@ -190,12 +190,12 @@ struct AssetDetailTransformer: DataTransformer {
   }
 }
 
-// MARK: - AssetDetailTransformer.ExifTransformer
+// MARK: - ImageDetailTransformer.ExifTransformer
 
-extension AssetDetailTransformer {
+extension ImageDetailTransformer {
   struct ExifTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> AssetDetail.Exif {
-      try AssetDetail.Exif(
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.ImageDetail.Exif {
+      try Unsplash.ImageDetail.Exif(
         brand: container.decodeIfPresent(String.self, forKey: "make"),
         model: container.decodeIfPresent(String.self, forKey: "model"),
         name: container.decodeIfPresent(String.self, forKey: "name"),
@@ -208,8 +208,8 @@ extension AssetDetailTransformer {
   }
 
   struct LocationTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> AssetDetail.Location {
-      try AssetDetail.Location(
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.ImageDetail.Location {
+      try Unsplash.ImageDetail.Location(
         name: container.decode(String.self, forKey: "name"),
         city: container.decodeIfPresent(String.self, forKey: "city"),
         country: container.decode(String.self, forKey: "country"),
@@ -230,8 +230,8 @@ extension AssetDetailTransformer {
   }
 
   struct TopicTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> AssetDetail.Topic {
-      try AssetDetail.Topic(
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.ImageDetail.Topic {
+      try Unsplash.ImageDetail.Topic(
         id: container.decode(String.self, forKey: "id"),
         title: container.decode(String.self, forKey: "title"),
         slug: container.decode(String.self, forKey: "slug"),
@@ -241,8 +241,8 @@ extension AssetDetailTransformer {
   }
 
   struct TagTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> AssetDetail.Tag {
-      try AssetDetail.Tag(
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.ImageDetail.Tag {
+      try Unsplash.ImageDetail.Tag(
         type: container.decode(String.self, forKey: "type"),
         title: container.decode(String.self, forKey: "title")
       )
@@ -250,11 +250,11 @@ extension AssetDetailTransformer {
   }
 }
 
-// MARK: - AssetCollectionTransformer
+// MARK: - ImageCollectionTransformer
 
-struct AssetCollectionTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> AssetCollection {
-    try AssetCollection(
+struct ImageCollectionTransformer: DataTransformer {
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.ImageCollection {
+    try Unsplash.ImageCollection(
       id: container.decode(String.self, forKey: "id"),
       shareKey: container.decode(String.self, forKey: "share_key"),
       updatedAt: container.decode(Date.self, forKey: "updated_at"),
@@ -270,8 +270,8 @@ struct AssetCollectionTransformer: DataTransformer {
 // MARK: - TopicTransformer
 
 struct TopicTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Topic {
-    try Topic(
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.Topic {
+    try Unsplash.Topic(
       id: container.decode(String.self, forKey: "id"),
       slug: container.decode(String.self, forKey: "slug"),
       visibility: container.decode(DTO<VisibilityTransformer>.self, forKey: "visibility").domain,
@@ -279,7 +279,7 @@ struct TopicTransformer: DataTransformer {
       title: container.decode(String.self, forKey: "title"),
       description: container.decode(String.self, forKey: "description"),
       mediaTypes: Set(container.decode([DTO<MediaTypeTransformer>].self, forKey: "media_types").map(\.domain)),
-      coverImage: container.decode(DTO<AssetTransformer>.self, forKey: "cover_photo").domain,
+      coverImage: container.decode(DTO<ImageTransformer>.self, forKey: "cover_photo").domain,
       imageCount: container.decode(Int.self, forKey: "total_photos"),
       shareLink: container.decode(DTO<ShareLinkTransformer>.self, forKey: "links").domain
     )
@@ -290,7 +290,7 @@ struct TopicTransformer: DataTransformer {
 
 extension TopicTransformer {
   struct VisibilityTransformer: DataTransformer {
-    typealias Output = Topic.Visibility
+    typealias Output = Unsplash.Topic.Visibility
     typealias Container = any SingleValueDecodingContainer
   }
 }
@@ -298,10 +298,8 @@ extension TopicTransformer {
 // MARK: - CategoryTransformer
 
 struct CategoryTransformer: DataTransformer {
-  typealias Category = ResplashEntities.Category // (Fix 'Category' is ambiguous for type lookup in this context, Foundation.Category)
-
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Category {
-    try Category(
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.Category {
+    try Unsplash.Category(
       id: UUID(),
       slug: container.decode(String.self, forKey: "slug"),
       title: container.decode(String.self, forKey: "title"),
@@ -314,8 +312,8 @@ struct CategoryTransformer: DataTransformer {
 
 extension CategoryTransformer {
   struct ItemTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Category.Item {
-      try Category.Item(
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.Category.Item {
+      try Unsplash.Category.Item(
         id: UUID(),
         slug: container.nestedContainer(keyedBy: StringCodingKey.self, forKey: "ancestry")
           .nestedContainer(keyedBy: StringCodingKey.self, forKey: "subcategory")
@@ -333,8 +331,8 @@ extension CategoryTransformer {
 // MARK: - TrendTransformer
 
 struct TrendTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Trend {
-    try Trend(
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.Trend {
+    try Unsplash.Trend(
       title: container.decode(String.self, forKey: "category"),
       demand: container.decode(DTO<DemandTransformer>.self, forKey: "demand").domain,
       thumbnailURL: container.decode(DTO<ImageURLTransformer>.self, forKey: "thumb").domain,
@@ -350,7 +348,7 @@ struct TrendTransformer: DataTransformer {
 
 extension TrendTransformer {
   struct DemandTransformer: DataTransformer {
-    typealias Output = Trend.Demand
+    typealias Output = Unsplash.Trend.Demand
     typealias Container = any SingleValueDecodingContainer
   }
 }
@@ -359,8 +357,8 @@ extension TrendTransformer {
 
 extension TrendTransformer {
   struct KeywordTransformer: DataTransformer {
-    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Trend.Keyword {
-      try Trend.Keyword(
+    static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.Trend.Keyword {
+      try Unsplash.Trend.Keyword(
         title: container.decode(String.self, forKey: "keyword"),
         demand: container.decode(DTO<DemandTransformer>.self, forKey: "demand").domain,
         thumbnailURL: container.decode(DTO<ImageURLTransformer>.self, forKey: "thumb").domain,
@@ -375,8 +373,8 @@ extension TrendTransformer {
 // MARK: - SearchMetaTransformer
 
 struct SearchMetaTransformer: DataTransformer {
-  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> SearchMeta {
-    try SearchMeta(
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> Unsplash.SearchMeta {
+    try Unsplash.SearchMeta(
       input: container.decode(String.self, forKey: "input"),
       photos: container.decode(Int.self, forKey: "photos"),
       illustrations: container.decode(Int.self, forKey: "illustrations"),

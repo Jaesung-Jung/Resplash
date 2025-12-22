@@ -1,5 +1,5 @@
 //
-//  AssetCollectionView.swift
+//  ImageCollectionView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -27,9 +27,9 @@ import ResplashDesignSystem
 
 public struct ImageCollectionView: View {
   @Environment(\.displayScale) var displayScale
-  let collection: AssetCollection
+  let collection: Unsplash.ImageCollection
 
-  public init(_ collection: AssetCollection) {
+  public init(_ collection: Unsplash.ImageCollection) {
     self.collection = collection
   }
 

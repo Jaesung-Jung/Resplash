@@ -47,7 +47,7 @@ public struct HomeView: View {
               Button {
                 store.send(.navigate(.collections))
               } label: {
-                sectionTitle(.localizable(.assetCollections), showsDisclosureIndicator: true)
+                sectionTitle(.localizable(.imageCollections), showsDisclosureIndicator: true)
               }
               .padding(layoutEnvironment.contentInsets(.horizontal))
               .buttonStyle(.ds.plain())
@@ -97,7 +97,7 @@ extension HomeView {
   @ViewBuilder func mediaPickerMenu() -> some View {
     Menu {
       Section(.localizable(.media)) {
-        ForEach(MediaType.allCases, id: \.self) { mediaType in
+        ForEach(Unsplash.MediaType.allCases, id: \.self) { mediaType in
           Button {
             store.send(.selectMediaType(mediaType))
           } label: {
@@ -138,7 +138,7 @@ extension HomeView {
     .foregroundStyle(.primary)
   }
 
-  @ViewBuilder func topicList(_ topics: [Topic]) -> some View {
+  @ViewBuilder func topicList(_ topics: [Unsplash.Topic]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       GlassEffectContainer {
         LazyHStack(spacing: 8) {
@@ -158,7 +158,7 @@ extension HomeView {
     .scrollClipDisabled()
   }
 
-  @ViewBuilder func collectionList(_ collections: [AssetCollection]) -> some View {
+  @ViewBuilder func collectionList(_ collections: [Unsplash.ImageCollection]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       LazyHGrid(rows: [GridItem()], alignment: .top, spacing: 10) {
         ForEach(collections) { collection in
@@ -178,13 +178,13 @@ extension HomeView {
     .scrollTargetBehavior(.viewAligned(limitBehavior: .never, anchor: .leading))
   }
 
-  @ViewBuilder func imageList(_ images: [Asset]) -> some View {
+  @ViewBuilder func imageList(_ images: [Unsplash.Image]) -> some View {
     LazyVStack(spacing: 10) {
       ForEach(images) { image in
         Button {
           store.send(.navigate(.imageDetail(image)))
         } label: {
-          AssetView(image)
+          ImageItemView(image)
             .containerRelativeFrame([.horizontal]) { length, _ in
               let insets = layoutEnvironment.contentInsets(.horizontal)
               return length - insets.leading - insets.trailing
@@ -201,7 +201,7 @@ extension HomeView {
 
 extension HomeView {
   @inlinable
-  func localizedString(_ mediaType: MediaType) -> LocalizedStringKey {
+  func localizedString(_ mediaType: Unsplash.MediaType) -> LocalizedStringKey {
     switch mediaType {
     case .photo:
       return .localizable(.photo)

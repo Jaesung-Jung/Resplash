@@ -1,5 +1,5 @@
 //
-//  MediaType.swift
+//  ImageCollectionAPI.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,9 +21,39 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-extension Unsplash {
-  public enum MediaType: String, CaseIterable, Sendable {
-    case photo
-    case illustration
+import ResplashEntities
+import ResplashNetworking
+
+extension Endpoint {
+  public static func collections(for mediaType: Unsplash.MediaType, page: Int, count: Int) -> Endpoint {
+    let assetType = switch mediaType {
+    case .photo:
+      "photos"
+    case .illustration:
+      "illustrations"
+    }
+    return Endpoint(
+      resourceId: "\(assetType)_collections_\(page)",
+      path: "napi/collections",
+      method: .get,
+      parameters: [
+        "asset_type": assetType,
+        "page": page,
+        "per_page": count
+      ]
+    )
+  }
+
+  public static func collectionImages(for collection: Unsplash.ImageCollection, page: Int, count: Int) -> Endpoint {
+    Endpoint(
+      resourceId: "collection_images_\(page)",
+      path: "napi/collections/\(collection.id)/photos",
+      method: .get,
+      parameters: [
+        "page": page,
+        "per_page": count,
+        "share_key": collection.shareKey
+      ]
+    )
   }
 }

@@ -24,33 +24,25 @@
 import Foundation
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct Category {
-  public let id: UUID
-  public let slug: String
-  public let title: String
-  public let items: [Item]
-}
-
-extension Category: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-  }
-
-  public static func == (lhs: Self, rhs: Self) -> Bool { lhs.id == rhs.id }
-}
-
-extension Category: Identifiable {
-}
-
-extension Category: Sendable {
-}
-
-// MARK: - Category.Item
-
-extension Category {
+extension Unsplash {
   @MemberwiseInit(.public)
-  public struct Item {
+  public struct Category: Identifiable, Hashable, Sendable {
+    public let id: UUID
+    public let slug: String
+    public let title: String
+    public let items: [Unsplash.Category.Item]
+
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+    }
+  }
+}
+
+// MARK: - Unsplash.Category.Item
+
+extension Unsplash.Category {
+  @MemberwiseInit(.public)
+  public struct Item: Identifiable, Hashable, Sendable {
     public let id: UUID
     public let slug: String
     public let redirect: String?
@@ -58,21 +50,10 @@ extension Category {
     public let title: String
     public let subtitle: String
     public let imageCount: Int
-    public let coverImageURL: ImageURL
+    public let coverImageURL: Unsplash.ImageURL
 
     public func hash(into hasher: inout Hasher) {
       hasher.combine(id)
     }
-
-    public static func == (lhs: Self, rhs: Self) -> Bool { lhs.id == rhs.id }
   }
-}
-
-extension Category.Item: Hashable {
-}
-
-extension Category.Item: Identifiable {
-}
-
-extension Category.Item: Sendable {
 }

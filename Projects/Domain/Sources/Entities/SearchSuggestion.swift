@@ -23,13 +23,9 @@
 
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct SearchSuggestion {
-  public let suggestions: [String]
-}
-
-extension SearchSuggestion: Hashable {
-}
-
-extension SearchSuggestion: Sendable {
+extension Unsplash {
+  @MemberwiseInit(.public)
+  public struct SearchSuggestion: Hashable, Sendable {
+    public let suggestions: [String]
+  }
 }

@@ -1,5 +1,5 @@
 //
-//  AssetDetail.swift
+//  ImageDetail.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -23,45 +23,39 @@
 
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-@dynamicMemberLookup
-public struct AssetDetail {
-  public var id: String { image.id }
-  public let image: Asset
-  public let views: Int
-  public let downloads: Int
-  public let exif: Exif?
-  public let location: Location?
-  public let topics: [Topic]
-  public let tags: [Tag]
-
-  @inlinable public subscript<T>(dynamicMember keyPath: KeyPath<Asset, T>) -> T {
-    image[keyPath: keyPath]
-  }
-}
-
-extension AssetDetail: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-    hasher.combine("detail")
-  }
-
-  public static func == (lhs: Self, rhs: Self) -> Bool {
-    lhs.image == rhs.image
-  }
-}
-
-extension AssetDetail: Identifiable {
-}
-
-extension AssetDetail: Sendable {
-}
-
-// MARK: - AssetDetail.Exif
-
-extension AssetDetail {
+extension Unsplash {
   @MemberwiseInit(.public)
-  public struct Exif {
+  @dynamicMemberLookup
+  public struct ImageDetail: Identifiable, Hashable, Sendable {
+    public var id: String { image.id }
+    public let image: Unsplash.Image
+    public let views: Int
+    public let downloads: Int
+    public let exif: Unsplash.ImageDetail.Exif?
+    public let location: Unsplash.ImageDetail.Location?
+    public let topics: [Unsplash.ImageDetail.Topic]
+    public let tags: [Unsplash.ImageDetail.Tag]
+
+    @inlinable
+    public subscript<T>(dynamicMember keyPath: KeyPath<Unsplash.Image, T>) -> T {
+      image[keyPath: keyPath]
+    }
+
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(image)
+    }
+
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+      lhs.image == rhs.image
+    }
+  }
+}
+
+// MARK: - Unsplash.ImageDetail.Exif
+
+extension Unsplash.ImageDetail {
+  @MemberwiseInit(.public)
+  public struct Exif: Sendable {
     public let brand: String?
     public let model: String?
     public let name: String?
@@ -72,14 +66,11 @@ extension AssetDetail {
   }
 }
 
-extension AssetDetail.Exif: Sendable {
-}
+// MARK: - Unsplash.ImageDetail.Location
 
-// MARK: - AssetDetail.Location
-
-extension AssetDetail {
+extension Unsplash.ImageDetail {
   @MemberwiseInit(.public)
-  public struct Location {
+  public struct Location: Sendable {
     public let name: String
     public let city: String?
     public let country: String
@@ -87,33 +78,28 @@ extension AssetDetail {
   }
 }
 
-extension AssetDetail.Location: Sendable {
-}
+// MARK: - Unsplash.ImageDetail.Topic
 
-// MARK: - AssetDetail.Topic
-
-extension AssetDetail {
+extension Unsplash.ImageDetail {
   @MemberwiseInit(.public)
-  public struct Topic {
+  public struct Topic: Identifiable, Hashable, Sendable {
     public let id: String
     public let title: String
     public let slug: String
     public let visibility: String
+
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+    }
   }
 }
 
-extension AssetDetail.Topic: Sendable {
-}
+// MARK: - Unsplash.ImageDetail.Tag
 
-// MARK: - AssetDetail.Tag
-
-extension AssetDetail {
+extension Unsplash.ImageDetail {
   @MemberwiseInit(.public)
-  public struct Tag: Hashable {
+  public struct Tag: Hashable, Sendable {
     public let type: String
     public let title: String
   }
-}
-
-extension AssetDetail.Tag: Sendable {
 }

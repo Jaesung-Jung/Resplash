@@ -28,9 +28,9 @@ import ResplashDesignSystem
 public struct TopicView: View {
   @Environment(\.displayScale) var displayScale
   @Environment(\.dynamicTypeSize) var dynamicTypeSize
-  let topic: Topic
+  let topic: Unsplash.Topic
 
-  public init(_ topic: Topic) {
+  public init(_ topic: Unsplash.Topic) {
     self.topic = topic
   }
 

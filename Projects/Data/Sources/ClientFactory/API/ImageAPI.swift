@@ -1,5 +1,5 @@
 //
-//  AssetAPI.swift
+//  ImageAPI.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -49,10 +49,10 @@ extension Endpoint {
     )
   }
 
-  public static func relatedImages(for asset: Asset, page: Int, count: Int) -> Endpoint {
+  public static func relatedImages(for image: Unsplash.Image, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "related_images_\(page)",
-      path: "napi/photos/\(asset.slug)/related",
+      path: "napi/photos/\(image.slug)/related",
       method: .get,
       parameters: [
         "page": page,
@@ -61,10 +61,10 @@ extension Endpoint {
     )
   }
 
-  public static func seriesImages(for asset: Asset) -> Endpoint {
+  public static func seriesImages(for image: Unsplash.Image) -> Endpoint {
     Endpoint(
       resourceId: "series_images",
-      path: "napi/photos/\(asset.slug)/series",
+      path: "napi/photos/\(image.slug)/series",
       method: .get,
       parameters: [
         "limit": 10
@@ -72,10 +72,10 @@ extension Endpoint {
     )
   }
 
-  public static func detail(for asset: Asset) -> Endpoint {
+  public static func detail(for image: Unsplash.Image) -> Endpoint {
     Endpoint(
-      resourceId: "\(asset.type)_detail",
-      path: "napi/photos/\(asset.slug)",
+      resourceId: "\(image.type)_detail",
+      path: "napi/photos/\(image.slug)",
       method: .get
     )
   }

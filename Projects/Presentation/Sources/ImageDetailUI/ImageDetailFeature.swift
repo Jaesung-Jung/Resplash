@@ -32,10 +32,10 @@ import ResplashUtils
 public struct ImageDetailFeature {
   @ObservableState
   public struct State: Equatable {
-    public let image: Asset
-    public var detail: AssetDetail?
-    public var seriesImages: [Asset]?
-    public var relatedImages: [Asset]?
+    public let image: Unsplash.Image
+    public var detail: Unsplash.ImageDetail?
+    public var seriesImages: [Unsplash.Image]?
+    public var relatedImages: [Unsplash.Image]?
 
     var loading: Loading = .none
     var isLoading: Bool { loading != .none }
@@ -43,7 +43,7 @@ public struct ImageDetailFeature {
     var page: Int = 1
     var hasNextPage: Bool = false
 
-    public init(image: Asset) {
+    public init(image: Unsplash.Image) {
       self.image = image
     }
   }
@@ -51,15 +51,15 @@ public struct ImageDetailFeature {
   public enum Action {
     case fetchImageDetail
     case fetchNextRelatedImages
-    case fetchImageDetailResponse(Result<(AssetDetail, [Asset], Page<Asset>), Error>)
-    case fetchNextRelatedImagesResponse(Result<Page<Asset>, Error>)
+    case fetchImageDetailResponse(Result<(Unsplash.ImageDetail, [Unsplash.Image], Page<Unsplash.Image>), Error>)
+    case fetchNextRelatedImagesResponse(Result<Page<Unsplash.Image>, Error>)
 
     case navigate(Navigation)
   }
 
   public enum Navigation {
     case search(String)
-    case imageDetail(Asset)
+    case imageDetail(Unsplash.Image)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -74,9 +74,9 @@ public struct ImageDetailFeature {
         state.loading = .loading
         return .run { [unsplash, image = state.image] send in
           let result = await Result {
-            async let fetchDetail = unsplash.asset.detail(for: image)
-            async let fetchSeriesImages = unsplash.asset.seriesImages(for: image)
-            async let fetchRelatedImages = unsplash.asset.relatedImages(for: image, page: 1)
+            async let fetchDetail = unsplash.image.detail(for: image)
+            async let fetchSeriesImages = unsplash.image.seriesImages(for: image)
+            async let fetchRelatedImages = unsplash.image.relatedImages(for: image, page: 1)
             return try await (fetchDetail, fetchSeriesImages, fetchRelatedImages)
           }
           await send(.fetchImageDetailResponse(result))
@@ -88,7 +88,7 @@ public struct ImageDetailFeature {
         }
         state.loading = .loadingMore
         return .run { [unsplash, image = state.image, page = state.page] send in
-          let result = await Result { try await unsplash.asset.relatedImages(for: image, page: page + 1) }
+          let result = await Result { try await unsplash.image.relatedImages(for: image, page: page + 1) }
           await send(.fetchNextRelatedImagesResponse(result))
         }
 

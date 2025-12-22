@@ -24,69 +24,57 @@
 import Foundation
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct User {
-  public let id: String
-  public let userId: String
-  public let updatedAt: Date
-  public let forHire: Bool
-
-  public let name: String
-  public let bio: String?
-  public let location: String?
-  public let profileImageURL: ProfileImageURL
-
-  public let totalLikes: Int
-  public let totalCollections: Int
-  public let totalPhotos: Int
-  public let totalIllustrations: Int
-
-  public let socials: [Social]
-  public let shareLink: URL
-
-  public let imageURLs: [ImageURL]
-}
-
-extension User: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-  }
-
-  public static func == (lhs: Self, rhs: Self) -> Bool {
-    lhs.id == rhs.id && lhs.updatedAt == rhs.updatedAt
-  }
-}
-
-extension User: Identifiable {
-}
-
-extension User: Sendable {
-}
-
-// MARK: - User.ProfileImageURL
-
-extension User {
+extension Unsplash {
   @MemberwiseInit(.public)
-  public struct ProfileImageURL {
+  public struct User: Identifiable, Hashable, Sendable {
+    public let id: String
+    public let userId: String
+    public let updatedAt: Date
+    public let forHire: Bool
+
+    public let name: String
+    public let bio: String?
+    public let location: String?
+    public let profileImageURL: Unsplash.User.ProfileImageURL
+
+    public let totalLikes: Int
+    public let totalCollections: Int
+    public let totalPhotos: Int
+    public let totalIllustrations: Int
+
+    public let socials: [Unsplash.User.Social]
+    public let shareLink: URL
+
+    public let imageURLs: [Unsplash.ImageURL]
+
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+    }
+
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+      lhs.id == rhs.id && lhs.updatedAt == rhs.updatedAt
+    }
+  }
+}
+
+// MARK: - Unsplash.User.ProfileImageURL
+
+extension Unsplash.User {
+  @MemberwiseInit(.public)
+  public struct ProfileImageURL: Sendable {
     public let small: URL
     public let medium: URL
     public let large: URL
   }
 }
 
-extension User.ProfileImageURL: Sendable {
-}
+// MARK: - Unsplash.User.Social
 
-// MARK: - User.Social
-
-extension User {
-  public enum Social {
+extension Unsplash.User {
+  public enum Social: Sendable {
     case twitter(String)
     case instagram(String)
     case paypal(String)
     case portfolio(URL)
   }
-}
-
-extension User.Social: Sendable {
 }

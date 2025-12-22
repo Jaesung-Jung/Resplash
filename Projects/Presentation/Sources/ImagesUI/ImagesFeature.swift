@@ -31,13 +31,13 @@ import ResplashStrings
 
 @Reducer
 public struct ImagesFeature {
-  public typealias Category = ResplashEntities.Category
+  public typealias Category = Unsplash.Category
 
   @ObservableState
   public struct State: Equatable {
     public let item: Item
     public var shareLink: URL? { item.shareLink }
-    public var images: [Asset]?
+    public var images: [Unsplash.Image]?
 
     var loading: Loading = .none
     var isLoading: Bool { loading != .none }
@@ -53,20 +53,20 @@ public struct ImagesFeature {
   public enum Action {
     case fetchImages
     case fetchNextImages
-    case fetchImagesResponse(Result<Page<Asset>, Error>)
-    case fetchNextImagesResponse(Result<Page<Asset>, Error>)
+    case fetchImagesResponse(Result<Page<Unsplash.Image>, Error>)
+    case fetchNextImagesResponse(Result<Page<Unsplash.Image>, Error>)
 
     case navigate(Navigation)
   }
 
   public enum Navigation {
-    case image(Asset)
+    case image(Unsplash.Image)
   }
 
   public enum Item: Equatable, Sendable {
-    case topic(Topic)
-    case category(Category.Item)
-    case collection(AssetCollection)
+    case topic(Unsplash.Topic)
+    case category(Unsplash.Category.Item)
+    case collection(Unsplash.ImageCollection)
 
     var shareLink: URL? {
       switch self {
@@ -134,7 +134,7 @@ public struct ImagesFeature {
 // MARK: - UnsplashClient
 
 extension UnsplashClient {
-  func images(for item: ImagesFeature.Item, page: Int) async throws -> Page<Asset> {
+  func images(for item: ImagesFeature.Item, page: Int) async throws -> Page<Unsplash.Image> {
     switch item {
     case .topic(let topic):
       try await self.topic.images(for: topic, page: page)

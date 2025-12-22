@@ -27,28 +27,28 @@ import ResplashEntities
 public struct UnsplashClient {
   public let topic: TopicClient
   public let category: CategoryClient
-  public let collection: AssetCollectionClient
-  public let asset: AssetClient
+  public let collection: ImageCollectionClient
+  public let image: ImageClient
   public let search: SearchClient
 
   public init(
-    fetchTopics: @Sendable @escaping () async throws -> [Topic],
-    fetchTopicImages: @Sendable @escaping (Topic, Int, Int) async throws -> Page<Asset>,
-    fetchCategories: @Sendable @escaping () async throws -> [Category],
-    fetchCategoryImages: @Sendable @escaping (Category.Item, Int, Int) async throws -> Page<Asset>,
-    fetchCollections: @Sendable @escaping (MediaType, Int, Int) async throws -> Page<AssetCollection>,
-    fetchCollectionImages: @Sendable @escaping (AssetCollection, Int, Int) async throws -> Page<Asset>,
-    fetchPhotos: @Sendable @escaping (Int, Int) async throws -> Page<Asset>,
-    fetchIllustrations: @Sendable @escaping (Int, Int) async throws -> Page<Asset>,
-    fetchRelatedImages: @Sendable @escaping (Asset, Int, Int) async throws -> Page<Asset>,
-    fetchSeriesImages: @Sendable @escaping (Asset) async throws -> [Asset],
-    fetchImageDetail: @Sendable @escaping (Asset) async throws -> AssetDetail,
-    fetchTrends: @Sendable @escaping (Int, Int) async throws -> Page<Trend>,
-    fetchMeta: @Sendable @escaping (String) async throws -> SearchMeta,
-    searchPhotos: @Sendable @escaping (String, Int, Int) async throws -> Page<Asset>,
-    searchIllustrations: @Sendable @escaping (String, Int, Int) async throws -> Page<Asset>,
-    searchCollections: @Sendable @escaping (String, Int, Int) async throws -> Page<AssetCollection>,
-    searchUsers: @Sendable @escaping (String, Int, Int) async throws -> Page<User>
+    fetchTopics: @Sendable @escaping () async throws -> [Unsplash.Topic],
+    fetchTopicImages: @Sendable @escaping (Unsplash.Topic, Int, Int) async throws -> Page<Unsplash.Image>,
+    fetchCategories: @Sendable @escaping () async throws -> [Unsplash.Category],
+    fetchCategoryImages: @Sendable @escaping (Unsplash.Category.Item, Int, Int) async throws -> Page<Unsplash.Image>,
+    fetchCollections: @Sendable @escaping (Unsplash.MediaType, Int, Int) async throws -> Page<Unsplash.ImageCollection>,
+    fetchCollectionImages: @Sendable @escaping (Unsplash.ImageCollection, Int, Int) async throws -> Page<Unsplash.Image>,
+    fetchPhotos: @Sendable @escaping (Int, Int) async throws -> Page<Unsplash.Image>,
+    fetchIllustrations: @Sendable @escaping (Int, Int) async throws -> Page<Unsplash.Image>,
+    fetchRelatedImages: @Sendable @escaping (Unsplash.Image, Int, Int) async throws -> Page<Unsplash.Image>,
+    fetchSeriesImages: @Sendable @escaping (Unsplash.Image) async throws -> [Unsplash.Image],
+    fetchImageDetail: @Sendable @escaping (Unsplash.Image) async throws -> Unsplash.ImageDetail,
+    fetchTrends: @Sendable @escaping (Int, Int) async throws -> Page<Unsplash.Trend>,
+    fetchMeta: @Sendable @escaping (String) async throws -> Unsplash.SearchMeta,
+    searchPhotos: @Sendable @escaping (String, Int, Int) async throws -> Page<Unsplash.Image>,
+    searchIllustrations: @Sendable @escaping (String, Int, Int) async throws -> Page<Unsplash.Image>,
+    searchCollections: @Sendable @escaping (String, Int, Int) async throws -> Page<Unsplash.ImageCollection>,
+    searchUsers: @Sendable @escaping (String, Int, Int) async throws -> Page<Unsplash.User>
   ) {
     self.topic = TopicClient(
       fetchItems: fetchTopics,
@@ -58,11 +58,11 @@ public struct UnsplashClient {
       fetchItems: fetchCategories,
       fetchImages: fetchCategoryImages
     )
-    self.collection = AssetCollectionClient(
+    self.collection = ImageCollectionClient(
       fetchItems: fetchCollections,
       fetchImages: fetchCollectionImages
     )
-    self.asset = AssetClient(
+    self.image = ImageClient(
       fetchPhotos: fetchPhotos,
       fetchIllustrations: fetchIllustrations,
       fetchRelatedImages: fetchRelatedImages,

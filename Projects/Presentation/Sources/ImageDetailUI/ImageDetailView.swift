@@ -99,7 +99,7 @@ public struct ImageDetailView: View {
 // MARK: - ImageDetailView (ViewBuilders)
 
 extension ImageDetailView {
-  @ViewBuilder func imageInfo(_ detail: AssetDetail) -> some View {
+  @ViewBuilder func imageInfo(_ detail: Unsplash.ImageDetail) -> some View {
     VStack(spacing: 16) {
       Grid(alignment: .topLeading, horizontalSpacing: 20, verticalSpacing: 8) {
         GridRow {
@@ -178,7 +178,7 @@ extension ImageDetailView {
     }
   }
 
-  @ViewBuilder func tagGrid(_ tags: [AssetDetail.Tag]) -> some View {
+  @ViewBuilder func tagGrid(_ tags: [Unsplash.ImageDetail.Tag]) -> some View {
     HStack(spacing: 0) {
       HFlow(itemSpacing: 8, lineSpacing: 8) {
         ForEach(tags, id: \.title) {
@@ -196,7 +196,7 @@ extension ImageDetailView {
     }
   }
 
-  @ViewBuilder func seriesImages(_ images: [Asset]) -> some View {
+  @ViewBuilder func seriesImages(_ images: [Unsplash.Image]) -> some View {
     VStack(alignment: .leading, spacing: 8) {
       Text(.localizable(.fromThisSeries))
         .font(.title2)
@@ -209,7 +209,7 @@ extension ImageDetailView {
             Button {
               store.send(.navigate(.imageDetail(image)))
             } label: {
-              AssetView(image)
+              ImageItemView(image)
                 .size(.compact)
                 .aspectRatio(CGSize(width: image.width / image.height, height: 1), contentMode: .fit)
                 .cornerRadius(2)
@@ -223,7 +223,7 @@ extension ImageDetailView {
     .scrollIndicators(.hidden)
   }
 
-  @ViewBuilder func relatedImages(_ images: [Asset]) -> some View {
+  @ViewBuilder func relatedImages(_ images: [Unsplash.Image]) -> some View {
     VStack(alignment: .leading, spacing: 8) {
       Text(.localizable(.relatedImages))
         .font(.title2)
@@ -233,7 +233,7 @@ extension ImageDetailView {
         Button {
           store.send(.navigate(.imageDetail(image)))
         } label: {
-          AssetView(image)
+          ImageItemView(image)
             .size(.compact)
         }
       } size: {
@@ -243,7 +243,7 @@ extension ImageDetailView {
     .padding(layoutEnvironment.contentInsets(.horizontal))
   }
 
-  @ViewBuilder func mapView(coordinate: CLLocationCoordinate2D, image: Asset, label: String) -> some View {
+  @ViewBuilder func mapView(coordinate: CLLocationCoordinate2D, image: Unsplash.Image, label: String) -> some View {
     let camera = MapCamera(centerCoordinate: coordinate, distance: 500)
     Map(initialPosition: .camera(camera), interactionModes: []) {
       Annotation(coordinate: coordinate) {

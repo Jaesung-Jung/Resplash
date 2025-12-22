@@ -38,7 +38,7 @@ extension UnsplashClient {
           page: $1,
           pageSize: $2,
           items: try await request(.topicImages(for: $0, page: $1, count: $2))
-            .decode([DTO<AssetTransformer>].self)
+            .decode([DTO<ImageTransformer>].self)
             .map(\.domain)
         )
       },
@@ -52,7 +52,7 @@ extension UnsplashClient {
           page: $1,
           pageSize: $2,
           items: try await request(.categoryImages(for: $0, page: $1, count: $2))
-            .decode([DTO<AssetTransformer>].self, forKey: "photos")
+            .decode([DTO<ImageTransformer>].self, forKey: "photos")
             .map(\.domain)
         )
       },
@@ -60,8 +60,8 @@ extension UnsplashClient {
         Page(
           page: $1,
           pageSize: $2,
-          items: try await request(.assetCollections(for: $0, page: $1, count: $2))
-            .decode([DTO<AssetCollectionTransformer>].self)
+          items: try await request(.collections(for: $0, page: $1, count: $2))
+            .decode([DTO<ImageCollectionTransformer>].self)
             .map(\.domain)
         )
       },
@@ -69,8 +69,8 @@ extension UnsplashClient {
         Page(
           page: $1,
           pageSize: $2,
-          items: try await request(.assetCollectionImages(for: $0, page: $1, count: $2))
-            .decode([DTO<AssetTransformer>].self)
+          items: try await request(.collectionImages(for: $0, page: $1, count: $2))
+            .decode([DTO<ImageTransformer>].self)
             .map(\.domain)
         )
       },
@@ -79,7 +79,7 @@ extension UnsplashClient {
           page: $0,
           pageSize: $1,
           items: try await request(.photos(page: $0, count: $1))
-            .decode([DTO<AssetTransformer>].self)
+            .decode([DTO<ImageTransformer>].self)
             .map(\.domain)
         )
       },
@@ -88,7 +88,7 @@ extension UnsplashClient {
           page: $0,
           pageSize: $1,
           items: try await request(.illustrations(page: $0, count: $1))
-            .decode([DTO<AssetTransformer>].self)
+            .decode([DTO<ImageTransformer>].self)
             .map(\.domain)
         )
       },
@@ -97,18 +97,18 @@ extension UnsplashClient {
           page: $1,
           pageSize: $2,
           items: try await request(.relatedImages(for: $0, page: $1, count: $2))
-            .decode([DTO<AssetTransformer>].self, forKey: "results")
+            .decode([DTO<ImageTransformer>].self, forKey: "results")
             .map(\.domain)
         )
       },
       fetchSeriesImages: {
         try await request(.seriesImages(for: $0))
-          .decode([DTO<AssetTransformer>].self)
+          .decode([DTO<ImageTransformer>].self)
           .map(\.domain)
       },
       fetchImageDetail: {
         try await request(.detail(for: $0))
-          .decode(DTO<AssetDetailTransformer>.self)
+          .decode(DTO<ImageDetailTransformer>.self)
           .domain
       },
       fetchTrends: {
@@ -130,7 +130,7 @@ extension UnsplashClient {
           page: $1,
           pageSize: $2,
           items: try await request(.searchPhotos(query: $0, page: $1, count: $2))
-            .decode([DTO<AssetTransformer>].self, forKey: "results")
+            .decode([DTO<ImageTransformer>].self, forKey: "results")
             .map(\.domain)
         )
       },
@@ -139,7 +139,7 @@ extension UnsplashClient {
           page: $1,
           pageSize: $2,
           items: try await request(.searchIllustrations(query: $0, page: $1, count: $2))
-            .decode([DTO<AssetTransformer>].self, forKey: "results")
+            .decode([DTO<ImageTransformer>].self, forKey: "results")
             .map(\.domain)
         )
       },
@@ -148,7 +148,7 @@ extension UnsplashClient {
           page: $1,
           pageSize: $2,
           items: try await request(.searchCollections(query: $0, page: $1, count: $2))
-            .decode([DTO<AssetCollectionTransformer>].self, forKey: "results")
+            .decode([DTO<ImageCollectionTransformer>].self, forKey: "results")
             .map(\.domain)
         )
       },

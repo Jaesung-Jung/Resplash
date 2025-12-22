@@ -33,7 +33,7 @@ extension Endpoint {
     )
   }
 
-  public static func categoryImages(for category: Category.Item, page: Int, count: Int) -> Endpoint {
+  public static func categoryImages(for category: Unsplash.Category.Item, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "category_images_\(page)",
       path: "napi/landing_pages/images/stock/\(category.slug)",

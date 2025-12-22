@@ -27,9 +27,9 @@ import ResplashDesignSystem
 
 public struct UserView: View {
   @Environment(\.designSystemSize) var size
-  let user: User
+  let user: Unsplash.User
 
-  public init(_ user: User) {
+  public init(_ user: Unsplash.User) {
     self.user = user
   }
 
@@ -57,7 +57,7 @@ extension UserView {
 extension UserView {
   struct RegularContent: View {
     @Environment(\.colorScheme) var colorScheme
-    let user: User
+    let user: Unsplash.User
 
     var body: some View {
       ContentLayout(forHire: user.forHire, imageSpacing: 8, textSpacing: 2) {
@@ -165,7 +165,7 @@ extension UserView {
   struct CompactContent: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.displayScale) var displayScale
-    let user: User
+    let user: Unsplash.User
 
     var body: some View {
       IconLabel(spacing: 8) {

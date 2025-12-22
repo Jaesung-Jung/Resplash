@@ -1,5 +1,5 @@
 //
-//  Asset.swift
+//  ImageCollection.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -24,39 +24,26 @@
 import Foundation
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct Asset {
-  public let id: String
-  public let slug: String
-  public let createdAt: Date
-  public let updatedAt: Date
-  public let type: MediaType
-  public let isPremium: Bool
+extension Unsplash {
+  @MemberwiseInit(.public)
+  public struct ImageCollection: Identifiable, Hashable, Sendable {
+    public let id: String
+    public let shareKey: String
+    public let updatedAt: Date
 
-  public let description: String?
-  public let likes: Int
+    public let title: String
+    public let imageURLs: [Unsplash.ImageURL]
+    public let totalImages: Int
 
-  public let width: CGFloat
-  public let height: CGFloat
-  public let color: String
-  public let url: ImageURL
+    public let user: Unsplash.User
+    public let shareLink: URL
 
-  public let user: User
-  public let shareLink: URL
-}
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+    }
 
-extension Asset: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+      lhs.id == rhs.id && lhs.updatedAt == rhs.updatedAt
+    }
   }
-
-  public static func == (lhs: Self, rhs: Self) -> Bool {
-    lhs.id == rhs.id && lhs.updatedAt == rhs.updatedAt
-  }
-}
-
-extension Asset: Identifiable {
-}
-
-extension Asset: Sendable {
 }

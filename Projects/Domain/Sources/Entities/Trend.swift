@@ -24,70 +24,49 @@
 import Foundation
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct Trend {
-  public let id = UUID()
-  public let title: String
-  public let demand: Demand
-  public let thumbnailURL: ImageURL
-  public let growth: Int
-  public let results: Int
-  public let searchViews: Int
-  public let keywords: [Keyword]
-}
+extension Unsplash {
+  @MemberwiseInit(.public)
+  public struct Trend: Identifiable, Hashable, Sendable {
+    public let id = UUID()
+    public let title: String
+    public let demand: Unsplash.Trend.Demand
+    public let thumbnailURL: Unsplash.ImageURL
+    public let growth: Int
+    public let results: Int
+    public let searchViews: Int
+    public let keywords: [Unsplash.Trend.Keyword]
 
-extension Trend: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+    }
   }
-
-  public static func == (lhs: Self, rhs: Self) -> Bool { lhs.id == rhs.id }
-}
-
-extension Trend: Identifiable {
-}
-
-extension Trend: Sendable {
 }
 
 // MARK: - Trend.Demand
 
-extension Trend {
-  public enum Demand: String {
+extension Unsplash.Trend {
+  public enum Demand: String, Sendable {
     case high = "High"
     case medium = "Medium"
     case low = "Low"
   }
 }
 
-extension Trend.Demand: Sendable {
-}
-
 // MARK: - Trend.Keyword
 
-extension Trend {
+extension Unsplash.Trend {
   @MemberwiseInit(.public)
-  public struct Keyword {
+  public struct Keyword: Identifiable, Hashable, Sendable {
     public let id = UUID()
     public let title: String
-    public let demand: Demand
-    public let thumbnailURL: ImageURL
+    public let demand: Unsplash.Trend.Demand
+    public let thumbnailURL: Unsplash.ImageURL
     public let growth: Int
     public let results: Int
     public let searchViews: Int
+
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+    }
   }
-}
-
-extension Trend.Keyword: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-  }
-
-  public static func == (lhs: Self, rhs: Self) -> Bool { lhs.id == rhs.id }
-}
-
-extension Trend.Keyword: Identifiable {
-}
-
-extension Trend.Keyword: Sendable {
 }

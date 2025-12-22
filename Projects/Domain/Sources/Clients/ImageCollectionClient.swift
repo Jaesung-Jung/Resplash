@@ -1,5 +1,5 @@
 //
-//  AssetCollection.swift
+//  ImageCollectionClient.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,35 +21,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
-import MemberwiseInit
+import ResplashEntities
 
-@MemberwiseInit(.public)
-public struct AssetCollection {
-  public let id: String
-  public let shareKey: String
-  public let updatedAt: Date
+extension UnsplashClient {
+  public struct ImageCollectionClient: Sendable {
+    let fetchItems: @Sendable (Unsplash.MediaType, Int, Int) async throws -> Page<Unsplash.ImageCollection>
+    let fetchImages: @Sendable (Unsplash.ImageCollection, Int, Int) async throws -> Page<Unsplash.Image>
 
-  public let title: String
-  public let imageURLs: [ImageURL]
-  public let totalImages: Int
+    public func items(for mediaType: Unsplash.MediaType, page: Int) async throws -> Page<Unsplash.ImageCollection> {
+      try await fetchItems(mediaType, page, 30)
+    }
 
-  public let user: User
-  public let shareLink: URL
-}
-
-extension AssetCollection: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+    public func images(for collection: Unsplash.ImageCollection, page: Int) async throws -> Page<Unsplash.Image> {
+      try await fetchImages(collection, page, 30)
+    }
   }
-
-  public static func == (lhs: Self, rhs: Self) -> Bool {
-    lhs.id == rhs.id && lhs.updatedAt == rhs.updatedAt
-  }
-}
-
-extension AssetCollection: Identifiable {
-}
-
-extension AssetCollection: Sendable {
 }

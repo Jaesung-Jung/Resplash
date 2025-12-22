@@ -23,14 +23,13 @@
 
 #if DEBUG
 
-import struct Foundation.URL
-import struct Foundation.UUID
+import Foundation
 import ResplashEntities
 
-// MARK: - Asset
+// MARK: - Unsplash.Image
 
-extension Asset {
-  public static let preview1 = Asset(
+extension Unsplash.Image {
+  public static let preview1 = Unsplash.Image(
     id: "S84pCIjiEC4",
     slug: "glacial-lake-and-mountains-under-blue-sky-S84pCIjiEC4",
     createdAt: .now,
@@ -42,7 +41,7 @@ extension Asset {
     width: 4032,
     height: 3024,
     color: "#0c73c0",
-    url: ImageURL(
+    url: Unsplash.ImageURL(
       raw: URL(string: "https://images.unsplash.com/photo-1571502297375-0fe3ea2d1d48?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjN8fCVFRCU5OCVCOCVFQyU4OCU5OHxlbnwwfHx8fDE3NjYwMzI3MDR8MA&ixlib=rb-4.1.0")!,
       full: URL(string: "https://images.unsplash.com/photo-1571502297375-0fe3ea2d1d48?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjN8fCVFRCU5OCVCOCVFQyU4OCU5OHxlbnwwfHx8fDE3NjYwMzI3MDR8MA&ixlib=rb-4.1.0&q=85")!,
       s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1571502297375-0fe3ea2d1d48")!
@@ -51,7 +50,7 @@ extension Asset {
     shareLink: URL(string: "https://unsplash.com/photos/glacial-lake-and-mountains-under-blue-sky-S84pCIjiEC4")!
   )
 
-  public static let preview2 = Asset(
+  public static let preview2 = Unsplash.Image(
     id: "VKEtwmKulIM",
     slug: "a-blue-and-yellow-pattern-with-squares-and-squares-VKEtwmKulIM",
     createdAt: .now,
@@ -63,7 +62,7 @@ extension Asset {
     width: 1500,
     height: 1500,
     color: "#f3f3d9",
-    url: ImageURL(
+    url: Unsplash.ImageURL(
       raw: URL(string: "https://plus.unsplash.com/premium_vector-1719881386517-fb92d4c3680b?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8c3F1YXJlfGVufDB8fHx8MTc2NjAzMTI0MXww&ixlib=rb-4.1.0")!,
       full: URL(string: "https://plus.unsplash.com/premium_vector-1719881386517-fb92d4c3680b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8c3F1YXJlfGVufDB8fHx8MTc2NjAzMTI0MXww&ixlib=rb-4.1.0&q=85")!,
       s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_vector-1719881386517-fb92d4c3680b")!
@@ -73,31 +72,31 @@ extension Asset {
   )
 }
 
-// MARK: - AssetCollection
+// MARK: - Unsplash.ImageCollection
 
-extension AssetCollection {
-  public static let preview = AssetCollection(
+extension Unsplash.ImageCollection {
+  public static let preview = Unsplash.ImageCollection(
     id: "5BSAnZnIBpU",
     shareKey: "9aab0ad2c768d4be33049ab14006c35f",
     updatedAt: .now,
     title: "Soft Summer",
     imageURLs: [
-      ImageURL(
+      Unsplash.ImageURL(
         raw: URL(string: "https://plus.unsplash.com/premium_photo-1749544311043-3a6a0c8d54af?ixlib=rb-4.1.0")!,
         full: URL(string: "https://plus.unsplash.com/premium_photo-1749544311043-3a6a0c8d54af?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1749544311043-3a6a0c8d54af")!
       ),
-      ImageURL(
+      Unsplash.ImageURL(
         raw: URL(string: "https://plus.unsplash.com/premium_photo-1681190674797-062b73f23709?ixlib=rb-4.1.0")!,
         full: URL(string: "https://plus.unsplash.com/premium_photo-1681190674797-062b73f23709?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/unsplash-premium-photos-production/premium_photo-1681190674797-062b73f23709")!
       ),
-      ImageURL(
+      Unsplash.ImageURL(
         raw: URL(string: "https://plus.unsplash.com/premium_photo-1749544314290-26f458009fef?ixlib=rb-4.1.0")!,
         full: URL(string: "https://plus.unsplash.com/premium_photo-1749544314290-26f458009fef?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1749544314290-26f458009fef")!
       ),
-      ImageURL(
+      Unsplash.ImageURL(
         raw: URL(string: "https://plus.unsplash.com/premium_photo-1723934553084-2b0838d68e77?ixlib=rb-4.1.0")!,
         full: URL(string: "https://plus.unsplash.com/premium_photo-1723934553084-2b0838d68e77?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1723934553084-2b0838d68e77")!
@@ -109,14 +108,14 @@ extension AssetCollection {
   )
 }
 
-// MARK: - AssetDetail
+// MARK: - Unsplash.ImageDetail
 
-extension AssetDetail {
-  public static let preview1 = AssetDetail(
+extension Unsplash.ImageDetail {
+  public static let preview1 = Unsplash.ImageDetail(
     image: .preview1,
     views: 1386704,
     downloads: 18637,
-    exif: AssetDetail.Exif(
+    exif: Unsplash.ImageDetail.Exif(
       brand: "Apple",
       model: "iPhone 17",
       name: "Apple, iPhone 17",
@@ -125,7 +124,7 @@ extension AssetDetail {
       focalLength: "4.0",
       iso: 20
     ),
-    location: AssetDetail.Location(
+    location: Unsplash.ImageDetail.Location(
       name: "Seebensee, Österreich",
       city: nil,
       country: "Österreich",
@@ -133,25 +132,25 @@ extension AssetDetail {
     ),
     topics: [],
     tags: [
-      AssetDetail.Tag(type: "search", title: "mountains"),
-      AssetDetail.Tag(type: "search", title: "hiking"),
-      AssetDetail.Tag(type: "search", title: "lake"),
-      AssetDetail.Tag(type: "search", title: "alps"),
-      AssetDetail.Tag(type: "search", title: "see"),
-      AssetDetail.Tag(type: "search", title: "wanderlust"),
-      AssetDetail.Tag(type: "search", title: "zugspitze"),
-      AssetDetail.Tag(type: "search", title: "alpen"),
-      AssetDetail.Tag(type: "search", title: "berge"),
-      AssetDetail.Tag(type: "search", title: "wandern"),
-      AssetDetail.Tag(type: "search", title: "blue")
+      Unsplash.ImageDetail.Tag(type: "search", title: "mountains"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "hiking"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "lake"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "alps"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "see"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "wanderlust"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "zugspitze"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "alpen"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "berge"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "wandern"),
+      Unsplash.ImageDetail.Tag(type: "search", title: "blue")
     ]
   )
 }
 
-// MARK: - Category
+// MARK: - Unsplash.Category
 
-extension Category {
-  public static let preview = Category(
+extension Unsplash.Category {
+  public static let preview = Unsplash.Category(
     id: UUID(),
     slug: "stock",
     title: "Stock Photos & Images",
@@ -159,17 +158,17 @@ extension Category {
   )
 }
 
-// MARK: - Category.Item
+// MARK: - Unsplash.Category.Item
 
-extension Category.Item {
-  public static let preview = Category.Item(
+extension Unsplash.Category.Item {
+  public static let preview = Unsplash.Category.Item(
     id: UUID(),
     slug: "royalty-free",
     redirect: nil,
     title: "Royalty Free Images",
     subtitle: "309,100+ Stocks and Images",
     imageCount: 309099,
-    coverImageURL: ImageURL(
+    coverImageURL: Unsplash.ImageURL(
       raw: URL(string: "https://images.unsplash.com/photo-1612899326681-66508905b4ce?ixlib=rb-4.1.0")!,
       full: URL(string: "https://images.unsplash.com/photo-1612899326681-66508905b4ce?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
       s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1612899326681-66508905b4ce")!
@@ -177,10 +176,10 @@ extension Category.Item {
   )
 }
 
-// MARK: - Topic
+// MARK: - Unsplash.Topic
 
-extension Topic {
-  public static let preview = Topic(
+extension Unsplash.Topic {
+  public static let preview = Unsplash.Topic(
     id: "bo8jQKT",
     slug: "wallpapers",
     visibility: .featured,
@@ -194,13 +193,13 @@ extension Topic {
   )
 }
 
-// MARK: - Trend
+// MARK: - Unsplash.Trend
 
-extension Trend {
-  public static let preview = Trend(
+extension Unsplash.Trend {
+  public static let preview = Unsplash.Trend(
     title: "new zealand",
     demand: .high,
-    thumbnailURL: ImageURL(
+    thumbnailURL: Unsplash.ImageURL(
       raw: URL(string: "https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-4.1.0")!,
       full: URL(string: "https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
       s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1465056836041-7f43ac27dcb5")!
@@ -209,10 +208,10 @@ extension Trend {
     results: 684238,
     searchViews: 3545366,
     keywords: [
-      Trend.Keyword(
+      Unsplash.Trend.Keyword(
         title: "auckland",
         demand: .high,
-        thumbnailURL: ImageURL(
+        thumbnailURL: Unsplash.ImageURL(
           raw: URL(string: "https://images.unsplash.com/photo-1595125990323-885cec5217ff?ixlib=rb-4.1.0")!,
           full: URL(string: "https://images.unsplash.com/photo-1595125990323-885cec5217ff?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
           s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1595125990323-885cec5217ff")!
@@ -221,10 +220,10 @@ extension Trend {
         results: 37782,
         searchViews: 252555
       ),
-      Trend.Keyword(
+      Unsplash.Trend.Keyword(
         title: "queenstown",
         demand: .medium,
-        thumbnailURL: ImageURL(
+        thumbnailURL: Unsplash.ImageURL(
           raw: URL(string: "https://images.unsplash.com/photo-1600466403153-50193d187dde?ixlib=rb-4.1.0")!,
           full: URL(string: "https://images.unsplash.com/photo-1600466403153-50193d187dde?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
           s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1600466403153-50193d187dde")!
@@ -233,10 +232,10 @@ extension Trend {
         results: 472,
         searchViews: 87509
       ),
-      Trend.Keyword(
+      Unsplash.Trend.Keyword(
         title: "wellington",
         demand: .medium,
-        thumbnailURL: ImageURL(
+        thumbnailURL: Unsplash.ImageURL(
           raw: URL(string: "https://images.unsplash.com/photo-1589871973318-9ca1258faa5d?ixlib=rb-4.1.0")!,
           full: URL(string: "https://images.unsplash.com/photo-1589871973318-9ca1258faa5d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
           s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1589871973318-9ca1258faa5d")!
@@ -249,10 +248,10 @@ extension Trend {
   )
 }
 
-// MARK: - User
+// MARK: - Unsplash.User
 
-extension User {
-  public static let preview = User(
+extension Unsplash.User {
+  public static let preview = Unsplash.User(
     id: "2tXKaPcv9BI",
     userId: "marekpiwnicki",
     updatedAt: .now,
@@ -260,7 +259,7 @@ extension User {
     name: "Marek Piwnicki",
     bio: "Hey! I have 3B+ views and 22M+ dwnl here.If my work has helped or inspired you, please consider supporting me (patreon.com/MarekPiwnicki or ko-fi.com/marekpiwnicki). Every bit helps me continue creating and sharing my photos for free. Thank you! ❤️",
     location: "Gdynia | Poland",
-    profileImageURL: ProfileImageURL(
+    profileImageURL: Unsplash.User.ProfileImageURL(
       small: URL(string: "https://images.unsplash.com/profile-1604758536753-68fd6f23aaf7image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=32&h=32")!,
       medium: URL(string: "https://images.unsplash.com/profile-1604758536753-68fd6f23aaf7image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=64&h=64")!,
       large: URL(string: "https://images.unsplash.com/profile-1604758536753-68fd6f23aaf7image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128")!
@@ -277,17 +276,17 @@ extension User {
     ],
     shareLink: URL(string: "https://unsplash.com/@marekpiwnicki")!,
     imageURLs: [
-      ImageURL(
+      Unsplash.ImageURL(
         raw: URL(string: "https://images.unsplash.com/photo-1610204969792-31940287e22d?ixlib=rb-4.1.0")!,
         full: URL(string: "https://images.unsplash.com/photo-1610204969792-31940287e22d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1610204969792-31940287e22d")!
       ),
-      ImageURL(
+      Unsplash.ImageURL(
         raw: URL(string: "https://images.unsplash.com/photo-1606245766933-b194a66b0380?ixlib=rb-4.1.0")!,
         full: URL(string: "https://images.unsplash.com/photo-1606245766933-b194a66b0380?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1606245766933-b194a66b0380")!
       ),
-      ImageURL(
+      Unsplash.ImageURL(
         raw: URL(string: "https://images.unsplash.com/photo-1605904266472-c5be8939cdb6?ixlib=rb-4.1.0")!,
         full: URL(string: "https://images.unsplash.com/photo-1605904266472-c5be8939cdb6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1605904266472-c5be8939cdb6")!

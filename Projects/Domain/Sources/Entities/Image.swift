@@ -1,5 +1,5 @@
 //
-//  AssetCollectionAPI.swift
+//  Image.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,39 +21,36 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import ResplashEntities
-import ResplashNetworking
+import Foundation
+import MemberwiseInit
 
-extension Endpoint {
-  public static func assetCollections(for mediaType: MediaType, page: Int, count: Int) -> Endpoint {
-    let assetType = switch mediaType {
-    case .photo:
-      "photos"
-    case .illustration:
-      "illustrations"
+extension Unsplash {
+  @MemberwiseInit(.public)
+  public struct Image: Identifiable, Hashable, Sendable {
+    public let id: String
+    public let slug: String
+    public let createdAt: Date
+    public let updatedAt: Date
+    public let type: Unsplash.MediaType
+    public let isPremium: Bool
+
+    public let description: String?
+    public let likes: Int
+
+    public let width: CGFloat
+    public let height: CGFloat
+    public let color: String
+    public let url: Unsplash.ImageURL
+
+    public let user: Unsplash.User
+    public let shareLink: URL
+
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
     }
-    return Endpoint(
-      resourceId: "\(assetType)_collections_\(page)",
-      path: "napi/collections",
-      method: .get,
-      parameters: [
-        "asset_type": assetType,
-        "page": page,
-        "per_page": count
-      ]
-    )
-  }
 
-  public static func assetCollectionImages(for collection: AssetCollection, page: Int, count: Int) -> Endpoint {
-    Endpoint(
-      resourceId: "collection_images_\(page)",
-      path: "napi/collections/\(collection.id)/photos",
-      method: .get,
-      parameters: [
-        "page": page,
-        "per_page": count,
-        "share_key": collection.shareKey
-      ]
-    )
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+      lhs.id == rhs.id && lhs.updatedAt == rhs.updatedAt
+    }
   }
 }

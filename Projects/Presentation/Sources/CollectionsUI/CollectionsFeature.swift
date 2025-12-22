@@ -32,8 +32,8 @@ import ResplashStrings
 public struct CollectionsFeature {
   @ObservableState
   public struct State: Equatable {
-    public let mediaType: MediaType
-    public var collections: [AssetCollection]?
+    public let mediaType: Unsplash.MediaType
+    public var collections: [Unsplash.ImageCollection]?
 
     var loading: Loading = .none
     var isLoading: Bool { loading != .none }
@@ -41,7 +41,7 @@ public struct CollectionsFeature {
     var page: Int = 1
     var hasNextPage: Bool = false
 
-    public init(mediaType: MediaType) {
+    public init(mediaType: Unsplash.MediaType) {
       self.mediaType = mediaType
     }
   }
@@ -49,14 +49,14 @@ public struct CollectionsFeature {
   public enum Action {
     case fetchCollections
     case fetchNextCollections
-    case fetchCollectionsResponse(Result<Page<AssetCollection>, Error>)
-    case fetchNextCollectionsResponse(Result<Page<AssetCollection>, Error>)
+    case fetchCollectionsResponse(Result<Page<Unsplash.ImageCollection>, Error>)
+    case fetchNextCollectionsResponse(Result<Page<Unsplash.ImageCollection>, Error>)
 
     case navigate(Navigation)
   }
 
   public enum Navigation {
-    case collectionImages(AssetCollection)
+    case collectionImages(Unsplash.ImageCollection)
   }
 
   @Dependency(\.unsplash) var unsplash

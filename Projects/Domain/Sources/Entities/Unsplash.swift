@@ -1,5 +1,5 @@
 //
-//  AssetCollectionClient.swift
+//  Unsplash.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,22 +21,5 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import ResplashEntities
-
-extension UnsplashClient {
-  public struct AssetCollectionClient {
-    let fetchItems: @Sendable (MediaType, Int, Int) async throws -> Page<AssetCollection>
-    let fetchImages: @Sendable (AssetCollection, Int, Int) async throws -> Page<Asset>
-
-    public func items(for mediaType: MediaType, page: Int) async throws -> Page<AssetCollection> {
-      try await fetchItems(mediaType, page, 30)
-    }
-
-    public func images(for collection: AssetCollection, page: Int) async throws -> Page<Asset> {
-      try await fetchImages(collection, page, 30)
-    }
-  }
-}
-
-extension UnsplashClient.AssetCollectionClient: Sendable{
+public enum Unsplash {
 }

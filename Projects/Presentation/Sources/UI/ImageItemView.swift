@@ -1,5 +1,5 @@
 //
-//  AssetView.swift
+//  ImageItemView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -25,21 +25,21 @@ import SwiftUI
 import ResplashEntities
 import ResplashDesignSystem
 
-public struct AssetView<MenuContent: View>: View {
+public struct ImageItemView<MenuContent: View>: View {
   @Environment(\.designSystemSize) var size
 
   @State var imageLoaded: Bool = false
 
-  let asset: Asset
+  let image: Unsplash.Image
   let usesMenu: Bool
   let menuContent: MenuContent
 
-  public init(_ asset: Asset, @ViewBuilder menuContent: () -> MenuContent) {
-    self.init(asset, usesMenu: true, menuContent: menuContent)
+  public init(_ image: Unsplash.Image, @ViewBuilder menuContent: () -> MenuContent) {
+    self.init(image, usesMenu: true, menuContent: menuContent)
   }
 
-  init(_ asset: Asset, usesMenu: Bool, @ViewBuilder menuContent: () -> MenuContent) {
-    self.asset = asset
+  init(_ image: Unsplash.Image, usesMenu: Bool, @ViewBuilder menuContent: () -> MenuContent) {
+    self.image = image
     self.usesMenu = usesMenu
     self.menuContent = menuContent()
   }
@@ -48,14 +48,14 @@ public struct AssetView<MenuContent: View>: View {
     Rectangle()
       .fill(.clear)
       .background {
-        RemoteImage(size == .regular ? asset.url.hd : asset.url.sd, isCompleted: $imageLoaded) {
+        RemoteImage(size == .regular ? image.url.hd : image.url.sd, isCompleted: $imageLoaded) {
           $0.resizable().aspectRatio(contentMode: .fill)
         }
       }
       .overlay(alignment: .top) {
         if size == .regular {
           HStack {
-            LikeView(asset.likes)
+            LikeView(image.likes)
               .foregroundStyle(.white)
               .padding(16)
             Spacer(minLength: 0)
@@ -68,10 +68,10 @@ public struct AssetView<MenuContent: View>: View {
       .overlay(alignment: .bottom) {
         BottomContentLayout {
           if size == .regular {
-            UserView(asset.user)
+            UserView(image.user)
               .foregroundStyle(.white)
           } else {
-            UserView(asset.user)
+            UserView(image.user)
               .hidden()
           }
 
@@ -105,36 +105,17 @@ public struct AssetView<MenuContent: View>: View {
   }
 }
 
-// MARK: - AssetView<EmptyView>
+// MARK: - ImageItemView<EmptyView>
 
-extension AssetView where MenuContent == EmptyView {
-  public init(_ asset: Asset) {
-    self.init(asset, usesMenu: false, menuContent: {})
+extension ImageItemView where MenuContent == EmptyView {
+  public init(_ image: Unsplash.Image) {
+    self.init(image, usesMenu: false, menuContent: {})
   }
 }
 
-// MARK: - AssetView.BottomContentLayout
+// MARK: - ImageItemView.BottomContentLayout
 
-extension AssetView {
-  struct MenuLayout: Layout {
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
-      guard let menu = subviews[safe: 0] else {
-        return .zero
-      }
-      let menuSize = menu.sizeThatFits(.unspecified)
-      let size = max(menuSize.width, menuSize.height)
-      return CGSize(width: size, height: size)
-    }
-
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-      guard let menu = subviews[safe: 0] else {
-        return
-      }
-      print("b: \(bounds), p: \(proposal)")
-      menu.place(at: bounds.origin, proposal: ProposedViewSize(width: 44, height: 44))
-    }
-  }
-
+extension ImageItemView {
   struct BottomContentLayout: Layout {
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) -> CGSize {
       guard let profile = subviews[safe: 0] else {
@@ -179,7 +160,7 @@ extension AssetView {
   }
 }
 
-// MARK: - ImageAssetView Preview
+// MARK: - ImageItemView Preview
 
 #if DEBUG
 
@@ -187,7 +168,7 @@ import ResplashPreviewSupports
 
 #Preview {
   VStack(spacing: 20) {
-    AssetView(.preview1) {
+    ImageItemView(.preview1) {
       Button("Apple", systemImage: "apple.logo") {
       }
       Button("Swift", systemImage: "swift") {
@@ -197,7 +178,7 @@ import ResplashPreviewSupports
     .frame(height: 200)
     .padding(20)
 
-    AssetView(.preview2) {
+    ImageItemView(.preview2) {
       Button("Apple", systemImage: "apple.logo") {
       }
       Button("Swift", systemImage: "swift") {

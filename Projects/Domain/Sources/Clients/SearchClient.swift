@@ -24,39 +24,36 @@
 import ResplashEntities
 
 extension UnsplashClient {
-  public struct SearchClient {
-    let fetchTrends: @Sendable (Int, Int) async throws -> Page<Trend>
-    let fetchMeta: @Sendable (String) async throws -> SearchMeta
-    let searchPhotos: @Sendable (String, Int, Int) async throws -> Page<Asset>
-    let searchIllustrations: @Sendable (String, Int, Int) async throws -> Page<Asset>
-    let searchCollections: @Sendable (String, Int, Int) async throws -> Page<AssetCollection>
-    let searchUsers: @Sendable (String, Int, Int) async throws -> Page<User>
+  public struct SearchClient: Sendable {
+    let fetchTrends: @Sendable (Int, Int) async throws -> Page<Unsplash.Trend>
+    let fetchMeta: @Sendable (String) async throws -> Unsplash.SearchMeta
+    let searchPhotos: @Sendable (String, Int, Int) async throws -> Page<Unsplash.Image>
+    let searchIllustrations: @Sendable (String, Int, Int) async throws -> Page<Unsplash.Image>
+    let searchCollections: @Sendable (String, Int, Int) async throws -> Page<Unsplash.ImageCollection>
+    let searchUsers: @Sendable (String, Int, Int) async throws -> Page<Unsplash.User>
 
-    public func trends(page: Int, count: Int) async throws -> Page<Trend> {
+    public func trends(page: Int, count: Int) async throws -> Page<Unsplash.Trend> {
       try await fetchTrends(page, count)
     }
 
-    public func meta(query: String) async throws -> SearchMeta {
+    public func meta(query: String) async throws -> Unsplash.SearchMeta {
       try await fetchMeta(query)
     }
 
-    public func photos(query: String, page: Int, count: Int) async throws -> Page<Asset> {
+    public func photos(query: String, page: Int, count: Int) async throws -> Page<Unsplash.Image> {
       try await searchPhotos(query, page, count)
     }
 
-    public func illustrations(query: String, page: Int, count: Int) async throws -> Page<Asset> {
+    public func illustrations(query: String, page: Int, count: Int) async throws -> Page<Unsplash.Image> {
       try await searchIllustrations(query, page, count)
     }
 
-    public func collections(query: String, page: Int, count: Int) async throws -> Page<AssetCollection> {
+    public func collections(query: String, page: Int, count: Int) async throws -> Page<Unsplash.ImageCollection> {
       try await searchCollections(query, page, count)
     }
 
-    public func users(query: String, page: Int, count: Int) async throws -> Page<User> {
+    public func users(query: String, page: Int, count: Int) async throws -> Page<Unsplash.User> {
       try await searchUsers(query, page, count)
     }
   }
-}
-
-extension UnsplashClient.SearchClient: Sendable{
 }

@@ -24,51 +24,54 @@
 import Foundation
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct ImageURL {
-  public let raw: URL
-  public let full: URL
-  public let s3: URL
+extension Unsplash {
+  @MemberwiseInit(.public)
+  public struct ImageURL: Equatable, Sendable {
+    public let raw: URL
+    public let full: URL
+    public let s3: URL
 
-  @inlinable public var fhd: URL? { url(.fhd) }
-  @inlinable public var hd: URL? { url(.hd) }
-  @inlinable public var sd: URL? { url(.sd) }
-  @inlinable public var low: URL? { url(.low) }
+    @inlinable
+    public var fhd: URL? { url(.fhd) }
 
-  @usableFromInline
-  func url(_ size: Size) -> URL? {
-    url(size.rawValue, quality: size.quality)
-  }
+    @inlinable
+    public var hd: URL? { url(.hd) }
 
-  @usableFromInline
-  func url(size: CGFloat, quality: Int = 80) -> URL? {
-    url(Int(size), quality: quality)
-  }
+    @inlinable
+    public var sd: URL? { url(.sd) }
 
-  func url(_ size: Int, quality: Int = 80) -> URL? {
-    guard var component = URLComponents(string: raw.absoluteString) else {
-      return nil
+    @inlinable
+    public var low: URL? { url(.low) }
+
+    @usableFromInline
+    func url(_ size: Size) -> URL? {
+      url(size.rawValue, quality: size.quality)
     }
-    var queryItems = component.queryItems ?? []
-    queryItems.append(URLQueryItem(name: "crop", value: "entropy"))
-    queryItems.append(URLQueryItem(name: "q", value: "\(quality)"))
-    queryItems.append(URLQueryItem(name: "w", value: "\(size)"))
-    queryItems.append(URLQueryItem(name: "fm", value: "jpg"))
-    component.queryItems = queryItems
-    return component.url
+
+    @usableFromInline
+    func url(size: CGFloat, quality: Int = 80) -> URL? {
+      url(Int(size), quality: quality)
+    }
+
+    func url(_ size: Int, quality: Int = 80) -> URL? {
+      guard var component = URLComponents(string: raw.absoluteString) else {
+        return nil
+      }
+      var queryItems = component.queryItems ?? []
+      queryItems.append(URLQueryItem(name: "crop", value: "entropy"))
+      queryItems.append(URLQueryItem(name: "q", value: "\(quality)"))
+      queryItems.append(URLQueryItem(name: "w", value: "\(size)"))
+      queryItems.append(URLQueryItem(name: "fm", value: "jpg"))
+      component.queryItems = queryItems
+      return component.url
+    }
   }
 }
 
-extension ImageURL: Equatable {
-}
+// MARK: - Unsplash.ImageURL.Size
 
-extension ImageURL: Sendable {
-}
-
-// MARK: - ImageURL.Size
-
-extension ImageURL {
-  public enum Size: Int {
+extension Unsplash.ImageURL {
+  public enum Size: Int, Sendable {
     case fhd = 1080
     case hd = 720
     case sd = 480
@@ -85,7 +88,4 @@ extension ImageURL {
       }
     }
   }
-}
-
-extension ImageURL.Size: Sendable {
 }

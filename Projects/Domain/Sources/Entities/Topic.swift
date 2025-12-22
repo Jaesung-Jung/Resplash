@@ -24,42 +24,33 @@
 import Foundation
 import MemberwiseInit
 
-@MemberwiseInit(.public)
-public struct Topic {
-  public let id: String
-  public let slug: String
-  public let visibility: Visibility
-  public let owners: [User]
+extension Unsplash {
+  @MemberwiseInit(.public)
+  public struct Topic: Identifiable, Hashable, Sendable {
+    public let id: String
+    public let slug: String
+    public let visibility: Unsplash.Topic.Visibility
+    public let owners: [Unsplash.User]
 
-  public let title: String
-  public let description: String
-  public let mediaTypes: Set<MediaType>
-  public let coverImage: Asset
+    public let title: String
+    public let description: String
+    public let mediaTypes: Set<Unsplash.MediaType>
+    public let coverImage: Unsplash.Image
 
-  public let imageCount: Int
-  public let shareLink: URL
-}
+    public let imageCount: Int
+    public let shareLink: URL
 
-extension Topic: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
+    public func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+    }
   }
 }
 
-extension Topic: Identifiable {
-}
+// MARK: - Unsplash.Topic.Visibility
 
-extension Topic: Sendable {
-}
-
-// MARK: - Topic.Visibility
-
-extension Topic {
-  public enum Visibility: String {
+extension Unsplash.Topic {
+  public enum Visibility: String, Sendable {
     case featured
     case visible
   }
-}
-
-extension Topic.Visibility: Sendable {
 }
