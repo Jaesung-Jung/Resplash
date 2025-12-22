@@ -1,5 +1,5 @@
 //
-//  ImageMapFeature.swift
+//  ImageViewerFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -22,51 +22,31 @@
 //  THE SOFTWARE.
 
 import SwiftUI
-import MapKit
 import ComposableArchitecture
 import ResplashEntities
 
 @Reducer
-public struct ImageMapFeature {
+public struct ImageViewerFeature {
   @ObservableState
   public struct State: Equatable {
-    public let camera: MapCamera
-    public let imageURL: URL
-    public let label: String?
-    public let coordinate: CLLocationCoordinate2D
+    let image: Unsplash.Image
+    let previewURL: URL?
+    let namespace: Namespace.ID
 
-    public init(camera: MapCamera, imageURL: URL, label: String?, coordinate: CLLocationCoordinate2D) {
-      self.camera = camera
-      self.imageURL = imageURL
-      self.label = label
-      self.coordinate = coordinate
+    public init(image: Unsplash.Image, previewURL: URL?, namespace: Namespace.ID) {
+      self.image = image
+      self.previewURL = previewURL
+      self.namespace = namespace
     }
-
-    public static func == (lhs: Self, rhs: Self) -> Bool { true }
   }
 
   public enum Action {
-    case close
-    case delegate(DelegateAction)
   }
-
-  public enum DelegateAction {
-    case updateCamera(MapCamera)
-  }
-
-  @Dependency(\.dismiss) var dismiss
 
   public init() {
   }
 
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
-      switch action {
-      case .close:
-        return .run { [dismiss] _ in await dismiss() }
-      default:
-        return .none
-      }
-    }
+    EmptyReducer()
   }
 }

@@ -1,5 +1,5 @@
 //
-//  AppNavigationPath.swift
+//  ImageMapView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,21 +21,47 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import SwiftUI
+import MapKit
 import ComposableArchitecture
-import ResplashCollectionsUI
-import ResplashImagesUI
-import ResplashImageDetailUI
-import ResplashImageMapUI
-import ResplashImageViewerUI
+import ResplashUI
+import ResplashDesignSystem
 
-@Reducer
-public enum AppNavigationPath {
-  case collections(CollectionsFeature)
-  case images(ImagesFeature)
-  case imageDetail(ImageDetailFeature)
-  case imageMap(ImageMapFeature)
-  case imageViewer(ImageViewerFeature)
+public struct ImageMapView: View {
+  let store: StoreOf<ImageMapFeature>
+
+  public init(store: StoreOf<ImageMapFeature>) {
+    self.store = store
+  }
+
+  public var body: some View {
+    if let location = store.image.location, let position = location.position {
+      MapView(
+        coordinate: CLLocationCoordinate2D(
+          latitude: position.latitude,
+          longitude: position.longitude
+        ),
+        thumbnailURL: store.image.url.s3,
+        label: location.name
+      )
+    }
+  }
 }
 
-extension AppNavigationPath.State: Equatable {
+// MARK: - ImageMapView Preview
+
+#if DEBUG
+
+import ResplashPreviewSupports
+
+#Preview {
+  NavigationStack {
+    ImageMapView(store: Store(initialState: ImageMapFeature.State(image: .preview1)) {
+      ImageMapFeature()
+    } withDependencies: {
+      $0.unsplash = .preview()
+    })
+  }
 }
+
+#endif

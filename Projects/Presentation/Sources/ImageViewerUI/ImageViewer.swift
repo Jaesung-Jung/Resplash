@@ -1,5 +1,5 @@
 //
-//  AppNavigationPath.swift
+//  ImageViewer.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,21 +21,47 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import SwiftUI
 import ComposableArchitecture
-import ResplashCollectionsUI
-import ResplashImagesUI
-import ResplashImageDetailUI
-import ResplashImageMapUI
-import ResplashImageViewerUI
+import ResplashEntities
+import ResplashDesignSystem
 
-@Reducer
-public enum AppNavigationPath {
-  case collections(CollectionsFeature)
-  case images(ImagesFeature)
-  case imageDetail(ImageDetailFeature)
-  case imageMap(ImageMapFeature)
-  case imageViewer(ImageViewerFeature)
+public struct ImageViewer: View {
+  let store: StoreOf<ImageViewerFeature>
+
+  public init(store: StoreOf<ImageViewerFeature>) {
+    self.store = store
+  }
+
+  public var body: some View {
+    RemoteImage(store.image.url.hd) {
+      $0.resizable()
+        .aspectRatio(CGSize(width: 1, height: store.image.height / store.image.width), contentMode: .fit)
+    }
+    .navigationTransition(.zoom(sourceID: store.image.id, in: store.namespace))
+  }
 }
 
-extension AppNavigationPath.State: Equatable {
+// MARK: - ImageViewer Preview
+
+#if DEBUG
+
+import ResplashPreviewSupports
+
+#Preview {
+  @Previewable @Namespace var namespace
+  NavigationStack {
+    let state = ImageViewerFeature.State(
+      image: .preview1,
+      previewURL: Unsplash.Image.preview1.url.hd,
+      namespace: namespace
+    )
+    ImageViewer(store: Store(initialState: state) {
+      ImageViewerFeature()
+    } withDependencies: {
+      $0.unsplash = .preview()
+    })
+  }
 }
+
+#endif

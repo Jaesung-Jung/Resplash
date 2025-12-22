@@ -31,6 +31,8 @@ import ResplashDesignSystem
 
 public struct ImageDetailView: View {
   @Environment(\.layoutEnvironment) var layoutEnvironment
+  @Namespace var namespace
+
   @Bindable var store: StoreOf<ImageDetailFeature>
 
   public init(store: StoreOf<ImageDetailFeature>) {
@@ -43,13 +45,15 @@ public struct ImageDetailView: View {
         UserView(store.image.user)
 
         VStack(alignment: .leading, spacing: 8) {
-          RemoteImage(store.image.url.hd) {
-            $0.resizable()
-              .aspectRatio(CGSize(width: 1, height: store.image.height / store.image.width), contentMode: .fit)
-          }
-          .cornerRadius(4)
-          .onTapGesture {
-            // store.send(.presentImageViewer)
+          Button {
+            store.send(.navigate(.imageViewer(store.image, store.image.url.hd, namespace)))
+          } label: {
+            RemoteImage(store.image.url.hd) {
+              $0.resizable()
+                .aspectRatio(CGSize(width: 1, height: store.image.height / store.image.width), contentMode: .fit)
+            }
+            .cornerRadius(4)
+            .matchedTransitionSource(id: store.image.id, in: namespace)
           }
 
           if let description = store.image.description {
@@ -154,15 +158,15 @@ extension ImageDetailView {
 
       if let location = detail.location, let position = location.position {
         Button {
-
+          store.send(.navigate(.imageMap(detail)))
         } label: {
           ZStack {
-            mapView(
+            MapView(
               coordinate: CLLocationCoordinate2D(
                 latitude: position.latitude,
                 longitude: position.longitude
               ),
-              image: store.image,
+              thumbnailURL: detail.image.url.s3,
               label: location.name
             )
             .allowsHitTesting(false)
@@ -241,27 +245,6 @@ extension ImageDetailView {
       }
     }
     .padding(layoutEnvironment.contentInsets(.horizontal))
-  }
-
-  @ViewBuilder func mapView(coordinate: CLLocationCoordinate2D, image: Unsplash.Image, label: String) -> some View {
-    let camera = MapCamera(centerCoordinate: coordinate, distance: 500)
-    Map(initialPosition: .camera(camera), interactionModes: []) {
-      Annotation(coordinate: coordinate) {
-        Circle()
-          .fill(.white)
-          .frame(width: 40, height: 40)
-          .shadow(color: .black.opacity(0.75), radius: 8, x: 0, y: 2)
-          .overlay {
-            RemoteImage(image.url.s3) {
-              $0.resizable()
-            }
-            .clipShape(Circle())
-            .padding(2)
-          }
-      } label: {
-        Text(label)
-      }
-    }
   }
 }
 

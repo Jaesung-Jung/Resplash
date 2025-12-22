@@ -60,6 +60,8 @@ public struct ImageDetailFeature {
   public enum Navigation {
     case search(String)
     case imageDetail(Unsplash.Image)
+    case imageMap(Unsplash.ImageDetail)
+    case imageViewer(Unsplash.Image, URL?, Namespace.ID)
   }
 
   @Dependency(\.unsplash) var unsplash
@@ -110,7 +112,6 @@ public struct ImageDetailFeature {
 
       case .fetchImageDetailResponse(.failure(let error)), .fetchNextRelatedImagesResponse(.failure(let error)):
         state.loading = .none
-        print(error)
         return .none
 
       case .navigate:

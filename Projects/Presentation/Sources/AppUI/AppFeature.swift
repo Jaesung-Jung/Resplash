@@ -28,6 +28,8 @@ import ResplashSearchUI
 import ResplashCollectionsUI
 import ResplashImagesUI
 import ResplashImageDetailUI
+import ResplashImageMapUI
+import ResplashImageViewerUI
 
 @Reducer
 public struct AppFeature {
@@ -107,6 +109,20 @@ public struct AppFeature {
       case .home(.navigate(.imageDetail(let image))):
         let imageDetailState = ImageDetailFeature.State(image: image)
         state.homePath.append(.imageDetail(imageDetailState))
+        return .none
+
+      case .homePath(.element(id: _, action: .imageDetail(.navigate(.imageMap(let image))))):
+        let imageMapState = ImageMapFeature.State(image: image)
+        state.homePath.append(.imageMap(imageMapState))
+        return .none
+
+      case .homePath(.element(id: _, action: .imageDetail(.navigate(.imageViewer(let image, let previewURL, let namespace))))):
+        let imageViewerState = ImageViewerFeature.State(
+          image: image,
+          previewURL: previewURL,
+          namespace: namespace
+        )
+        state.homePath.append(.imageViewer(imageViewerState))
         return .none
 
       case .explore:

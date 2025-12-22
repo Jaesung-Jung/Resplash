@@ -1,5 +1,5 @@
 //
-//  AppNavigationPath.swift
+//  ImageMapFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -22,20 +22,26 @@
 //  THE SOFTWARE.
 
 import ComposableArchitecture
-import ResplashCollectionsUI
-import ResplashImagesUI
-import ResplashImageDetailUI
-import ResplashImageMapUI
-import ResplashImageViewerUI
+import ResplashEntities
 
 @Reducer
-public enum AppNavigationPath {
-  case collections(CollectionsFeature)
-  case images(ImagesFeature)
-  case imageDetail(ImageDetailFeature)
-  case imageMap(ImageMapFeature)
-  case imageViewer(ImageViewerFeature)
-}
+public struct ImageMapFeature {
+  @ObservableState
+  public struct State: Equatable {
+    let image: Unsplash.ImageDetail
 
-extension AppNavigationPath.State: Equatable {
+    public init(image: Unsplash.ImageDetail) {
+      self.image = image
+    }
+  }
+
+  public enum Action {
+  }
+
+  public init() {
+  }
+
+  public var body: some ReducerOf<Self> {
+    EmptyReducer()
+  }
 }
