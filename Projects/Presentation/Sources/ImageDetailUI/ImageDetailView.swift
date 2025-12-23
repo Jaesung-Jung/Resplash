@@ -81,9 +81,7 @@ public struct ImageDetailView: View {
         }
 
         if store.hasNextPage {
-          ProgressView()
-            .foregroundStyle(.tertiary)
-            // .progressViewStyle(.circleScale)
+          LoadingProgressView()
             .onAppear {
               store.send(.fetchNextRelatedImages)
             }

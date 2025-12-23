@@ -1,5 +1,5 @@
 //
-//  DesignsystemButtonStyle.swift
+//  DesignSystemButtonStyle.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -55,10 +55,6 @@ struct DesignSystemPlainButtonStyle<Effect: DesignSystemButtonEffect>: DesignSys
 public enum DesignSystemButtonStyles: ButtonStyle {
   public func makeBody(configuration: Configuration) -> some View {
   }
-}
-
-extension ButtonStyle where Self == DesignSystemButtonStyles {
-  public static var ds: DesignSystemButtonStyles.Type { DesignSystemButtonStyles.self }
 
   public static func plain() -> some ButtonStyle {
     DesignSystemPlainButtonStyle(effect: .default)
@@ -67,6 +63,10 @@ extension ButtonStyle where Self == DesignSystemButtonStyles {
   public static func plain<Effect: DesignSystemButtonEffect>(_ effect: Effect) -> some ButtonStyle {
     DesignSystemPlainButtonStyle(effect: effect)
   }
+}
+
+extension ButtonStyle where Self == DesignSystemButtonStyles {
+  public static var ds: DesignSystemButtonStyles.Type { DesignSystemButtonStyles.self }
 }
 
 // MARK: - DesignSystemButtonStyle Preview

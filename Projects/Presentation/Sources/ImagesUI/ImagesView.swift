@@ -60,9 +60,7 @@ public struct ImagesView: View {
           }
 
           if store.state.hasNextPage {
-            ProgressView()
-              .foregroundStyle(.tertiary)
-              // .progressViewStyle(.circleScale)
+            LoadingProgressView()
               .onAppear {
                 store.send(.fetchNextImages)
               }
