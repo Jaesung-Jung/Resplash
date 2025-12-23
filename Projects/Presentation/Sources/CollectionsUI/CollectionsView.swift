@@ -41,7 +41,7 @@ public struct CollectionsView: View {
         LazyVGrid( columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
           ForEach(collections) { collection in
             Button {
-              store.send(.navigate(.collectionImages(collection)))
+              store.send(.navigate(.images(collection)))
             } label: {
               ImageCollectionView(collection)
             }

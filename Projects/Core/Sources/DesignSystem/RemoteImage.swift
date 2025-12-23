@@ -28,19 +28,24 @@ public struct RemoteImage<Content: View>: View {
   let url: URL?
   let content: (Image) -> Content
 
+  @Binding var image: UIImage?
   @Binding var isCompleted: Bool
   @State var phase: Phase = .idle
 
-  public init(_ url: URL?, isCompleted: Binding<Bool> = .constant(false), @ViewBuilder content: @escaping (Image) -> Content) {
+  public init(_ url: URL?, image: Binding<UIImage?> = .constant(nil), isCompleted: Binding<Bool> = .constant(false), @ViewBuilder content: @escaping (Image) -> Content) {
     self.url = url
     self.content = content
+    self._image = image
     self._isCompleted = isCompleted
   }
 
   public var body: some View {
     KFImage(url)
       .contentConfigure(content)
-      .onSuccess { _ in phase = .success }
+      .onSuccess {
+        phase = .success
+        image = $0.image
+      }
       .onFailure { _ in phase = .failure }
       .onChange(of: phase) { oldPhase, newPhase in
         if phase == .success, oldPhase != newPhase {

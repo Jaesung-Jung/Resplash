@@ -33,6 +33,7 @@ public struct ImageDetailView: View {
   @Environment(\.layoutEnvironment) var layoutEnvironment
   @Namespace var namespace
 
+  @State var isImageViewerPresented = false
   @Bindable var store: StoreOf<ImageDetailFeature>
 
   public init(store: StoreOf<ImageDetailFeature>) {
@@ -46,15 +47,16 @@ public struct ImageDetailView: View {
 
         VStack(alignment: .leading, spacing: 8) {
           Button {
-            store.send(.navigate(.imageViewer(store.image, store.image.url.hd, namespace)))
+            isImageViewerPresented = true
           } label: {
-            RemoteImage(store.image.url.hd) {
+            RemoteImage(store.image.url.hd, image: $store.previewImage) {
               $0.resizable()
                 .aspectRatio(CGSize(width: 1, height: store.image.height / store.image.width), contentMode: .fit)
             }
-            .cornerRadius(4)
-            .matchedTransitionSource(id: store.image.id, in: namespace)
           }
+          .cornerRadius(4)
+          .disabled(store.previewImage == nil)
+          .matchedGeometryEffect(id: store.image.id, in: namespace)
 
           if let description = store.image.description {
             Text(description)
@@ -89,12 +91,28 @@ public struct ImageDetailView: View {
       }
       .padding(.top, 20)
     }
-    .navigationTitle(store.image.description ?? .localizable(.image))
-    .navigationBarTitleDisplayMode(.inline)
     .buttonStyle(.ds.plain())
+    .navigationBarTitleDisplayMode(.inline)
+    .navigationBarBackButtonHidden(isImageViewerPresented)
+    .toolbarVisibility(isImageViewerPresented ? .hidden : .visible, for: .tabBar)
+    .toolbar {
+      if isImageViewerPresented {
+        Button {
+          isImageViewerPresented = false
+        } label: {
+          Image(systemName: "xmark")
+        }
+      }
+    }
     .task {
       store.send(.fetchImageDetail)
     }
+    .overlay {
+      if isImageViewerPresented, let image = store.previewImage {
+        imageViewer(image)
+      }
+    }
+    .animation(.bouncy, value: isImageViewerPresented)
   }
 }
 
@@ -243,6 +261,17 @@ extension ImageDetailView {
       }
     }
     .padding(layoutEnvironment.contentInsets(.horizontal))
+  }
+
+  @ViewBuilder func imageViewer(_ image: UIImage) -> some View {
+    ZStack {
+      Color.black
+      Image(uiImage: image)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .matchedGeometryEffect(id: store.image.id, in: namespace)
+    }
+    .ignoresSafeArea()
   }
 }
 

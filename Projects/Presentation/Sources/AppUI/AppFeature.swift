@@ -111,25 +111,14 @@ public struct AppFeature {
         state.homePath.append(.imageDetail(imageDetailState))
         return .none
 
-      case .homePath(.element(id: _, action: .imageDetail(.navigate(.imageMap(let image))))):
-        let imageMapState = ImageMapFeature.State(image: image)
-        state.homePath.append(.imageMap(imageMapState))
-        return .none
-
-      case .homePath(.element(id: _, action: .imageDetail(.navigate(.imageViewer(let image, let previewURL, let namespace))))):
-        let imageViewerState = ImageViewerFeature.State(
-          image: image,
-          previewURL: previewURL,
-          namespace: namespace
-        )
-        state.homePath.append(.imageViewer(imageViewerState))
-        return .none
-
       case .explore:
         return .none
 
       case .search:
         return .none
+
+      case .homePath(.element(id: _, let action)), .explorePath(.element(id: _, let action)), .searchPath(.element(id: _, let action)):
+        return handleStackNavigationAction(action, state: &state, path: \.homePath)
 
       case .binding:
         return .none
@@ -141,5 +130,24 @@ public struct AppFeature {
     .forEach(\.homePath, action: \.homePath)
     .forEach(\.explorePath, action: \.explorePath)
     .forEach(\.searchPath, action: \.searchPath)
+  }
+
+  func handleStackNavigationAction(_ action: AppNavigationPath.Action, state: inout State, path: WritableKeyPath<State, StackState<AppNavigationPath.State>>) -> Effect<Action> {
+    switch action {
+    case .collections(.navigate(.images(let collection))):
+      let imageState = ImagesFeature.State(item: .collection(collection))
+      state[keyPath: path].append(.images(imageState))
+      return .none
+    case .images(.navigate(.imageDetail(let image))), .imageDetail(.navigate(.imageDetail(let image))):
+      let imageDetailState = ImageDetailFeature.State(image: image)
+      state[keyPath: path].append(.imageDetail(imageDetailState))
+      return .none
+    case .imageDetail(.navigate(.imageMap(let image))):
+      let imageMapState = ImageMapFeature.State(image: image)
+      state[keyPath: path].append(.imageMap(imageMapState))
+      return .none
+    default:
+      return .none
+    }
   }
 }

@@ -60,7 +60,7 @@ public struct ImagesFeature {
   }
 
   public enum Navigation {
-    case image(Unsplash.Image)
+    case imageDetail(Unsplash.Image)
   }
 
   public enum Item: Equatable, Sendable {

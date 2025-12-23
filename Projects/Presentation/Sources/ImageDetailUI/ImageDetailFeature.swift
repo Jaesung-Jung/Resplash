@@ -32,6 +32,7 @@ import ResplashUtils
 public struct ImageDetailFeature {
   @ObservableState
   public struct State: Equatable {
+    public var previewImage: UIImage?
     public let image: Unsplash.Image
     public var detail: Unsplash.ImageDetail?
     public var seriesImages: [Unsplash.Image]?
@@ -48,13 +49,14 @@ public struct ImageDetailFeature {
     }
   }
 
-  public enum Action {
+  public enum Action: BindableAction {
     case fetchImageDetail
     case fetchNextRelatedImages
     case fetchImageDetailResponse(Result<(Unsplash.ImageDetail, [Unsplash.Image], Page<Unsplash.Image>), Error>)
     case fetchNextRelatedImagesResponse(Result<Page<Unsplash.Image>, Error>)
 
     case navigate(Navigation)
+    case binding(BindingAction<State>)
   }
 
   public enum Navigation {
@@ -70,6 +72,7 @@ public struct ImageDetailFeature {
   }
 
   public var body: some ReducerOf<Self> {
+    BindingReducer()
     Reduce { state, action in
       switch action {
       case .fetchImageDetail:
@@ -115,6 +118,9 @@ public struct ImageDetailFeature {
         return .none
 
       case .navigate:
+        return .none
+
+      case .binding:
         return .none
       }
     }

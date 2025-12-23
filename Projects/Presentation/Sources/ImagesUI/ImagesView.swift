@@ -49,7 +49,7 @@ public struct ImagesView: View {
         if let images = store.images {
           MansonryGrid(images, columns: 2, spacing: 2) { image in
             Button {
-              store.send(.navigate(.image(image)))
+              store.send(.navigate(.imageDetail(image)))
             } label: {
               ImageItemView(image)
                 .size(.compact)

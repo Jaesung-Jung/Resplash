@@ -56,7 +56,7 @@ public struct CollectionsFeature {
   }
 
   public enum Navigation {
-    case collectionImages(Unsplash.ImageCollection)
+    case images(Unsplash.ImageCollection)
   }
 
   @Dependency(\.unsplash) var unsplash
