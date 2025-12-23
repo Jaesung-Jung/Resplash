@@ -33,10 +33,10 @@ public struct NetworkClient: Sendable, ~Copyable {
   public init(baseURL: URL) {
     self.baseURL = baseURL
     #if DEBUG
+    var logger = Logger(label: "network-client")
+    logger.handler = OSLogBackend(label: "network-client")
     self.session = Session(eventMonitors: [
-      NetworkingEventMonitor(
-        logger: Logger(label: "network-client")
-      )
+      NetworkingEventMonitor(logger: logger)
     ])
     #else
     self.session = Session()

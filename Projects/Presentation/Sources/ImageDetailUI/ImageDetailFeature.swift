@@ -63,7 +63,6 @@ public struct ImageDetailFeature {
     case search(String)
     case imageDetail(Unsplash.Image)
     case imageMap(Unsplash.ImageDetail)
-    case imageViewer(Unsplash.Image, URL?, Namespace.ID)
   }
 
   @Dependency(\.unsplash) var unsplash

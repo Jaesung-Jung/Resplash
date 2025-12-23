@@ -24,16 +24,12 @@
 import UIKit
 import Dependencies
 import ResplashLiveSupports
-import ResplashLog
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
   func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
-    LoggingSystem.bootstrap {
-      OSLogBackend(label: $0)
-    }
     prepareDependencies {
       $0.unsplash = .live(URL(string: "https://unsplash.com")!)
     }

@@ -29,6 +29,7 @@ import ResplashStrings
 import ResplashDesignSystem
 
 public struct CollectionsView: View {
+  @Environment(\.layoutEnvironment) var layoutEnvironment
   let store: StoreOf<CollectionsFeature>
 
   public init(store: StoreOf<CollectionsFeature>) {
@@ -48,7 +49,7 @@ public struct CollectionsView: View {
             .buttonStyle(.ds.plain())
           }
         }
-        .padding(20)
+        .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
 
         LazyVStack {
           if store.hasNextPage {

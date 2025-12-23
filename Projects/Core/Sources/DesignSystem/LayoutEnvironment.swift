@@ -39,13 +39,13 @@ public struct LayoutEnvironment: Sendable {
 
   static func compactLayoutEnvironment() -> LayoutEnvironment {
     LayoutEnvironment(
-      contentInsets: EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20)
+      contentInsets: EdgeInsets(top: 10, leading: 20, bottom: 20, trailing: 20)
     )
   }
 
   static func regularLayoutEnvironment() -> LayoutEnvironment {
     LayoutEnvironment(
-      contentInsets: EdgeInsets(top: 0, leading: 40, bottom: 40, trailing: 40)
+      contentInsets: EdgeInsets(top: 20, leading: 40, bottom: 40, trailing: 40)
     )
   }
 }

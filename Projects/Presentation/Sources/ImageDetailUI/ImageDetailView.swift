@@ -42,7 +42,7 @@ public struct ImageDetailView: View {
 
   public var body: some View {
     ScrollView {
-      LazyVStack(alignment: .leading, spacing: 20) {
+      VStack(alignment: .leading, spacing: 20) {
         UserView(store.image.user)
 
         VStack(alignment: .leading, spacing: 8) {
@@ -71,7 +71,7 @@ public struct ImageDetailView: View {
           tagGrid(tags)
         }
       }
-      .padding(layoutEnvironment.contentInsets(.horizontal))
+      .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
 
       LazyVStack(spacing: 20) {
         if let images = store.seriesImages, !images.isEmpty {
@@ -92,15 +92,21 @@ public struct ImageDetailView: View {
       .padding(.top, 20)
     }
     .buttonStyle(.ds.plain())
+    .navigationTitle(store.image.description.map { LocalizedStringKey($0) } ?? .localizable(.image))
     .navigationBarTitleDisplayMode(.inline)
     .navigationBarBackButtonHidden(isImageViewerPresented)
     .toolbarVisibility(isImageViewerPresented ? .hidden : .visible, for: .tabBar)
     .toolbar {
+      ToolbarItem(placement: .principal) {
+        Text(verbatim: "")
+      }
       if isImageViewerPresented {
-        Button {
-          isImageViewerPresented = false
-        } label: {
-          Image(systemName: "xmark")
+        ToolbarItem(placement: .primaryAction) {
+          Button {
+            isImageViewerPresented = false
+          } label: {
+            Image(systemName: "xmark")
+          }
         }
       }
     }
@@ -135,7 +141,17 @@ extension ImageDetailView {
           Text(detail.views.formatted(.number))
           Text(detail.downloads.formatted(.number))
           HStack {
-            Text((["\(detail.type)"] + detail.topics.map(\.title)).joined(separator: ", "))
+            let type = switch detail.type {
+            case .photo:
+              LocalizedStringKey.localizable(.photo)
+            case .illustration:
+              LocalizedStringKey.localizable(.illustration)
+            }
+            if detail.topics.isEmpty {
+              Text(type)
+            } else {
+              Text("\(Text(type)), \(detail.topics.map(\.title).joined(separator: ", "))")
+            }
             Spacer(minLength: 0)
           }
         }
@@ -289,7 +305,6 @@ import ResplashPreviewSupports
       $0.unsplash = .preview()
     })
   }
-  .environment(\.locale, Locale(identifier: "ko_KR"))
 }
 
 #endif

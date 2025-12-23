@@ -29,7 +29,6 @@ import ResplashCollectionsUI
 import ResplashImagesUI
 import ResplashImageDetailUI
 import ResplashImageMapUI
-import ResplashImageViewerUI
 
 @Reducer
 public struct AppFeature {

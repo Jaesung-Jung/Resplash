@@ -29,6 +29,7 @@ import ResplashLog
 
 struct NetworkingEventMonitor: EventMonitor {
   let logger: Logger
+  let maxResponseTextLength = 100
 
   func request(_ request: Request, didResumeTask task: URLSessionTask) {
     guard let description = requestDescription(for: request.request) else {
@@ -43,7 +44,11 @@ struct NetworkingEventMonitor: EventMonitor {
     }
     let validStatusCode = Set<Int>(200...299)
     if validStatusCode.contains(httpResponse.statusCode) {
-      let message = ["💬 \(description)", dataDescription(for: data) ?? "⚠️ <NO RESPONSE DATA>"].joined(separator: "\n")
+      var dataDescription = dataDescription(for: data) ?? "⚠️ <NO RESPONSE DATA>"
+      if dataDescription.count > maxResponseTextLength {
+        dataDescription = "\(dataDescription.prefix(maxResponseTextLength / 2))...\(dataDescription.suffix(maxResponseTextLength / 2))"
+      }
+      let message = ["💬 \(description)", dataDescription].joined(separator: "\n")
       logger.debug("\(message)")
     } else {
       let message = ["💬 \(description)", dataDescription(for: data)].compactMap { $0 }.joined(separator: "\n")
