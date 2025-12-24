@@ -370,6 +370,26 @@ extension TrendTransformer {
   }
 }
 
+// MARK: - SearchSuggestionTransformer
+
+struct SearchSuggestionTransformer: DataTransformer {
+  private struct SuggestionItem: Decodable {
+    let query: String
+    let priority: Int
+  }
+
+  static func transform(from container: KeyedDecodingContainer<StringCodingKey>) throws -> [Unsplash.SearchSuggestion] {
+    let fuzzy = try container.decodeIfPresent([SuggestionItem].self, forKey: "fuzzy") ?? []
+    let autocomplete = try container.decodeIfPresent([SuggestionItem].self, forKey: "autocomplete") ?? []
+    let didYouMean = try container.decodeIfPresent([SuggestionItem].self, forKey: "did_you_mean") ?? []
+    return [fuzzy, autocomplete, didYouMean]
+      .flatMap { $0 }
+      .uniqued(on: \.query)
+      .sorted(by: \.query)
+      .map { Unsplash.SearchSuggestion(text: $0.query, priority: $0.priority) }
+  }
+}
+
 // MARK: - SearchMetaTransformer
 
 struct SearchMetaTransformer: DataTransformer {

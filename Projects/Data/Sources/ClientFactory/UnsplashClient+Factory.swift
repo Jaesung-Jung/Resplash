@@ -120,7 +120,12 @@ extension UnsplashClient {
             .map(\.domain)
         )
       },
-      fetchMeta: {
+      fetchSearchSuggestions: {
+        try await request(.searchSuggestions(query: $0))
+          .decode(DTO<SearchSuggestionTransformer>.self)
+          .domain
+      },
+      fetchSearchMeta: {
         try await request(.searchMeta(query: $0))
           .decode(DTO<SearchMetaTransformer>.self)
           .domain

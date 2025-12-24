@@ -27,12 +27,31 @@ import ResplashNetworking
 extension Endpoint {
   public static func trends(page: Int, count: Int) -> Endpoint {
     Endpoint(
-      resourceId: "trendes_\(page)",
+      resourceId: "trends_\(page)",
       path: "napi/search_trends",
       method: .get,
       parameters: [
         "page": page,
         "per_page": count
+      ]
+    )
+  }
+
+  public static func searchSuggestions(query: String) -> Endpoint {
+    Endpoint(
+      resourceId: "search_suggestions",
+      path: "nautocomplete/\(query)",
+      method: .get
+    )
+  }
+
+  public static func searchMeta(query: String) -> Endpoint {
+    Endpoint(
+      resourceId: "search_meta",
+      path: "napi/search/meta",
+      method: .get,
+      parameters: [
+        "query": query
       ]
     )
   }
@@ -85,17 +104,6 @@ extension Endpoint {
         "query": query,
         "page": page,
         "per_page": count
-      ]
-    )
-  }
-
-  public static func searchMeta(query: String) -> Endpoint {
-    Endpoint(
-      resourceId: "search_meta",
-      path: "napi/search/meta",
-      method: .get,
-      parameters: [
-        "query": query
       ]
     )
   }

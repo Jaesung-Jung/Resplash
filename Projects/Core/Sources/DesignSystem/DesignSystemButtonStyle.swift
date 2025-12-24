@@ -60,7 +60,7 @@ public enum DesignSystemButtonStyles: ButtonStyle {
     DesignSystemPlainButtonStyle(effect: .default)
   }
 
-  public static func plain<Effect: DesignSystemButtonEffect>(_ effect: Effect) -> some ButtonStyle {
+  public static func plain<Effect: DesignSystemButtonEffect>(effect: Effect) -> some ButtonStyle {
     DesignSystemPlainButtonStyle(effect: effect)
   }
 }

@@ -25,7 +25,8 @@ import MemberwiseInit
 
 extension Unsplash {
   @MemberwiseInit(.public)
-  public struct SearchSuggestion: Hashable, Sendable {
-    public let suggestions: [String]
+  public struct SearchSuggestion: Equatable, Sendable {
+    public let text: String
+    public let priority: Int
   }
 }

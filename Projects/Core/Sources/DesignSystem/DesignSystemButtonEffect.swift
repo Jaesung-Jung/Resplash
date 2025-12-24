@@ -39,6 +39,14 @@ extension DesignSystemButtonEffect where Self == DesignSystemButtonEffects {
   public static func scale(_ scale: CGFloat) -> some DesignSystemButtonEffect {
     DesignSystemScaleButtonEffect(scale: scale)
   }
+
+  public static func background(padding: EdgeInsets? = nil) -> some DesignSystemButtonEffect {
+    DesignSystemBackgroundButtonEffect(shape: .tertiary, padding: padding)
+  }
+
+  public static func background<Shape: ShapeStyle>(_ shape: Shape, padding: EdgeInsets? = nil) -> some DesignSystemButtonEffect {
+    DesignSystemBackgroundButtonEffect(shape: shape, padding: padding)
+  }
 }
 
 // MARK: - DesignSystemButtonEffects
@@ -76,5 +84,33 @@ struct DesignSystemScaleButtonEffect: DesignSystemButtonEffect {
 
   func modifier(isPressed: Bool) -> Modifier {
     Modifier(scale: scale, isPressed: isPressed)
+  }
+}
+
+// MARK: - DesignSystemBackgroundButtonEffect
+
+struct DesignSystemBackgroundButtonEffect<Shape: ShapeStyle>: DesignSystemButtonEffect {
+  let shape: Shape
+  let padding: EdgeInsets?
+
+  struct Modifier: ViewModifier {
+    let isPressed: Bool
+    let shape: Shape
+    let padding: EdgeInsets
+
+    func body(content: Content) -> some View {
+      content
+        .background {
+          RoundedRectangle(cornerRadius: 8)
+            .fill(shape)
+            .opacity(isPressed ? 1 : 0)
+            .padding(padding)
+        }
+        .animation(.smooth, value: isPressed)
+    }
+  }
+
+  func modifier(isPressed: Bool) -> Modifier {
+    Modifier(isPressed: isPressed, shape: shape, padding: padding ?? EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
   }
 }

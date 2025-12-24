@@ -26,18 +26,23 @@ import ResplashEntities
 extension UnsplashClient {
   public struct SearchClient: Sendable {
     let fetchTrends: @Sendable (Int, Int) async throws -> Page<Unsplash.Trend>
-    let fetchMeta: @Sendable (String) async throws -> Unsplash.SearchMeta
+    let fetchSearchSuggestions: @Sendable (String) async throws -> [Unsplash.SearchSuggestion]
+    let fetchSearchMeta: @Sendable (String) async throws -> Unsplash.SearchMeta
     let searchPhotos: @Sendable (String, Int, Int) async throws -> Page<Unsplash.Image>
     let searchIllustrations: @Sendable (String, Int, Int) async throws -> Page<Unsplash.Image>
     let searchCollections: @Sendable (String, Int, Int) async throws -> Page<Unsplash.ImageCollection>
     let searchUsers: @Sendable (String, Int, Int) async throws -> Page<Unsplash.User>
 
-    public func trends(page: Int, count: Int) async throws -> Page<Unsplash.Trend> {
-      try await fetchTrends(page, count)
+    public func trends(page: Int) async throws -> Page<Unsplash.Trend> {
+      try await fetchTrends(page, 20)
+    }
+
+    public func suggestions(query: String) async throws -> [Unsplash.SearchSuggestion] {
+      try await fetchSearchSuggestions(query)
     }
 
     public func meta(query: String) async throws -> Unsplash.SearchMeta {
-      try await fetchMeta(query)
+      try await fetchSearchMeta(query)
     }
 
     public func photos(query: String, page: Int, count: Int) async throws -> Page<Unsplash.Image> {

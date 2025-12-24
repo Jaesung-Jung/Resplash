@@ -1,0 +1,68 @@
+{
+  "fuzzy": [
+    {
+      "query": "lake",
+      "priority": 20857
+    },
+    {
+      "query": "lake como",
+      "priority": 4032
+    },
+    {
+      "query": "mountain lake",
+      "priority": 3559
+    },
+    {
+      "query": "lake tahoe",
+      "priority": 3254
+    },
+    {
+      "query": "salt lake city",
+      "priority": 2550
+    }
+  ],
+  "autocomplete": [
+    {
+      "query": "lake",
+      "priority": 20857
+    },
+    {
+      "query": "lake como",
+      "priority": 4032
+    },
+    {
+      "query": "lake tahoe",
+      "priority": 3254
+    },
+    {
+      "query": "lake district",
+      "priority": 2359
+    },
+    {
+      "query": "lake nature",
+      "priority": 2163
+    }
+  ],
+  "did_you_mean": [
+    {
+      "query": "lake",
+      "priority": 20857
+    },
+    {
+      "query": "lavender",
+      "priority": 10253
+    },
+    {
+      "query": "lake como",
+      "priority": 4032
+    },
+    {
+      "query": "mountain lake",
+      "priority": 3559
+    },
+    {
+      "query": "lake tahoe",
+      "priority": 3254
+    }
+  ]
+}
