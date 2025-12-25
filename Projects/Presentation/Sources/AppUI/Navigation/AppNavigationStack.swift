@@ -27,6 +27,7 @@ import ResplashCollectionsUI
 import ResplashImagesUI
 import ResplashImageDetailUI
 import ResplashImageMapUI
+import ResplashSearchResultUI
 
 struct AppNavigationStack<Root: View>: View {
   let path: Binding<Store<StackState<AppNavigationPath.State>, StackActionOf<AppNavigationPath>>>
@@ -50,6 +51,8 @@ struct AppNavigationStack<Root: View>: View {
         ImageDetailView(store: store)
       case .imageMap(let store):
         ImageMapView(store: store)
+      case .searchResult(let store):
+        SearchResultView(store: store)
       }
     }
   }

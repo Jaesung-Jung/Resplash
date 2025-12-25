@@ -71,5 +71,8 @@ extension Page: Collection {
   }
 }
 
+extension Page: Equatable where Item: Equatable {
+}
+
 extension Page: Sendable where Item: Sendable {
 }

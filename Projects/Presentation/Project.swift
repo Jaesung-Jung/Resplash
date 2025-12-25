@@ -24,10 +24,11 @@ let project = Project.module(
         .presentation(.imagesUI),
         .presentation(.imageDetailUI),
         .presentation(.imageMapUI),
+        .presentation(.searchResultUI),
         .core(.strings),
         .external(.composableArchitecture)
       )
-    case .homeUI, .exploreUI, .searchUI, .collectionsUI, .imagesUI, .imageDetailUI, .imageMapUI:
+    case .homeUI, .exploreUI, .searchUI, .collectionsUI, .imagesUI, .imageDetailUI, .imageMapUI, .searchResultUI:
       return withPreviewSupports(
         .presentation(.ui),
         .domain(.clients),

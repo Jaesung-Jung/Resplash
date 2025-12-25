@@ -26,6 +26,7 @@ import ResplashCollectionsUI
 import ResplashImagesUI
 import ResplashImageDetailUI
 import ResplashImageMapUI
+import ResplashSearchResultUI
 
 @Reducer
 public enum AppNavigationPath {
@@ -33,6 +34,7 @@ public enum AppNavigationPath {
   case images(ImagesFeature)
   case imageDetail(ImageDetailFeature)
   case imageMap(ImageMapFeature)
+  case searchResult(SearchResultFeature)
 }
 
 extension AppNavigationPath.State: Equatable {

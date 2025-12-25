@@ -25,7 +25,7 @@ import MemberwiseInit
 
 extension Unsplash {
   @MemberwiseInit(.public)
-  public struct SearchMeta: Sendable {
+  public struct SearchMeta: Sendable, Equatable {
     public let input: String
     public let photos: Int
     public let illustrations: Int

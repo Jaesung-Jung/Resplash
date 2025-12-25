@@ -45,20 +45,20 @@ extension UnsplashClient {
       try await fetchSearchMeta(query)
     }
 
-    public func photos(query: String, page: Int, count: Int) async throws -> Page<Unsplash.Image> {
-      try await searchPhotos(query, page, count)
+    public func photos(query: String, page: Int) async throws -> Page<Unsplash.Image> {
+      try await searchPhotos(query, page, 30)
     }
 
-    public func illustrations(query: String, page: Int, count: Int) async throws -> Page<Unsplash.Image> {
-      try await searchIllustrations(query, page, count)
+    public func illustrations(query: String, page: Int) async throws -> Page<Unsplash.Image> {
+      try await searchIllustrations(query, page, 30)
     }
 
-    public func collections(query: String, page: Int, count: Int) async throws -> Page<Unsplash.ImageCollection> {
-      try await searchCollections(query, page, count)
+    public func collections(query: String, page: Int) async throws -> Page<Unsplash.ImageCollection> {
+      try await searchCollections(query, page, 30)
     }
 
-    public func users(query: String, page: Int, count: Int) async throws -> Page<Unsplash.User> {
-      try await searchUsers(query, page, count)
+    public func users(query: String, page: Int) async throws -> Page<Unsplash.User> {
+      try await searchUsers(query, page, 30)
     }
   }
 }

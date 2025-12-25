@@ -29,6 +29,7 @@ import ResplashCollectionsUI
 import ResplashImagesUI
 import ResplashImageDetailUI
 import ResplashImageMapUI
+import ResplashSearchResultUI
 
 @Reducer
 public struct AppFeature {
@@ -113,7 +114,9 @@ public struct AppFeature {
       case .explore:
         return .none
 
-      case .search:
+      case .search(.navigate(.search(let query))):
+        let searchResultState = SearchResultFeature.State(query: query, mediaType: state.home.mediaType)
+        state.searchPath.append(.searchResult(searchResultState))
         return .none
 
       case .homePath(.element(id: _, let action)), .explorePath(.element(id: _, let action)), .searchPath(.element(id: _, let action)):
