@@ -1,5 +1,5 @@
 //
-//  CollectionsView.swift
+//  UserListView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -25,50 +25,21 @@ import SwiftUI
 import ComposableArchitecture
 import ResplashUI
 import ResplashEntities
-import ResplashStrings
 import ResplashDesignSystem
 
-public struct CollectionsView: View {
-  @Environment(\.layoutEnvironment) var layoutEnvironment
-  let store: StoreOf<CollectionsFeature>
+public struct UserListView: View {
+  let store: StoreOf<UserListFeature>
 
-  public init(store: StoreOf<CollectionsFeature>) {
+  public init(store: StoreOf<UserListFeature>) {
     self.store = store
   }
 
   public var body: some View {
-    ScrollView {
-      if let collections = store.collections {
-        LazyVGrid( columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
-          ForEach(collections) { collection in
-            Button {
-              store.send(.navigate(.images(collection)))
-            } label: {
-              ImageCollectionView(collection)
-            }
-            .buttonStyle(.ds.plain())
-          }
-        }
-        .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
-
-        LazyVStack {
-          if store.hasNextPage {
-            LoadingProgressView()
-              .onAppear {
-                store.send(.fetchNextCollections)
-              }
-          }
-        }
-      }
-    }
-    .navigationTitle(.localizable(.imageCollections))
-    .task {
-      store.send(.fetchCollections)
-    }
+    Text("UserListView")
   }
 }
 
-// MARK: - ImageCollectionsView Preview
+// MARK: - UserListView Preview
 
 #if DEBUG
 
@@ -76,8 +47,8 @@ import ResplashPreviewSupports
 
 #Preview {
   NavigationStack {
-    CollectionsView(store: Store(initialState: CollectionsFeature.State(mediaType: .photo)) {
-      CollectionsFeature()
+    UserListView(store: Store(initialState: UserListFeature.State(query: "Lake")) {
+      UserListFeature()
     } withDependencies: {
       $0.unsplash = .preview()
     })

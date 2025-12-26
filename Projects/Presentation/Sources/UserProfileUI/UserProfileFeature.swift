@@ -1,5 +1,5 @@
 //
-//  AppNavigationPath.swift
+//  UserProfileFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -21,25 +21,35 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import Foundation
 import ComposableArchitecture
-import ResplashCollectionListUI
-import ResplashImageListUI
-import ResplashImageDetailUI
-import ResplashImageMapUI
-import ResplashSearchResultUI
-import ResplashUserListUI
-import ResplashUserProfileUI
+import ResplashUI
+import ResplashClients
+import ResplashEntities
+import ResplashUtils
 
 @Reducer
-public enum AppNavigationPath {
-  case collections(CollectionListFeature)
-  case images(ImageListFeature)
-  case imageDetail(ImageDetailFeature)
-  case imageMap(ImageMapFeature)
-  case searchResult(SearchResultFeature)
-  case users(UserListFeature)
-  case userProfile(UserProfileFeature)
-}
+public struct UserProfileFeature {
+  @ObservableState
+  public struct State: Equatable {
+    public let user: Unsplash.User
 
-extension AppNavigationPath.State: Equatable {
+    public init(user: Unsplash.User) {
+      self.user = user
+    }
+  }
+
+  public enum Action {
+  }
+
+  public enum Navigation {
+    case userProfile(Unsplash.User)
+  }
+
+  public init() {
+  }
+
+  public var body: some ReducerOf<Self> {
+    EmptyReducer()
+  }
 }

@@ -51,11 +51,13 @@ public struct Presentation: Module {
     case homeUI
     case exploreUI
     case searchUI
-    case collectionsUI
-    case imagesUI
+    case collectionListUI
+    case imageListUI
     case imageDetailUI
     case imageMapUI
     case searchResultUI
+    case userListUI
+    case userProfileUI
   }
 }
 

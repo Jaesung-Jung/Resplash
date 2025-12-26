@@ -1,5 +1,5 @@
 //
-//  ImagesView.swift
+//  ImageListView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -27,17 +27,17 @@ import ResplashUI
 import ResplashEntities
 import ResplashDesignSystem
 
-public struct ImagesView: View {
+public struct ImageListView: View {
   @Environment(\.layoutEnvironment) var layoutEnvironment
-  let store: StoreOf<ImagesFeature>
+  let store: StoreOf<ImageListFeature>
 
-  public init(store: StoreOf<ImagesFeature>) {
+  public init(store: StoreOf<ImageListFeature>) {
     self.store = store
   }
 
   public var body: some View {
     ScrollView {
-      LazyVStack(spacing: 20) {
+      VStack(spacing: 20) {
         if case .topic(let topic) = store.item {
           HStack {
             Text(topic.description.trimmingCharacters(in: .whitespacesAndNewlines))
@@ -84,10 +84,10 @@ public struct ImagesView: View {
   }
 }
 
-// MARK: - ImagesView (Strings)
+// MARK: - ImageListView (Strings)
 
-extension ImagesView {
-  func title(_ item: ImagesFeature.Item) -> String {
+extension ImageListView {
+  func title(_ item: ImageListFeature.Item) -> String {
     switch item {
     case .topic(let topic):
       topic.title
@@ -98,7 +98,7 @@ extension ImagesView {
     }
   }
 
-  func subtitle( _ item: ImagesFeature.Item) -> LocalizedStringKey? {
+  func subtitle( _ item: ImageListFeature.Item) -> LocalizedStringKey? {
     switch item {
     case .topic(let topic):
       topic.owners.first.map { .localizable(.createdBy($0.name)) }
@@ -110,7 +110,7 @@ extension ImagesView {
   }
 }
 
-// MARK: - ImagesView Preview
+// MARK: - ImageListView Preview
 
 #if DEBUG
 
@@ -118,8 +118,8 @@ import ResplashPreviewSupports
 
 #Preview {
   NavigationStack {
-    ImagesView(store: Store(initialState: ImagesFeature.State(item: .topic(.preview))) {
-      ImagesFeature()
+    ImageListView(store: Store(initialState: ImageListFeature.State(item: .collection(.preview1))) {
+      ImageListFeature()
     } withDependencies: {
       $0.unsplash = .preview()
     })

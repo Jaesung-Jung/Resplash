@@ -1,5 +1,5 @@
 //
-//  ImagesFeature.swift
+//  ImageListFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -27,12 +27,9 @@ import ResplashUI
 import ResplashClients
 import ResplashEntities
 import ResplashUtils
-import ResplashStrings
 
 @Reducer
-public struct ImagesFeature {
-  public typealias Category = Unsplash.Category
-
+public struct ImageListFeature {
   @ObservableState
   public struct State: Equatable {
     public let item: Item
@@ -134,7 +131,7 @@ public struct ImagesFeature {
 // MARK: - UnsplashClient
 
 extension UnsplashClient {
-  func images(for item: ImagesFeature.Item, page: Int) async throws -> Page<Unsplash.Image> {
+  func images(for item: ImageListFeature.Item, page: Int) async throws -> Page<Unsplash.Image> {
     switch item {
     case .topic(let topic):
       try await self.topic.images(for: topic, page: page)

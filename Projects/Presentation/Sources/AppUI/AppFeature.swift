@@ -25,11 +25,13 @@ import ComposableArchitecture
 import ResplashHomeUI
 import ResplashExploreUI
 import ResplashSearchUI
-import ResplashCollectionsUI
-import ResplashImagesUI
+import ResplashCollectionListUI
+import ResplashImageListUI
 import ResplashImageDetailUI
 import ResplashImageMapUI
 import ResplashSearchResultUI
+import ResplashUserListUI
+import ResplashUserProfileUI
 
 @Reducer
 public struct AppFeature {
@@ -92,18 +94,18 @@ public struct AppFeature {
     Reduce { state, action in
       switch action {
       case .home(.navigate(.collections)):
-        let collectionsState = CollectionsFeature.State(mediaType: state.home.mediaType)
-        state.homePath.append(.collections(collectionsState))
+        let collectionListState = CollectionListFeature.State(mediaType: state.home.mediaType)
+        state.homePath.append(.collections(collectionListState))
         return .none
 
       case .home(.navigate(.topicImages(let topic))):
-        let imagesState = ImagesFeature.State(item: .topic(topic))
-        state.homePath.append(.images(imagesState))
+        let imageListState = ImageListFeature.State(item: .topic(topic))
+        state.homePath.append(.images(imageListState))
         return .none
 
       case .home(.navigate(.collectionImages(let collection))):
-        let imageState = ImagesFeature.State(item: .collection(collection))
-        state.homePath.append(.images(imageState))
+        let imageListState = ImageListFeature.State(item: .collection(collection))
+        state.homePath.append(.images(imageListState))
         return .none
 
       case .home(.navigate(.imageDetail(let image))):
@@ -119,8 +121,14 @@ public struct AppFeature {
         state.searchPath.append(.searchResult(searchResultState))
         return .none
 
-      case .homePath(.element(id: _, let action)), .explorePath(.element(id: _, let action)), .searchPath(.element(id: _, let action)):
+      case .homePath(.element(id: _, let action)):
         return handleStackNavigationAction(action, state: &state, path: \.homePath)
+
+      case .explorePath(.element(id: _, let action)):
+        return handleStackNavigationAction(action, state: &state, path: \.explorePath)
+
+      case .searchPath(.element(id: _, let action)):
+        return handleStackNavigationAction(action, state: &state, path: \.searchPath)
 
       case .binding:
         return .none
@@ -136,20 +144,30 @@ public struct AppFeature {
 
   func handleStackNavigationAction(_ action: AppNavigationPath.Action, state: inout State, path: WritableKeyPath<State, StackState<AppNavigationPath.State>>) -> Effect<Action> {
     switch action {
-    case .collections(.navigate(.images(let collection))):
-      let imageState = ImagesFeature.State(item: .collection(collection))
-      state[keyPath: path].append(.images(imageState))
-      return .none
-    case .images(.navigate(.imageDetail(let image))), .imageDetail(.navigate(.imageDetail(let image))):
+    case .collections(.navigate(.images(let collection))), .searchResult(.navigate(.collectionImages(let collection))):
+      let imageListState = ImageListFeature.State(item: .collection(collection))
+      state[keyPath: path].append(.images(imageListState))
+    case .images(.navigate(.imageDetail(let image))), .imageDetail(.navigate(.imageDetail(let image))), .searchResult(.navigate(.imageDetail(let image))):
       let imageDetailState = ImageDetailFeature.State(image: image)
       state[keyPath: path].append(.imageDetail(imageDetailState))
-      return .none
     case .imageDetail(.navigate(.imageMap(let image))):
       let imageMapState = ImageMapFeature.State(image: image)
       state[keyPath: path].append(.imageMap(imageMapState))
-      return .none
+    case .searchResult(.navigate(.search(let query, let mediaType))):
+      let searchResultState = SearchResultFeature.State(query: query, mediaType: mediaType)
+      state[keyPath: path].append(.searchResult(searchResultState))
+    case .searchResult(.navigate(.users(let query))):
+      let userListState = UserListFeature.State(query: query)
+      state[keyPath: path].append(.users(userListState))
+    case .searchResult(.navigate(.userProfile(let user))):
+      let userProfileState = UserProfileFeature.State(user: user)
+      state[keyPath: path].append(.userProfile(userProfileState))
+    case .searchResult(.navigate(.collections(let query))):
+      let collectionListState = CollectionListFeature.State(query: query)
+      state[keyPath: path].append(.collections(collectionListState))
     default:
       return .none
     }
+    return .none
   }
 }

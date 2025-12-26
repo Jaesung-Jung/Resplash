@@ -45,9 +45,9 @@ public struct SearchResultView: View {
           Section {
             if let users = store.users, !users.isEmpty {
               sectionItem(title: .localizable(.users), subtitle: formattedNumber(meta.users)) {
-                store.send(.navigate(.users))
+                store.send(.navigate(.users(store.query)))
               } content: {
-                UserCardGridView(users: users, insets: layoutEnvironment.contentInsets(.horizontal)) {
+                UserCardHGrid(users: users, insets: layoutEnvironment.contentInsets(.horizontal)) {
                   store.send(.navigate(.userProfile($0)))
                 }
               }
@@ -55,9 +55,9 @@ public struct SearchResultView: View {
 
             if let collections = store.collections, !collections.isEmpty {
               sectionItem(title: .localizable(.imageCollections), subtitle: formattedNumber(meta.collections)) {
-                store.send(.navigate(.collections))
+                store.send(.navigate(.collections(store.query)))
               } content: {
-                ImageCollectionGridView(collections, insets: layoutEnvironment.contentInsets(.horizontal)) {
+                ImageCollectionHGrid(collections, insets: layoutEnvironment.contentInsets(.horizontal)) {
                   store.send(.navigate(.collectionImages($0)))
                 }
               }
@@ -80,7 +80,7 @@ public struct SearchResultView: View {
           } header: {
             if !meta.relatedSearches.isEmpty {
               relatedSearchList(meta.relatedSearches) {
-                store.send(.navigate(.search($0)))
+                store.send(.navigate(.search($0, store.mediaType)))
               }
             }
           }
@@ -88,7 +88,7 @@ public struct SearchResultView: View {
         .padding(layoutEnvironment.contentInsets(.vertical))
       }
     }
-    .navigationTitle(store.query)
+    .navigationTitle(store.query.capitalized)
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
       MediaPickerMenu(mediaType: $store.mediaType.sending(\.selectMediaType))

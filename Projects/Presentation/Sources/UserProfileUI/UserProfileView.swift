@@ -1,5 +1,5 @@
 //
-//  ImageCollectionGridView.swift
+//  UserProfileView.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -22,51 +22,37 @@
 //  THE SOFTWARE.
 
 import SwiftUI
+import ComposableArchitecture
+import ResplashUI
 import ResplashEntities
 import ResplashDesignSystem
 
-public struct ImageCollectionGridView: View {
-  let collections: [Unsplash.ImageCollection]
-  let spacing: CGFloat
-  let insets: EdgeInsets
-  let action: @MainActor (Unsplash.ImageCollection) -> Void
+public struct UserProfileView: View {
+  let store: StoreOf<UserProfileFeature>
 
-  public init(_ collections: [Unsplash.ImageCollection], spacing: CGFloat = 10, insets: EdgeInsets? = nil, action: @MainActor @escaping (Unsplash.ImageCollection) -> Void) {
-    self.collections = collections
-    self.spacing = spacing
-    self.insets = insets ?? EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-    self.action = action
+  public init(store: StoreOf<UserProfileFeature>) {
+    self.store = store
   }
 
   public var body: some View {
-    ScrollView(.horizontal, showsIndicators: false) {
-      LazyHGrid(rows: [GridItem()], alignment: .top, spacing: spacing) {
-        ForEach(collections) { collection in
-          Button {
-            action(collection)
-          } label: {
-            ImageCollectionView(collection)
-              .containerRelativeFrame(.horizontal) { length, _ in (length - insets.leading) / 1.5 }
-          }
-        }
-      }
-      .padding(insets)
-      .scrollTargetLayout()
-    }
-    .scrollTargetBehavior(.viewAligned(limitBehavior: .never, anchor: .leading))
+    Text("UserProfileView")
   }
 }
 
-// MARK: - ImageCollectionListView Preview
+// MARK: - UserProfileView Preview
 
 #if DEBUG
 
 import ResplashPreviewSupports
 
 #Preview {
-  ImageCollectionGridView([.preview1, .preview2], insets: EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)) { _ in
+  NavigationStack {
+    UserProfileView(store: Store(initialState: UserProfileFeature.State(user: .preview1)) {
+      UserProfileFeature()
+    } withDependencies: {
+      $0.unsplash = .preview()
+    })
   }
-  .buttonStyle(.ds.plain())
 }
 
 #endif

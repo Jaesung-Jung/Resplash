@@ -1,5 +1,5 @@
 //
-//  CollectionsFeature.swift
+//  CollectionListFeature.swift
 //
 //  Copyright © 2025 Jaesung Jung. All rights reserved.
 //
@@ -29,10 +29,10 @@ import ResplashUtils
 import ResplashStrings
 
 @Reducer
-public struct CollectionsFeature {
+public struct CollectionListFeature {
   @ObservableState
   public struct State: Equatable {
-    public let mediaType: Unsplash.MediaType
+    public let method: FetchMethod
     public var collections: [Unsplash.ImageCollection]?
 
     var loading: Loading = .none
@@ -42,7 +42,11 @@ public struct CollectionsFeature {
     var hasNextPage: Bool = false
 
     public init(mediaType: Unsplash.MediaType) {
-      self.mediaType = mediaType
+      self.method = .media(mediaType)
+    }
+
+    public init(query: String) {
+      self.method = .search(query)
     }
   }
 
@@ -59,6 +63,11 @@ public struct CollectionsFeature {
     case images(Unsplash.ImageCollection)
   }
 
+  public enum FetchMethod: Equatable, Sendable {
+    case media(Unsplash.MediaType)
+    case search(String)
+  }
+
   @Dependency(\.unsplash) var unsplash
 
   public init() {
@@ -69,8 +78,15 @@ public struct CollectionsFeature {
       switch action {
       case .fetchCollections:
         state.loading = .loading
-        return .run { [unsplash, mediaType = state.mediaType] send in
-          let result = await Result { try await unsplash.collection.items(for: mediaType, page: 1) }
+        return .run { [unsplash, method = state.method] send in
+          let result = await Result {
+            switch method {
+            case .media(let mediaType):
+              try await unsplash.collection.items(for: mediaType, page: 1)
+            case .search(let query):
+              try await unsplash.search.collections(query: query, page: 1)
+            }
+          }
           await send(.fetchCollectionsResponse(result))
         }
 
@@ -79,8 +95,15 @@ public struct CollectionsFeature {
           return .none
         }
         state.loading = .loading
-        return .run { [unsplash, mediaType = state.mediaType, page = state.page] send in
-          let result = await Result { try await unsplash.collection.items(for: mediaType, page: page + 1) }
+        return .run { [unsplash, method = state.method, page = state.page] send in
+          let result = await Result {
+            switch method {
+            case .media(let mediaType):
+              try await unsplash.collection.items(for: mediaType, page: page + 1)
+            case .search(let query):
+              try await unsplash.search.collections(query: query, page: page + 1)
+            }
+          }
           await send(.fetchNextCollectionsResponse(result))
         }
 

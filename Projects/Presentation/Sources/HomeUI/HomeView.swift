@@ -52,7 +52,7 @@ public struct HomeView: View {
               .padding(layoutEnvironment.contentInsets(.horizontal))
               .buttonStyle(.ds.plain())
 
-              ImageCollectionGridView(collections, insets: layoutEnvironment.contentInsets(.horizontal)) {
+              ImageCollectionHGrid(collections, insets: layoutEnvironment.contentInsets(.horizontal)) {
                 store.send(.navigate(.collectionImages($0)))
               }
             }

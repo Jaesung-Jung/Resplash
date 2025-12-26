@@ -56,6 +56,7 @@ struct TrendKeywordView: View {
 
       GrowthView(keyword.growth)
     }
+    .contentShape(Rectangle())
   }
 }
 

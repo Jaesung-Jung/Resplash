@@ -23,11 +23,13 @@
 
 import SwiftUI
 import ComposableArchitecture
-import ResplashCollectionsUI
-import ResplashImagesUI
+import ResplashCollectionListUI
+import ResplashImageListUI
 import ResplashImageDetailUI
 import ResplashImageMapUI
 import ResplashSearchResultUI
+import ResplashUserListUI
+import ResplashUserProfileUI
 
 struct AppNavigationStack<Root: View>: View {
   let path: Binding<Store<StackState<AppNavigationPath.State>, StackActionOf<AppNavigationPath>>>
@@ -44,15 +46,19 @@ struct AppNavigationStack<Root: View>: View {
     } destination: { store in
       switch store.case {
       case .collections(let store):
-        CollectionsView(store: store)
+        CollectionListView(store: store)
       case .images(let store):
-        ImagesView(store: store)
+        ImageListView(store: store)
       case .imageDetail(let store):
         ImageDetailView(store: store)
       case .imageMap(let store):
         ImageMapView(store: store)
       case .searchResult(let store):
         SearchResultView(store: store)
+      case .users(let store):
+        UserListView(store: store)
+      case .userProfile(let store):
+        UserProfileView(store: store)
       }
     }
   }

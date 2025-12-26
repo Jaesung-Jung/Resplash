@@ -62,11 +62,11 @@ public struct SearchResultFeature {
   }
 
   public enum Navigation {
-    case search(String)
-    case collections
-    case users
-    case collectionImages(Unsplash.ImageCollection)
+    case search(String, Unsplash.MediaType)
+    case users(String)
     case userProfile(Unsplash.User)
+    case collections(String)
+    case collectionImages(Unsplash.ImageCollection)
     case imageDetail(Unsplash.Image)
   }
 
