@@ -28,7 +28,7 @@ public struct LayoutEnvironment: Sendable {
   let contentInsets: EdgeInsets
 
   @inlinable
-  public func contentInsets(_ edges: Edge.Set) -> EdgeInsets {
+  public func contentInsets(_ edges: Edge.Set = .all) -> EdgeInsets {
     EdgeInsets(
       top: edges.contains(.top) ? contentInsets.top : 0,
       leading: edges.contains(.leading) ? contentInsets.leading : 0,

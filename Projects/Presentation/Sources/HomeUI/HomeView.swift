@@ -32,7 +32,7 @@ public struct HomeView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.layoutEnvironment) var layoutEnvironment
 
-  let store: StoreOf<HomeFeature>
+  @Bindable var store: StoreOf<HomeFeature>
 
   public init(store: StoreOf<HomeFeature>) {
     self.store = store
@@ -43,26 +43,30 @@ public struct HomeView: View {
       LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
         Section {
           if let collections = store.collections {
-            VStack(alignment: .leading) {
+            VStack(spacing: 10) {
               Button {
                 store.send(.navigate(.collections))
               } label: {
-                sectionTitle(.localizable(.imageCollections), showsDisclosureIndicator: true)
+                SectionTitle(.localizable(.imageCollections), disclosureIndicator: true)
               }
               .padding(layoutEnvironment.contentInsets(.horizontal))
               .buttonStyle(.ds.plain())
 
-              collectionList(collections)
+              ImageCollectionGridView(collections, insets: layoutEnvironment.contentInsets(.horizontal)) {
+                store.send(.navigate(.collectionImages($0)))
+              }
             }
+            .buttonStyle(.plain)
           }
 
           if let images = store.images {
-            VStack(alignment: .leading) {
-              sectionTitle(.localizable(.featured))
+            VStack(spacing: 10) {
+              SectionTitle(.localizable(.featured))
                 .padding(layoutEnvironment.contentInsets(.horizontal))
 
               imageList(images)
             }
+            .buttonStyle(.plain)
           }
 
           if store.hasNextPage {
@@ -81,7 +85,7 @@ public struct HomeView: View {
     }
     .navigationTitle(.localizable(.home))
     .toolbar {
-      mediaPickerMenu()
+      MediaPickerMenu(mediaType: $store.mediaType.sending(\.selectMediaType))
     }
     .task {
       store.send(.fetchContents)
@@ -92,50 +96,6 @@ public struct HomeView: View {
 // MARK: - HomeView (ViewBuilders)
 
 extension HomeView {
-  @ViewBuilder func mediaPickerMenu() -> some View {
-    Menu {
-      Section(.localizable(.media)) {
-        ForEach(Unsplash.MediaType.allCases, id: \.self) { mediaType in
-          Button {
-            store.send(.selectMediaType(mediaType))
-          } label: {
-            HStack {
-              if store.mediaType == mediaType {
-                Image(systemName: "checkmark")
-              }
-              Text(localizedString(mediaType))
-            }
-          }
-        }
-      }
-    } label: {
-      HStack {
-        let systemName = switch store.mediaType {
-        case .photo:
-          "photo.on.rectangle.angled"
-        case .illustration:
-          "pencil.and.scribble"
-        }
-        Image(systemName: systemName)
-        Text(localizedString(store.mediaType))
-      }
-    }
-  }
-
-  @ViewBuilder func sectionTitle(_ key: LocalizedStringKey, showsDisclosureIndicator: Bool = false) -> some View {
-    LabeledContent {
-      if showsDisclosureIndicator {
-        Image(systemName: "chevron.right")
-          .foregroundStyle(.secondary)
-      }
-    } label: {
-      Text(key)
-        .font(.title2)
-    }
-    .fontWeight(.bold)
-    .foregroundStyle(.primary)
-  }
-
   @ViewBuilder func topicList(_ topics: [Unsplash.Topic]) -> some View {
     ScrollView(.horizontal, showsIndicators: false) {
       GlassEffectContainer {
@@ -147,33 +107,13 @@ extension HomeView {
               TopicView(topic)
                 .glassEffect(.regular.interactive())
             }
-            .buttonStyle(.plain)
           }
         }
         .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
       }
     }
     .scrollClipDisabled()
-  }
-
-  @ViewBuilder func collectionList(_ collections: [Unsplash.ImageCollection]) -> some View {
-    ScrollView(.horizontal, showsIndicators: false) {
-      LazyHGrid(rows: [GridItem()], alignment: .top, spacing: 10) {
-        ForEach(collections) { collection in
-          Button {
-            store.send(.navigate(.collectionImages(collection)))
-          } label: {
-            ImageCollectionView(collection)
-              .containerRelativeFrame(.horizontal) { length, _ in (length - 20) / 1.5 }
-          }
-          .buttonStyle(.ds.plain())
-        }
-      }
-      .padding(layoutEnvironment.contentInsets(.horizontal))
-
-      .scrollTargetLayout()
-    }
-    .scrollTargetBehavior(.viewAligned(limitBehavior: .never, anchor: .leading))
+    .buttonStyle(.plain)
   }
 
   @ViewBuilder func imageList(_ images: [Unsplash.Image]) -> some View {
@@ -189,22 +129,7 @@ extension HomeView {
             }
             .aspectRatio(CGSize(width: image.width, height: image.height), contentMode: .fit)
         }
-        .buttonStyle(.ds.plain())
       }
-    }
-  }
-}
-
-// MARK: - HomeView (Strings)
-
-extension HomeView {
-  @inlinable
-  func localizedString(_ mediaType: Unsplash.MediaType) -> LocalizedStringKey {
-    switch mediaType {
-    case .photo:
-      return .localizable(.photo)
-    case .illustration:
-      return .localizable(.illustration)
     }
   }
 }

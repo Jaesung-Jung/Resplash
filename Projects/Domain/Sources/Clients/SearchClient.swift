@@ -45,6 +45,16 @@ extension UnsplashClient {
       try await fetchSearchMeta(query)
     }
 
+    @inlinable
+    public func images(for mediaType: Unsplash.MediaType, query: String, page: Int) async throws -> Page<Unsplash.Image> {
+      switch mediaType {
+      case .photo:
+        try await photos(query: query, page: page)
+      case .illustration:
+        try await illustrations(query: query, page: page)
+      }
+    }
+
     public func photos(query: String, page: Int) async throws -> Page<Unsplash.Image> {
       try await searchPhotos(query, page, 30)
     }

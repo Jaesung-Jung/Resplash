@@ -60,7 +60,7 @@ public struct ImageCollectionView: View {
         Text(collection.title)
           .font(.body)
           .fontWeight(.heavy)
-        Text("\(collection.totalImages) image")
+        Text(.localizable(.imageCount(collection.totalImages)))
           .font(.footnote)
           .fontWeight(.semibold)
           .foregroundStyle(.secondary)
@@ -87,7 +87,7 @@ public struct ImageCollectionView: View {
 #if DEBUG
 
 #Preview {
-  ImageCollectionView(.preview)
+  ImageCollectionView(.preview1)
     .padding(.horizontal, 20)
 }
 

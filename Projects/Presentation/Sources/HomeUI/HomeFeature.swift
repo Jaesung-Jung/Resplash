@@ -113,7 +113,6 @@ public struct HomeFeature {
         return .none
 
       case .fetchContentsResponse(.failure(let error)), .fetchNextImagesResponse(.failure(let error)):
-        print(error)
         return .none
 
       case .selectMediaType(let mediaType):

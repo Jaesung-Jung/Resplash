@@ -56,7 +56,7 @@ public struct RemoteImage<Content: View>: View {
       .background {
         if phase == .idle || phase == .loading {
           Rectangle()
-            .fill(.tertiary)
+            .fill(.quaternary)
         }
       }
   }

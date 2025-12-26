@@ -204,8 +204,8 @@ struct TestStyle: ButtonStyle {
 
 #Preview {
   VStack(alignment: .leading, spacing: 40) {
-    UserView(.preview)
-    UserView(.preview)
+    UserView(.preview1)
+    UserView(.preview2)
       .size(.compact)
   }
 }

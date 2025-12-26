@@ -46,7 +46,7 @@ extension Unsplash.Image {
       full: URL(string: "https://images.unsplash.com/photo-1571502297375-0fe3ea2d1d48?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjN8fCVFRCU5OCVCOCVFQyU4OCU5OHxlbnwwfHx8fDE3NjYwMzI3MDR8MA&ixlib=rb-4.1.0&q=85")!,
       s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1571502297375-0fe3ea2d1d48")!
     ),
-    user: .preview,
+    user: .preview1,
     shareLink: URL(string: "https://unsplash.com/photos/glacial-lake-and-mountains-under-blue-sky-S84pCIjiEC4")!
   )
 
@@ -67,7 +67,7 @@ extension Unsplash.Image {
       full: URL(string: "https://plus.unsplash.com/premium_vector-1719881386517-fb92d4c3680b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8c3F1YXJlfGVufDB8fHx8MTc2NjAzMTI0MXww&ixlib=rb-4.1.0&q=85")!,
       s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_vector-1719881386517-fb92d4c3680b")!
     ),
-    user: .preview,
+    user: .preview2,
     shareLink: URL(string: "https://unsplash.com/illustrations/a-blue-and-yellow-pattern-with-squares-and-squares-VKEtwmKulIM")!
   )
 }
@@ -75,7 +75,7 @@ extension Unsplash.Image {
 // MARK: - Unsplash.ImageCollection
 
 extension Unsplash.ImageCollection {
-  public static let preview = Unsplash.ImageCollection(
+  public static let preview1 = Unsplash.ImageCollection(
     id: "5BSAnZnIBpU",
     shareKey: "9aab0ad2c768d4be33049ab14006c35f",
     updatedAt: .now,
@@ -103,7 +103,39 @@ extension Unsplash.ImageCollection {
       )
     ],
     totalImages: 50,
-    user: .preview,
+    user: .preview1,
+    shareLink: URL(string: "https://unsplash.com/@unsplashplus")!
+  )
+
+  public static let preview2 = Unsplash.ImageCollection(
+    id: "8GSGxHRK4qE",
+    shareKey: "8d026a3765eda6ebb4ef3b930a44a9a4",
+    updatedAt: .now,
+    title: "lake",
+    imageURLs: [
+      Unsplash.ImageURL(
+        raw: URL(string: "https://images.unsplash.com/photo-1761880619787-56285c7f5f1f?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://images.unsplash.com/photo-1761880619787-56285c7f5f1f?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1761880619787-56285c7f5f1f")!
+      ),
+      Unsplash.ImageURL(
+        raw: URL(string: "https://plus.unsplash.com/premium_photo-1757100707921-070878fe3796?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://plus.unsplash.com/premium_photo-1757100707921-070878fe3796?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/unsplash-premium-photos-production/premium_photo-1757100707921-070878fe3796")!
+      ),
+      Unsplash.ImageURL(
+        raw: URL(string: "https://images.unsplash.com/photo-1761671263798-758aac2b4d68?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://images.unsplash.com/photo-1761671263798-758aac2b4d68?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1761671263798-758aac2b4d68")!
+      ),
+      Unsplash.ImageURL(
+        raw: URL(string: "https://images.unsplash.com/photo-1752035682784-b482b6904c13?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://images.unsplash.com/photo-1752035682784-b482b6904c13?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1752035682784-b482b6904c13")!
+      )
+    ],
+    totalImages: 134,
+    user: .preview2,
     shareLink: URL(string: "https://unsplash.com/@unsplashplus")!
   )
 }
@@ -183,7 +215,7 @@ extension Unsplash.Topic {
     id: "bo8jQKT",
     slug: "wallpapers",
     visibility: .featured,
-    owners: [.preview],
+    owners: [.preview1],
     title: "Wallpapers",
     description: "From epic drone shots to inspiring moments in nature — enjoy the best background for your desktop or mobile.",
     mediaTypes: [.photo],
@@ -251,7 +283,7 @@ extension Unsplash.Trend {
 // MARK: - Unsplash.User
 
 extension Unsplash.User {
-  public static let preview = Unsplash.User(
+  public static let preview1 = Unsplash.User(
     id: "2tXKaPcv9BI",
     userId: "marekpiwnicki",
     updatedAt: .now,
@@ -290,6 +322,46 @@ extension Unsplash.User {
         raw: URL(string: "https://images.unsplash.com/photo-1605904266472-c5be8939cdb6?ixlib=rb-4.1.0")!,
         full: URL(string: "https://images.unsplash.com/photo-1605904266472-c5be8939cdb6?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
         s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1605904266472-c5be8939cdb6")!
+      )
+    ]
+  )
+
+  public static let preview2 = Unsplash.User(
+    id: "qHyQcK243W0",
+    userId: "calebbosman17",
+    updatedAt: .now,
+    forHire: true,
+    name: "Dutch Artisan",
+    bio: "Hi, I am Caleb Bosman. I like taking photos. unsplash is where I put my 2nd rate photos. You can find my better photos on Adobe Behance @calebbosman1.",
+    location: "Hume Lake",
+    profileImageURL: Unsplash.User.ProfileImageURL(
+      small: URL(string: "https://images.unsplash.com/profile-1714690147535-205a06abb9adimage?ixlib=rb-4.1.0&crop=faces&fit=crop&w=32&h=32")!,
+      medium: URL(string: "https://images.unsplash.com/profile-1714690147535-205a06abb9adimage?ixlib=rb-4.1.0&crop=faces&fit=crop&w=64&h=64")!,
+      large: URL(string: "https://images.unsplash.com/profile-1714690147535-205a06abb9adimage?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128")!
+    ),
+    totalLikes: 7920,
+    totalCollections: 582,
+    totalPhotos: 19501,
+    totalIllustrations: 958,
+    socials: [
+      .portfolio(URL(string: "https://www.behance.net/calebbosman1")!)
+    ],
+    shareLink: URL(string: "https://unsplash.com/ko/@calebbosman17")!,
+    imageURLs: [
+      Unsplash.ImageURL(
+        raw: URL(string: "https://images.unsplash.com/photo-1714436457165-b1eaac55bec8?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://images.unsplash.com/photo-1714436457165-b1eaac55bec8?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1714436457165-b1eaac55bec8")!
+      ),
+      Unsplash.ImageURL(
+        raw: URL(string: "https://images.unsplash.com/photo-1716009434314-3eb790848e77?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://images.unsplash.com/photo-1716009434314-3eb790848e77?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1716009434314-3eb790848e77")!
+      ),
+      Unsplash.ImageURL(
+        raw: URL(string: "https://images.unsplash.com/photo-1715141184840-20b3deb30584?ixlib=rb-4.1.0")!,
+        full: URL(string: "https://images.unsplash.com/photo-1715141184840-20b3deb30584?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb")!,
+        s3: URL(string: "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1715141184840-20b3deb30584")!
       )
     ]
   )

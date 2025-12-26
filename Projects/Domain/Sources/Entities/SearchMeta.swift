@@ -32,5 +32,14 @@ extension Unsplash {
     public let collections: Int
     public let users: Int
     public let relatedSearches: [String]
+
+    @inlinable public func images(for mediaType: MediaType) -> Int {
+      switch mediaType {
+      case .photo:
+        photos
+      case .illustration:
+        illustrations
+      }
+    }
   }
 }

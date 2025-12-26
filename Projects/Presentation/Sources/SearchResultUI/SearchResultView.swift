@@ -40,64 +40,61 @@ public struct SearchResultView: View {
 
   public var body: some View {
     ScrollView {
-      LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
-        Section {
-          switch store.searchType {
-          case .photo:
-            if let photos = store.photos {
-              imageList(photos.items)
-            } else {
-              emptyView()
-            }
-          case .illustration:
-            if let illustrations = store.illustrations {
-              imageList(illustrations.items)
-            } else {
-              emptyView()
-            }
-          case .collection:
-            if let collections = store.collections {
-              collectionList(collections.items)
-            } else {
-              emptyView()
-            }
-          case .user:
-            if let users = store.users {
-              userList(users.items)
-            } else {
-              emptyView()
-            }
-          }
-
-          if store.hasNextPage {
-            LoadingProgressView()
-              .onAppear {
-                store.send(.fetchNextItems)
+      if let meta = store.searchMeta {
+        LazyVStack(spacing: 40, pinnedViews: [.sectionHeaders]) {
+          Section {
+            if let users = store.users, !users.isEmpty {
+              sectionItem(title: .localizable(.users), subtitle: formattedNumber(meta.users)) {
+                store.send(.navigate(.users))
+              } content: {
+                UserCardGridView(users: users, insets: layoutEnvironment.contentInsets(.horizontal)) {
+                  store.send(.navigate(.userProfile($0)))
+                }
               }
-          }
-        } header: {
-          if let meta = store.searchMeta, !meta.relatedSearches.isEmpty {
-            relatedSearchList(meta.relatedSearches)
+            }
+
+            if let collections = store.collections, !collections.isEmpty {
+              sectionItem(title: .localizable(.imageCollections), subtitle: formattedNumber(meta.collections)) {
+                store.send(.navigate(.collections))
+              } content: {
+                ImageCollectionGridView(collections, insets: layoutEnvironment.contentInsets(.horizontal)) {
+                  store.send(.navigate(.collectionImages($0)))
+                }
+              }
+            }
+
+            if let images = store.images, !images.isEmpty {
+              sectionItem(title: .localizable(.images), subtitle: formattedNumber(meta.images(for: store.mediaType))) {
+                imageList(images) {
+                  store.send(.navigate(.imageDetail($0)))
+                }
+              }
+
+              if store.state.hasNextPage {
+                LoadingProgressView()
+                  .onAppear {
+                    store.send(.fetchNextImages)
+                  }
+              }
+            }
+          } header: {
+            if !meta.relatedSearches.isEmpty {
+              relatedSearchList(meta.relatedSearches) {
+                store.send(.navigate(.search($0)))
+              }
+            }
           }
         }
+        .padding(layoutEnvironment.contentInsets(.vertical))
       }
-      .padding(layoutEnvironment.contentInsets(.vertical))
     }
-    .buttonStyle(.ds.plain())
     .navigationTitle(store.query)
+    .navigationBarTitleDisplayMode(.inline)
     .toolbar {
-      ToolbarItem(placement: .topBarTrailing) {
-        Picker("", selection: .constant("Photos")) {
-          Text("Photos")
-            .tag("Photos")
-          Text("Illustration")
-            .tag("Illustration")
-        }
-        .pickerStyle(.menu)
-      }
+      MediaPickerMenu(mediaType: $store.mediaType.sending(\.selectMediaType))
     }
     .task {
-      store.send(.fetchItems)
+      store.send(.fetchContents)
     }
   }
 }
@@ -105,14 +102,15 @@ public struct SearchResultView: View {
 // MARK: - SearchResultView (ViewBuilders)
 
 extension SearchResultView {
-  @ViewBuilder func relatedSearchList(_ keywords: [String]) -> some View {
+  @ViewBuilder func relatedSearchList(_ keywords: [String], action: @MainActor @escaping (String) -> Void) -> some View {
     ScrollView(.horizontal) {
       GlassEffectContainer(spacing: 8) {
         HStack {
           ForEach(keywords, id: \.self) { keyword in
             Button {
+              action(keyword)
             } label: {
-              Text("#\(keyword)")
+              Text(keyword)
                 .foregroundStyle(.secondary)
                 .fontWeight(.bold)
                 .padding(.horizontal, 10)
@@ -130,27 +128,45 @@ extension SearchResultView {
     .scrollClipDisabled()
   }
 
-  @ViewBuilder func imageList(_ images: [Unsplash.Image]) -> some View {
-    MansonryGrid(images, columns: 2, spacing: 2) { image in
+  @ViewBuilder func sectionItem<Content: View>(title titleKey: LocalizedStringKey, subtitle: String, action: (@MainActor () -> Void)? = nil, @ViewBuilder content: () -> Content) -> some View {
+    VStack(spacing: 10) {
+      if let action {
+        Button {
+          action()
+        } label: {
+          SectionTitle(titleKey, subtitle: subtitle, disclosureIndicator: true)
+            .padding(layoutEnvironment.contentInsets(.horizontal))
+        }
+      } else {
+        SectionTitle(titleKey, subtitle: subtitle, disclosureIndicator: false)
+          .padding(layoutEnvironment.contentInsets(.horizontal))
+      }
+
+      content()
+    }
+    .buttonStyle(.ds.plain())
+  }
+
+  @ViewBuilder func imageList(_ images: [Unsplash.Image], action: @MainActor @escaping (Unsplash.Image) -> Void) -> some View {
+    MansonryGrid(images, columns: 2, spacing: 10) { image in
       Button {
-        // store.send(.navigate(.imageDetail(image)))
+        action(image)
       } label: {
         ImageItemView(image)
           .size(.compact)
+          .clipShape(RoundedRectangle(cornerRadius: 8))
       }
-      .buttonStyle(.ds.plain())
     } size: {
       CGSize(width: $0.width, height: $0.height)
     }
-  }
-
-  @ViewBuilder func collectionList(_ collections: [Unsplash.ImageCollection]) -> some View {
-  }
-
-  @ViewBuilder func userList(_ users: [Unsplash.User]) -> some View {
+    .padding(layoutEnvironment.contentInsets(.horizontal))
   }
 
   @ViewBuilder func emptyView() -> some View {
+  }
+
+  @inlinable func formattedNumber(_ number: Int) -> String {
+    number.formatted(.number.notation(.compactName))
   }
 }
 
