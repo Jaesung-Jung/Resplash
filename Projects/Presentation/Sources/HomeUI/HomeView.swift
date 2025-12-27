@@ -50,13 +50,12 @@ public struct HomeView: View {
                 SectionTitle(.localizable(.imageCollections), disclosureIndicator: true)
               }
               .padding(layoutEnvironment.contentInsets(.horizontal))
-              .buttonStyle(.ds.plain())
 
               ImageCollectionHGrid(collections, insets: layoutEnvironment.contentInsets(.horizontal)) {
                 store.send(.navigate(.collectionImages($0)))
               }
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.ds.plain())
           }
 
           if let images = store.images {
@@ -66,7 +65,7 @@ public struct HomeView: View {
 
               imageList(images)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.ds.plain())
           }
 
           if store.hasNextPage {
@@ -108,12 +107,12 @@ extension HomeView {
                 .glassEffect(.regular.interactive())
             }
           }
+          .foregroundStyle(.foreground)
         }
         .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
       }
     }
     .scrollClipDisabled()
-    .buttonStyle(.plain)
   }
 
   @ViewBuilder func imageList(_ images: [Unsplash.Image]) -> some View {

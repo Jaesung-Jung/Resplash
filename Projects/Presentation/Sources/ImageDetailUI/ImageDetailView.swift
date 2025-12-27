@@ -217,15 +217,20 @@ extension ImageDetailView {
   @ViewBuilder func tagGrid(_ tags: [Unsplash.ImageDetail.Tag]) -> some View {
     HStack(spacing: 0) {
       HFlow(itemSpacing: 8, lineSpacing: 8) {
-        ForEach(tags, id: \.title) {
-          Text($0.title)
-            .font(.subheadline)
-            .fontWeight(.medium)
-            .foregroundStyle(.secondary)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 6)
-            .background(.quinary)
-            .cornerRadius(4)
+        ForEach(tags, id: \.title) { tag in
+          Button {
+            store.send(.navigate(.search(tag.title, store.image.type)))
+          } label: {
+            Text(tag.title)
+              .font(.subheadline)
+              .fontWeight(.medium)
+              .foregroundStyle(.secondary)
+              .frame(minWidth: 30)
+              .padding(.horizontal, 8)
+              .padding(.vertical, 6)
+              .background(.quinary)
+              .cornerRadius(4)
+          }
         }
       }
       Spacer(minLength: 0)

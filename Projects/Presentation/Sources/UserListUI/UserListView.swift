@@ -28,6 +28,7 @@ import ResplashEntities
 import ResplashDesignSystem
 
 public struct UserListView: View {
+  @Environment(\.layoutEnvironment) var layoutEnvironment
   let store: StoreOf<UserListFeature>
 
   public init(store: StoreOf<UserListFeature>) {
@@ -35,7 +36,32 @@ public struct UserListView: View {
   }
 
   public var body: some View {
-    Text("UserListView")
+    ScrollView {
+      if let users = store.users {
+        LazyVStack(spacing: 10) {
+          ForEach(users) { user in
+            Button {
+              store.send(.navigate(.userProfile(user)))
+            } label: {
+              UserCardView(user)
+            }
+            .buttonStyle(.ds.plain())
+          }
+        }
+        .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
+
+        if store.hasNextPage {
+          LoadingProgressView()
+            .onAppear {
+              store.send(.fetchNextUsers)
+            }
+        }
+      }
+    }
+    .navigationTitle(store.query)
+    .task {
+      store.send(.fetchUsers)
+    }
   }
 }
 

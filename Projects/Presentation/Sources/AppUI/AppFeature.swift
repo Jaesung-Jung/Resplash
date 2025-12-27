@@ -153,7 +153,7 @@ public struct AppFeature {
     case .imageDetail(.navigate(.imageMap(let image))):
       let imageMapState = ImageMapFeature.State(image: image)
       state[keyPath: path].append(.imageMap(imageMapState))
-    case .searchResult(.navigate(.search(let query, let mediaType))):
+    case .imageDetail(.navigate(.search(let query, let mediaType))), .searchResult(.navigate(.search(let query, let mediaType))):
       let searchResultState = SearchResultFeature.State(query: query, mediaType: mediaType)
       state[keyPath: path].append(.searchResult(searchResultState))
     case .searchResult(.navigate(.users(let query))):

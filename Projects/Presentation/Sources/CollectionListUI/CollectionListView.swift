@@ -39,7 +39,7 @@ public struct CollectionListView: View {
   public var body: some View {
     ScrollView {
       if let collections = store.collections {
-        LazyVGrid( columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
+        LazyVGrid(columns: [GridItem(spacing: 10), GridItem()], spacing: 20) {
           ForEach(collections) { collection in
             Button {
               store.send(.navigate(.images(collection)))
@@ -51,13 +51,11 @@ public struct CollectionListView: View {
         }
         .padding(layoutEnvironment.contentInsets([.top, .horizontal]))
 
-        LazyVStack {
-          if store.hasNextPage {
-            LoadingProgressView()
-              .onAppear {
-                store.send(.fetchNextCollections)
-              }
-          }
+        if store.hasNextPage {
+          LoadingProgressView()
+            .onAppear {
+              store.send(.fetchNextCollections)
+            }
         }
       }
     }

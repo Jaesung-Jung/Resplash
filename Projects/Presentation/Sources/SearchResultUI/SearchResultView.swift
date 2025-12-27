@@ -32,8 +32,6 @@ public struct SearchResultView: View {
   @Environment(\.layoutEnvironment) var layoutEnvironment
   @Bindable var store: StoreOf<SearchResultFeature>
 
-  @State var item = "Item 1"
-
   public init(store: StoreOf<SearchResultFeature>) {
     self.store = store
   }

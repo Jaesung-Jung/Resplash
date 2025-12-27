@@ -60,7 +60,7 @@ public struct ImageDetailFeature {
   }
 
   public enum Navigation {
-    case search(String)
+    case search(String, Unsplash.MediaType)
     case imageDetail(Unsplash.Image)
     case imageMap(Unsplash.ImageDetail)
   }
