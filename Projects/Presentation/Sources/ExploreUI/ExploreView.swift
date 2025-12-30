@@ -23,17 +23,85 @@
 
 import SwiftUI
 import ComposableArchitecture
+import ResplashUI
+import ResplashEntities
 import ResplashStrings
+import ResplashDesignSystem
 
 public struct ExploreView: View {
+  @Environment(\.layoutEnvironment) var layoutEnvironment
   let store: StoreOf<ExploreFeature>
 
   public init(store: StoreOf<ExploreFeature>) {
     self.store = store
   }
 
+  @ViewBuilder func section<Content: View>(_ title: Text, @ViewBuilder content: () -> Content) -> some View {
+    VStack(spacing: 10) {
+      HStack(spacing: 0) {
+        title
+          .font(.title2)
+          .fontWeight(.bold)
+        Spacer(minLength: 0)
+      }
+      .padding(layoutEnvironment.contentInsets(.horizontal))
+
+      content()
+    }
+  }
+
   public var body: some View {
-    Text(.localizable(.explore))
+    ScrollView {
+      LazyVStack(spacing: 40) {
+        if let categories = store.categories {
+          ForEach(categories) { category in
+            section(Text(category.title)) {
+              ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: [GridItem(), GridItem()]) {
+                  ForEach(category.items) { item in
+                    Button {
+                      store.send(.navigate(.images(item)))
+                    } label: {
+                      CategoryItemView(item)
+                        .containerRelativeFrame(.horizontal) { length, _ in (length - 50) / 2 }
+                    }
+                  }
+                }
+                .padding(layoutEnvironment.contentInsets(.horizontal))
+              }
+            }
+          }
+        }
+
+        if let images = store.images {
+          section(Text("Popular Images")) {
+            MansonryGrid(images, columns: 2, spacing: 2) { image in
+              Button {
+                store.send(.navigate(.imageDetail(image)))
+              } label: {
+                ImageItemView(image)
+                  .size(.compact)
+              }
+            } size: {
+              CGSize(width: $0.width, height: $0.height)
+            }
+            .padding(layoutEnvironment.contentInsets(.horizontal))
+          }
+
+          if store.hasNextPage {
+            LoadingProgressView()
+              .onAppear {
+                store.send(.fetchNext)
+              }
+          }
+        }
+      }
+    }
+    .buttonStyle(.ds.plain())
+    .navigationTitle(.localizable(.explore))
+    .task {
+      store.send(.fetch)
+    }
   }
 }
 
