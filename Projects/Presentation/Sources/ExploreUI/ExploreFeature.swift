@@ -54,7 +54,7 @@ public struct ExploreFeature {
   }
 
   public enum Navigation {
-    case images(Unsplash.Category.Item)
+    case categoryImages(Unsplash.Category.Item)
     case imageDetail(Unsplash.Image)
   }
 

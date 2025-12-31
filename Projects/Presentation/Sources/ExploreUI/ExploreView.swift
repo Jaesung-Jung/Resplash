@@ -60,7 +60,7 @@ public struct ExploreView: View {
                 LazyHGrid(rows: [GridItem(), GridItem()]) {
                   ForEach(category.items) { item in
                     Button {
-                      store.send(.navigate(.images(item)))
+                      store.send(.navigate(.categoryImages(item)))
                     } label: {
                       CategoryItemView(item)
                         .containerRelativeFrame(.horizontal) { length, _ in (length - 50) / 2 }

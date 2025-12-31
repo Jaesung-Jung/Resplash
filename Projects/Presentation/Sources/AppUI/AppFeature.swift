@@ -113,7 +113,18 @@ public struct AppFeature {
         state.homePath.append(.imageDetail(imageDetailState))
         return .none
 
-      case .explore:
+      case .explore(.navigate(.categoryImages(let categoryItem))):
+        let path: AppNavigationPath.State = if let redirect = categoryItem.redirect {
+          .searchResult(SearchResultFeature.State(query: redirect, mediaType: .photo))
+        } else {
+          .images(ImageListFeature.State(item: .category(categoryItem)))
+        }
+        state.explorePath.append(path)
+        return .none
+
+      case .explore(.navigate(.imageDetail(let image))):
+        let imageDetailState = ImageDetailFeature.State(image: image)
+        state.explorePath.append(.imageDetail(imageDetailState))
         return .none
 
       case .search(.navigate(.search(let query))):
