@@ -1,3 +1,3 @@
 [tools]
 swiftlint = "0.62.2"
-tuist = "4.115.1"
+tuist = "4.119.1"
