@@ -25,7 +25,7 @@ import ResplashEntities
 import ResplashNetworking
 
 extension Endpoint {
-  public static func trends(page: Int, count: Int) -> Endpoint {
+  static func trends(page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "trends_\(page)",
       path: "napi/search_trends",
@@ -37,7 +37,7 @@ extension Endpoint {
     )
   }
 
-  public static func searchSuggestions(query: String) -> Endpoint {
+  static func searchSuggestions(query: String) -> Endpoint {
     Endpoint(
       resourceId: "search_suggestions",
       path: "nautocomplete/\(query)",
@@ -45,7 +45,7 @@ extension Endpoint {
     )
   }
 
-  public static func searchMeta(query: String) -> Endpoint {
+  static func searchMeta(query: String) -> Endpoint {
     Endpoint(
       resourceId: "search_meta",
       path: "napi/search/meta",
@@ -56,7 +56,7 @@ extension Endpoint {
     )
   }
 
-  public static func searchPhotos(query: String, page: Int, count: Int) -> Endpoint {
+  static func searchPhotos(query: String, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "search_photos_\(page)",
       path: "napi/search/photos",
@@ -69,7 +69,7 @@ extension Endpoint {
     )
   }
 
-  public static func searchIllustrations(query: String, page: Int, count: Int) -> Endpoint {
+  static func searchIllustrations(query: String, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "search_illustrations_\(page)",
       path: "napi/search/illustrations",
@@ -82,7 +82,7 @@ extension Endpoint {
     )
   }
 
-  public static func searchCollections(query: String, page: Int, count: Int) -> Endpoint {
+  static func searchCollections(query: String, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "search_collections_\(page)",
       path: "napi/search/collections",
@@ -95,7 +95,7 @@ extension Endpoint {
     )
   }
 
-  public static func searchUsers(query: String, page: Int, count: Int) -> Endpoint {
+  static func searchUsers(query: String, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "search_users_\(page)",
       path: "napi/search/users",

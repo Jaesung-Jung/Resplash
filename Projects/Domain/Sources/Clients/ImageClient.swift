@@ -29,6 +29,8 @@ extension UnsplashClient {
     let fetchIllustrations: @Sendable (Int, Int) async throws -> Page<Unsplash.Image>
     let fetchRelatedImages: @Sendable (Unsplash.Image, Int, Int) async throws -> Page<Unsplash.Image>
     let fetchSeriesImages: @Sendable (Unsplash.Image) async throws -> [Unsplash.Image]
+    let fetchUserPhotos: @Sendable (Unsplash.User, Int, Int) async throws -> Page<Unsplash.Image>
+    let fetchUserIllustrations: @Sendable (Unsplash.User, Int, Int) async throws -> Page<Unsplash.Image>
     let fetchImageDetail: @Sendable (Unsplash.Image) async throws -> Unsplash.ImageDetail
 
     @inlinable
@@ -59,6 +61,24 @@ extension UnsplashClient {
 
     public func detail(for image: Unsplash.Image) async throws -> Unsplash.ImageDetail {
       try await fetchImageDetail(image)
+    }
+
+    @inlinable
+    public func images(for user: Unsplash.User, mediaType: Unsplash.MediaType, page: Int) async throws -> Page<Unsplash.Image> {
+      switch mediaType {
+      case .photo:
+        try await photos(for: user, page: page)
+      case .illustration:
+        try await illustrations(for: user, page: page)
+      }
+    }
+
+    public func photos(for user: Unsplash.User, page: Int) async throws -> Page<Unsplash.Image> {
+      try await fetchUserPhotos(user, page, 30)
+    }
+
+    public func illustrations(for user: Unsplash.User, page: Int) async throws -> Page<Unsplash.Image> {
+      try await fetchUserIllustrations(user, page, 30)
     }
   }
 }

@@ -25,7 +25,7 @@ import ResplashEntities
 import ResplashNetworking
 
 extension Endpoint {
-  public static func collections(for mediaType: Unsplash.MediaType, page: Int, count: Int) -> Endpoint {
+  static func collections(for mediaType: Unsplash.MediaType, page: Int, count: Int) -> Endpoint {
     let assetType = switch mediaType {
     case .photo:
       "photos"
@@ -44,7 +44,20 @@ extension Endpoint {
     )
   }
 
-  public static func collectionImages(for collection: Unsplash.ImageCollection, page: Int, count: Int) -> Endpoint {
+  static func collections(for user: Unsplash.User, page: Int, count: Int) -> Endpoint {
+    Endpoint(
+      resourceId: "user_collections_\(page)",
+      path: "napi/users/\(user.id)/collections",
+      method: .get,
+      parameters: [
+        "page": page,
+        "per_page": count,
+        "order_by": "updated"
+      ]
+    )
+  }
+
+  static func collectionImages(for collection: Unsplash.ImageCollection, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "collection_images_\(page)",
       path: "napi/collections/\(collection.id)/photos",

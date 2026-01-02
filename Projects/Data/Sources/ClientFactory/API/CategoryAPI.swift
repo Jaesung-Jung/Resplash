@@ -25,7 +25,7 @@ import ResplashEntities
 import ResplashNetworking
 
 extension Endpoint {
-  public static func categories() -> Endpoint {
+  static func categories() -> Endpoint {
     Endpoint(
       resourceId: "categories",
       path: "napi/landing_pages/featured",
@@ -33,7 +33,7 @@ extension Endpoint {
     )
   }
 
-  public static func categoryImages(for category: Unsplash.Category.Item, page: Int, count: Int) -> Endpoint {
+  static func categoryImages(for category: Unsplash.Category.Item, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "category_images_\(page)",
       path: "napi/landing_pages/images/stock/\(category.slug)",

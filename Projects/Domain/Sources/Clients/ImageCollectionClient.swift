@@ -25,11 +25,16 @@ import ResplashEntities
 
 extension UnsplashClient {
   public struct ImageCollectionClient: Sendable {
-    let fetchItems: @Sendable (Unsplash.MediaType, Int, Int) async throws -> Page<Unsplash.ImageCollection>
+    let fetchCollections: @Sendable (Unsplash.MediaType, Int, Int) async throws -> Page<Unsplash.ImageCollection>
+    let fetchUserCollections: @Sendable (Unsplash.User, Int, Int) async throws -> Page<Unsplash.ImageCollection>
     let fetchImages: @Sendable (Unsplash.ImageCollection, Int, Int) async throws -> Page<Unsplash.Image>
 
     public func items(for mediaType: Unsplash.MediaType, page: Int) async throws -> Page<Unsplash.ImageCollection> {
-      try await fetchItems(mediaType, page, 30)
+      try await fetchCollections(mediaType, page, 30)
+    }
+
+    public func items(for user: Unsplash.User, page: Int) async throws -> Page<Unsplash.ImageCollection> {
+      try await fetchUserCollections(user, page, 30)
     }
 
     public func images(for collection: Unsplash.ImageCollection, page: Int) async throws -> Page<Unsplash.Image> {

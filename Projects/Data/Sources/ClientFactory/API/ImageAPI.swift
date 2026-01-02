@@ -25,7 +25,7 @@ import ResplashEntities
 import ResplashNetworking
 
 extension Endpoint {
-  public static func photos(page: Int, count: Int) -> Endpoint {
+  static func photos(page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "photos_\(page)",
       path: "napi/photos",
@@ -37,7 +37,7 @@ extension Endpoint {
     )
   }
 
-  public static func illustrations(page: Int, count: Int) -> Endpoint {
+  static func illustrations(page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "illustrations_\(page)",
       path: "napi/illustrations",
@@ -49,7 +49,7 @@ extension Endpoint {
     )
   }
 
-  public static func relatedImages(for image: Unsplash.Image, page: Int, count: Int) -> Endpoint {
+  static func relatedImages(for image: Unsplash.Image, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "related_images_\(page)",
       path: "napi/photos/\(image.slug)/related",
@@ -61,7 +61,7 @@ extension Endpoint {
     )
   }
 
-  public static func seriesImages(for image: Unsplash.Image) -> Endpoint {
+  static func seriesImages(for image: Unsplash.Image) -> Endpoint {
     Endpoint(
       resourceId: "series_images",
       path: "napi/photos/\(image.slug)/series",
@@ -72,7 +72,33 @@ extension Endpoint {
     )
   }
 
-  public static func detail(for image: Unsplash.Image) -> Endpoint {
+  static func userPhotos(for user: Unsplash.User, page: Int, count: Int) -> Endpoint {
+    Endpoint(
+      resourceId: "user_photos_\(page)",
+      path: "napi/users/\(user.id)/photos",
+      method: .get,
+      parameters: [
+        "page": page,
+        "per_page": count,
+        "order_by": "pinned"
+      ]
+    )
+  }
+
+  static func userIllustrations(for user: Unsplash.User, page: Int, count: Int) -> Endpoint {
+    Endpoint(
+      resourceId: "user_illustrations_\(page)",
+      path: "napi/users/\(user.id)/photos",
+      method: .get,
+      parameters: [
+        "page": page,
+        "per_page": count,
+        "order_by": "pinned"
+      ]
+    )
+  }
+
+  static func detail(for image: Unsplash.Image) -> Endpoint {
     Endpoint(
       resourceId: "\(image.type)_detail",
       path: "napi/photos/\(image.slug)",

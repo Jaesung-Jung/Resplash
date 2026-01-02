@@ -37,11 +37,14 @@ public struct UnsplashClient {
     fetchCategories: @Sendable @escaping () async throws -> [Unsplash.Category],
     fetchCategoryImages: @Sendable @escaping (Unsplash.Category.Item, Int, Int) async throws -> Page<Unsplash.Image>,
     fetchCollections: @Sendable @escaping (Unsplash.MediaType, Int, Int) async throws -> Page<Unsplash.ImageCollection>,
+    fetchUserCollections: @Sendable @escaping (Unsplash.User, Int, Int) async throws -> Page<Unsplash.ImageCollection>,
     fetchCollectionImages: @Sendable @escaping (Unsplash.ImageCollection, Int, Int) async throws -> Page<Unsplash.Image>,
     fetchPhotos: @Sendable @escaping (Int, Int) async throws -> Page<Unsplash.Image>,
     fetchIllustrations: @Sendable @escaping (Int, Int) async throws -> Page<Unsplash.Image>,
     fetchRelatedImages: @Sendable @escaping (Unsplash.Image, Int, Int) async throws -> Page<Unsplash.Image>,
     fetchSeriesImages: @Sendable @escaping (Unsplash.Image) async throws -> [Unsplash.Image],
+    fetchUserPhotos: @Sendable @escaping (Unsplash.User, Int, Int) async throws -> Page<Unsplash.Image>,
+    fetchUserIllustrations: @Sendable @escaping (Unsplash.User, Int, Int) async throws -> Page<Unsplash.Image>,
     fetchImageDetail: @Sendable @escaping (Unsplash.Image) async throws -> Unsplash.ImageDetail,
     fetchTrends: @Sendable @escaping (Int, Int) async throws -> Page<Unsplash.Trend>,
     fetchSearchSuggestions: @Sendable @escaping (String) async throws -> [Unsplash.SearchSuggestion],
@@ -60,7 +63,8 @@ public struct UnsplashClient {
       fetchImages: fetchCategoryImages
     )
     self.collection = ImageCollectionClient(
-      fetchItems: fetchCollections,
+      fetchCollections: fetchCollections,
+      fetchUserCollections: fetchUserCollections,
       fetchImages: fetchCollectionImages
     )
     self.image = ImageClient(
@@ -68,6 +72,8 @@ public struct UnsplashClient {
       fetchIllustrations: fetchIllustrations,
       fetchRelatedImages: fetchRelatedImages,
       fetchSeriesImages: fetchSeriesImages,
+      fetchUserPhotos: fetchUserPhotos,
+      fetchUserIllustrations: fetchUserIllustrations,
       fetchImageDetail: fetchImageDetail
     )
     self.search = SearchClient(
@@ -92,11 +98,14 @@ extension UnsplashClient: DependencyKey {
     fetchCategories: { fatalError("Unimplemented") },
     fetchCategoryImages: { _, _, _ in fatalError("Unimplemented") },
     fetchCollections: { _, _, _ in fatalError("Unimplemented") },
+    fetchUserCollections: { _, _, _ in fatalError("Unimplemented") },
     fetchCollectionImages: { _, _, _ in fatalError("Unimplemented") },
     fetchPhotos: { _, _ in fatalError("Unimplemented") },
     fetchIllustrations: { _, _ in fatalError("Unimplemented") },
     fetchRelatedImages: { _, _, _ in fatalError("Unimplemented") },
     fetchSeriesImages: { _ in fatalError("Unimplemented") },
+    fetchUserPhotos: { _, _, _ in fatalError("Unimplemented") },
+    fetchUserIllustrations: { _, _, _ in fatalError("Unimplemented") },
     fetchImageDetail: { _ in fatalError("Unimplemented") },
     fetchTrends: { _, _ in fatalError("Unimplemented") },
     fetchSearchSuggestions: { _ in fatalError("Unimplemented") },

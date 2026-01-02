@@ -65,6 +65,15 @@ extension UnsplashClient {
             .map(\.domain)
         )
       },
+      fetchUserCollections: {
+        Page(
+          page: $1,
+          pageSize: $2,
+          items: try await request(.collections(for: $0, page: $1, count: $2))
+            .decode([DTO<ImageCollectionTransformer>].self)
+            .map(\.domain)
+        )
+      },
       fetchCollectionImages: {
         Page(
           page: $1,
@@ -105,6 +114,24 @@ extension UnsplashClient {
         try await request(.seriesImages(for: $0))
           .decode([DTO<ImageTransformer>].self)
           .map(\.domain)
+      },
+      fetchUserPhotos: {
+        Page(
+          page: $1,
+          pageSize: $2,
+          items: try await request(.userPhotos(for: $0, page: $1, count: $2))
+            .decode([DTO<ImageTransformer>].self)
+            .map(\.domain)
+        )
+      },
+      fetchUserIllustrations: {
+        Page(
+          page: $1,
+          pageSize: $2,
+          items: try await request(.userIllustrations(for: $0, page: $1, count: $2))
+            .decode([DTO<ImageTransformer>].self)
+            .map(\.domain)
+        )
       },
       fetchImageDetail: {
         try await request(.detail(for: $0))

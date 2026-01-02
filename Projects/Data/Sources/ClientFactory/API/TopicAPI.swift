@@ -25,7 +25,7 @@ import ResplashEntities
 import ResplashNetworking
 
 extension Endpoint {
-  public static func topics() -> Endpoint {
+  static func topics() -> Endpoint {
     Endpoint(
       resourceId: "topics",
       path: "napi/topics",
@@ -36,7 +36,7 @@ extension Endpoint {
     )
   }
 
-  public static func topicImages(for topic: Unsplash.Topic, page: Int, count: Int) -> Endpoint {
+  static func topicImages(for topic: Unsplash.Topic, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "topic_\(topic.mediaTypes.first?.rawValue ?? "")_\(page)",
       path: "napi/topics/\(topic.slug)/photos",
