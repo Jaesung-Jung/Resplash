@@ -52,15 +52,8 @@ public struct LayoutEnvironment: Sendable {
 
 // MARK: - Environment
 
-extension LayoutEnvironment: EnvironmentKey {
-  public static let defaultValue: LayoutEnvironment = compactLayoutEnvironment()
-}
-
 extension EnvironmentValues {
-  public var layoutEnvironment: LayoutEnvironment {
-    get { self[LayoutEnvironment.self] }
-    set { self[LayoutEnvironment.self] = newValue }
-  }
+  @Entry public var layoutEnvironment: LayoutEnvironment = .compactLayoutEnvironment()
 }
 
 // MARK: - ViewModifier

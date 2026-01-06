@@ -23,25 +23,15 @@
 
 import SwiftUI
 
-public enum DesignSystemSize {
+public enum DesignSystemSize: Sendable {
   case regular
   case compact
-}
-
-extension DesignSystemSize: Sendable {
 }
 
 // MARK: - EnvironmentValues
 
 extension EnvironmentValues {
-  struct DesignSystemSizeKey: EnvironmentKey {
-    static let defaultValue: DesignSystemSize = .regular
-  }
-
-  public var designSystemSize: DesignSystemSize {
-    get { self[DesignSystemSizeKey.self] }
-    set { self[DesignSystemSizeKey.self] = newValue }
-  }
+  @Entry public var designSystemSize: DesignSystemSize = .regular
 }
 
 // MARK: - Modifier
