@@ -75,7 +75,7 @@ extension Endpoint {
   static func userPhotos(for user: Unsplash.User, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "user_photos_\(page)",
-      path: "napi/users/\(user.id)/photos",
+      path: "napi/users/\(user.userId)/photos",
       method: .get,
       parameters: [
         "page": page,
@@ -88,7 +88,7 @@ extension Endpoint {
   static func userIllustrations(for user: Unsplash.User, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "user_illustrations_\(page)",
-      path: "napi/users/\(user.id)/photos",
+      path: "napi/users/\(user.userId)/illustrations",
       method: .get,
       parameters: [
         "page": page,

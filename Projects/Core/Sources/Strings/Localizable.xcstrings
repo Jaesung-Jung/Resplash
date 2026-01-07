@@ -172,6 +172,23 @@
         }
       }
     },
+    "illustrations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrations"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일러스트"
+          }
+        }
+      }
+    },
     "image" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -185,6 +202,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이미지"
+          }
+        }
+      }
+    },
+    "imageCollection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collection"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "컬렉션"
           }
         }
       }
@@ -300,6 +334,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "写真"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사진"
+          }
+        }
+      }
+    },
+    "photos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos"
           }
         },
         "ko" : {

@@ -54,6 +54,28 @@ extension Unsplash {
     public static func == (lhs: Self, rhs: Self) -> Bool {
       lhs.id == rhs.id && lhs.updatedAt == rhs.updatedAt
     }
+
+    public func link(for social: Unsplash.User.Social) -> URL? {
+      guard socials.contains(social) else {
+        return nil
+      }
+      switch social {
+      case .instagram(let name):
+        return URL(string: "https://www.instagram.com/\(name)")
+      case .twitter(let name):
+        return URL(string: "https://x.com/\(name)")
+      case .portfolio(let url):
+        return url
+      case .paypal(let email):
+        var compoents = URLComponents(string: "https://www.paypal.com/donate")
+        compoents?.queryItems = [
+          URLQueryItem(name: "business", value: email),
+          URLQueryItem(name: "item_name", value: "\(name) - Unsplash"),
+          URLQueryItem(name: "currency_code", value: "USD")
+        ]
+        return compoents?.url
+      }
+    }
   }
 }
 
@@ -65,16 +87,40 @@ extension Unsplash.User {
     public let small: URL
     public let medium: URL
     public let large: URL
+    public var raw: URL {
+      guard var components = URLComponents(url: large, resolvingAgainstBaseURL: false) else {
+        return large
+      }
+      components.queryItems = nil
+      return components.url ?? large
+    }
   }
 }
 
 // MARK: - Unsplash.User.Social
 
 extension Unsplash.User {
-  public enum Social: Sendable {
-    case twitter(String)
+  public enum Social: Hashable, Comparable, Sendable {
     case instagram(String)
-    case paypal(String)
+    case twitter(String)
     case portfolio(URL)
+    case paypal(String)
+
+    var order: Int {
+      switch self {
+      case .instagram:
+        return 0
+      case .twitter:
+        return 1
+      case .portfolio:
+        return 2
+      case .paypal:
+        return 3
+      }
+    }
+
+    public static func < (lhs: Unsplash.User.Social, rhs: Unsplash.User.Social) -> Bool {
+      lhs.order < rhs.order
+    }
   }
 }

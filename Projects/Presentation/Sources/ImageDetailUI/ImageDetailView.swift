@@ -43,7 +43,11 @@ public struct ImageDetailView: View {
   public var body: some View {
     ScrollView {
       VStack(alignment: .leading, spacing: 20) {
-        UserView(store.image.user)
+        Button {
+          store.send(.navigate(.userProfile(store.image.user)))
+        } label: {
+          UserView(store.image.user)
+        }
 
         VStack(alignment: .leading, spacing: 8) {
           Button {

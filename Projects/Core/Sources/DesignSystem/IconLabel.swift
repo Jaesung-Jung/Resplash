@@ -46,7 +46,7 @@ public struct IconLabel<Icon: View, Content: View>: View {
 // MARK: - IconLabel<Image, Text>
 
 extension IconLabel where Icon == Image, Content == Text {
-  public init(spacing: CGFloat = 8, icon: Image, text: Text) {
+  public init(icon: Image, text: Text, spacing: CGFloat = 8) {
     self.init(
       spacing: spacing,
       icon: { icon.resizable() },
@@ -54,7 +54,7 @@ extension IconLabel where Icon == Image, Content == Text {
     )
   }
 
-  public init(spacing: CGFloat = 8, systemImage: String, text: LocalizedStringKey) {
+  public init(systemImage: String, text: LocalizedStringKey, spacing: CGFloat = 8) {
     self.init(
       spacing: spacing,
       icon: { Image(systemName: systemImage).resizable() },

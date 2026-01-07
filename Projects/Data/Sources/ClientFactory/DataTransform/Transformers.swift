@@ -107,7 +107,7 @@ struct UserTransformer: DataTransformer {
       totalCollections: container.decode(Int.self, forKey: "total_collections"),
       totalPhotos: container.decode(Int.self, forKey: "total_photos"),
       totalIllustrations: container.decode(Int.self, forKey: "total_illustrations"),
-      socials: container.decode(DTO<SocialTransformer>.self, forKey: "social").domain,
+      socials: container.decode(DTO<SocialTransformer>.self, forKey: "social").domain.sorted(),
       shareLink: container.decode(DTO<ShareLinkTransformer>.self, forKey: "links").domain,
       imageURLs: container.decodeIfPresent([DTO<ImageURLTransformer>].self, forKey: "photos")?.map(\.domain) ?? []
     )

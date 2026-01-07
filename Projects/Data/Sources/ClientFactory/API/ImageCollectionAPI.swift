@@ -47,7 +47,7 @@ extension Endpoint {
   static func collections(for user: Unsplash.User, page: Int, count: Int) -> Endpoint {
     Endpoint(
       resourceId: "user_collections_\(page)",
-      path: "napi/users/\(user.id)/collections",
+      path: "napi/users/\(user.userId)/collections",
       method: .get,
       parameters: [
         "page": page,

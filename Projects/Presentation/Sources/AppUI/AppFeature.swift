@@ -170,7 +170,7 @@ public struct AppFeature {
     case .searchResult(.navigate(.users(let query))):
       let userListState = UserListFeature.State(query: query)
       state[keyPath: path].append(.users(userListState))
-    case .searchResult(.navigate(.userProfile(let user))):
+    case .searchResult(.navigate(.userProfile(let user))), .imageDetail(.navigate(.userProfile(let user))):
       let userProfileState = UserProfileFeature.State(user: user)
       state[keyPath: path].append(.userProfile(userProfileState))
     case .searchResult(.navigate(.collections(let query))):
