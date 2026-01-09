@@ -23,6 +23,28 @@
 
 import SwiftUI
 
+protocol DesignSystemProgressViewStyle {
+}
+
+extension DesignSystemProgressViewStyle {
+  @inlinable func radius(for controlSize: ControlSize) -> CGFloat {
+    switch controlSize {
+    case .mini:
+      return 4
+    case .small:
+      return 6
+    case .regular:
+      return 8
+    case .large:
+      return 10
+    case .extraLarge:
+      return 12
+    @unknown default:
+      fatalError("Unknown controlSize")
+    }
+  }
+}
+
 // MARK: - DesignSystemProgressViewStyles
 
 public enum DesignSystemProgressViewStyles: ProgressViewStyle {
@@ -40,6 +62,10 @@ public enum DesignSystemProgressViewStyles: ProgressViewStyle {
   public static func circleScale(_ anchor: UnitPoint) -> DesignSystemCircleScaleProgressViewStyle {
     DesignSystemCircleScaleProgressViewStyle(anchor: anchor)
   }
+
+  public static var circleBounce: DesignSystemCircleBounceProgressViewStyle {
+    DesignSystemCircleBounceProgressViewStyle()
+  }
 }
 
 extension ProgressViewStyle where Self == DesignSystemProgressViewStyles {
@@ -48,14 +74,23 @@ extension ProgressViewStyle where Self == DesignSystemProgressViewStyles {
 
 // MARK: - DesignSystemCircleFadeProgressViewStyle
 
-public struct DesignSystemCircleFadeProgressViewStyle: ProgressViewStyle {
+public struct DesignSystemCircleFadeProgressViewStyle: ProgressViewStyle, DesignSystemProgressViewStyle {
   @Environment(\.controlSize) var controlSize
 
   public func makeBody(configuration: Configuration) -> some View {
+    let radius = radius(for: controlSize)
     VStack {
-      AnimatableCircle(controlSize: controlSize) { circle, flag in
-        circle.opacity(flag ? 0.5 : 1)
+      HStack(spacing: radius) {
+        ForEach(0..<3) { offset in
+          ProgressCircle(radius: radius)
+            .phaseAnimator([true, false]) { content, phase in
+              content.opacity(phase ? 0.5 : 1)
+            } animation: { _ in
+              .linear.delay(0.25 * TimeInterval(offset))
+            }
+        }
       }
+
       configuration.label
     }
   }
@@ -63,62 +98,62 @@ public struct DesignSystemCircleFadeProgressViewStyle: ProgressViewStyle {
 
 // MARK: - DesignSystemCircleScaleProgressViewStyle
 
-public struct DesignSystemCircleScaleProgressViewStyle: ProgressViewStyle {
+public struct DesignSystemCircleScaleProgressViewStyle: ProgressViewStyle, DesignSystemProgressViewStyle {
   @Environment(\.controlSize) var controlSize
   let anchor: UnitPoint
 
   public func makeBody(configuration: Configuration) -> some View {
+    let radius = radius(for: controlSize)
     VStack {
-      AnimatableCircle(controlSize: controlSize) { circle, flag in
-        circle
-          .opacity(flag ? 0.5 : 1)
-          .scaleEffect(flag ? 0.7 : 1, anchor: anchor)
+      HStack(spacing: radius) {
+        ForEach(0..<3) { offset in
+          ProgressCircle(radius: radius)
+            .phaseAnimator([true, false]) { content, phase in
+              content
+                .opacity(phase ? 0.5 : 1)
+                .scaleEffect(phase ? 0.7 : 1, anchor: anchor)
+            } animation: { _ in
+              .bouncy.delay(0.25 * TimeInterval(offset))
+            }
+        }
       }
+
       configuration.label
     }
   }
 }
 
-// MARK: - ProgressEllipsis
+// MARK: - DesignSystemCircleBounceProgressViewStyle
 
-private struct AnimatableCircle<Content: View>: View {
-  @State var animating = false
-
-  let radius: CGFloat
-  let transform: (Circle, Bool) -> Content
-  let animation = Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true)
-
-  init(controlSize: ControlSize, @ViewBuilder transform: @escaping (Circle, Bool) -> Content) {
-    switch controlSize {
-    case .mini:
-      radius = 4
-    case .small:
-      radius = 6
-    case .regular:
-      radius = 8
-    case .large:
-      radius = 10
-    case .extraLarge:
-      radius = 12
-    @unknown default:
-      fatalError("Unknown controlSize")
+public struct DesignSystemCircleBounceProgressViewStyle: ProgressViewStyle {
+  public func makeBody(configuration: Configuration) -> some View {
+    HStack(spacing: 12) {
+      ForEach(0..<3) { offset in
+        ProgressCircle(radius: 6)
+          .keyframeAnimator(initialValue: 0, repeating: true) { content, value in
+            content
+              .offset(y: value)
+          } keyframes: { _ in
+            CubicKeyframe(0, duration: TimeInterval(offset) * 0.1)
+            CubicKeyframe(-10, duration: 0.3)
+            CubicKeyframe(20, duration: 0.3)
+            CubicKeyframe(-5, duration: 0.3)
+            CubicKeyframe(0, duration: 0.3)
+            LinearKeyframe(0, duration: 0.75 - TimeInterval(offset) * 0.1)
+          }
+      }
     }
-    self.transform = transform
   }
+}
+
+// MARK: - ProgressCircle
+
+private struct ProgressCircle: View {
+  let radius: CGFloat
 
   var body: some View {
-    HStack(spacing: radius) {
-      ForEach(0..<3, id: \.self) { offset in
-        transform(Circle(), animating)
-          .frame(width: radius * 2, height: radius * 2)
-          .animation(animation.delay(0.25 * Double(offset)), value: animating)
-      }
-    }
-    .onAppear {
-      withAnimation(animation) {
-        animating = true
-      }
-    }
+    Circle()
+      .frame(width: radius * 2)
   }
 }
 
@@ -128,21 +163,14 @@ private struct AnimatableCircle<Content: View>: View {
 
 #Preview {
   VStack(spacing: 80) {
-    VStack(spacing: 20) {
-      ForEach(ControlSize.allCases, id: \.self) {
-        ProgressView()
-          .progressViewStyle(.ds.circleFade)
-          .controlSize($0)
-      }
-    }
+    ProgressView()
+      .progressViewStyle(.ds.circleFade)
 
-    VStack(spacing: 20) {
-      ForEach(ControlSize.allCases, id: \.self) {
-        ProgressView()
-          .progressViewStyle(.ds.circleScale)
-          .controlSize($0)
-      }
-    }
+    ProgressView()
+      .progressViewStyle(.ds.circleScale)
+
+    ProgressView()
+      .progressViewStyle(.ds.circleBounce)
   }
   .foregroundStyle(.tertiary)
 }
