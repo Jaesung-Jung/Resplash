@@ -22,7 +22,7 @@ func makeModuleTemplate() -> Template {
         //
         //  \(name).swift
         //
-        //  Copyright © 2025 Jaesung Jung. All rights reserved.
+        //  Copyright © 2026 Jaesung Jung. All rights reserved.
         //
         //  Permission is hereby granted, free of charge, to any person obtaining a copy
         //  of this software and associated documentation files (the "Software"), to deal
